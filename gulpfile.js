@@ -122,7 +122,7 @@ gulp.task('watchJS', function() {
   gulp.watch([jsFiles, AllJsFiles],[
     'browserify',
     'cxBrowserify',
-	  'minJS',
+    'minJS',
     'cxMinJS'
   ]);
 });
@@ -150,4 +150,5 @@ gulp.task('watchTPL', function() {
     gulp.watch(tplFiles, ['template']);
 });
 
+gulp.task('build', ['copy-images','copy-fonts','template','staticJS', 'less', 'browserify', 'cxBrowserify', 'minJS', 'cxMinJS']);
 gulp.task('default', ['copy-images','copy-fonts','template','staticJS', 'less', 'browserify', 'cxBrowserify', 'minJS', 'cxMinJS', 'watchJS' , 'watchLess', 'watchPAGES', 'watchTPL']);
