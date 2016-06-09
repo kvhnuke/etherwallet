@@ -1,5 +1,5 @@
 <section class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.addWallet.id" ng-controller='addWalletCtrl'>
-  <h2> Add Wallet </h2>
+  <h2> 增加钱包 </h2>
 
   <section class="row" id="walletselection">
     <article class="col-md-4 col-sm-6">
