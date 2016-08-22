@@ -10,7 +10,7 @@ MyEtherWallet is an open source, javascript, client-side tool for generating Eth
 ### Purpose
 
 MyEtherWallet was created because many users were having immense trouble setting up the command-line ethereum client on their computers. Therefore, created this browser-based GUI wallet to...
-- Import client wallet files and presale wallet files.
+- Import client wallet files and pre-sale wallet files.
 - Generate wallets completely client side and provide raw private keys, JSON files, and paper version of the account.
 - Bulk generate wallets
 - Generate & send transactions
@@ -29,6 +29,6 @@ Version 2 expands on this vision to offer:
 If you can think of any other features or run into bugs, let us know. You can fork, open a PR, open an issue, [message kvhnuke on reddit](https://www.reddit.com/message/compose/?to=kvhnuke), [email tayvano](mailto:tayvano@gmail.com) or [in any of these ways](https://www.myetherwallet.com/#contact).
 
 ### TODO / In Progress
-See our [trello baord](https://trello.com/b/npX68sKj/myetherwallet)
+See our [trello board](https://trello.com/b/npX68sKj/myetherwallet)
 
 #### MyEtherWallet.com & MyEtherWallet CX are licensed under The MIT License (MIT).
