@@ -5,7 +5,7 @@ de.code = 'de';
 de.data = {
 
   /* Navigation*/
-  NAV_YourWallets:      'Your Wallets',
+  NAV_YourWallets:      'I have no idea how to speak German',
   NAV_AddWallet:        'Add Wallet',
   NAV_GenerateWallet:   'Generate Wallet',
   NAV_BulkGenerate:     'Bulk Generate',
@@ -239,8 +239,8 @@ de.data = {
   LANG_fr:              'Français',
   LANG_ko:              'Korean',
   LANG_no:              'Norwegian',
-  TranlsatorName_1:     '',
-  TranlsatorAddr_1:     '',
+  TranlsatorName_1:     'TayTay',
+  TranlsatorAddr_1:     '0x7cb57b5a97eabe94205c07890be4c1ad31e486a8',
   TranlsatorName_2:     ' ',
   TranlsatorAddr_2:     ' ',
   TranlsatorName_3:     ' ',
