@@ -17,7 +17,7 @@ fr.data = {
   NAV_ClaimDGD:         'Réclamer DGD',
   DGD_TitleLong:        'Réclamer vos tokens DGD',
   NAV_MyWallets:        'Mes portefeuilles',
-  NAV_ViewWallet:       'Voir les infos d\'un portefeuille,
+  NAV_ViewWallet:       'Voir les infos d\'un portefeuille',
   NAV_Help:             'Aide',
   NAV_Contact:          'Contact',
 
