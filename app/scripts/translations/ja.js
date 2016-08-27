@@ -5,22 +5,21 @@ ja.code = 'ja';
 ja.data = {
 
   /* Navigation*/
-  NAV_YourWallets:      'Your Wallets',
-  NAV_AddWallet:        'Add Wallet',
-  NAV_GenerateWallet:   'Generate Wallet',
-  NAV_BulkGenerate:     'Bulk Generate',
-  NAV_SendEther:        'Send Ether',
-  NAV_SendTokens:       'Send Tokens',
-  NAV_Offline:          'Send Offline',
-  NAV_WithdrawDAO:      'Withdraw DAO',
-  DAO_TitleLong:        'Withdraw Your Dao Tokens For ETH',
-  NAV_ClaimDGD:         'Claim DGD',
-  DGD_TitleLong:        'Claim Your DGD Tokens',
-  NAV_DeployContract:   'Deploy Contract',
-  NAV_MyWallets:        'My Wallets',
-  NAV_ViewWallet:       'View Wallet Info',
-  NAV_Help:             'Help',
-  NAV_Contact:          'Contact',
+  NAV_YourWallets:      'あなたのウォレット’,
+  NAV_AddWallet:        'ウォレットを追加’,
+  NAV_GenerateWallet:   'ウォレットを作成’,
+  NAV_BulkGenerate:     'バルク作成’,
+  NAV_SendEther:        'Ether送出’,
+  NAV_SendTokens:       'トークン送出’,
+  NAV_Offline:          'オフライン送出’,
+  NAV_WithdrawDAO:      'DAO払い戻し’,
+  DAO_TitleLong:        'DAOトークンをETHで払い出し’,
+  NAV_ClaimDGD:         'DGD請求’,
+  DGD_TitleLong:        'DGDトークンを請求する’,
+  NAV_MyWallets:        '自分のウォレット’,
+  NAV_ViewWallet:       'ウォレット情報を見る’,
+  NAV_Help:             'ヘルプ’,
+  NAV_Contact:          '連絡する’,
 
   /* General */
   x_Address:            'Your Address',
@@ -261,9 +260,9 @@ ja.data = {
   /* Tranlsation Info */
   translate_version:    '0.2',
   Translator_Desc:      'Thank you to our translators: ',
-  TranslatorName_1:     '',
-  TranslatorAddr_1:     '',
-  /* Translator 1: Insert Comments Here */
+  TranslatorName_1:     'sekisanchi',
+  TranslatorAddr_1:     '0xf991119Eea62Eee1a6fdaA7f621e91A42f325FcE',
+  /* Translator 1: Kazunori Seki / 関一典 */
   TranslatorName_2:     ' ',
   TranslatorAddr_2:     ' ',
   /* Translator 2: Insert Comments Here */
