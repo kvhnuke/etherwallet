@@ -1,4 +1,4 @@
-<b>Note: This repository has moved to [https://github.com/ethereumproject/etherwallet](https://github.com/ethereumproject/etherwallet)<b>
+<b>Note: This repository has moved to [https://github.com/ethereumproject/etherwallet](https://github.com/ethereumproject/etherwallet)</b>
 
 ClassicEtherWallet is an open source, javascript, client-side tool for generating Ether wallets. It was forked from  [kvhnuke](https://github.com/kvhnuke).
 
