@@ -273,7 +273,7 @@ hu.data = {
   /* Tranlsation Info */
   translate_version:    '0.4.2',
   Translator_Desc:      'Thank you to our translators: ',
-  TranslatorName_1:     'belpheg',
+  TranslatorName_1:     '[belpheg](https://www.myetherwallet.com/?gaslimit=21000&to=0xBF8C35176eAD29257834D5A1592ed50Adb0b6e4f&value=1.0#send-transaction) ·',
   TranslatorAddr_1:     '0xBF8C35176eAD29257834D5A1592ed50Adb0b6e4f',
   /* Translator 1: email: zoltan.tapi@donamin.com */
   TranslatorName_2:     ' ',
