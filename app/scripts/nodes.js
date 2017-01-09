@@ -37,7 +37,7 @@ nodes.nodeList = {
         'blockExplorerTX': 'https://gastracker.io/tx/[[txHash]]',
         'blockExplorerAddr': 'https://gastracker.io/addr/[[address]]',
         'type': nodes.nodeTypes.ETC,
-        'eip155': false,
+        'eip155': true,
         'chainId': 0,
         'tokenList': require('./tokens/etcTokens.json'),
         'estimateGas': true,
