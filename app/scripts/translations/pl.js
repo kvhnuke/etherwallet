@@ -4,7 +4,7 @@ var pl = function() {}
 pl.code = 'pl';
 pl.data = {
 
-  NAV_Exchange                : 'Exchange',
+  NAV_Exchange                : 'Giełda',
 
   /* Sign Message */
   NAV_SignMsg                 : 'Podpisz Wiadomość',
@@ -90,12 +90,12 @@ pl.data = {
   ADD_Radio_3                 : 'Wklej/Wpisz Twój Klucz Prywatny',
   ADD_Radio_4                 : 'Dodaj Konto do Obserwacji',
   ADD_Radio_5                 : 'Wklej/Wpisz Swój Mnemonik',
-  ADD_Radio_5_Path            : 'Select HD derivation path',
+  ADD_Radio_5_Path            : 'Wybierz ścieżkę portfela HD',
   ADD_Radio_5_woTrezor        : '(Jaxx, Metamask, Exodus, imToken)',
   ADD_Radio_5_withTrezor      : '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
   ADD_Radio_5_PathAlternative : '(Ledger)',
   ADD_Radio_5_PathTrezor      : '(TREZOR)',
-  ADD_Radio_5_PathCustom      : '(custom)',
+  ADD_Radio_5_PathCustom      : '(niestandardowy)',
   ADD_Label_2                 : 'Utwórz Nazwę Użytkownika:',
   ADD_Label_3                 : 'Twój portfel jest zaszyfrowany. Podaj hasło: ',
   ADD_Label_4                 : 'Dodaj Konto do Obserwacji',
@@ -237,8 +237,8 @@ pl.data = {
   ADD_Ledger_scan             : 'Połącz z Ledger Nano S',
 
   x_Trezor                    : 'TREZOR',
-  ADD_Trezor_scan             : 'Connect to TREZOR',
-  ADD_Trezor_select           : 'This is a TREZOR seed',
+  ADD_Trezor_scan             : 'Połącz z TREZOR',
+  ADD_Trezor_select           : 'To jest ziarno (seed) TREZOR'a',
 
   /* Chrome Extension */
   CX_error_1                  : 'Nie posiadasz żadnych zapisanych portfeli. ["Dodaj Portfel"](/cx-wallet.html#add-wallet)!',
@@ -291,7 +291,7 @@ pl.data = {
   PARITY_TooCheapToReplace    : "Za niska opłata transakcyjna. Inna transakcja z tym samym wyróżnikiem znajduje się już w kolejce. Spróbuj dołączyć wyższą opłatę lub zwiększ wyróżnik transakcji.",
   PARITY_LimitReached         : "Zbyt wiele transakcji w kolejce. Twoja transakcja została odrzucona ze względu na limity. Spróbuj dołączyć wyższą opłatę transakcyjną.",
   PARITY_InsufficientGasPrice : "Za niska opłata transakcyjna. Opłata jest niższa niż minimalnie wymaga węzeł (minimum: {}, dołączono: {}). Spróbuj dołączyć wyższą opłatę transakcyjną.",
-  PARITY_InsufficientBalance  : "Niewystarczające środki. Konto, z którego wysyłasz transakcję nie posiada wystarczających funduszy. Wymaga: {}, otrzymano: {}.",
+  PARITY_InsufficientBalance  : "Niewystarczające środki. Konto, z którego wysyłasz transakcję nie posiada wystarczających funduszy. Wymagane: {}, posiadasz: {}.",
   PARITY_GasLimitExceeded     : "Koszt transakcji przekracza bieżący limit paliwa. Limit: {}, otrzymano: {}. Spróbuj zmniejszyć ilość paliwa.",
   PARITY_InvalidGasLimit      : "Dostarczone paliwo wykracza ponad limit.",
 
@@ -483,8 +483,9 @@ pl.data = {
   HELP_12_Desc_27             : 'Po zaimportowaniu portfela, usuń `nic_specjalnego_usun_mnie.txt`',
   HELP_12_Desc_28             : 'Po ponownym uruchomieniu aplikacji Ethereum Wallet Twój portfel pojawi się na zakładce "Accounts". ',
 
-  HELP_13_Title               : '13) What does "Insufficient funds. Account you try to send transaction from does not have enough funds. Required XXXXXXXXXXXXXXXXXXX and got: XXXXXXXXXXXXXXXX." Mean?',
-  HELP_13_Desc_1              : 'This means you do not have enough Ether in your account to cover the cost of gas. Each transaction (including token and contract transactions) require gas and that gas is paid in Ether. The number displayed is the amount required to cover the cost of the transaction in Wei. Take that number, divide by `1000000000000000000`, and subtract the amount of Ether you were trying to send (if you were attempting to send Ether). This will give you the amount of Ether you need to send to that account to make the transaction.',
+  HELP_13_Title               : '13) Co oznacza komunikat: "Niewystarczające środki. Konto, z którego wysyłasz transakcję nie posiada wystarczających funduszy. Wymagane: XXXXXXXXXXXXXXXXXXX, posiadasz: XXXXXXXXXXXXXXXX."',
+  HELP_13_Desc_1              : 'Oznacza to, że nie posiadasz wystarczającej ilości Ether na koncie, aby pokryć koszty paliwa. Każda transakcja (przesyłanie tokenów lub interakcja z kontraktem) wymaga paliwa, które jest opłacane w Ether'ach. Wyświetlona wartość jest ilością potrzebną na pokrycie kosztów transakcji w Wei'ach. Podziel tą liczbę przez `1000000000000000000` i odejmij wartość Ether, którą chciałeś wysłać (jeśli wysyłałeś Ether). Otrzymasz wartość, jaką musisz przesłać na swoje konto, aby wykonać transakcję.',
+
 
   HELP_14_Title               : '14) Niektóre strony wykorzystują ruchy myszką przy generowaniu klucza prywatnego. MyEtherWallet tego nie robi. Czy generator liczb losowych w MyEtherWallet jest bezpieczny?',
   HELP_14_Desc_1              : 'Chociaż generowanie liczb losowych przy udziale ruchów myszki jest sprytnie pomyślane i rozumiemy dlaczego ludzie to lubią, to jednak rzeczywistość jest taka, że window.crypto zapewnia większą entropię niż ruchy myszką. Generowanie z ruchów myszki nie jest niebezpieczne, ale my (oraz znaczna liczba innych ekspertów kryptografii) wierzymy w window.crypto. W dodatku MyEtherWallet może być używane na urządzeniach dotykowych. Tutaj można przeczytać [rozmowę rozeźlonego reddit\'ora i Vitalik\'a Buterin\'a odnośnie ruchów myszki kontra window.crypto](https://www.reddit.com/r/ethereum/comments/2bilqg/note_there_is_a_paranoid_highsecurity_way_to/cj5sgrm) a tutaj jest [specyfikacja window.crypto w3](https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-GlobalCrypto).',
