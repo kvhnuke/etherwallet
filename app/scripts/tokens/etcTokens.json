@@ -1,1 +1,8 @@
-[]
+[
+  {
+    "address":"0x02dc6A2B94289d9Ec72BC0689391688113C136b1",
+    "symbol":"EPOOLS",
+    "decimal":0,
+    "type":"default"
+  }
+]
