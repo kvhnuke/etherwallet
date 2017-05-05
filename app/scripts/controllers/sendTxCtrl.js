@@ -8,6 +8,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
     $scope.showAdvance = $scope.showRaw = false;
     $scope.dropdownEnabled = true;
     $scope.Validator = Validator;
+    $scope.gasLimitChanged = false;
     // Tokens
     $scope.tokenVisibility = "hidden";
     $scope.tokenTx = {
@@ -58,9 +59,12 @@ var sendTxCtrl = function($scope, $sce, walletService) {
     var applyScope = function() {
         if (!$scope.$$phase) $scope.$apply();
     }
-    globalFuncs.urlGet('sendMode') == null ? $scope.setSendMode('ether') : $scope.setSendMode(globalFuncs.urlGet('sendMode'));
-    $scope.showAdvance = globalFuncs.urlGet('gaslimit') != null || globalFuncs.urlGet('gas') != null || globalFuncs.urlGet('data') != null;
-    if (globalFuncs.urlGet('data') || globalFuncs.urlGet('value') || globalFuncs.urlGet('to') || globalFuncs.urlGet('gaslimit') || globalFuncs.urlGet('sendMode') || globalFuncs.urlGet('gas') || globalFuncs.urlGet('tokenSymbol')) $scope.hasQueryString = true // if there is a query string, show an warning at top of page
+    var defaultInit = function() {
+        globalFuncs.urlGet('sendMode') == null ? $scope.setSendMode('ether') : $scope.setSendMode(globalFuncs.urlGet('sendMode'));
+        $scope.showAdvance = globalFuncs.urlGet('gaslimit') != null || globalFuncs.urlGet('gas') != null || globalFuncs.urlGet('data') != null;
+        if (globalFuncs.urlGet('data') || globalFuncs.urlGet('value') || globalFuncs.urlGet('to') || globalFuncs.urlGet('gaslimit') || globalFuncs.urlGet('sendMode') || globalFuncs.urlGet('gas') || globalFuncs.urlGet('tokenSymbol')) $scope.hasQueryString = true // if there is a query string, show an warning at top of page
+
+    }
     $scope.$watch(function() {
         if (walletService.wallet == null) return null;
         return walletService.wallet.getAddressString();
@@ -83,6 +87,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
             }, true);
         }
         $scope.setTokenSendMode();
+        defaultInit();
     });
     $scope.$watch('ajaxReq.key', function() {
         if ($scope.wallet) {
@@ -117,6 +122,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
         }
     }, true);
     $scope.estimateGasLimit = function() {
+        if ($scope.gasLimitChanged) return;
         if (globalFuncs.lightMode) {
             $scope.tx.gasLimit = 100000;
             return;
@@ -141,7 +147,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
         });
     }
     $scope.hasEnoughBalance = function() {
-        if($scope.wallet.balance=='loading') return false;
+        if ($scope.wallet.balance == 'loading') return false;
         return new BigNumber($scope.tx.value).lt(new BigNumber($scope.wallet.balance));
     }
     $scope.onDonateClick = function() {
