@@ -104,6 +104,7 @@ var js_destFile = 'etherwallet-master.js'
 var browseOpts = { debug: true } // generates inline source maps - only in js-debug
 var babelOpts = {
     presets: ['es2015'],
+    plugins: ["transform-react-jsx"],
     compact: false,
     global: true
 }
@@ -132,8 +133,8 @@ function bundle_js_debug(bundler) {
 
 
 gulp.task('js', function() {
-    var bundler = browserify(js_srcFile).transform(babelify).transform(html2js)
-    bundle_js(bundler)
+    var bundler = browserify(js_srcFile).transform(babelify, babelOpts).transform(html2js)
+    return bundle_js(bundler)
 })
 
 gulp.task('js-production', function() {
@@ -406,6 +407,3 @@ gulp.task('build', ['js', 'html', 'styles', 'copy'])
 gulp.task('build-debug', ['js-debug', 'html', 'styles', 'watchJSDebug', 'watchLess', 'watchPAGES', 'watchTPL', 'watchCX'])
 
 gulp.task('default', ['build', 'watch'])
-
-
-

@@ -4,7 +4,7 @@
 
     <!-- Sidebar -->
     <section class="col-sm-4">
-      <wallet-balance-drtv></wallet-balance-drtv>
+      <react-wallet-balance-drtv wallet="wallet"></react-wallet-balance-drtv>
     </section>
     <!-- / Sidebar -->
 

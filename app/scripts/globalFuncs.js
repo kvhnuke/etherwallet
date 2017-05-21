@@ -170,7 +170,7 @@ globalFuncs.removeTokenFromLocal = function(symbol, tokenObj) {
     if (!tokenObj) return;
     // remove from tokenObj so it removes from display
     for (var i = 0; i < tokenObj.length; i++)
-        if (tokenObj[i].symbol === symbol) {
+        if (tokenObj[i].symbol === symbol && tokenObj[i].type === 'custom') {
             tokenObj.splice(i, 1);
             break;
         }

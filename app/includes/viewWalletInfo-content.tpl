@@ -1,6 +1,6 @@
 <article class="col-sm-4">
   <br />
-  <wallet-balance-drtv></wallet-balance-drtv>
+  <react-wallet-balance-drtv wallet="wallet"></react-wallet-balance-drtv>
 </article>
 
 <section class="col-sm-8 view-wallet-content">
@@ -72,4 +72,3 @@
       </div>
     </div>
   </section>
-

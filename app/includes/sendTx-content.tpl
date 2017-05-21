@@ -1,6 +1,6 @@
 <!-- Sidebar -->
 <section class="col-sm-4">
-  <wallet-balance-drtv></wallet-balance-drtv>
+  <react-wallet-balance-drtv wallet="wallet"></react-wallet-balance-drtv>
   <hr />
   <div class="well">
     <p translate="sidebar_donation"> MyEtherWallet is a free, open-source service dedicated to your privacy and security. The more donations we receive, the more time we spend creating new features, listening to your feedback, and giving you what you want. We are just two people trying to change the world. Help us?</p>
