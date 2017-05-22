@@ -3,6 +3,7 @@ var di = angularUtils.di;
 var filters = di.filters;
 var AddressIdenticon = require("./ui/AddressIdenticon");
 var TokenBalances = require("./balance/TokenBalances");
+var PropTypes = require("prop-types");
 
 class BalanceDrtv extends React.Component {
   constructor() {
@@ -161,5 +162,9 @@ class BalanceDrtv extends React.Component {
     di.rootScope.$apply();
   }
 }
+
+BalanceDrtv.propTypes = {
+  wallet: PropTypes.object
+};
 
 module.exports = angularUtils.translate(BalanceDrtv);

@@ -1,4 +1,5 @@
 var angularUtils = require("../angular-utils");
+var PropTypes = require("prop-types");
 
 class AddCustomTokenForm extends React.Component {
   constructor() {
@@ -76,5 +77,9 @@ class AddCustomTokenForm extends React.Component {
     this.props.onSave(this.state);
   }
 }
+
+AddCustomTokenForm.propTypes = {
+  onSave: PropTypes.func.isRequired
+};
 
 module.exports = angularUtils.translate(AddCustomTokenForm);

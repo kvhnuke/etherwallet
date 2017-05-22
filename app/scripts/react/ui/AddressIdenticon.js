@@ -1,6 +1,7 @@
 "use strict";
+var PropTypes = require("prop-types");
 
-module.exports = function AddressIdenticon(props) {
+function AddressIdenticon(props) {
   let style = {};
   if (Validator.isValidAddress(props.address)) {
     style.backgroundImage = `url(${globalFuncs.getBlockie(props.address)})`;
@@ -12,6 +13,10 @@ module.exports = function AddressIdenticon(props) {
       title="Address Indenticon"
     />
   );
+}
 
-  return <div />;
+AddressIdenticon.propTypes = {
+  address: PropTypes.string.isRequired
 };
+
+module.exports = AddressIdenticon;

@@ -26,6 +26,7 @@
     "install": "^0.8.7",
     "marked": "^0.3.6",
     "open": "0.0.5",
+    "prop-types": "^15.5.10",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react2angular": "^1.1.3",

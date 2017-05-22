@@ -2,6 +2,7 @@ var angularUtils = require("../angular-utils");
 var di = angularUtils.di;
 var TokenRow = require("./TokenRow");
 var AddCustomTokenForm = require("./AddCustomTokenForm");
+var PropTypes = require("prop-types");
 
 class TokenBalances extends React.Component {
   constructor() {
@@ -47,23 +48,24 @@ class TokenBalances extends React.Component {
       <section className="token-balances">
         <h5 translate="sidebar_TokenBal">Token Balances:</h5>
         <table className="account-info">
-          {wallet.tokenObjs
-            .filter(
-              token =>
-                (token.balance != 0 && token.balance !== "loading") ||
-                token.type !== "default" ||
-                this.state.showAllTokens
-            )
-            .map(token => (
-              <TokenRow
-                key={`${token.getSymbol()}-${token.type}`}
-                balance={token.getBalance()}
-                symbol={token.getSymbol()}
-                type={token.type}
-                onRemove={this.removeCustomToken}
-              />
-            ))}
-
+          <tbody>
+            {wallet.tokenObjs
+              .filter(
+                token =>
+                  (token.balance != 0 && token.balance !== "loading") ||
+                  token.type !== "default" ||
+                  this.state.showAllTokens
+              )
+              .map(token => (
+                <TokenRow
+                  key={`${token.getSymbol()}-${token.type}`}
+                  balance={token.getBalance()}
+                  symbol={token.getSymbol()}
+                  type={token.type}
+                  onRemove={this.removeCustomToken}
+                />
+              ))}
+          </tbody>
         </table>
         {!this.state.showAllTokens &&
           <a
@@ -129,5 +131,9 @@ class TokenBalances extends React.Component {
     di.rootScope.$apply();
   }
 }
+
+TokenBalances.propTypes = {
+  wallet: PropTypes.object
+};
 
 module.exports = angularUtils.translate(TokenBalances);

@@ -56,7 +56,7 @@ function translateJsx(jsx) {
   }
 
   if (!Array.isArray(jsx)) {
-    return translateJsxNode(jsx)
+    return translateJsxNode(jsx);
   }
 
   return jsx.map(translateJsxNode);
@@ -64,7 +64,7 @@ function translateJsx(jsx) {
 
 // FIXME not proper HOC
 function translate(Wrapped) {
-  return class Translated extends Wrapped {
+  class Translated extends Wrapped {
     componentDidMount() {
       if (super.componentDidMount) super.componentDidMount();
       this.unsubscribe = rootScope.$on("$translateChangeSuccess", () => {
@@ -78,7 +78,11 @@ function translate(Wrapped) {
     render() {
       return translateJsx(super.render());
     }
-  };
+  }
+
+  Translated.propTypes = Wrapped.propTypes;
+
+  return Translated;
 }
 
 module.exports = {
@@ -86,7 +90,10 @@ module.exports = {
     filters: filters
   },
   findInScope: function(component, key) {
-    return _findInScope(angular.element(ReactDOM.findDOMNode(component)).scope(), key);
+    return _findInScope(
+      angular.element(ReactDOM.findDOMNode(component)).scope(),
+      key
+    );
   },
   translate: translate
 };

@@ -1,6 +1,7 @@
 var filters = require("../angular-utils").di.filters;
+var PropTypes = require("prop-types");
 
-module.exports = class TokenRow extends React.Component {
+class TokenRow extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -49,4 +50,13 @@ module.exports = class TokenRow extends React.Component {
   onRemove() {
     this.props.onRemove(this.props.symbol);
   }
+}
+
+TokenRow.propTypes = {
+  balance: PropTypes.string.isRequired,
+  symbol: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  onRemove: PropTypes.func.isRequired
 };
+
+module.exports = TokenRow;
