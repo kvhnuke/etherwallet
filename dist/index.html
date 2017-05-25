@@ -2135,7 +2135,7 @@
       <td>From Account</td><td><small class="mono">{{wallet.getAddressString()}}</small></td>
     </tr>
     <tr class="text-danger">
-      <td>⚠ Reveal Date ⚠</td><td><small>{{getRevealTime().toString()}}</small></td>
+      <td>⚠ Reveal Date ⚠</td><td><small>{{getRevealTime().toString()}}</small> - 📅 <a target="_blank" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=ENS+Reveal+date&dates={{getRevealTime().toISOString()}}/{{objENS.registrationDate.toISOString()}}&details=Ethereum+Name+Service+reveal+date+for+{{objENS.name}}.eth&location=https%3A%2F%2Fwww.myetherwallet.com%2F%23ens">Set a reminder</a></td>
     </tr>
     <tr>
       <td>Auction Ends</td><td><small>{{objENS.registrationDate.toString()}}</small></td>
