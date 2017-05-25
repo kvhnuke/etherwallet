@@ -2135,7 +2135,7 @@
       <td>From Account</td><td><small class="mono">{{wallet.getAddressString()}}</small></td>
     </tr>
     <tr class="text-danger">
-      <td>⚠ Reveal Date ⚠</td><td><small>{{getRevealTime().toString()}}</small> - 📅 <a target="_blank" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=ENS+Reveal+date&dates={{getRevealTime().toISOString()}}/{{objENS.registrationDate.toISOString()}}&details=Ethereum+Name+Service+reveal+date+for+{{objENS.name}}.eth&location=https%3A%2F%2Fwww.myetherwallet.com%2F%23ens">Set a reminder</a></td>
+      <td>⚠ Reveal Date ⚠</td><td><small>{{getRevealTime().toString()}}</small></td><td><a target="_blank" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=%5BENS%5D%20Reveal%20bid%20for%20{{objENS.name}}.eth&dates={{getRevealTime().toISOString()}}/{{objENS.registrationDate.toISOString()}}&details=Reveal%20bid%20for%20{{objENS.name}}%20on%20https%3A%2F%2Fwww.myetherwallet.com%2F%23ens.%0D%0A%0D%0AIf%20you%20do%20not%20reveal%20this%20bid%2C%20you%20cannot%20win%2C%20nor%20will%20you%20be%20refunded.%0D%0A%0D%0A{{JSON.stringify(objENS)}}&location=https%3A%2F%2Fwww.myetherwallet.com%2F%23ens">Set a reminder 📅</a></td>
     </tr>
     <tr>
       <td>Auction Ends</td><td><small>{{objENS.registrationDate.toString()}}</small></td>
