@@ -8,6 +8,9 @@ var angularSanitize          = require('angular-sanitize');
 var angularAnimate           = require('angular-animate');
 var bip39                    = require('bip39');
 var HDKey                    = require('hdkey');
+var react2angular            = require('react2angular').react2angular;
+window.React                 = require('react');
+window.ReactDOM              = require('react-dom');
 window.hd                    = { bip39: bip39, HDKey: HDKey };
 var BigNumber                = require('bignumber.js');
 window.BigNumber             = BigNumber;
@@ -75,7 +78,6 @@ var contractsCtrl            = require('./controllers/contractsCtrl');
 var ensCtrl                  = require('./controllers/ensCtrl');
 var footerCtrl               = require('./controllers/footerCtrl');
 var offlineTxCtrl            = require('./controllers/offlineTxCtrl');
-var walletBalanceCtrl        = require('./controllers/walletBalanceCtrl');
 var helpersCtrl              = require('./controllers/helpersCtrl');
 var globalService            = require('./services/globalService');
 var walletService            = require('./services/walletService');
@@ -85,7 +87,6 @@ var QRCodeDrtv               = require('./directives/QRCodeDrtv');
 var walletDecryptDrtv        = require('./directives/walletDecryptDrtv');
 var cxWalletDecryptDrtv      = require('./directives/cxWalletDecryptDrtv');
 var fileReaderDrtv           = require('./directives/fileReaderDrtv');
-var balanceDrtv              = require('./directives/balanceDrtv');
 if (IS_CX) {
   var addWalletCtrl          = require('./controllers/CX/addWalletCtrl');
   var cxDecryptWalletCtrl    = require('./controllers/CX/cxDecryptWalletCtrl');
@@ -94,6 +95,7 @@ if (IS_CX) {
   var quickSendCtrl          = require('./controllers/CX/quickSendCtrl');
 }
 var app = angular.module('mewApp', ['pascalprecht.translate', 'ngSanitize','ngAnimate']);
+var balanceDrtvReact         = require('./react/BalanceDrtv');
 app.config(['$compileProvider', function($compileProvider) {
   $compileProvider.aHrefSanitizationWhitelist(/^\s*(|blob|https|mailto):/);
 }]);
@@ -110,7 +112,7 @@ app.directive('blockieAddress', blockiesDrtv);
 app.directive('addressField', ['$compile', addressFieldDrtv]);
 app.directive('qrCode', QRCodeDrtv);
 app.directive('onReadFile', fileReaderDrtv);
-app.directive('walletBalanceDrtv', balanceDrtv);
+app.component('reactWalletBalanceDrtv', react2angular(balanceDrtvReact, ['wallet']));
 app.directive('walletDecryptDrtv', walletDecryptDrtv);
 app.directive('cxWalletDecryptDrtv', cxWalletDecryptDrtv);
 app.controller('tabsCtrl', ['$scope', 'globalService', '$translate', '$sce', tabsCtrl]);
@@ -126,7 +128,6 @@ app.controller('contractsCtrl', ['$scope', '$sce', 'walletService', contractsCtr
 app.controller('ensCtrl', ['$scope', '$sce', 'walletService', ensCtrl]);
 app.controller('footerCtrl', ['$scope', 'globalService', footerCtrl]);
 app.controller('offlineTxCtrl', ['$scope', '$sce', 'walletService', offlineTxCtrl]);
-app.controller('walletBalanceCtrl', ['$scope', '$sce', walletBalanceCtrl]);
 app.controller('helpersCtrl', ['$scope', helpersCtrl]);
 if (IS_CX) {
   app.controller('addWalletCtrl', ['$scope', '$sce', addWalletCtrl]);
