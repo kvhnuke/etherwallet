@@ -198,6 +198,12 @@
     "type":"default"
   },
   {
+    "address":"0xd2e559d39935110df3ac7e77727dc8cd88416b34",
+    "symbol":"MTL",
+    "decimal":8,
+    "type":"default"
+  },
+  {
     "address":"0xa645264C5603E96c3b0B078cdab68733794B0A71",
     "symbol":"MYST",
     "decimal":8,
