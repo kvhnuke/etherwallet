@@ -1,5 +1,5 @@
 'use strict';
-var bity = function() {}
+let bity = function() {}
 bity.SERVERURL = "https://bity.myetherapi.com";
 bity.decimals = 6;
 bity.ethExplorer = 'https://etherscan.io/tx/[[txHash]]';
@@ -22,33 +22,33 @@ bity.prototype.refreshRates = function(callback) {
         _this.priceLoaded = true;
         if (callback) callback();
     });
-}
+};
 bity.prototype.openOrder = function(orderInfo, callback) {
     var _this = this;
     bity.post('/order', orderInfo, callback);
-}
+};
 bity.prototype.getStatus = function(orderInfo, callback) {
     var _this = this;
     bity.post('/status', orderInfo, callback);
-}
+};
 bity.prototype.requireLogin = function(callback) {
     if (this.token) callback();
     else this.login(callback);
-}
+};
 bity.prototype.login = function(callback) {
     var _this = this;
     bity.post('/login', {}, function(data) {
         _this.token = data.data.token;
         if (callback) callback();
     });
-}
+};
 bity.prototype.logout = function(callback) {
     var _this = this;
     bity.post('/logout', { token: _this.token }, function(data) {
         _this.token = null;
         if (callback) callback();
     });
-}
+};
 bity.postConfig = {
     headers: {
         'Content-Type': 'application/json; charset=UTF-8'
@@ -60,12 +60,12 @@ bity.get = function(path, callback) {
     }, function(data) {
         callback({ error: true, msg: "connection error", data: "" });
     });
-}
+};
 bity.post = function(path, data, callback) {
     ajaxReq.http.post(this.SERVERURL + path, JSON.stringify(data), bity.postConfig).then(function(data) {
         callback(data.data);
     }, function(data) {
         callback({ error: true, msg: "connection error", data: "" });
     });
-}
+};
 module.exports = bity;
