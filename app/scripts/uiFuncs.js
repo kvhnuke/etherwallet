@@ -1,5 +1,5 @@
 'use strict';
-var uiFuncs = function() {}
+var uiFuncs = function() {};
 uiFuncs.getTxData = function($scope) {
     return {
         to: $scope.tx.to,
@@ -13,14 +13,14 @@ uiFuncs.getTxData = function($scope) {
         hwType: $scope.wallet.getHWType(),
         hwTransport: $scope.wallet.getHWTransport()
     };
-}
+};
 uiFuncs.isTxDataValid = function(txData) {
     if (txData.to != "0xCONTRACT" && !ethFuncs.validateEtherAddress(txData.to)) throw globalFuncs.errorMsgs[5];
     else if (!globalFuncs.isNumeric(txData.value) || parseFloat(txData.value) < 0) throw globalFuncs.errorMsgs[0];
     else if (!globalFuncs.isNumeric(txData.gasLimit) || parseFloat(txData.gasLimit) <= 0) throw globalFuncs.errorMsgs[8];
     else if (!ethFuncs.validateHexString(txData.data)) throw globalFuncs.errorMsgs[9];
     if (txData.to == "0xCONTRACT") txData.to = '';
-}
+};
 uiFuncs.signTxTrezor = function(rawTx, txData, callback) {
     var localCallback = function(result) {
         if (!result.success) {
@@ -41,7 +41,7 @@ uiFuncs.signTxTrezor = function(rawTx, txData, callback) {
         rawTx.signedTx = '0x' + eTx.serialize().toString('hex');
         rawTx.isError = false;
         if (callback !== undefined) callback(rawTx);
-    }
+    };
 
     TrezorConnect.signEthereumTx(
         txData.path,
@@ -54,7 +54,7 @@ uiFuncs.signTxTrezor = function(rawTx, txData, callback) {
         rawTx.chainId,
         localCallback
     );
-}
+};
 uiFuncs.signTxLedger = function(app, eTx, rawTx, txData, old, callback) {
     eTx.raw[6] = Buffer.from([rawTx.chainId]);
     eTx.raw[7] = eTx.raw[8] = 0;
@@ -77,9 +77,9 @@ uiFuncs.signTxLedger = function(app, eTx, rawTx, txData, old, callback) {
         rawTx.signedTx = '0x' + eTx.serialize().toString('hex');
         rawTx.isError = false;
         if (callback !== undefined) callback(rawTx);
-    }
+    };
     app.signTransaction(txData.path, txToSign.toString('hex'), localCallback);
-}
+};
 uiFuncs.trezorUnlockCallback = function(txData, callback) {
     TrezorConnect.open(function(error) {
         if (error) {
@@ -92,7 +92,7 @@ uiFuncs.trezorUnlockCallback = function(txData, callback) {
             uiFuncs.generateTx(txData, callback);
         }
     });
-}
+};
 uiFuncs.generateTx = function(txData, callback) {
     if ((typeof txData.hwType != "undefined") && (txData.hwType == "trezor") && !txData.trezorUnlocked) {
         uiFuncs.trezorUnlockCallback(txData, callback);
@@ -108,7 +108,7 @@ uiFuncs.generateTx = function(txData, callback) {
                 to: ethFuncs.sanitizeHex(txData.to),
                 value: ethFuncs.sanitizeHex(ethFuncs.decimalToHex(etherUnits.toWei(txData.value, txData.unit))),
                 data: ethFuncs.sanitizeHex(txData.data)
-            }
+            };
             if (ajaxReq.eip155) rawTx.chainId = ajaxReq.chainId;
             var eTx = new ethUtil.Tx(rawTx);
             if ((typeof txData.hwType != "undefined") && (txData.hwType == "ledger")) {
@@ -133,7 +133,7 @@ uiFuncs.generateTx = function(txData, callback) {
                         EIP155Supported = true;
                     }
                     uiFuncs.signTxLedger(app, eTx, rawTx, txData, !EIP155Supported, callback);
-                }
+                };
                 app.getAppConfiguration(localCallback);
             } else if ((typeof txData.hwType != "undefined") && (txData.hwType == "trezor")) {
                 uiFuncs.signTxTrezor(rawTx, txData, callback);
@@ -144,12 +144,12 @@ uiFuncs.generateTx = function(txData, callback) {
                 rawTx.isError = false;
                 if (callback !== undefined) callback(rawTx);
             }
-        }
+        };
         if (txData.nonce || txData.gasPrice) {
             var data = {
                 nonce: txData.nonce,
                 gasprice: txData.gasPrice
-            }
+            };
             data.isOffline = txData.isOffline ? txData.isOffline : false;
             genTxWithInfo(data);
         } else {
@@ -159,7 +159,7 @@ uiFuncs.generateTx = function(txData, callback) {
                         isError: true,
                         error: e
                     });
-                    return;
+                    
                 } else {
                     data = data.data;
                     data.isOffline = txData.isOffline ? txData.isOffline : false;
@@ -173,7 +173,7 @@ uiFuncs.generateTx = function(txData, callback) {
             error: e
         });
     }
-}
+};
 uiFuncs.sendTx = function(signedTx, callback) {
     ajaxReq.sendRawTx(signedTx, function(data) {
         var resp = {};
@@ -190,7 +190,7 @@ uiFuncs.sendTx = function(signedTx, callback) {
         }
         if (callback !== undefined) callback(resp);
     });
-}
+};
 uiFuncs.transferAllBalance = function(fromAdd, gasLimit, callback) {
     try {
         ajaxReq.getTransactionData(fromAdd, function(data) {
@@ -211,7 +211,7 @@ uiFuncs.transferAllBalance = function(fromAdd, gasLimit, callback) {
             error: e
         });
     }
-}
+};
 uiFuncs.notifier = {
     show: false,
     isDanger: false,
@@ -231,7 +231,7 @@ uiFuncs.notifier = {
     sce: null,
     scope: null,
     overrideMsg: function(msg) {
-        console.log(msg)
+        console.log(msg);
         return globalFuncs.getEthNodeMsg(msg);
     },
     warning: function(msg) {
@@ -272,5 +272,5 @@ uiFuncs.notifier = {
         var _this = this;
         clearTimeout(_this.timer);
     }
-}
+};
 module.exports = uiFuncs;
