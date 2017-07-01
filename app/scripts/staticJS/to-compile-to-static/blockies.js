@@ -2,7 +2,7 @@
 // updated tayvano 3.9.16
 (function() {
   // The random number is a js implementation of the Xorshift PRNG
-  var randseed = new Array(4); // Xorshift: [x, y, z, w] 32 bit values
+  var randseed = [4]; // Xorshift: [x, y, z, w] 32 bit values
 
   function seedrand(seed) {
     for (var i = 0; i < randseed.length; i++) {
