@@ -20,7 +20,5 @@ var genericCtrl = function($scope, globalService, $sce) {
       msg : 'WELCOME_msg'+randNumber ,
       website : window.location.href
     }
-
-
 };
 module.exports = genericCtrl;
