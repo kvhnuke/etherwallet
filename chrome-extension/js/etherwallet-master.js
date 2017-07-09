@@ -870,8 +870,7 @@ var genericCtrl = function ($scope, globalService, $sce) {
     });
   }, 8000);
 
-  console.log($scope.mewtip);
-  var randNumber = Math.floor(Math.random() * $scope.mewtip.length) + 1;
+  var randNumber = Math.floor(Math.random() * $scope.mewtip.length);
   $scope.loadingMsg = {
     msg: $scope.mewtip[randNumber],
     website: window.location.href
