@@ -863,16 +863,26 @@ var genericCtrl = function ($scope, globalService, $sce) {
     $scope.notifier.scope = $scope;
 
     $scope.showLoading = true;
+
     setTimeout(function () {
         $scope.$apply(function () {
             $scope.showLoading = false;
         });
     }, 5000);
 
-    $scope.loadingMsg = {
-        msg: 'ETC is best ether!', //<----- change me
-        website: window.location.href
-    };
+    var randNumber = Math.floor(Math.random() * 5) + 1;
+    console.log(randNumber);
+    if (randNumber == 1) {
+        $scope.loadingMsg = { msg: 'WELCOME_msg1', website: window.location.href };
+    } else if (randNumber == 2) {
+        $scope.loadingMsg = { msg: 'WELCOME_msg2', website: window.location.href };
+    } else if (randNumber == 3) {
+        $scope.loadingMsg = { msg: 'WELCOME_msg3', website: window.location.href };
+    } else if (randNumber == 4) {
+        $scope.loadingMsg = { msg: 'WELCOME_msg4', website: window.location.href };
+    } else {
+        $scope.loadingMsg = { msg: 'WELCOME_msg5', website: window.location.href };
+    }
 };
 module.exports = genericCtrl;
 
@@ -11698,7 +11708,15 @@ en.data = {
   z_TRANSLATE4: ' ',
   z_TRANSLATE5: ' ',
   z_TRANSLATEDesc: ' ',
-  z_TRANSLATEVersion: '4.0'
+  z_TRANSLATEVersion: '4.0',
+
+  /* welcome messages */
+
+  WELCOME_msg1: 'welcome msg 1',
+  WELCOME_msg2: 'welcome msg 2',
+  WELCOME_msg3: 'welcome msg 3',
+  WELCOME_msg4: 'welcome msg 4',
+  WELCOME_msg5: 'welcome msg 5'
 
   /* Translation Info [YOUR_NAME](https://www.myetherwallet.com/?gaslimit=21000&to=YOUR_ADDRESS&value=0.1#send-transaction) · */
 
