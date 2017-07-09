@@ -4,7 +4,7 @@ var genericCtrl = function($scope, globalService, $sce) {
     $scope.notifier = uiFuncs.notifier;
     $scope.notifier.sce = $sce;
     $scope.notifier.scope = $scope;
-
+    $scope.mewtip = mewtip;
     $scope.showLoading = true;
 
    setTimeout(function ()
@@ -13,11 +13,12 @@ var genericCtrl = function($scope, globalService, $sce) {
      {
        $scope.showLoading = false;
      });
-   }, 5000);
+   }, 8000);
 
-    var randNumber = Math.floor(Math.random() * 5) + 1;
+   console.log($scope.mewtip);
+    var randNumber = Math.floor(Math.random() * $scope.mewtip.length) + 1;
     $scope.loadingMsg = {
-      msg : 'WELCOME_msg'+randNumber ,
+      msg : $scope.mewtip[randNumber] ,
       website : window.location.href
     }
 };
