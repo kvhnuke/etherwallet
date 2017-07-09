@@ -156,6 +156,12 @@
     "type":"default"
   },
   {
+    "address":"0x43a4210390998945DC7658a20B43c6c4189ac7d4",
+    "symbol":"FGT",
+    "decimal":26,
+    "type":"default"
+  },
+  {
     "address":"0xBbB1BD2D741F05E144E6C4517676a15554fD4B8D",
     "symbol":"FUN",
     "decimal":8,
