@@ -48,7 +48,7 @@
         </div>
     </div>
     }
-  <section class="bg-gradient header-branding">
+  <section class="bg-gradient-{{curNode.name}} header-branding">
     <section class="container">
 
       @@if (site === 'mew' ) {
@@ -64,7 +64,7 @@
 
       <div class="tagline">
 
-        <span>v3.9.8.3</span>
+        <span>v3.9.8.4</span>
 
         <span class="dropdown dropdown-lang" ng-cloak>
           <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle  btn btn-white" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
