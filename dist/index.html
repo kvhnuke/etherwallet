@@ -34,25 +34,27 @@
 
 <header class="{{curNode.name}} {{curNode.service}} {{curNode.service}} nav-index-{{gService.currentTab}}" aria-label="header" ng-controller='tabsCtrl' >
 
-
+    
       <div class="small announcement annoucement-warning">
         <div class="container">⚠ Please beware of phishing websites. Do not enter your key on a website you arrived at by clicking a link. Use bookmarks. Always triple-check the domain. Ours is dot com. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/protecting-yourself-and-your-funds" target="_blank" rel="noopener">You are responsible for your safety &amp; security</a>.</div>
       </div>
+    
 
-
-
+    
   <section class="bg-gradient-{{curNode.name}} header-branding">
     <section class="container">
 
-
+      
         <a class="brand" href="https://www.myetherwallet.com/" aria-label="Go to homepage">
           <img src="images/logo-myetherwallet.svg"   height="64px" width="245px" alt="MyEtherWallet" />
         </a>
-
-
+      
+      
 
       <div class="tagline">
+
         <span>v3.9.8.5</span>
+
         <span class="dropdown dropdown-lang" ng-cloak>
           <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle  btn btn-white" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
           <ul class="dropdown-menu" ng-show="dropdown">
@@ -126,10 +128,10 @@
     <a aria-hidden="true" ng-show="showLeftArrow" class="nav-arrow-left" ng-click="scrollLeft(100);" ng-mouseover="scrollHoverIn(true,2);" ng-mouseleave="scrollHoverOut()">&#171;</a>
     <div class="nav-scroll">
       <ul class="nav-inner">
-
+        
         <li ng-repeat="tab in tabNames track by $index" class="nav-item {{tab.name}}" ng-class="{active: $index==gService.currentTab}" ng-show="tab.mew" ng-click="tabClick($index)"> <a tabindex="0" aria-label="nav item: {{tab.name | translate}}" translate="{{tab.name}}"></a></li>
-
-
+        
+        
         <li class="nav-item help"><a href="https://myetherwallet.groovehq.com/help_center" target="_blank" rel="noopener">Help</a></li>
       </ul>
     </div>
@@ -216,8 +218,8 @@
     </section>
   </section>
 </article>
-
-
+ 
+  
 
 </header>
 
@@ -404,14 +406,14 @@
         <p translate="x_AddessDesc"></p>
       </div>
       <div ng-show="!wd">
-            <wallet-decrypt-drtv></wallet-decrypt-drtv>
-
+            <wallet-decrypt-drtv></wallet-decrypt-drtv>         
+          
       </div>
     </div>
 
     <div class="row" ng-show="wallet!=null" ng-controller='viewWalletCtrl'>
 
-
+      
         <article class="col-sm-8 view-wallet-content">
 
   <section class="block">
@@ -483,8 +485,8 @@
   </section>
 
   <section class="block" ng-show="wallet.type=='default'">
-
-
+    
+    
       <main class="tab-pane active" ng-show="wallet!=null" ng-controller='signMsgCtrl' >
           <!-- Sign Message Panel -->
   <h2>
@@ -549,9 +551,9 @@
 
   </article>
 <!-- / Sign Message Panel -->
-
+   
       </main>
-
+    
   </section>
 
 </article>
@@ -559,7 +561,7 @@
 <article class="col-sm-4">
   <wallet-balance-drtv></wallet-balance-drtv>
 </article>
-
+   
 
     </div>
   </article>
@@ -586,8 +588,8 @@
       <h1 translate="NAV_SendEther"> Send Ether & Tokens </h1>
     </div>
     <div ng-show="!wd">
-
-          <wallet-decrypt-drtv></wallet-decrypt-drtv>
+        
+          <wallet-decrypt-drtv></wallet-decrypt-drtv>         
     </div>
   </article>
 
@@ -764,8 +766,8 @@
 
 </section>
 <!-- / Sidebar -->
-
-
+ 
+    
 
      <article class="modal fade" id="sendTransaction" tabindex="-1">
   <section class="modal-dialog">
@@ -824,8 +826,8 @@
     </section>
   </section>
 </article>
-
-
+ 
+    
   </article>
 
 
@@ -926,8 +928,8 @@
 
 </article>
 <!-- / Swap Init Panel -->
-
-
+ 
+  
 
    <!-- Swap Start 2 -->
 <article class="swap-start" ng-show="showStage2">
@@ -989,8 +991,8 @@
 
 </article>
 <!-- / Swap Start 2 -->
-
-
+ 
+  
 
    <article class="swap-order" ng-show="showStage3Btc || showStage3Eth">
 
@@ -1072,8 +1074,8 @@
         <h5 traslate="SWAP_unlock">Unlock your wallet to send ETH or Tokens directly from this page.</h5>
       </div>
       <div ng-show="!wd">
-            <wallet-decrypt-drtv></wallet-decrypt-drtv>
-
+            <wallet-decrypt-drtv></wallet-decrypt-drtv>         
+          
       </div>
     </section>
 
@@ -1252,8 +1254,8 @@
 
 </section>
 <!-- / Sidebar -->
-
-
+ 
+      
 
        <article class="modal fade" id="sendTransaction" tabindex="-1">
   <section class="modal-dialog">
@@ -1312,8 +1314,8 @@
     </section>
   </section>
 </article>
-
-
+ 
+      
     </section>
   </article>
   <!-- / Swap CTA ETH -->
@@ -1334,8 +1336,8 @@
 
 
 </article>
-
-
+ 
+  
 
 
   <section class="bity-contact">
@@ -1419,8 +1421,8 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 
 </article>
 <!-- / Step 1 -->
-
-
+ 
+  
 
    <article class="block">
 
@@ -1547,8 +1549,8 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
     <div class="qr-code" qr-code="{{signedTx}}" watch-var="signedTx" width="100%"></div>
   </section>
 </article>
-
-
+ 
+  
 
    <article class="block">
 
@@ -1562,8 +1564,8 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
   <a class="btn btn-primary" ng-click="confirmSendTx()" translate="SEND_trans">SEND TRANSACTION</a>
 
 </article>
-
-
+ 
+  
 
    <article class="modal fade" id="sendTransactionOffline" tabindex="-1">
   <section class="modal-dialog">
@@ -1626,8 +1628,8 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
     </section>
   </section>
 </article>
-
-
+ 
+  
 
 </main>
 
@@ -1648,7 +1650,7 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
   <!-- Interact Contracts -->
   <article class="row block" ng-show="visibility=='interactView'">
 
-
+     
 <!-- Address -->
 <section class="col-sm-6 clearfix">
   <div class="row">
@@ -1679,8 +1681,8 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 <section class="col-xs-12 clearfix">
   <button class="btn btn-primary" ng-click="initContract()" translate="x_Access"> ACCESS </button>
 </section>
-
-
+ 
+    
 
   </article>
 
@@ -1821,8 +1823,8 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 
 
 </section>
-
-
+ 
+    
 
   </article>
 
@@ -1882,8 +1884,8 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
   </section>
 </article>
 
-
-
+ 
+    
 
   </article>
   <!-- / Interact Contracts -->
@@ -1967,20 +1969,20 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
     </section>
   </section>
 </article>
-
-
+ 
+  
 
 </section>
-
-
+ 
+    
 
   </article>
   <!-- / Deploy Contract -->
 
   <!--wallet decrypt-->
   <article class="form-group" ng-show="(!wd && visibility=='deployView') || (!wd && visibility=='interactView' && contract.selectedFunc && !contract.functions[contract.selectedFunc.index].constant)">
-
-        <wallet-decrypt-drtv></wallet-decrypt-drtv>
+      
+        <wallet-decrypt-drtv></wallet-decrypt-drtv>         
   </article>
 
   <article class="col-xs-12" ng-show="contract.selectedFunc!=null && visibility=='interactView'">
@@ -2105,8 +2107,8 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
   </div>
 
 </article>
-
-
+ 
+  
 
 
   <!-- .notAvailable or .forbidden -->
@@ -2134,8 +2136,8 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
     <h4> {{objENS.timeRemaining}} </h4>
   </div>
 </article>
-
-
+ 
+  
 
   <!-- .open or .auction -->
    <article class="row text-center" ng-show="objENS.status==ensModes.auction || objENS.status==ensModes.open">
@@ -2165,8 +2167,8 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
   </section>
 
 </article>
-
-
+ 
+  
 
   <!-- .reveal -->
    <article class="row text-center" ng-show="objENS.status==ensModes.reveal">
@@ -2183,8 +2185,8 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 
 </article>
 
-
-
+ 
+  
 
   <!-- .owned (finalize) -->
    <article class="row text-center" ng-show="objENS.status==ensModes.owned">
@@ -2220,15 +2222,15 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
       <td class="mono">{{objENS.resolvedAddress}}</td>
     </tr>
   </table>
-
-
+ 
+    
   </div>
 
 </article>
 
 
-
-
+ 
+  
 
   <!-- Unlock Directive: Everything but notAvailable & forbidden -->
   <article class="row" ng-show="(objENS.status==ensModes.auction || objENS.status==ensModes.open || objENS.status==ensModes.owned || objENS.status==ensModes.reveal)">
@@ -2245,8 +2247,8 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
         </h4>
       </div>
       <div ng-show="!wd">
-            <wallet-decrypt-drtv></wallet-decrypt-drtv>
-
+            <wallet-decrypt-drtv></wallet-decrypt-drtv>         
+          
       </div>
     </section>
   </article>
@@ -2364,8 +2366,8 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
     </tr>
   </tbody>
 </table>
-
-
+ 
+        
       </div>
       <!-- / After Sent: Place Bid / Start Auction -->
 
@@ -2390,8 +2392,8 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
   </article>
 
 </div>
-
-
+ 
+  
 
 
    <article class="col-xs-12 col-sm-8 col-sm-offset-2 text-center" ng-show="objENS.status==ensModes.owned && objENS.owner!==objENS.deedOwner && wd">
@@ -2431,10 +2433,10 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
   </section>
 </article>
 <!-- FINALIZE: ENS MODAL -->
+ 
 
-
-
-
+ 
+  
 
   <!-- .resolve (resolve) -->
    <article class="col-xs-12 col-sm-10 col-sm-offset-1" ng-show="objENS.status==ensModes.owned && objENS.owner==objENS.deedOwner && wd">
@@ -2469,8 +2471,8 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
       <td class="mono">{{objENS.resolvedAddress}}</td>
     </tr>
   </table>
-
-
+ 
+  
 
   <section class="text-center" ng-hide="objENS.owner != wallet.getAddressString()">
     <div class="form-group" style="margin: 2em auto;">
@@ -2561,10 +2563,10 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
   </section>
 </article>
 <!-- Resolve: ENS MODAL -->
+ 
 
-
-
-
+ 
+  
 
 
    <!-- ALL: ENS MODAL -->
@@ -2628,8 +2630,8 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
     </tr>
   </tbody>
 </table>
-
-
+ 
+        
 
         <p> The <strong>{{ajaxReq.type}}</strong> node you are sending through is provided by <strong>{{ajaxReq.service}}</strong>.</p>
 
@@ -2651,8 +2653,8 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 </article>
 <!-- ALL: ENS MODAL -->
 
-
-
+ 
+  
 
 
 </main>
@@ -2678,7 +2680,7 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 
   <article class="row" ng-show="wallet!=null">
 
-
+    
       <article class="col-sm-8 view-wallet-content">
 
   <section class="block">
@@ -2750,8 +2752,8 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
   </section>
 
   <section class="block" ng-show="wallet.type=='default'">
-
-
+    
+    
       <main class="tab-pane active" ng-show="wallet!=null" ng-controller='signMsgCtrl' >
           <!-- Sign Message Panel -->
   <h2>
@@ -2816,9 +2818,9 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 
   </article>
 <!-- / Sign Message Panel -->
-
+   
       </main>
-
+    
   </section>
 
 </article>
@@ -2826,7 +2828,7 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 <article class="col-sm-4">
   <wallet-balance-drtv></wallet-balance-drtv>
 </article>
-
+   
 
   </article>
 
@@ -2984,8 +2986,8 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
         <h4 class="text-danger text-center"> Unlock your wallet to replace your transaction. (But, please be careful) </h4>
       </div>
       <div ng-show="!wd">
-            <wallet-decrypt-drtv></wallet-decrypt-drtv>
-
+            <wallet-decrypt-drtv></wallet-decrypt-drtv>         
+          
       </div>
     </section>
   </article>
@@ -3163,8 +3165,8 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 
 </section>
 <!-- / Sidebar -->
-
-
+ 
+      
 
        <article class="modal fade" id="sendTransaction" tabindex="-1">
   <section class="modal-dialog">
@@ -3223,8 +3225,8 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
     </section>
   </section>
 </article>
-
-
+ 
+      
       </div>
       <div class="col-xs-12 block block--danger" ng-show="wallet.getChecksumAddressString() != txInfo.from">
         <h5>Please unlock the address {{ txInfo.from }}. Only this address can replace a TX.</h5>
@@ -3493,7 +3495,7 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
     </section>
   </section>
 </article>
-
+ 
 
 
 
@@ -3522,3 +3524,4 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 </main>
 </body>
 </html>
+
