@@ -3737,7 +3737,7 @@ var addressFieldDrtv = function ($compile) {
 module.exports = addressFieldDrtv;
 
 },{}],36:[function(require,module,exports){
-module.exports = "<aside ng-controller='walletBalanceCtrl'>\r\n    <div class=\"block\">\r\n        <h5 translate=\"ACCOUNT_Address\">Account Address:</h5>\r\n        <ul class=\"account-info\">\r\n            <div class=\"addressIdenticon med float\" title=\"Address Indenticon\" blockie-address=\"{{wallet.getAddressString()}}\" watch-var=\"wallet\"></div>\r\n            <span class=\"mono wrap\">{{wallet.getChecksumAddressString()}}</span>\r\n            <label class=\"ens-response\" ng-show=\"showens\"> ↳ <span class=\"mono ng-binding\"> {{ensAddress}} </span> </label>\r\n        </ul>\r\n    </div>\r\n    <div class=\"block\">\r\n        <h5 translate=\"ACCOUNT_Balance\">Account Balance:</h5>\r\n        <ul class=\"account-info point\" ng-dblclick=\"showLongBal=!showLongBal\" title=\"{{wallet.balance}} (Double-Click)\">\r\n            <li>\r\n                <span class=\"mono wrap\" ng-show=\"!showLongBal\">{{wallet.balance | number}}</span>\r\n                <span class=\"mono wrap\" ng-show=\"showLongBal\">{{wallet.balance}}</span> {{ajaxReq.type}}\r\n            </li>\r\n        </ul>\r\n    </div>\r\n    <div class=\"block\">\r\n        <section class=\"token-balances\">\r\n            <h5 translate=\"TOKEN_Balance\">Token Balances:</h5>\r\n            <table class=\"account-info\">\r\n                <tr ng-repeat=\"token in wallet.tokenObjs track by $index\" ng-show=\"token.balance!=0 && token.balance!='loading' || token.type!=='default' || tokenVisibility=='shown'\">\r\n                    <td class=\"mono wrap point\" title=\"{{token.getBalance()}} (Double-Click)\" ng-dblclick=\"showLongToken=!showLongToken\">\r\n                        <img src=\"images/icon-remove.svg\" class=\"token-remove\" title=\"Remove Token\" ng-click=\"removeTokenFromLocal(token.symbol)\" ng-show=\"token.type!=='default'\" />\r\n                        <span ng-show=\"!showLongToken\">{{token.getBalance() | number}}</span>\r\n                        <span ng-show=\"showLongToken\">{{token.getBalance() }}</span>\r\n                    </td>\r\n                    <td>{{token.getSymbol()}} </td>\r\n                </tr>\r\n            </table>\r\n            <a class=\"btn btn-default btn-xs\" ng-click=\"wallet.setTokens(); tokensLoaded=true\" ng-hide=\"tokensLoaded\">Load Tokens Balances</a>\r\n            <a class=\"btn btn-default btn-xs\" ng-click=\"tokenVisibility='shown'\" ng-show=\"tokenVisibility=='hidden'\">Show All Tokens</a>\r\n            <a class=\"btn btn-default btn-xs\" ng-click=\"tokenVisibility='hidden'\" ng-show=\"tokenVisibility=='shown'\">Hide Tokens</a>\r\n            <a class=\"btn btn-default btn-xs\" ng-click=\"customTokenField=!customTokenField\"><span translate=\"TOKEN_AddCustom\"translate=\"TOKEN_AddCustom\">Add Custom Token</span></a>\r\n            <div class=\"custom-token-fields\" ng-show=\"customTokenField\">\r\n                <label translate=\"ADDR_Short\">Address:</label>\r\n                <input class=\"form-control input-sm\" type=\"text\" ng-model=\"localToken.contractAdd\" ng-class=\"Validator.isValidAddress(localToken.contractAdd) ? 'is-valid' : 'is-invalid'\" />\r\n                <label translate=\"TOKEN_Symbol\">Token Symbol:</label>\r\n                <input class=\"form-control input-sm\" type=\"text\" ng-model=\"localToken.symbol\" ng-class=\"localToken.symbol!='' ? 'is-valid' : 'is-invalid'\" />\r\n                <label translate=\"TOKEN_Dec\"> Decimals:</label>\r\n                <input class=\"form-control input-sm\" type=\"text\" ng-model=\"localToken.decimals\" ng-class=\"Validator.isPositiveNumber(localToken.decimals) ? 'is-valid' : 'is-invalid'\" />\r\n                <div class=\"btn btn-primary btn-xs\" ng-click=\"saveTokenToLocal()\" translate=\"x_Save\">Save</div>\r\n                <div ng-bind-html=\"validateLocalToken\"></div>\r\n            </div>\r\n        </section>\r\n    </div>\r\n    <div class=\"block\">\r\n        <h5 translate=\"TX_History\"> Transaction History: </h5>\r\n        <ul class=\"account-info\">\r\n            <li ng-show=\"ajaxReq.type != 'CUS'\">\r\n                <a href=\"{{ajaxReq.blockExplorerAddr.replace('[[address]]', wallet.getAddressString())}}\" target=\"_blank\" rel=\"noopener\">\r\n          {{ajaxReq.type}} ({{ajaxReq.blockExplorerTX.replace('/tx/[[txHash]]', '')}})\r\n        </a>\r\n            </li>\r\n            <li>\r\n                <a href=\"https://ethplorer.io/address/{{wallet.getAddressString()}}\" target=\"_blank\" rel=\"noopener\"> Tokens (Ethplorer.io) </a>\r\n            </li>\r\n        </ul>\r\n    </div>\r\n    <div class=\"block\" ng-show=\"ajaxReq.type=='ETH'\">\r\n        <h5 translate=\"SIDEBAR_Equiv\">Equivalent Values:</h5>\r\n        <ul class=\"account-info\">\r\n            <li><span class=\"mono wrap\">{{wallet.btcBalance | number}}</span> BTC</li>\r\n            <li><span class=\"mono wrap\">{{wallet.repBalance | number}}</span> REP</li>\r\n            <li><span class=\"mono wrap\">{{wallet.eurBalance | currency:\"€\"}}</span> EUR</li>\r\n            <li><span class=\"mono wrap\">{{wallet.usdBalance | currency:\"$\"}}</span> USD</li>\r\n            <li><span class=\"mono wrap\">{{wallet.gbpBalance | currency:\"£\"}}</span> GBP</li>\r\n            <li><span class=\"mono wrap\">{{wallet.chfBalance | currency:\" \"}}</span> CHF</li>\r\n        </ul>\r\n        <button class=\"btn btn-info btn-xs\"\r\n                ng-click=\"globalService.currentTab=globalService.tabs.swap.id\"\r\n                target=\"_blank\"\r\n                rel=\"noopener\">\r\n          Swap via Bity\r\n        </button>\r\n        <button class=\"btn btn-info btn-xs\"\r\n                href=\"https://buy.coinbase.com?code=a6e1bd98-6464-5552-84dd-b27f0388ac7d&address={{wallet.getChecksumAddressString()}}&crypto_currency=ETH&currency=USD\"\r\n                target=\"_blank\"\r\n                rel=\"noopener\"\r\n                ng-hide=\"ajaxReq.type!=='ETH'\">\r\n          Buy ETH w/ USD via Coinbase\r\n        </button>\r\n    </div>\r\n</aside>\r\n";
+module.exports = "<aside ng-controller='walletBalanceCtrl'>\r\n    <div class=\"block\">\r\n        <h5 translate=\"ACCOUNT_Address\">Account Address:</h5>\r\n        <ul class=\"account-info\">\r\n            <div class=\"addressIdenticon med float\" title=\"Address Indenticon\" blockie-address=\"{{wallet.getAddressString()}}\" watch-var=\"wallet\"></div>\r\n            <span class=\"mono wrap\">{{wallet.getChecksumAddressString()}}</span>\r\n            <label class=\"ens-response\" ng-show=\"showens\"> ↳ <span class=\"mono ng-binding\"> {{ensAddress}} </span> </label>\r\n        </ul>\r\n    </div>\r\n    <div class=\"block\">\r\n        <h5 translate=\"ACCOUNT_Balance\">Account Balance:</h5>\r\n        <ul class=\"account-info point\" ng-dblclick=\"showLongBal=!showLongBal\" title=\"{{wallet.balance}} (Double-Click)\">\r\n            <li>\r\n                <span class=\"mono wrap\" ng-show=\"!showLongBal\">{{wallet.balance | number}}</span>\r\n                <span class=\"mono wrap\" ng-show=\"showLongBal\">{{wallet.balance}}</span> {{ajaxReq.type}}\r\n            </li>\r\n        </ul>\r\n    </div>\r\n    <div class=\"block\">\r\n        <section class=\"token-balances\">\r\n            <h5 translate=\"TOKEN_Balance\">Token Balances:</h5>\r\n            <table class=\"account-info\">\r\n                <tr ng-repeat=\"token in wallet.tokenObjs track by $index\" ng-show=\"token.balance!=0 && token.balance!='loading' || token.type!=='default' || tokenVisibility=='shown'\">\r\n                    <td class=\"mono wrap point\" title=\"{{token.getBalance()}} (Double-Click)\" ng-dblclick=\"showLongToken=!showLongToken\">\r\n                        <img src=\"images/icon-remove.svg\" class=\"token-remove\" title=\"Remove Token\" ng-click=\"removeTokenFromLocal(token.symbol)\" ng-show=\"token.type!=='default'\" />\r\n                        <span ng-show=\"!showLongToken\">{{token.getBalance() | number}}</span>\r\n                        <span ng-show=\"showLongToken\">{{token.getBalance() }}</span>\r\n                    </td>\r\n                    <td>{{token.getSymbol()}} </td>\r\n                </tr>\r\n            </table>\r\n            <a class=\"btn btn-default btn-xs\" ng-click=\"wallet.setTokens(); tokensLoaded=true\" ng-hide=\"tokensLoaded\">Load Tokens Balances</a>\r\n            <a class=\"btn btn-default btn-xs\" ng-click=\"tokenVisibility='shown'\" ng-show=\"tokenVisibility=='hidden'\">Show All Tokens</a>\r\n            <a class=\"btn btn-default btn-xs\" ng-click=\"tokenVisibility='hidden'\" ng-show=\"tokenVisibility=='shown'\">Hide Tokens</a>\r\n            <a class=\"btn btn-default btn-xs\" ng-click=\"customTokenField=!customTokenField\"><span translate=\"TOKEN_AddCustom\"translate=\"TOKEN_AddCustom\">Add Custom Token</span></a>\r\n            <div class=\"custom-token-fields\" ng-show=\"customTokenField\">\r\n                <label translate=\"ADDR_Short\">Address:</label>\r\n                <input class=\"form-control input-sm\" type=\"text\" ng-model=\"localToken.contractAdd\" ng-class=\"Validator.isValidAddress(localToken.contractAdd) ? 'is-valid' : 'is-invalid'\" />\r\n                <label translate=\"TOKEN_Symbol\">Token Symbol:</label>\r\n                <input class=\"form-control input-sm\" type=\"text\" ng-model=\"localToken.symbol\" ng-class=\"localToken.symbol!='' ? 'is-valid' : 'is-invalid'\" />\r\n                <label translate=\"TOKEN_Dec\"> Decimals:</label>\r\n                <input class=\"form-control input-sm\" type=\"text\" ng-model=\"localToken.decimals\" ng-class=\"Validator.isPositiveNumber(localToken.decimals) ? 'is-valid' : 'is-invalid'\" />\r\n                <div class=\"btn btn-primary btn-xs\" ng-click=\"saveTokenToLocal()\" translate=\"x_Save\">Save</div>\r\n                <div ng-bind-html=\"validateLocalToken\"></div>\r\n            </div>\r\n        </section>\r\n    </div>\r\n    <div class=\"block\">\r\n        <h5 translate=\"TX_History\"> Transaction History: </h5>\r\n        <ul class=\"account-info\">\r\n            <li ng-show=\"ajaxReq.type != 'CUS'\">\r\n                <a href=\"{{ajaxReq.blockExplorerAddr.replace('[[address]]', wallet.getAddressString())}}\" target=\"_blank\" rel=\"noopener\">\r\n          {{ajaxReq.type}} ({{ajaxReq.blockExplorerTX.replace('/tx/[[txHash]]', '')}})\r\n        </a>\r\n      </li>\r\n      <li>\r\n        <a href=\"https://ethplorer.io/address/{{wallet.getAddressString()}}\" target=\"_blank\" rel=\"noopener\">\r\n          Tokens (Ethplorer.io)\r\n        </a>\r\n      </li>\r\n    </ul>\r\n  </div>\r\n\r\n  <div class=\"block\" ng-show=\"ajaxReq.type=='ETH'\">\r\n    <h5 translate=\"sidebar_Equiv\">Equivalent Values:</h5>\r\n    <ul class=\"account-info\">\r\n      <li><span class=\"mono wrap\">{{wallet.btcBalance | number}}</span> BTC</li>\r\n      <li><span class=\"mono wrap\">{{wallet.repBalance | number}}</span> REP</li>\r\n      <li><span class=\"mono wrap\">{{wallet.eurBalance | currency:\"€\"}}</span> EUR</li>\r\n      <li><span class=\"mono wrap\">{{wallet.usdBalance | currency:\"$\"}}</span> USD</li>\r\n      <li><span class=\"mono wrap\">{{wallet.gbpBalance | currency:\"£\"}}</span> GBP</li>\r\n      <li><span class=\"mono wrap\">{{wallet.chfBalance | currency:\" \"}}</span> CHF</li>\r\n    </ul>\r\n    <button class=\"btn btn-info btn-xs\"\r\n            ng-click=\"globalService.currentTab=globalService.tabs.swap.id\"\r\n            target=\"_blank\"\r\n            rel=\"noopener\">\r\n      Swap via Bity\r\n    </button>\r\n    <a class=\"btn btn-info btn-xs\"\r\n            href=\"https://buy.coinbase.com?code=a6e1bd98-6464-5552-84dd-b27f0388ac7d&address={{wallet.getChecksumAddressString()}}&crypto_currency=ETH&currency=USD\"\r\n            target=\"_blank\"\r\n            rel=\"noopener\"\r\n            ng-hide=\"ajaxReq.type!=='ETH'\">\r\n      Buy ETH w/ USD via Coinbase\r\n    </a>\r\n  </div>\r\n\r\n</aside>\r\n";
 },{}],37:[function(require,module,exports){
 'use strict';
 
@@ -84510,12 +84510,11 @@ function numberIsNaN (obj) {
 }
 
 },{"base64-js":141,"ieee754":242}],181:[function(require,module,exports){
-(function (Buffer){
+var Buffer = require('safe-buffer').Buffer
 var Transform = require('stream').Transform
-var inherits = require('inherits')
 var StringDecoder = require('string_decoder').StringDecoder
-module.exports = CipherBase
-inherits(CipherBase, Transform)
+var inherits = require('inherits')
+
 function CipherBase (hashMode) {
   Transform.call(this)
   this.hashMode = typeof hashMode === 'string'
@@ -84524,25 +84523,31 @@ function CipherBase (hashMode) {
   } else {
     this.final = this._finalOrDigest
   }
+  if (this._final) {
+    this.__final = this._final
+    this._final = null
+  }
   this._decoder = null
   this._encoding = null
 }
+inherits(CipherBase, Transform)
+
 CipherBase.prototype.update = function (data, inputEnc, outputEnc) {
   if (typeof data === 'string') {
-    data = new Buffer(data, inputEnc)
+    data = Buffer.from(data, inputEnc)
   }
+
   var outData = this._update(data)
-  if (this.hashMode) {
-    return this
-  }
+  if (this.hashMode) return this
+
   if (outputEnc) {
     outData = this._toString(outData, outputEnc)
   }
+
   return outData
 }
 
 CipherBase.prototype.setAutoPadding = function () {}
-
 CipherBase.prototype.getAuthTag = function () {
   throw new Error('trying to get auth tag in unsupported state')
 }
@@ -84572,15 +84577,15 @@ CipherBase.prototype._transform = function (data, _, next) {
 CipherBase.prototype._flush = function (done) {
   var err
   try {
-    this.push(this._final())
+    this.push(this.__final())
   } catch (e) {
     err = e
-  } finally {
-    done(err)
   }
+
+  done(err)
 }
 CipherBase.prototype._finalOrDigest = function (outputEnc) {
-  var outData = this._final() || new Buffer('')
+  var outData = this.__final() || Buffer.alloc(0)
   if (outputEnc) {
     outData = this._toString(outData, outputEnc, true)
   }
@@ -84592,18 +84597,20 @@ CipherBase.prototype._toString = function (value, enc, fin) {
     this._decoder = new StringDecoder(enc)
     this._encoding = enc
   }
-  if (this._encoding !== enc) {
-    throw new Error('can\'t switch encodings')
-  }
+
+  if (this._encoding !== enc) throw new Error('can\'t switch encodings')
+
   var out = this._decoder.write(value)
   if (fin) {
     out += this._decoder.end()
   }
+
   return out
 }
 
-}).call(this,require("buffer").Buffer)
-},{"buffer":180,"inherits":244,"stream":310,"string_decoder":312}],182:[function(require,module,exports){
+module.exports = CipherBase
+
+},{"inherits":244,"safe-buffer":294,"stream":310,"string_decoder":312}],182:[function(require,module,exports){
 (function (Buffer){
 var base58 = require('bs58')
 var createHash = require('create-hash')
@@ -85299,7 +85306,9 @@ exports.randomBytes = exports.rng = exports.pseudoRandomBytes = exports.prng = r
 exports.createHash = exports.Hash = require('create-hash')
 exports.createHmac = exports.Hmac = require('create-hmac')
 
-var hashes = ['sha1', 'sha224', 'sha256', 'sha384', 'sha512', 'md5', 'rmd160'].concat(Object.keys(require('browserify-sign/algos')))
+var algos = require('browserify-sign/algos')
+var algoKeys = Object.keys(algos)
+var hashes = ['sha1', 'sha224', 'sha256', 'sha384', 'sha512', 'md5', 'rmd160'].concat(algoKeys)
 exports.getHashes = function () {
   return hashes
 }
@@ -85309,67 +85318,80 @@ exports.pbkdf2 = p.pbkdf2
 exports.pbkdf2Sync = p.pbkdf2Sync
 
 var aes = require('browserify-cipher')
-;[
-  'Cipher',
-  'createCipher',
-  'Cipheriv',
-  'createCipheriv',
-  'Decipher',
-  'createDecipher',
-  'Decipheriv',
-  'createDecipheriv',
-  'getCiphers',
-  'listCiphers'
-].forEach(function (key) {
-  exports[key] = aes[key]
-})
+
+exports.Cipher = aes.Cipher
+exports.createCipher = aes.createCipher
+exports.Cipheriv = aes.Cipheriv
+exports.createCipheriv = aes.createCipheriv
+exports.Decipher = aes.Decipher
+exports.createDecipher = aes.createDecipher
+exports.Decipheriv = aes.Decipheriv
+exports.createDecipheriv = aes.createDecipheriv
+exports.getCiphers = aes.getCiphers
+exports.listCiphers = aes.listCiphers
 
 var dh = require('diffie-hellman')
-;[
-  'DiffieHellmanGroup',
-  'createDiffieHellmanGroup',
-  'getDiffieHellman',
-  'createDiffieHellman',
-  'DiffieHellman'
-].forEach(function (key) {
-  exports[key] = dh[key]
-})
+
+exports.DiffieHellmanGroup = dh.DiffieHellmanGroup
+exports.createDiffieHellmanGroup = dh.createDiffieHellmanGroup
+exports.getDiffieHellman = dh.getDiffieHellman
+exports.createDiffieHellman = dh.createDiffieHellman
+exports.DiffieHellman = dh.DiffieHellman
 
 var sign = require('browserify-sign')
-;[
-  'createSign',
-  'Sign',
-  'createVerify',
-  'Verify'
-].forEach(function (key) {
-  exports[key] = sign[key]
-})
+
+exports.createSign = sign.createSign
+exports.Sign = sign.Sign
+exports.createVerify = sign.createVerify
+exports.Verify = sign.Verify
 
 exports.createECDH = require('create-ecdh')
 
 var publicEncrypt = require('public-encrypt')
 
-;[
-  'publicEncrypt',
-  'privateEncrypt',
-  'publicDecrypt',
-  'privateDecrypt'
-].forEach(function (key) {
-  exports[key] = publicEncrypt[key]
-})
+exports.publicEncrypt = publicEncrypt.publicEncrypt
+exports.privateEncrypt = publicEncrypt.privateEncrypt
+exports.publicDecrypt = publicEncrypt.publicDecrypt
+exports.privateDecrypt = publicEncrypt.privateDecrypt
 
 // the least I can do is make error messages for the rest of the node.js/crypto api.
-;[
-  'createCredentials'
-].forEach(function (name) {
-  exports[name] = function () {
-    throw new Error([
-      'sorry, ' + name + ' is not implemented yet',
-      'we accept pull requests',
-      'https://github.com/crypto-browserify/crypto-browserify'
-    ].join('\n'))
-  }
-})
+// ;[
+//   'createCredentials'
+// ].forEach(function (name) {
+//   exports[name] = function () {
+//     throw new Error([
+//       'sorry, ' + name + ' is not implemented yet',
+//       'we accept pull requests',
+//       'https://github.com/crypto-browserify/crypto-browserify'
+//     ].join('\n'))
+//   }
+// })
+
+exports.createCredentials = function () {
+  throw new Error([
+    'sorry, createCredentials is not implemented yet',
+    'we accept pull requests',
+    'https://github.com/crypto-browserify/crypto-browserify'
+  ].join('\n'))
+}
+
+exports.constants = {
+  'DH_CHECK_P_NOT_SAFE_PRIME': 2,
+  'DH_CHECK_P_NOT_PRIME': 1,
+  'DH_UNABLE_TO_CHECK_GENERATOR': 4,
+  'DH_NOT_SUITABLE_GENERATOR': 8,
+  'NPN_ENABLED': 1,
+  'ALPN_ENABLED': 1,
+  'RSA_PKCS1_PADDING': 1,
+  'RSA_SSLV23_PADDING': 2,
+  'RSA_NO_PADDING': 3,
+  'RSA_PKCS1_OAEP_PADDING': 4,
+  'RSA_X931_PADDING': 5,
+  'RSA_PKCS1_PSS_PADDING': 6,
+  'POINT_CONVERSION_COMPRESSED': 2,
+  'POINT_CONVERSION_UNCOMPRESSED': 4,
+  'POINT_CONVERSION_HYBRID': 6
+}
 
 },{"browserify-cipher":168,"browserify-sign":175,"browserify-sign/algos":172,"create-ecdh":184,"create-hash":185,"create-hmac":188,"diffie-hellman":199,"pbkdf2":264,"public-encrypt":271,"randombytes":278}],191:[function(require,module,exports){
 'use strict';
@@ -90642,8 +90664,6 @@ module.exports={
 (function (Buffer){
 'use strict';
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var ethUtil = require('ethereumjs-util');
@@ -90666,7 +90686,7 @@ var N_DIV_2 = new BN('7fffffffffffffffffffffffffffffff5d576e7357a4501ddfe92f4668
  *   data: '7f7465737432000000000000000000000000000000000000000000000000000000600057',
  *   v: '1c',
  *   r: '5e1d3a76fbf824220eafc8c79ad578ad2b67d01b0c2425eb1f1347e8f50882ab',
- *   s '5bd428537f05f9830e93792f90ea6a3e2d1ee84952dd96edbae9f658f831ab13'
+ *   s: '5bd428537f05f9830e93792f90ea6a3e2d1ee84952dd96edbae9f658f831ab13'
  * };
  * var tx = new Transaction(rawTx);
  *
@@ -90729,15 +90749,18 @@ var Transaction = function () {
       default: new Buffer([])
     }, {
       name: 'v',
+      allowZero: true,
       default: new Buffer([0x1c])
     }, {
       name: 'r',
       length: 32,
+      allowZero: true,
       allowLess: true,
       default: new Buffer([])
     }, {
       name: 's',
       length: 32,
+      allowZero: true,
       allowLess: true,
       default: new Buffer([])
     }];
@@ -90779,205 +90802,191 @@ var Transaction = function () {
    */
 
 
-  _createClass(Transaction, [{
-    key: 'toCreationAddress',
-    value: function toCreationAddress() {
-      return this.to.toString('hex') === '';
-    }
+  Transaction.prototype.toCreationAddress = function toCreationAddress() {
+    return this.to.toString('hex') === '';
+  };
 
-    /**
-     * Computes a sha3-256 hash of the serialized tx
-     * @param {Boolean} [includeSignature=true] whether or not to inculde the signature
-     * @return {Buffer}
-     */
+  /**
+   * Computes a sha3-256 hash of the serialized tx
+   * @param {Boolean} [includeSignature=true] whether or not to inculde the signature
+   * @return {Buffer}
+   */
 
-  }, {
-    key: 'hash',
-    value: function hash(includeSignature) {
-      if (includeSignature === undefined) includeSignature = true;
 
-      // EIP155 spec:
-      // when computing the hash of a transaction for purposes of signing or recovering,
-      // instead of hashing only the first six elements (ie. nonce, gasprice, startgas, to, value, data),
-      // hash nine elements, with v replaced by CHAIN_ID, r = 0 and s = 0
+  Transaction.prototype.hash = function hash(includeSignature) {
+    if (includeSignature === undefined) includeSignature = true;
 
-      var items = void 0;
-      if (includeSignature) {
+    // EIP155 spec:
+    // when computing the hash of a transaction for purposes of signing or recovering,
+    // instead of hashing only the first six elements (ie. nonce, gasprice, startgas, to, value, data),
+    // hash nine elements, with v replaced by CHAIN_ID, r = 0 and s = 0
+
+    var items = void 0;
+    if (includeSignature) {
+      items = this.raw;
+    } else {
+      if (this._chainId > 0) {
+        var raw = this.raw.slice();
+        this.v = this._chainId;
+        this.r = 0;
+        this.s = 0;
         items = this.raw;
+        this.raw = raw;
       } else {
-        if (this._chainId > 0) {
-          var raw = this.raw.slice();
-          this.v = this._chainId;
-          this.r = 0;
-          this.s = 0;
-          items = this.raw;
-          this.raw = raw;
-        } else {
-          items = this.raw.slice(0, 6);
-        }
+        items = this.raw.slice(0, 6);
       }
-
-      // create hash
-      return ethUtil.rlphash(items);
     }
 
-    /**
-     * returns the public key of the sender
-     * @return {Buffer}
-     */
+    // create hash
+    return ethUtil.rlphash(items);
+  };
 
-  }, {
-    key: 'getChainId',
-    value: function getChainId() {
-      return this._chainId;
-    }
+  /**
+   * returns the public key of the sender
+   * @return {Buffer}
+   */
 
-    /**
-     * returns the sender's address
-     * @return {Buffer}
-     */
 
-  }, {
-    key: 'getSenderAddress',
-    value: function getSenderAddress() {
-      if (this._from) {
-        return this._from;
-      }
-      var pubkey = this.getSenderPublicKey();
-      this._from = ethUtil.publicToAddress(pubkey);
+  Transaction.prototype.getChainId = function getChainId() {
+    return this._chainId;
+  };
+
+  /**
+   * returns the sender's address
+   * @return {Buffer}
+   */
+
+
+  Transaction.prototype.getSenderAddress = function getSenderAddress() {
+    if (this._from) {
       return this._from;
     }
+    var pubkey = this.getSenderPublicKey();
+    this._from = ethUtil.publicToAddress(pubkey);
+    return this._from;
+  };
 
-    /**
-     * returns the public key of the sender
-     * @return {Buffer}
-     */
+  /**
+   * returns the public key of the sender
+   * @return {Buffer}
+   */
 
-  }, {
-    key: 'getSenderPublicKey',
-    value: function getSenderPublicKey() {
-      if (!this._senderPubKey || !this._senderPubKey.length) {
-        if (!this.verifySignature()) throw new Error('Invalid Signature');
-      }
-      return this._senderPubKey;
+
+  Transaction.prototype.getSenderPublicKey = function getSenderPublicKey() {
+    if (!this._senderPubKey || !this._senderPubKey.length) {
+      if (!this.verifySignature()) throw new Error('Invalid Signature');
+    }
+    return this._senderPubKey;
+  };
+
+  /**
+   * Determines if the signature is valid
+   * @return {Boolean}
+   */
+
+
+  Transaction.prototype.verifySignature = function verifySignature() {
+    var msgHash = this.hash(false);
+    // All transaction signatures whose s-value is greater than secp256k1n/2 are considered invalid.
+    if (this._homestead && new BN(this.s).cmp(N_DIV_2) === 1) {
+      return false;
     }
 
-    /**
-     * Determines if the signature is valid
-     * @return {Boolean}
-     */
-
-  }, {
-    key: 'verifySignature',
-    value: function verifySignature() {
-      var msgHash = this.hash(false);
-      // All transaction signatures whose s-value is greater than secp256k1n/2 are considered invalid.
-      if (this._homestead && new BN(this.s).cmp(N_DIV_2) === 1) {
-        return false;
-      }
-
-      try {
-        var v = ethUtil.bufferToInt(this.v);
-        if (this._chainId > 0) {
-          v -= this._chainId * 2 + 8;
-        }
-        this._senderPubKey = ethUtil.ecrecover(msgHash, v, this.r, this.s);
-      } catch (e) {
-        return false;
-      }
-
-      return !!this._senderPubKey;
-    }
-
-    /**
-     * sign a transaction with a given a private key
-     * @param {Buffer} privateKey
-     */
-
-  }, {
-    key: 'sign',
-    value: function sign(privateKey) {
-      var msgHash = this.hash(false);
-      var sig = ethUtil.ecsign(msgHash, privateKey);
+    try {
+      var v = ethUtil.bufferToInt(this.v);
       if (this._chainId > 0) {
-        sig.v += this._chainId * 2 + 8;
+        v -= this._chainId * 2 + 8;
       }
-      Object.assign(this, sig);
+      this._senderPubKey = ethUtil.ecrecover(msgHash, v, this.r, this.s);
+    } catch (e) {
+      return false;
     }
 
-    /**
-     * The amount of gas paid for the data in this tx
-     * @return {BN}
-     */
+    return !!this._senderPubKey;
+  };
 
-  }, {
-    key: 'getDataFee',
-    value: function getDataFee() {
-      var data = this.raw[5];
-      var cost = new BN(0);
-      for (var i = 0; i < data.length; i++) {
-        data[i] === 0 ? cost.iaddn(fees.txDataZeroGas.v) : cost.iaddn(fees.txDataNonZeroGas.v);
-      }
-      return cost;
+  /**
+   * sign a transaction with a given a private key
+   * @param {Buffer} privateKey
+   */
+
+
+  Transaction.prototype.sign = function sign(privateKey) {
+    var msgHash = this.hash(false);
+    var sig = ethUtil.ecsign(msgHash, privateKey);
+    if (this._chainId > 0) {
+      sig.v += this._chainId * 2 + 8;
+    }
+    Object.assign(this, sig);
+  };
+
+  /**
+   * The amount of gas paid for the data in this tx
+   * @return {BN}
+   */
+
+
+  Transaction.prototype.getDataFee = function getDataFee() {
+    var data = this.raw[5];
+    var cost = new BN(0);
+    for (var i = 0; i < data.length; i++) {
+      data[i] === 0 ? cost.iaddn(fees.txDataZeroGas.v) : cost.iaddn(fees.txDataNonZeroGas.v);
+    }
+    return cost;
+  };
+
+  /**
+   * the minimum amount of gas the tx must have (DataFee + TxFee + Creation Fee)
+   * @return {BN}
+   */
+
+
+  Transaction.prototype.getBaseFee = function getBaseFee() {
+    var fee = this.getDataFee().iaddn(fees.txGas.v);
+    if (this._homestead && this.toCreationAddress()) {
+      fee.iaddn(fees.txCreation.v);
+    }
+    return fee;
+  };
+
+  /**
+   * the up front amount that an account must have for this transaction to be valid
+   * @return {BN}
+   */
+
+
+  Transaction.prototype.getUpfrontCost = function getUpfrontCost() {
+    return new BN(this.gasLimit).imul(new BN(this.gasPrice)).iadd(new BN(this.value));
+  };
+
+  /**
+   * validates the signature and checks to see if it has enough gas
+   * @param {Boolean} [stringError=false] whether to return a string with a dscription of why the validation failed or return a Bloolean
+   * @return {Boolean|String}
+   */
+
+
+  Transaction.prototype.validate = function validate(stringError) {
+    var errors = [];
+    if (!this.verifySignature()) {
+      errors.push('Invalid Signature');
     }
 
-    /**
-     * the minimum amount of gas the tx must have (DataFee + TxFee + Creation Fee)
-     * @return {BN}
-     */
-
-  }, {
-    key: 'getBaseFee',
-    value: function getBaseFee() {
-      var fee = this.getDataFee().iaddn(fees.txGas.v);
-      if (this._homestead && this.toCreationAddress()) {
-        fee.iaddn(fees.txCreation.v);
-      }
-      return fee;
+    if (this.getBaseFee().cmp(new BN(this.gasLimit)) > 0) {
+      errors.push(['gas limit is too low. Need at least ' + this.getBaseFee()]);
     }
 
-    /**
-     * the up front amount that an account must have for this transaction to be valid
-     * @return {BN}
-     */
-
-  }, {
-    key: 'getUpfrontCost',
-    value: function getUpfrontCost() {
-      return new BN(this.gasLimit).imul(new BN(this.gasPrice)).iadd(new BN(this.value));
+    if (stringError === undefined || stringError === false) {
+      return errors.length === 0;
+    } else {
+      return errors.join(' ');
     }
-
-    /**
-     * validates the signature and checks to see if it has enough gas
-     * @param {Boolean} [stringError=false] whether to return a string with a dscription of why the validation failed or return a Bloolean
-     * @return {Boolean|String}
-     */
-
-  }, {
-    key: 'validate',
-    value: function validate(stringError) {
-      var errors = [];
-      if (!this.verifySignature()) {
-        errors.push('Invalid Signature');
-      }
-
-      if (this.getBaseFee().cmp(new BN(this.gasLimit)) > 0) {
-        errors.push(['gas limit is too low. Need at least ' + this.getBaseFee()]);
-      }
-
-      if (stringError === undefined || stringError === false) {
-        return errors.length === 0;
-      } else {
-        return errors.join(' ');
-      }
-    }
-  }]);
+  };
 
   return Transaction;
 }();
 
 module.exports = Transaction;
-
 }).call(this,require("buffer").Buffer)
 },{"buffer":180,"ethereum-common/params.json":219,"ethereumjs-util":221}],221:[function(require,module,exports){
 (function (Buffer){
