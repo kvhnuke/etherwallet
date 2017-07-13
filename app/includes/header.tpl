@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="mewApp">
+<html lang="en" ng-app="mewApp" ng-strict-di>
 <head>
   <meta charset="utf-8">
   <title>MyEtherWallet.com</title>

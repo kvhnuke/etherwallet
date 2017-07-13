@@ -19,4 +19,7 @@ var fileReaderDrtv = function($parse) {
 		}
 	};
 };
+
+fileReaderDrtv.$inject = ['$parse'];
+
 module.exports = fileReaderDrtv;
