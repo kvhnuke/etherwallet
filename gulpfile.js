@@ -133,11 +133,11 @@ function bundle_js(options) {
     debug: options.debug,
   };
 
-  const babelOpts = {
+  const babelOpts = options.production ? {
     presets: ['es2015'],
     global: true,
-    compact: options.production,
-  };
+    compact: true,
+  } : null;
 
   const bundler = browserify(js_srcFile, browserifyOpts)
     .transform(babelify, babelOpts)
