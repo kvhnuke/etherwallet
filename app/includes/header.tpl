@@ -4,19 +4,12 @@
   <meta charset="utf-8">
   <title>MyEtherWallet.com</title>
   <link rel="canonical" href="https://www.myetherwallet.com" />
-  <meta name="description" content="MyEtherWallet.com is a free, open-source, client-side tool for easily & securely interacting with the Ethereum blockchain.">
-
+  <meta name="description" content="MyEtherWallet.com is a free, open-source, client-side interface for generating Ethereum wallets &amp; more. Interact with the Ethereum blockchain easily &amp; securely. Double-check the URL ( .com ) before unlocking your wallet.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <link rel="stylesheet" href="css/etherwallet-master.min.css">
   <script type="text/javascript" src="js/etherwallet-static.min.js"></script>
-
-  @@if (production) {
-    <script type="text/javascript" src="js/etherwallet-master.min.js"></script>
-  }
-
-  @@if (!production) {
-    <script type="text/javascript" src="js/etherwallet-master.js"></script>
-  }
+  <script type="text/javascript" src="js/etherwallet-master.js"></script>
 
   <link rel="apple-touch-icon" sizes="180x180" href="images/fav/apple-touch-icon.png">
   <link rel="icon" type="image/png" href="images/fav/favicon-32x32.png" sizes="32x32">
@@ -29,7 +22,7 @@
   <meta name="google-site-verification" content="IpChQ00NYUQuNs_7Xs6xlnSdzalOlTUYbBsr8f7OpvM" />
   <meta property="og:url"         content="https://www.myetherwallet.com" />
   <meta property="og:title"       content="MyEtherWallet.com" />
-  <meta property="og:description" content="MyEtherWallet.com is a free, open-source, client-side tool for easily & securely interacting with the Ethereum blockchain." />
+  <meta property="og:description" content="MyEtherWallet.com is a free, open-source, client-side interface for generating Ethereum wallets &amp; more. Interact with the Ethereum blockchain easily &amp; securely. Double-check the URL ( .com ) before unlocking your wallet." />
   <meta property="og:image"       content="images/myetherwallet-logo-banner.png" />
   <meta property="og:image"       content="images/myetherwallet-logo.png" />
   <meta property="og:image"       content="images/myetherwallet-logo-square.png" />
@@ -39,15 +32,8 @@
 <body>
 
 <header class="{{curNode.name}} {{curNode.service}} {{curNode.service}} nav-index-{{gService.currentTab}}" aria-label="header" ng-controller='tabsCtrl' >
-
-    @@if (site === 'mew' ) {
-      <div class="small announcement annoucement-warning">
-        <div class="container">⚠ Please beware of phishing websites. Do not enter your key on a website you arrived at by clicking a link. Use bookmarks. Always triple-check the domain. Ours is dot com. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/protecting-yourself-and-your-funds" target="_blank" rel="noopener">You are responsible for your safety &amp; security</a>.</div>
-      </div>
-    }
-
     @@if (site === 'cx' ) {
-    <div class="small announcement annoucement-warning">
+    <div class="small announcement annoucement-danger">
         <div class="container" translate="CX_Warning_1">Make sure you have <strong>external backups</strong> of any
             wallets you store here. Many things could happen that would cause you to lose the data in this Chrome
             Extension, including uninstalling the extension. This extension is a way to easily access your wallets,
@@ -57,7 +43,6 @@
     }
   <section class="bg-gradient header-branding">
     <section class="container">
-
       @@if (site === 'mew' ) {
         <a class="brand" href="https://www.myetherwallet.com/" aria-label="Go to homepage">
           <img src="images/logo-myetherwallet.svg"   height="64px" width="245px" alt="MyEtherWallet" />
@@ -68,10 +53,9 @@
           <img src="images/logo-myetherwalletcx.svg" height="64px" width="245px" alt="MyEtherWallet" />
         </a>
       }
-
       <div class="tagline">
 
-        <span>v3.9.8.5</span>
+        <span>v3.9.9.1</span>
 
         <span class="dropdown dropdown-lang" ng-cloak>
           <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle  btn btn-white" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
@@ -141,6 +125,12 @@
       </div>
     </section>
   </section>
+
+  @@if (site === 'mew' ) {
+    <div class="small announcement annoucement-warning">
+      <div class="container">⚠ Please beware of phishing websites. Do not enter your key on a website you arrived at by clicking a link. Use bookmarks. Always triple-check the domain. Ours is dot com. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/protecting-yourself-and-your-funds" target="_blank" rel="noopener">You are responsible for your safety &amp; security</a>.</div>
+    </div>
+  }
 
   <nav role="navigation" aria-label="main navigation" class="container nav-container overflowing" >
     <a aria-hidden="true" ng-show="showLeftArrow" class="nav-arrow-left" ng-click="scrollLeft(100);" ng-mouseover="scrollHoverIn(true,2);" ng-mouseleave="scrollHoverOut()">&#171;</a>
