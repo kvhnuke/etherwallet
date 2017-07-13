@@ -32,7 +32,7 @@
 
 <body>
 
-<header class="{{curNode.name}} {{curNode.service}} {{curNode.service}} nav-index-{{gService.currentTab}}" aria-label="header" ng-controller='tabsCtrl' >
+<header class="{{curNode.name}} {{curNode.service}} nav-index-{{gService.currentTab}}" aria-label="header" ng-controller='tabsCtrl' >
 
     
       <div class="small announcement annoucement-warning">
@@ -224,7 +224,7 @@
 </header>
 
 
-<section class="container" style="min-height: 50%" ng-controller='viewCtrl'>
+<section class="container {{curNode.name}}" style="min-height: 50%" ng-controller='viewCtrl'>
 
   <div class="tab-content" >
 

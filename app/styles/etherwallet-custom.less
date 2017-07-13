@@ -471,7 +471,7 @@ label small {
 
 // color code the nodes
 @brand-eth: @brand-primary;
-@brand-etc: #9c27b0;
+@brand-etc: #3DB753;
 @brand-test: #cddc39;
 @brand-cust: #9c27b0;
 @brand-rsk: #ff794f;
@@ -538,6 +538,9 @@ header.ETC     {
   & + .container .modal-content {
     border: 3px solid @brand-etc;
   }
+  & .bg-gradient {
+    background: linear-gradient(149deg, #0C3718, #59C86E);
+  }
 }
 header.Ropsten {
   border-top: 3px solid @brand-test;
@@ -574,5 +577,9 @@ header.Custom  {
   }
 }
 
-
-
+.container.ETC {
+  .btn.btn-primary {
+    border: none;
+    background-color: @brand-etc;
+  }
+}
