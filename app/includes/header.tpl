@@ -55,7 +55,7 @@
         </div>
     </div>
     }
-  <section class="bg-gradient header-branding">
+  <section class="bg-gradient-{{curNode.name}} header-branding">
     <section class="container">
 
       @@if (site === 'mew' ) {
