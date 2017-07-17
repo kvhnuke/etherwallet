@@ -234,6 +234,12 @@
     "type":"default"
   },
   {
+    "address":"0x26987c0b7712bf1DF35b3781a3E96e793091D95b",
+    "symbol":"JJCOIN",
+    "decimal":0,
+    "type":"default"
+  },
+  {
     "address":"0xfa05A73FfE78ef8f1a739473e462c54bae6567D9",
     "symbol":"LUN",
     "decimal":18,
