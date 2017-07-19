@@ -144,7 +144,7 @@
       <a class="btn btn-primary btn-block col-sm-11" data-toggle="modal" data-target="#sendTransaction" translate="SEND_trans"> Send Transaction </a>
     </div>
 
-    <div class="qr-code" qr-code="{{rawQRTx}}" watch-var="rawQRTx" ng-show="!!rawQRTx"></div>
+    <div class="qr-code" qr-code="{{rawQRTx}}" watch-var="rawQRTx" ng-show="showRaw"></div>
   </div>
 </section>
 <!-- / Content -->
