@@ -25,7 +25,7 @@ var ensCtrl = function($scope, $sce, walletService) {
         timer: null,
         timeRemaining: null,
         timeRemainingReveal: null,
-        tld: nodes.tldTypes[ajaxReq.type],
+        tld: nodes.tldTypes[ajaxReq.type.substring(ajaxReq.type.length-3, ajaxReq.type.length)],
         txSent: false
     };
     $scope.gasLimitDefaults = {
@@ -43,7 +43,7 @@ var ensCtrl = function($scope, $sce, walletService) {
         gasPrice: null
     };
     $scope.showENS = function() {
-      $scope.objENS.tld = nodes.tldTypes[ajaxReq.type];
+      $scope.objENS.tld = nodes.tldTypes[ajaxReq.type.substring(ajaxReq.type.length-3, ajaxReq.type.length)];
         return nodes.ensNodeTypes.indexOf(ajaxReq.type) > -1;
         }
     $scope.$watch(function() {

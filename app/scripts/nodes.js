@@ -12,11 +12,11 @@ nodes.nodeTypes = {
     Custom: "CUSTOM ETH"
 };
 nodes.tldTypes = {
-    ETH: ".eth",
+    ETH : ".eth",
     ETC: ".etc",
-    "ROPSTEN ETH": ".eth",
-    "KOVAN ETH": ".eth",
-    "RINKEBY ETH": ".eth",
+    Ropsten : ".eth",
+    Kovan : ".eth",
+    Rinkeby : ".eth",
     RSK: ".rsk"
 };
 nodes.ensNodeTypes = [nodes.nodeTypes.ETH, nodes.nodeTypes.Ropsten, nodes.nodeTypes.ETC];
