@@ -61,7 +61,7 @@
 
       <div class="tagline">
 
-        <span>v3.9.8.5</span>
+        <span>v3.9.8.6</span>
 
         <span class="dropdown dropdown-lang" ng-cloak>
           <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle  btn btn-white" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
@@ -2565,7 +2565,7 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
          <table class="table table-striped table-ens-modal">
   <tbody>
     <tr>
-      <td>Name</td><td>{{objENS.name}}.{{objENS.tld}}</td>
+      <td>Name</td><td>{{objENS.name}}{{objENS.tld}}</td>
     </tr>
     <tr>
       <td>Actual Bid Amount</td><td>{{objENS.bidValue}} {{ajaxReq.type}}</td>
@@ -2829,7 +2829,7 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
          <table class="table table-striped table-ens-modal">
   <tbody>
     <tr>
-      <td>Name</td><td>{{objENS.name}}.{{objENS.tld}}</td>
+      <td>Name</td><td>{{objENS.name}}{{objENS.tld}}</td>
     </tr>
     <tr>
       <td>Actual Bid Amount</td><td>{{objENS.bidValue}} {{ajaxReq.type}}</td>

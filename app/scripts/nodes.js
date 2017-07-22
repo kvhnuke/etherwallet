@@ -14,9 +14,9 @@ nodes.nodeTypes = {
 nodes.tldTypes = {
     ETH: ".eth",
     ETC: ".etc",
-    Ropsten: ".eth",
-    Kovan: ".eth",
-    Rinkeby: ".eth",
+    "ROPSTEN ETH": ".eth",
+    "KOVAN ETH": ".eth",
+    "RINKEBY ETH": ".eth",
     RSK: ".rsk"
 };
 nodes.ensNodeTypes = [nodes.nodeTypes.ETH, nodes.nodeTypes.Ropsten, nodes.nodeTypes.ETC];
