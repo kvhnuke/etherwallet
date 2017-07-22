@@ -11,7 +11,15 @@ nodes.nodeTypes = {
     RSK: "RSK",
     Custom: "CUSTOM ETH"
 };
-nodes.ensNodeTypes = [nodes.nodeTypes.ETH, nodes.nodeTypes.Ropsten];
+nodes.tldTypes = {
+    ETH: ".eth",
+    ETC: ".etc",
+    Ropsten: ".eth",
+    Kovan: ".eth",
+    Rinkeby: ".eth",
+    RSK: ".rsk"
+};
+nodes.ensNodeTypes = [nodes.nodeTypes.ETH, nodes.nodeTypes.Ropsten, nodes.nodeTypes.ETC];
 nodes.customNodeObj = {
     'name': 'CUS',
     'blockExplorerTX': '',

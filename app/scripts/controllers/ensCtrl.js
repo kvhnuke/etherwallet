@@ -25,6 +25,7 @@ var ensCtrl = function($scope, $sce, walletService) {
         timer: null,
         timeRemaining: null,
         timeRemainingReveal: null,
+        tld: nodes.tldTypes[ajaxReq.type],
         txSent: false
     };
     $scope.gasLimitDefaults = {
@@ -42,8 +43,9 @@ var ensCtrl = function($scope, $sce, walletService) {
         gasPrice: null
     };
     $scope.showENS = function() {
+      $scope.objENS.tld = nodes.tldTypes[ajaxReq.type];
         return nodes.ensNodeTypes.indexOf(ajaxReq.type) > -1;
-    }
+        }
     $scope.$watch(function() {
         if (walletService.wallet == null) return null;
         return walletService.wallet.getAddressString();
@@ -97,7 +99,7 @@ var ensCtrl = function($scope, $sce, walletService) {
           $scope.haveNotAlreadyCheckedLength = false;
         } else if ($scope.Validator.isValidENSName($scope.objENS.name) && $scope.objENS.name.indexOf('.') == -1) {
             $scope.objENS.name = ens.normalise($scope.objENS.name);
-            $scope.objENS.namehash = ens.getNameHash($scope.objENS.name + '.eth');
+            $scope.objENS.namehash = ens.getNameHash($scope.objENS.name + $scope.objENS.tld);
             $scope.objENS.nameSHA3 = ENS.getSHA3($scope.objENS.name);
             $scope.hideEnsInfoPanel = true;
             ENS.getAuctionEntries($scope.objENS.name, function(data) {
@@ -107,13 +109,13 @@ var ensCtrl = function($scope, $sce, walletService) {
                     for (var key in entries) $scope.objENS[key] = entries[key];
                     switch ($scope.objENS.status) {
                         case $scope.ensModes.owned:
-                            ENS.getOwner($scope.objENS.name + '.eth', function(data) {
+                            ENS.getOwner($scope.objENS.name + $scope.objENS.tld, function(data) {
                                 $scope.objENS.owner = data.data;
                             })
                             ENS.getDeedOwner($scope.objENS.deed, function(data) {
                                 $scope.objENS.deedOwner = data.data;
                             })
-                            ENS.getAddress($scope.objENS.name + '.eth', function(data) {
+                            ENS.getAddress($scope.objENS.name + $scope.objENS.tld, function(data) {
                                 $scope.objENS.resolvedAddress = data.data;
                             })
                             break;

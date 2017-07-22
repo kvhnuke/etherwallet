@@ -3,11 +3,11 @@
   <br /><br />
 
   <h1 ng-show="objENS.status==ensModes.auction">
-    An auction has been started for <strong>{{objENS.name}}.eth</strong>.
+    An auction has been started for <strong>{{objENS.name}}{{objENS.tld}}</strong>.
   </h1>
 
   <h1 ng-show="objENS.status==ensModes.open">
-    <strong>{{objENS.name}}.eth</strong> is available!
+    <strong>{{objENS.name}}{{objENS.tld}}</strong> is available!
   </h1>
 
 

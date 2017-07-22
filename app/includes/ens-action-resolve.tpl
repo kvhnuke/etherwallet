@@ -2,7 +2,7 @@
 
 
   <!-- TODO VALIDATE IF UNLOCKED WALLET ADDR == OWNER ADDR -->
-  <div class="alert alert-danger" ng-show="objENS.owner != wallet.getAddressString()"> This account is not the owner of {{objENS.name}}.eth. Please unlock the Owner Account in order to resolve. </div>
+  <div class="alert alert-danger" ng-show="objENS.owner != wallet.getAddressString()"> This account is not the owner of {{objENS.name}}{{objENS.tld}}. Please unlock the Owner Account in order to resolve. </div>
 
   @@if (site === 'mew' ) { @@include( './ens-resolve-information.tpl', { "site": "mew" } ) }
   @@if (site === 'cx'  ) { @@include( './ens-resolve-information.tpl', { "site": "cx"  } ) }
@@ -14,7 +14,7 @@
     </div>
 
     <div class="form-group" style="margin: 2em auto;" ng-hide="1===1 || objENS.owner != wallet.getAddressString()">
-      <button class="btn btn-primary" ng-click="resolveDomain()"> Set Public Resolver &amp; Set Address for {{objENS.name}}.eth </button>
+      <button class="btn btn-primary" ng-click="resolveDomain()"> Set Public Resolver &amp; Set Address for {{objENS.name}}{{objENS.tld}} </button>
     </div>
   </section>
 
