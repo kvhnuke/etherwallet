@@ -1,5 +1,5 @@
 'use strict';
-var ajaxReq = function() {}
+let ajaxReq = function() {};
 ajaxReq.http = null;
 ajaxReq.postSerializer = null;
 ajaxReq.getETHvalue = null;
