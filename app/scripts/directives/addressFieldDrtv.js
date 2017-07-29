@@ -59,4 +59,7 @@ var addressFieldDrtv = function($compile) {
         }
     };
 };
+
+addressFieldDrtv.$inject = ["$compile"];
+
 module.exports = addressFieldDrtv;
