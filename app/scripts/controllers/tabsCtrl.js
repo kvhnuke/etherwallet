@@ -55,6 +55,7 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
         } else {
             $scope.curNode = $scope.nodeList[$scope.defaultNodeKey];
         }
+        $scope.gService.curNode = $scope.curNode;
         $scope.dropdownNode = false;
         Token.popTokens = $scope.curNode.tokenList;
         ajaxReq['key'] = key;
