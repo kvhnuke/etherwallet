@@ -84,6 +84,13 @@ module.exports = [
   gasLimit:   200000,
   data:       '',
   msg:        'Moeda. Ends at block 4,111,557.'
+},
+{
+  // Stox Token Sale
+  to:         '0x40349A89114BB34d4E82e5Bf9AE6B2ac3c78b00a',
+  gasLimit:   200000,
+  data:       '',
+  msg:        'Stox Token Sale'
 }
 ]
 

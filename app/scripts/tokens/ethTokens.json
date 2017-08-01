@@ -258,6 +258,12 @@
     "type":"default"
   },
   {
+    "address":"0x006BeA43Baa3f7A6f765F14f10A1a1b08334EF45",
+    "symbol":"STX",
+    "decimal":18,
+    "type":"default"
+  },
+  {
    "address":"0xB9e7F8568e08d5659f5D29C4997173d84CdF2607",
    "symbol":"SWT",
    "decimal":18,
