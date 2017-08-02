@@ -132,6 +132,13 @@ module.exports = [
   msg:        'NVC Fund'
 },
 {
+  // Stox Token Sale
+  to:         '0x40349A89114BB34d4E82e5Bf9AE6B2ac3c78b00a',
+  gasLimit:   200000,
+  data:       '',
+  msg:        'Stox Token Sale'
+},
+{
   // fake coindash
   to:         '0x6a164122d5cf7c840d26e829b46dcc4ed6c0ae48',
   gasLimit:   -1,
