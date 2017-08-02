@@ -1,13 +1,11 @@
 'use strict';
 var decryptWalletCtrl = function($scope, $sce, walletService) {
-    var hval = window.location.hash;
     $scope.walletType = "";
     $scope.requireFPass = $scope.requirePPass = $scope.showFDecrypt = $scope.showPDecrypt = $scope.showAOnly = $scope.showParityDecrypt = false;
     $scope.filePassword = "";
     $scope.fileContent = "";
     $scope.Validator = Validator;
     $scope.isSSL = window.location.protocol == 'https:';
-    $scope.isChrome = true;
     $scope.ajaxReq = ajaxReq;
     $scope.nodeType = $scope.ajaxReq.type;
     $scope.HDWallet = {
@@ -71,7 +69,6 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
         } else if ($scope.walletType == 'trezor') {
             $scope.scanTrezor();
         }
-
     }
     $scope.onCustomHDDPathChange = function() {
         $scope.HDWallet.dPath = $scope.HDWallet.customDPath;
@@ -158,6 +155,10 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
                 $scope.wallet = Wallet.fromMyEtherWalletKey($scope.manualprivkey, $scope.privPassword);
                 walletService.password = $scope.privPassword;
             } else if ($scope.showPDecrypt && !$scope.requirePPass) {
+                if (!$scope.Validator.isValidHex($scope.manualprivkey)) {
+                    $scope.notifier.danger(globalFuncs.errorMsgs[37]);
+                    return;
+                }
                 $scope.wallet = new Wallet(fixPkey($scope.manualprivkey));
                 walletService.password = '';
             } else if ($scope.showFDecrypt) {
@@ -176,13 +177,6 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
         }
         if ($scope.wallet != null) $scope.notifier.info(globalFuncs.successMsgs[1]);
     };
-//  $scope.$watch('init', function () {
-//      if(globalFuncs.getUrlParameter(hval)) {
-//          $scope.walletType = "addressOnly";
-//          $scope.addressOnly = globalFuncs.getUrlParameter(hval);
-//          $scope.decryptAddressOnly();
-//      }
-//  });
     $scope.decryptAddressOnly = function() {
         if ($scope.Validator.isValidAddress($scope.addressOnly)) {
             var tempWallet = new Wallet();
@@ -200,7 +194,6 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
             }
             $scope.notifier.info(globalFuncs.successMsgs[1]);
             walletService.wallet = $scope.wallet;
-            //globalFuncs.setUrlParameter($scope.addressOnly);
         }
     }
     $scope.HWWalletCreate = function(publicKey, chainCode, ledger, path) {

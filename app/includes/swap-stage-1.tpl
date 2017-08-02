@@ -29,7 +29,7 @@
         <span>BTC = {{bity.curRate.BTCREP*priceTicker.BTCREP | number: 6}} REP</span>
       </p>
     </div>
-    <a class="link bity-logo" href="https://bity.com/af/jshkb37v" target="_blank"><img src="images/logo-bity-white.svg" width="120" height="49" /></a>
+    <a class="link bity-logo" href="https://bity.com/af/jshkb37v" target="_blank" rel="noopener"><img src="images/logo-bity-white.svg" width="120" height="49" /></a>
   </section>
   <!-- / Colored Columns -->
 
@@ -50,6 +50,7 @@
          placeholder="{{ 'SEND_amount_short' | translate }}"
          ng-change ="updateEstimate(true)"
          ng-model="swapOrder.fromVal"
+         ng-click="showedMinMaxError = false"
          ng-class="Validator.isPositiveNumber(swapOrder.fromVal)  && verifyMinMaxValues() ? 'is-valid' : 'is-invalid'" />
 
   <span class="dropdown">
@@ -68,6 +69,7 @@
          placeholder="{{ 'SEND_amount_short' | translate }}"
          ng-change ="updateEstimate(false)"
          ng-model="swapOrder.toVal"
+         ng-click="showedMinMaxError = false"
          ng-class="Validator.isPositiveNumber(swapOrder.toVal) && verifyMinMaxValues() ? 'is-valid' : 'is-invalid'" />
 
   <div class="dropdown">

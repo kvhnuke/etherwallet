@@ -1,6 +1,7 @@
 'use strict';
 var walletBalanceCtrl = function($scope, $sce) {
     $scope.ajaxReq = ajaxReq;
+    $scope.tokensLoaded = true;
     $scope.localToken = {
         contractAdd: "",
         symbol: "",
@@ -42,8 +43,8 @@ var walletBalanceCtrl = function($scope, $sce) {
         });
     }
     */
-    $scope.removeTokenFromLocal = function(tokenSymbol) {
-        globalFuncs.removeTokenFromLocal(tokenSymbol, $scope.wallet.tokenObjs);
+    $scope.removeTokenFromLocal = function(tokensymbol) {
+        globalFuncs.removeTokenFromLocal(tokensymbol, $scope.wallet.tokenObjs);
     }
 };
 module.exports = walletBalanceCtrl;

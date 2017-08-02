@@ -5,8 +5,8 @@ var addressFieldDrtv = function($compile) {
         link: function(scope, element, attrs) {
             var varName = attrs.varName;
             var varArr = varName.split('.');
-            var readOnly = attrs.readOnly ? attrs.readOnly : false;
-            var placeholder = attrs.placeholder;
+            var placeholder = attrs.placeholder == undefined ? 'mewtopia.eth or 0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8' : attrs.placeholder ;
+            var labelTranslated = attrs.labeltranslated == undefined ? 'SEND_addr' : attrs.labeltranslated;
             var setValue = function(value) {
                 var temp = scope;
                 for (var i in varArr) {
@@ -18,12 +18,13 @@ var addressFieldDrtv = function($compile) {
             }
             scope.addressDrtv = {
                 showDerivedAddress: false,
-                ensAddressField: '',
-                derivedAddress: ''
+                ensAddressField: globalFuncs.urlGet('to') == null ? "" : globalFuncs.urlGet('to'),
+                derivedAddress: '',
+                readOnly: false
             }
             element.html('<div class=\"col-xs-11\">\n \
-                    <label translate=\"SEND_addr\"> To Address: </label>\n \
-                    <input class=\"form-control\" type=\"text\" placeholder=\"' + placeholder + '\" ng-model=\"addressDrtv.ensAddressField\" ng-disabled=\"' + readOnly + '\" ng-class=\"Validator.isValidENSorEtherAddress(' + varName + ') ? \'is-valid\' : \'is-invalid\'\"/>\n \
+                    <label translate=\"' + labelTranslated + '\"></label>\n \
+                    <input class=\"form-control\" type=\"text\" placeholder=\"' + placeholder + '\" ng-model=\"addressDrtv.ensAddressField\" ng-disabled=\"addressDrtv.readOnly\" ng-class=\"Validator.isValidENSorEtherAddress(' + varName + ') ? \'is-valid\' : \'is-invalid\'\"/>\n \
                     <p class="ens-response" ng-show="addressDrtv.showDerivedAddress"> ↳ <span class="mono ng-binding"> {{addressDrtv.derivedAddress}} </span> </p>\n \
                 </div>\n \
                 <div class=\"col-xs-1 address-identicon-container\">\n \
@@ -34,7 +35,7 @@ var addressFieldDrtv = function($compile) {
                 if (Validator.isValidAddress(scope.addressDrtv.ensAddressField)) {
                     setValue(scope.addressDrtv.ensAddressField);
                     if (!Validator.isChecksumAddress(scope.addressDrtv.ensAddressField)) {
-                       scope.notifier.info(globalFuncs.errorMsgs[35]);
+                        scope.notifier.info(globalFuncs.errorMsgs[35]);
                     }
                 } else if (Validator.isValidENSAddress(scope.addressDrtv.ensAddressField)) {
                     _ens.getAddress(scope.addressDrtv.ensAddressField, function(data) {

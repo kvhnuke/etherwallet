@@ -159,7 +159,6 @@ uiFuncs.generateTx = function(txData, callback) {
                         isError: true,
                         error: e
                     });
-                    return;
                 } else {
                     data = data.data;
                     data.isOffline = txData.isOffline ? txData.isOffline : false;
@@ -213,64 +212,46 @@ uiFuncs.transferAllBalance = function(fromAdd, gasLimit, callback) {
     }
 }
 uiFuncs.notifier = {
-    show: false,
-    isDanger: false,
-    close: function() {
-        this.show = false;
-        this.isDanger = false;
-        this.message = "";
-        if (!this.scope.$$phase) this.scope.$apply()
+    alerts: {},
+    warning: function(msg, duration = 5000) {
+        this.addAlert("warning", msg, duration);
     },
-    open: function() {
-        this.show = true;
+    info: function(msg, duration = 5000) {
+        this.addAlert("info", msg, duration);
+    },
+    danger: function(msg, duration = 0) {
+        msg = msg.message ? msg.message : msg;
+        // Danger messages can be translated based on the type of node
+        msg = globalFuncs.getEthNodeMsg(msg);
+        this.addAlert("danger", msg, duration);
+    },
+    success: function(msg, duration = 5000) {
+        this.addAlert("success", msg, duration);
+    },
+    addAlert: function(type, msg, duration) {
+        if (duration == undefined)
+            duration = 5000;
+        // Save all messages by unique id for removal
+        var id = Date.now();
+        alert = this.buildAlert(id, type, msg);
+        this.alerts[id] = alert
+        var that = this;
+        if (duration > 0) { // Support permanent messages
+            setTimeout(alert.close, duration);
+        }
         if (!this.scope.$$phase) this.scope.$apply();
     },
-    class: '',
-    message: '',
-    timer: null,
-    sce: null,
-    scope: null,
-    overrideMsg: function(msg) {
-        console.log(msg)
-        return globalFuncs.getEthNodeMsg(msg);
+    buildAlert: function(id, type, msg) {
+        var that = this;
+        return {
+            show: true,
+            type: type,
+            message: msg,
+            close: function() {
+                delete that.alerts[id];
+                if (!that.scope.$$phase) that.scope.$apply();
+            }
+        }
     },
-    warning: function(msg) {
-        this.setClassAndOpen("alert-warning", msg);
-    },
-    info: function(msg) {
-        this.setClassAndOpen("", msg);
-        this.setTimer();
-    },
-    danger: function(msg) {
-        msg = msg.message ? msg.message : msg;
-        msg = this.overrideMsg(msg);
-        this.isDanger = true;
-        this.setClassAndOpen("alert-danger", msg);
-        this.cancelTimer();
-    },
-    success: function(msg) {
-        this.setClassAndOpen("alert-success", msg);
-    },
-    setClassAndOpen: function(_class, msg) {
-        this.class = _class;
-        var _temp = this.message != "" ? this.message + "</br>" : "";
-        this.message = msg.message ? this.sce.trustAsHtml(msg.message) : this.sce.trustAsHtml(msg);
-        this.message = _temp + this.message;
-        this.open();
-    },
-    setTimer: function() {
-        var _this = this;
-        if (_this.isDanger) return;
-        clearTimeout(_this.timer);
-        _this.timer = setTimeout(function() {
-            _this.show = false;
-            _this.message = "";
-            if (!_this.scope.$$phase) _this.scope.$apply();
-        }, 5000);
-    },
-    cancelTimer: function() {
-        var _this = this;
-        clearTimeout(_this.timer);
-    }
-}
+  }
 module.exports = uiFuncs;
