@@ -1,96 +1,169 @@
-<!-- Sidebar -->
-<section class="col-sm-4">
-  <wallet-balance-drtv></wallet-balance-drtv>
-  <hr />
-  <h5 translate="sidebar_TransHistory"> Transaction History: </h5>
-  <ul class="account-info" ng-show="ajaxReq.type != 'CUS'">
-    <li><a href="{{ajaxReq.blockExplorerAddr.replace('[[address]]', wallet.getAddressString())}}" target="_blank">{{ajaxReq.blockExplorerAddr.replace('[[address]]', wallet.getAddressString())}}</a></li>
-  </ul>
-  <div class="well">
-    <p translate="sidebar_donation"> MyEtherWallet is a free, open-source service dedicated to your privacy and security. The more donations we receive, the more time we spend creating new features, listening to your feedback, and giving you what you want. We are just two people trying to change the world. Help us?</p>
-    <a class="btn btn-primary btn-block" ng-click="onDonateClick()" translate="sidebar_donate">DONATE</a>
-    <div class="text-success text-center marg-v-sm" ng-show="tx.donate" translate="sidebar_thanks"> THANK YOU!!! </div>
-  </div>
-</section>
-<!-- / Sidebar -->
-
-
-
 <!-- Content -->
 <section class="col-sm-8">
+  <div class="block">
 
-  <!-- To Address -->
-  <div class="row form-group">
-    <h4 class="col-xs-12" translate="SEND_trans">Send Transaction</h4>
-    <div class="col-xs-10">
-      <label translate="SEND_addr"> To Address: </label>
-      <input class="form-control"  type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tx.to" ng-disabled="tx.readOnly" ng-class="Validator.isValidAddress(tx.to) ? 'is-valid' : 'is-invalid'"/>
+    <!-- To Address -->
+    <div class="row form-group">
+      <address-field placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" var-name="tx.to"></address-field>
     </div>
-    <div class="col-xs-2 address-identicon-container">
-      <div class="addressIdenticon" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to"></div>
+
+    <!-- Amount to Send -->
+    <label translate="SEND_amount">Amount to Send:</label>
+    <div class="input-group col-sm-11">
+      <input type="text"
+             class="form-control"
+             placeholder="{{ 'SEND_amount_short' | translate }}"
+             ng-model="tx.value"
+             ng-disabled="tx.readOnly || checkTxReadOnly"
+             ng-class="Validator.isPositiveNumber(tx.value) ? 'is-valid' : 'is-invalid'"/>
+      <div class="input-group-btn">
+        <a style="min-width: 170px" class="btn btn-default dropdown-toggle" class="dropdown-toggle" ng-click="dropdownAmount = !dropdownAmount" ng-class="dropdownEnabled ? '' : 'disabled'">
+          <strong>{{unitReadable}}<i class="caret"></i></strong>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-right" ng-show="dropdownAmount && !tx.readOnly">
+          <li><a ng-class="{true:'active'}[tx.sendMode=='ether']" ng-click="setSendMode('ether')">{{ajaxReq.type}}</a></li>
+          <li ng-repeat="token in wallet.tokenObjs track by $index" ng-show="token.balance!=0 && token.balance!='loading' || token.type!=='default' || tokenVisibility=='shown'">
+            <a ng-class="{true:'active'}[unitReadable == token.getSymbol()]" ng-click="setSendMode('token', $index, token.getSymbol())"> {{token.getSymbol()}} </a>
+          </li>
+
+        </ul>
+      </div>
     </div>
-  </div>
-  <!-- / To Address -->
+    <p><a ng-click="transferAllBalance()" ng-hide="tx.readOnly"><span class="strong" translate="SEND_TransferTotal">Send Entire Balance</span></a></p>
+    <!-- / Amount to Send -->
 
-  <!-- Amount to Send -->
-  <label translate="SEND_amount">Amount to Send:</label>
-  <div class="input-group">
-    <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}" ng-model="tx.value" ng-disabled="tx.readOnly" ng-class="Validator.isPositiveNumber(tx.value) ? 'is-valid' : 'is-invalid'"/>
-    <div class="input-group-btn">
-      <a class="btn btn-default dropdown-toggle" class="dropdown-toggle" ng-click="dropdownAmount = !dropdownAmount" ng-class="dropdownEnabled ? '' : 'disabled'">
-        {{unitReadable}}<i class="caret"></i>
-      </a>
-      <ul class="dropdown-menu dropdown-menu-right" ng-show="dropdownAmount && !tx.readOnly">
-        <li><a ng-class="{true:'active'}[tx.sendMode=='ether']" ng-click="setSendMode('ether')">{{ajaxReq.type}}</a></li>
-        <li ng-repeat="token in wallet.tokenObjs track by $index" ng-show="token.balance!=0 && token.balance!='loading' || token.type!=='default' || tokenVisibility=='shown'">
-          <a ng-class="{true:'active'}[unitReadable == token.getSymbol()]" ng-click="setSendMode('token', $index, token.getSymbol())"> {{token.getSymbol()}} </a>
-        </li>
-
-      </ul>
+    <!-- Gas Limit -->
+    <div class="row form-group">
+      <div class="col-sm-11 clearfix">
+        <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
+          <img src="images/icon-help.svg" class="help-icon" />
+          <p class="account-help-text" translate="GAS_LIMIT_Desc"></p>
+        </a>
+        <label translate="TRANS_gas"> Gas Limit: </label>
+        <input type="text"
+               class="form-control"
+               placeholder="21000"
+               ng-model="tx.gasLimit"
+               ng-change="gasLimitChanged=true"
+               ng-disabled="tx.readOnly || checkTxReadOnly"
+               ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'" />
+      </div>
     </div>
-  </div>
-  <a ng-click="transferAllBalance()" ng-hide="tx.readOnly"><p class="strong" translate="SEND_TransferTotal">Send Entire Balance</p></a>
-  <!-- / Amount to Send -->
+    <!-- / Gas Limit -->
 
-  <!-- Gas -->
-  <label translate="TRANS_gas"> Gas: </label>
-  <input class="form-control" type="text" placeholder="21000" ng-model="tx.gasLimit" ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'"/>
-  <!-- / Gas -->
-
-  <!-- Advanced Option Panel -->
-  <div ng-show="tx.sendMode=='ether'">
-    <a ng-click="showAdvance=!showAdvance">
+    <!-- Advanced Option Panel -->
+    <a ng-click="showAdvance=true" ng-show='globalService.currentTab==globalService.tabs.sendTransaction.id'>
       <p class="strong" translate="TRANS_advanced"> + Advanced: Add Data </p>
     </a>
-    <section ng-show="showAdvance">
-      <div class="form-group">
-        <label translate="TRANS_data"> Data: </label>
-        <input class="form-control" type="text" placeholder="0x6d79657468657277616c6c65742e636f6d20697320746865206265737421" ng-model="tx.data" ng-disabled="tx.readOnly" ng-class="Validator.isValidHex(tx.data) ? 'is-valid' : 'is-invalid'"/>
+
+    <section ng-show="showAdvance || checkTxPage">
+      <!-- Data -->
+      <div class="row form-group">
+        <div class="col-sm-11 clearfix" ng-show="tx.sendMode=='ether'">
+          <span class="account-help-icon">
+            <img src="images/icon-help.svg" class="help-icon" />
+            <p class="account-help-text" translate="OFFLINE_Step2_Label_6b">This is optional.</p>
+          </span>
+          <label translate="TRANS_data"> Data: </label>
+          <input type="text"
+                 class="form-control"
+                 placeholder="0x6d79657468657277616c6c65742e636f6d20697320746865206265737421"
+                 ng-model="tx.data"
+                 ng-disabled="tx.readOnly || checkTxReadOnly"
+                 ng-class="Validator.isValidHex(tx.data) ? 'is-valid' : 'is-invalid'"/>
+        </div>
       </div>
+      <!-- / Data -->
+
+
+      <!-- Nonce -->
+      <div class="row form-group" ng-show="checkTxPage">
+        <div class="col-sm-11 clearfix">
+          <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-nonce" target="_blank" rel="noopener">
+            <img src="images/icon-help.svg" class="help-icon" />
+            <p class="account-help-text" translate="NONCE_Desc"></p>
+          </a>
+          <label translate="OFFLINE_Step2_Label_5"> Nonce </label>
+          <input type="text"
+                 class="form-control"
+                 placeholder="2"
+                 ng-model="tx.nonce"
+                 ng-disabled="checkTxReadOnly"
+                 ng-class="Validator.isPositiveNumber(tx.nonce) ? 'is-valid' : 'is-invalid'" />
+        </div>
+      </div>
+      <!-- / Nonce -->
+
+
+      <!-- Gas Price -->
+      <div class="row form-group" ng-show="checkTxPage">
+        <div class="col-sm-11 clearfix">
+          <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
+            <img src="images/icon-help.svg" class="help-icon" />
+            <p class="account-help-text" translate="GAS_PRICE_Desc"></p>
+          </a>
+          <label> <span translate="OFFLINE_Step2_Label_3"> Gas Price: </span></label>
+          <input type="text"
+                 class="form-control"
+                 placeholder="50"
+                 ng-model="tx.gasPrice"
+                 ng-disabled="checkTxReadOnly"
+                 ng-class="Validator.isPositiveNumber(tx.gasPrice) ? 'is-valid' : 'is-invalid'" />
+        </div>
+      </div>
+      <!-- / Gas Price -->
     </section>
-  </div>
-  <!-- / Advanced Option Panel -->
 
-  <div class="form-group" ng-hide="tx.value > wallet.balance && tx.readOnly">
-    <a class="btn btn-info btn-block" ng-click="generateTx()" translate="SEND_generate"> GENERATE TRANSACTION </a>
-  </div>
-  <div class="form-group" ng-show="showRaw">
-    <label translate="SEND_raw"> Raw Transaction </label>
-    <textarea class="form-control" rows="4" readonly >{{rawTx}}</textarea>
-    <label translate="SEND_signed"> Signed Transaction </label>
-    <textarea class="form-control" rows="4" readonly >{{signedTx}}</textarea>
-  </div>
+    <!-- / Advanced Option Panel -->
 
-  <div class="form-group" ng-show="showRaw">
-    <a class="btn btn-primary btn-block" data-toggle="modal" data-target="#sendTransaction" translate="SEND_trans"> Send Transaction </a>
-  </div>
-  <div class="alert alert-info" ng-show="tx.sendMode=='token'">
-    <p>If you are getting an insufficient balance for gas ... error, you must have a small amount of ETH in your account in order to cover the cost of gas. Add 0.01 ETH to this account and try again.</p>
-  </div>
-  <div class="alert alert-danger" ng-show="tx.value > wallet.balance && tx.readOnly">
-    <p>You do not have enough funds in your account to complete this swap. Please add more funds or access a different wallet.</p>
-  </div>
+    <div class="clearfix form-group">
+      <div class="well" ng-show="wallet!=null && customGasMsg!=''">
+        <p><small>A message regarding {{tx.to}}</small></p>
+        <p><strong> {{customGasMsg}} </strong></p>
+      </div>
+    </div>
 
+    <div class="row form-group">
+      <div class="col-xs-12 clearfix">
+        <a class="btn btn-info btn-block" ng-click="generateTx()" translate="SEND_generate"> Generate Transaction </a>
+      </div>
+    </div>
 
+    <div class="row form-group" ng-show="showRaw">
+      <div class="col-sm-6">
+        <label translate="SEND_raw"> Raw Transaction </label>
+        <textarea class="form-control" rows="4" readonly >{{rawTx}}</textarea>
+      </div>
+      <div class="col-sm-6">
+        <label translate="SEND_signed"> Signed Transaction </label>
+        <textarea class="form-control" rows="4" readonly >{{signedTx}}</textarea>
+      </div>
+    </div>
+
+    <div class="clearfix form-group" ng-show="showRaw">
+      <a class="btn btn-primary btn-block col-sm-11" data-toggle="modal" data-target="#sendTransaction" translate="SEND_trans"> Send Transaction </a>
+    </div>
+  </div>
 </section>
 <!-- / Content -->
+
+<!-- Sidebar -->
+<section class="col-sm-4">
+
+  <div class="block block--danger" ng-show="wallet!=null && globalService.currentTab==globalService.tabs.swap.id && !hasEnoughBalance()">
+    <h5>Warning! You do not have enough funds to complete this swap.</h5>
+    <p>Please add more funds to your wallet or access a different wallet.</p>
+  </div>
+
+  <wallet-balance-drtv></wallet-balance-drtv>
+
+  <div class="block" ng-show="globalService.currentTab==globalService.tabs.sendTransaction.id">
+    <p translate="sidebar_donation"> MyEtherWallet is a free, open-source service dedicated to your privacy and security. The more donations we receive, the more time we spend creating new features, listening to your feedback, and giving you what you want. We are just two people trying to change the world. Help us?</p>
+    <a class="btn btn-default btn-sm btn-block" ng-click="onDonateClick()" translate="sidebar_donate">DONATE</a>
+    <div class="text-success text-center marg-v-sm" ng-show="tx.donate" translate="sidebar_thanks"> THANK YOU!!! </div>
+  </div>
+
+  <div ng-show="checkTxPage" ng-click="checkTxReadOnly=!checkTxReadOnly" class="small text-right text-gray-lighter"><small>Advanced Users Only.</small></div>
+
+</section>
+<!-- / Sidebar -->

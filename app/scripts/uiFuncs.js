@@ -16,7 +16,7 @@ uiFuncs.getTxData = function($scope) {
 }
 uiFuncs.isTxDataValid = function(txData) {
     if (txData.to != "0xCONTRACT" && !ethFuncs.validateEtherAddress(txData.to)) throw globalFuncs.errorMsgs[5];
-    else if (!globalFuncs.isNumeric(txData.value) || parseFloat(txData.value) < 0) throw globalFuncs.errorMsgs[7];
+    else if (!globalFuncs.isNumeric(txData.value) || parseFloat(txData.value) < 0) throw globalFuncs.errorMsgs[0];
     else if (!globalFuncs.isNumeric(txData.gasLimit) || parseFloat(txData.gasLimit) <= 0) throw globalFuncs.errorMsgs[8];
     else if (!ethFuncs.validateHexString(txData.data)) throw globalFuncs.errorMsgs[9];
     if (txData.to == "0xCONTRACT") txData.to = '';
@@ -56,7 +56,7 @@ uiFuncs.signTxTrezor = function(rawTx, txData, callback) {
     );
 }
 uiFuncs.signTxLedger = function(app, eTx, rawTx, txData, old, callback) {
-    eTx.raw[6] = Buffer.from([1]); //ETH chain id
+    eTx.raw[6] = Buffer.from([rawTx.chainId]);
     eTx.raw[7] = eTx.raw[8] = 0;
     var toHash = old ? eTx.raw.slice(0, 6) : eTx.raw;
     var txToSign = ethUtil.rlp.encode(toHash);
@@ -103,7 +103,7 @@ uiFuncs.generateTx = function(txData, callback) {
         var genTxWithInfo = function(data) {
             var rawTx = {
                 nonce: ethFuncs.sanitizeHex(data.nonce),
-                gasPrice: ethFuncs.sanitizeHex(ethFuncs.addTinyMoreToGas(data.gasprice)),
+                gasPrice: data.isOffline ? ethFuncs.sanitizeHex(data.gasprice) : ethFuncs.sanitizeHex(ethFuncs.addTinyMoreToGas(data.gasprice)),
                 gasLimit: ethFuncs.sanitizeHex(ethFuncs.decimalToHex(txData.gasLimit)),
                 to: ethFuncs.sanitizeHex(txData.to),
                 value: ethFuncs.sanitizeHex(ethFuncs.decimalToHex(etherUnits.toWei(txData.value, txData.unit))),
@@ -150,6 +150,7 @@ uiFuncs.generateTx = function(txData, callback) {
                 nonce: txData.nonce,
                 gasprice: txData.gasPrice
             }
+            data.isOffline = txData.isOffline ? txData.isOffline : false;
             genTxWithInfo(data);
         } else {
             ajaxReq.getTransactionData(txData.from, function(data) {
@@ -158,9 +159,9 @@ uiFuncs.generateTx = function(txData, callback) {
                         isError: true,
                         error: e
                     });
-                    return;
                 } else {
                     data = data.data;
+                    data.isOffline = txData.isOffline ? txData.isOffline : false;
                     genTxWithInfo(data);
                 }
             });
@@ -211,42 +212,46 @@ uiFuncs.transferAllBalance = function(fromAdd, gasLimit, callback) {
     }
 }
 uiFuncs.notifier = {
-    show: false,
-    close: function() {
-        this.show = false;
-        if (!this.scope.$$phase) this.scope.$apply()
+    alerts: {},
+    warning: function(msg, duration = 5000) {
+        this.addAlert("warning", msg, duration);
     },
-    open: function() { this.show = true; },
-    class: '',
-    message: '',
-    timer: null,
-    sce: null,
-    scope: null,
-    warning: function(msg) {
-        this.setClassAndOpen("alert-warning", msg);
+    info: function(msg, duration = 5000) {
+        this.addAlert("info", msg, duration);
     },
-    info: function(msg) {
-        this.setClassAndOpen("", msg);
-        this.setTimer();
+    danger: function(msg, duration = 0) {
+        msg = msg.message ? msg.message : msg;
+        // Danger messages can be translated based on the type of node
+        msg = globalFuncs.getEthNodeMsg(msg);
+        this.addAlert("danger", msg, duration);
     },
-    danger: function(msg) {
-        this.setClassAndOpen("alert-danger", msg);
+    success: function(msg, duration = 5000) {
+        this.addAlert("success", msg, duration);
     },
-    success: function(msg) {
-        this.setClassAndOpen("alert-success", msg);
+    addAlert: function(type, msg, duration) {
+        if (duration == undefined)
+            duration = 5000;
+        // Save all messages by unique id for removal
+        var id = Date.now();
+        alert = this.buildAlert(id, type, msg);
+        this.alerts[id] = alert
+        var that = this;
+        if (duration > 0) { // Support permanent messages
+            setTimeout(alert.close, duration);
+        }
+        if (!this.scope.$$phase) this.scope.$apply();
     },
-    setClassAndOpen: function(_class, msg) {
-        this.class = _class;
-        this.message = msg.message ? this.sce.trustAsHtml(msg.message) : this.sce.trustAsHtml(msg);
-        this.open();
+    buildAlert: function(id, type, msg) {
+        var that = this;
+        return {
+            show: true,
+            type: type,
+            message: msg,
+            close: function() {
+                delete that.alerts[id];
+                if (!that.scope.$$phase) that.scope.$apply();
+            }
+        }
     },
-    setTimer: function() {
-        var _this = this;
-        clearTimeout(_this.timer);
-        _this.timer = setTimeout(function() {
-            _this.show = false;
-            if (!_this.scope.$$phase) _this.scope.$apply();
-        }, 5000);
-    }
-}
+  }
 module.exports = uiFuncs;

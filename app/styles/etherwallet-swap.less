@@ -5,7 +5,7 @@
   }
 
   .btn-lg {
-    margin-top: @space*5;
+    margin-top: @space*3;
   }
   .btn svg, .btn img {
     margin-right: @space-sm;
@@ -64,19 +64,26 @@
   }
 
   .swap-panel {
-    padding-top: @space*5;
     text-align: center;
+    margin-top: @space-lg*2;
+    padding: @space-xl @space-sm;
     > * {
       display: inline-block;
-      margin: @space-xs @space-sm;
+      margin: @space-lg @space-sm;
       vertical-align: middle;
     }
     .form-control {
       width: 10rem;
+      margin-right: 0;
     }
     .dropdown {
       margin-left: 0;
     }
+  }
+
+  .swap-address {
+    text-align: center;
+    padding: @space*3 @space;
   }
 
   .swap-start {
@@ -95,33 +102,42 @@
       margin-bottom: @space*3;
     }
   }
+}
 
-  .order-info {
-    .clearfix;
-    text-align: center;
-    padding: @space/2 0;
-    color: white;
-    h3,h4,p {  margin: 0;  }
-    &:nth-child(4n+1) { background-color: #175575;  }
-    &:nth-child(4n+2) { background-color: #1e92ba;  }
-    &:nth-child(4n+3) { background-color: #143955;  }
-    &:nth-child(4n+4) { background-color: #19b3ae;  }
-  }
-
-  .collapse-container {
-    h5 {  display: inline-block;  }
-    .collapse-button {
-      float: none;
-      margin: 0;
-    }
-  }
-  .order-info-wrap {
-    margin-bottom: @space*5;
-    .order-info {
-      padding: @space 0;
-    }
+.swap-tab, .ens-tab {
+.collapse-container {
+  h4, h5 {  display: inline-block;  }
+  .collapse-button {
+    float: none;
+    margin: 0;
   }
 }
+}
+
+.order-info-wrap {
+  margin-bottom: @space*3;
+  display: flex;
+  .order-info {
+    padding: @space 0;
+  }
+}
+
+.order-info {
+  .clearfix;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  min-height: 100px;
+  text-align: center;
+  padding: @space/2 0;
+  color: white;
+  h3,h4,p {  margin: 0;  }
+  &:nth-child(4n+1) { background-color: #175575;  }
+  &:nth-child(4n+2) { background-color: #1e92ba;  }
+  &:nth-child(4n+3) { background-color: #143955;  }
+  &:nth-child(4n+4) { background-color: #19b3ae;  }
+}
+
 
 
 
@@ -234,4 +250,22 @@
       p { color: @brand-success; }
     }
   }
+}
+
+
+
+.ens-tab {
+  .order-info-wrap {
+    margin-top: @space;
+    margin-bottom: @space;
+  }
+  h5+p {
+    margin-top: -.5em;
+  }
+}
+
+.bity-contact {
+  .row;
+  margin-bottom: -5rem;
+  margin-top: 9rem;
 }

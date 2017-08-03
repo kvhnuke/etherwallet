@@ -1,10 +1,13 @@
 'use strict';
 var viewWalletCtrl = function($scope, walletService) {
     $scope.usdBalance = "loading";
+    $scope.gbpBalance = "loading";
     $scope.eurBalance = "loading";
     $scope.btcBalance = "loading";
     $scope.etherBalance = "loading";
     $scope.tokenVisibility = "hidden";
+    $scope.pkeyVisible = false;
+
     walletService.wallet = null;
     walletService.password = '';
     $scope.ajaxReq = ajaxReq;
@@ -36,9 +39,19 @@ var viewWalletCtrl = function($scope, walletService) {
 
     $scope.printQRCode = function() {
         globalFuncs.printPaperWallets(JSON.stringify([{
-            address: $scope.wallet.getAddressString(),
+            address: $scope.wallet.getChecksumAddressString(),
             private: $scope.wallet.getPrivateKeyString()
         }]));
+    }
+
+    $scope.showHidePkey = function() {
+        $scope.pkeyVisible = !$scope.pkeyVisible;
+    }
+    $scope.resetWallet = function() {
+        $scope.wallet = null;
+        walletService.wallet = null;
+        walletService.password = '';
+        $scope.blob = $scope.blobEnc = $scope.password = "";
     }
 };
 module.exports = viewWalletCtrl;

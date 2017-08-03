@@ -24,6 +24,8 @@
 // Prevent the focus on the dropdown toggle when closing dropdowns
 .dropdown-toggle {
   margin-top: 0;
+  font-size: @font-size-base;
+  padding: @space-sm @space;
 }
 .dropdown:hover {
     .dropdown-menu {
@@ -39,7 +41,7 @@
   z-index: @zindex-dropdown;
   float: left;
   min-width: 160px;
-  padding: 4px 0;
+  padding: 0;
   margin: 2px 0 0; // override default ul
   list-style: none;
   font-size: @font-size-base;
@@ -66,6 +68,13 @@
     margin: 0;
   }
   // Links within the dropdown menu
+
+  >li:first-child {
+    padding-top: 4px;
+  }
+  >li:last-child {
+    padding-bottom: 4px;
+  }
   > li > a {
     display: block;
     padding: 3px 20px;

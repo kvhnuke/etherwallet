@@ -1,18 +1,11 @@
 <!-- Sign Message Panel -->
-@@if (site === 'cx' )  {
-  <main ng-controller='signMsgCtrl' ng-show="wallet!=null" ng-cloak>
-}
-@@if (site === 'mew' ) {
-  <main class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.signMsg.id" ng-controller='signMsgCtrl'  ng-cloak>
-}
-
-  <h3>
-    <a translate="NAV_SignMsg" ng-class="{'isActive': visibility=='signView'}" ng-click="setVisibility('signView')"> Sign Message </a>
+  <h2>
+    <a translate="NAV_SignMsg" ng-class="{ 'isActive': visibility=='signView'}" ng-click="setVisibility('signView')"> Sign Message </a>
     or
-    <a translate="MSG_verify"  ng-class="{'isActive': visibility=='verifyView'}" ng-click="setVisibility('verifyView')"> Verify Message </a>
-  </h3>
+    <a translate="MSG_verify"  ng-class="{ 'isActive': visibility=='verifyView'}" ng-click="setVisibility('verifyView')"> Verify Message </a>
+  </h2>
 
-  <article ng-switch on="visibility">
+  <article class="col-xs-12 clearfix" ng-switch on="visibility">
 
     <!-- Sign Message Stuff -->
     <section ng-switch-when="signView">
@@ -28,7 +21,7 @@
       </div>
 
 
-      <textarea class="form-control" ng-model="signMsg.message" placeholder="This is user kvhnuke on reddit. The purprose of this message is to prove that 0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8 is my address." rows="5"></textarea>
+      <textarea class="form-control" ng-model="signMsg.message" placeholder="This is user kvhnuke on reddit. The purpose of this message is to prove that 0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8 is my address." rows="5"></textarea>
 
       <!-- Date -->
       <div class="account-help-icon">
@@ -45,7 +38,7 @@
       <!-- Signed Message -->
       <div ng-show="signMsg.signedMsg">
         <h5 translate="MSG_signature"> Signature </h5>
-        <textarea class="form-control" rows="4" readonly>{{ signMsg.signedMsg }}</textarea>
+        <textarea class="form-control" rows="4" readonly title="Signature">{{signMsg.signedMsg }}</textarea>
       </div>
     </section>
     <!-- / Sign Message Stuff -->
@@ -56,7 +49,7 @@
     <section ng-switch-when="verifyView">
       <!-- Signature -->
       <h5 translate="MSG_signature"> Signature </h5>
-      <textarea class="form-control" ng-model="verifyMsg.signedMsg" rows="6" placeholder='{"address":"0xA7DeFf12461661212734dB35AdE9aE7d987D648c","msg":"This message was signed by kvhnuke | 28 NOV 2016 1:38AM","sig":"0x2190fdf0a011863fed22050372088d08404eb7cae020b73f24cfeca967773b3867f53f1ec96baffbdc6ec9dd3ca7c2ba4eed19a500f65cb3c343e24091b0c4f21b"}'></textarea>
+      <textarea class="form-control" ng-model="verifyMsg.signedMsg" rows="6" placeholder='{ "address":"0xA7DeFf12461661212734dB35AdE9aE7d987D648c","msg":"This message was signed by kvhnuke | 28 NOV 2016 1:38AM","sig":"0x2190fdf0a011863fed22050372088d08404eb7cae020b73f24cfeca967773b3867f53f1ec96baffbdc6ec9dd3ca7c2ba4eed19a500f65cb3c343e24091b0c4f21b"}'></textarea>
 
       <!-- Verify Signature Message Button -->
       <a class="btn btn-info btn-block" ng-click="verifySignedMessage()" translate="MSG_verify" ng-show="verifyMsg.signedMsg!=''"> Verify Message </a>
@@ -67,6 +60,4 @@
     <!-- / Verify Message Stuff -->
 
   </article>
-
-</main>
 <!-- / Sign Message Panel -->

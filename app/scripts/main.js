@@ -1,4 +1,5 @@
 'use strict';
+require('./localStoragePolyfill');
 var IS_CX = false;
 if (typeof chrome != 'undefined') IS_CX = chrome.windows === undefined ? false : true;
 var angular                  = require('angular');
@@ -24,6 +25,8 @@ ethUtil.WAValidator          = require('wallet-address-validator');
 window.ethUtil               = ethUtil;
 var format                   = require('string-format');
 window.format                = format;
+var browser                  = require('detect-browser');
+window.browser               = browser;
 var Wallet                   = require('./myetherwallet');
 window.Wallet                = Wallet;
 var Token                    = require('./tokenlib');
@@ -44,6 +47,8 @@ var Validator                = require('./validator');
 window.Validator             = Validator;
 var bity                     = require('./bity');
 window.bity                  = bity;
+var ens                      = require('./ens');
+window.ens                   = ens;
 var translate                = require('./translations/translate.js');
 if (IS_CX) {
   var cxFuncs                = require('./cxFuncs');
@@ -58,22 +63,28 @@ if (IS_CX) {
     window.ledgerEth         = ledgerEth;
     window.TrezorConnect     = trezorConnect.TrezorConnect;
 }
+var CustomGasMessages        = require('./customGas.js')
+window.CustomGasMessages     = CustomGasMessages;
 var tabsCtrl                 = require('./controllers/tabsCtrl');
 var viewCtrl                 = require('./controllers/viewCtrl');
 var walletGenCtrl            = require('./controllers/walletGenCtrl');
 var bulkGenCtrl              = require('./controllers/bulkGenCtrl');
 var decryptWalletCtrl        = require('./controllers/decryptWalletCtrl');
 var viewWalletCtrl           = require('./controllers/viewWalletCtrl');
+var txStatusCtrl              = require('./controllers/txStatusCtrl');
 var sendTxCtrl               = require('./controllers/sendTxCtrl');
 var swapCtrl                 = require('./controllers/swapCtrl');
 var signMsgCtrl              = require('./controllers/signMsgCtrl');
 var contractsCtrl            = require('./controllers/contractsCtrl');
+var ensCtrl                  = require('./controllers/ensCtrl');
 var footerCtrl               = require('./controllers/footerCtrl');
-var offlineTxCtrl        = require('./controllers/offlineTxCtrl');
+var offlineTxCtrl            = require('./controllers/offlineTxCtrl');
 var walletBalanceCtrl        = require('./controllers/walletBalanceCtrl');
+var helpersCtrl              = require('./controllers/helpersCtrl');
 var globalService            = require('./services/globalService');
 var walletService            = require('./services/walletService');
 var blockiesDrtv             = require('./directives/blockiesDrtv');
+var addressFieldDrtv         = require('./directives/addressFieldDrtv');
 var QRCodeDrtv               = require('./directives/QRCodeDrtv');
 var walletDecryptDrtv        = require('./directives/walletDecryptDrtv');
 var cxWalletDecryptDrtv      = require('./directives/cxWalletDecryptDrtv');
@@ -88,15 +99,19 @@ if (IS_CX) {
 }
 var app = angular.module('mewApp', ['pascalprecht.translate', 'ngSanitize','ngAnimate']);
 app.config(['$compileProvider', function($compileProvider) {
-  $compileProvider.aHrefSanitizationWhitelist(/^\s*(|blob|https|):/);
+  $compileProvider.aHrefSanitizationWhitelist(/^\s*(|blob|https|mailto):/);
 }]);
 app.config(['$translateProvider', function($translateProvider) {
   $translateProvider.useMissingTranslationHandlerLog();
   new translate($translateProvider);
 }]);
+app.config(['$animateProvider', function($animateProvider) {
+    $animateProvider.classNameFilter(/^no-animate$/);
+}]);
 app.factory('globalService', ['$http', '$httpParamSerializerJQLike', globalService]);
 app.factory('walletService', walletService);
 app.directive('blockieAddress', blockiesDrtv);
+app.directive('addressField', ['$compile', addressFieldDrtv]);
 app.directive('qrCode', QRCodeDrtv);
 app.directive('onReadFile', fileReaderDrtv);
 app.directive('walletBalanceDrtv', balanceDrtv);
@@ -108,16 +123,19 @@ app.controller('walletGenCtrl', ['$scope', walletGenCtrl]);
 app.controller('bulkGenCtrl', ['$scope', bulkGenCtrl]);
 app.controller('decryptWalletCtrl', ['$scope', '$sce', 'walletService', decryptWalletCtrl]);
 app.controller('viewWalletCtrl', ['$scope', 'walletService', viewWalletCtrl]);
+app.controller('txStatusCtrl', ['$scope', txStatusCtrl]);
 app.controller('sendTxCtrl', ['$scope', '$sce', 'walletService', sendTxCtrl]);
 app.controller('swapCtrl', ['$scope', '$sce', 'walletService', swapCtrl]);
 app.controller('signMsgCtrl', ['$scope', '$sce', 'walletService', signMsgCtrl]);
 app.controller('contractsCtrl', ['$scope', '$sce', 'walletService', contractsCtrl]);
+app.controller('ensCtrl', ['$scope', '$sce', 'walletService', ensCtrl]);
 app.controller('footerCtrl', ['$scope', 'globalService', footerCtrl]);
 app.controller('offlineTxCtrl', ['$scope', '$sce', 'walletService', offlineTxCtrl]);
 app.controller('walletBalanceCtrl', ['$scope', '$sce', walletBalanceCtrl]);
+app.controller('helpersCtrl', ['$scope', helpersCtrl]);
 if (IS_CX) {
   app.controller('addWalletCtrl', ['$scope', '$sce', addWalletCtrl]);
-  app.controller('myWalletsCtrl', ['$scope', '$sce', myWalletsCtrl]);
+  app.controller('myWalletsCtrl', ['$scope', '$sce','walletService', myWalletsCtrl]);
   app.controller('mainPopCtrl', ['$scope', '$sce', mainPopCtrl]);
   app.controller('quickSendCtrl', ['$scope', '$sce', quickSendCtrl]);
   app.controller('cxDecryptWalletCtrl', ['$scope', '$sce', 'walletService', cxDecryptWalletCtrl]);
