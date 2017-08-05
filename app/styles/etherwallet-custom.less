@@ -33,10 +33,10 @@ textarea {
 }
 
 .annoucement-warning {
-  background-color: @brand-orangered;
+  background-color: @brand-danger;
   &:hover,
   &:focus {
-    background-color: darken(@brand-orangered, 5%);
+    background-color: darken(@brand-danger, 5%);
     a, a:hover {
       text-decoration: none;
     }
@@ -471,7 +471,7 @@ label small {
 
 // color code the nodes
 @brand-eth: @brand-primary;
-@brand-etc: #9c27b0;
+@brand-etc: #3DB753;
 @brand-test: #cddc39;
 @brand-cust: #9c27b0;
 @brand-rsk: #ff794f;
@@ -483,7 +483,7 @@ label small {
 
   li:nth-child(3),
   li:nth-child(4),
-  li:nth-child(9) {
+  li:nth-child(7) {
     border-bottom: 1px solid @gray-lighter;
     padding-bottom: 5px;
   }
@@ -511,12 +511,10 @@ label small {
   }
   li:nth-child(5),
   li:nth-child(6),
-  li:nth-child(7),
-  li:nth-child(8),
-  li:nth-child(9), {
+  li:nth-child(7) {
     border-left: 2px solid @brand-test;
   }
-  li:nth-child(10) {
+  li:nth-child(8) {
     border-left: 2px solid @brand-rsk;
   }
   li:last-child {
@@ -528,60 +526,60 @@ label small {
 header {
   margin-bottom: 1em;
 }
-header.ETH,
-header.ETH + .container + .pre-footer + .footer {
-  border-top: 0.25rem solid @brand-eth;
+header.ETH     {
+  border-top: 3px solid @brand-eth;
   & + .container .modal-content {
-    border: 0.25rem solid @brand-eth;
+    border: 3px solid @brand-eth;
   }
 }
-header.ETC,
-header.ETC + .container + .pre-footer + .footer {
-  border-top: 0.25rem solid @brand-etc;
+header.ETC     {
+  border-top: 3px solid @brand-etc;
   .NAV_ENS { }
   & + .container .modal-content {
-    border: 0.25rem solid @brand-etc;
+    border: 3px solid @brand-etc;
+  }
+  & .bg-gradient {
+    background: linear-gradient(149deg, #0C3718, #59C86E);
   }
 }
-header.Ropsten,
-header.Ropsten + .container + .pre-footer + .footer {
-  border-top: 0.25rem solid @brand-test;
+header.Ropsten {
+  border-top: 3px solid @brand-test;
   & + .container .modal-content {
-    border: 0.25rem solid @brand-test;
+    border: 3px solid @brand-test;
   }
 }
-header.Kovan,
-header.Kovan + .container + .pre-footer + .footer {
-  border-top: 0.25rem solid @brand-test;
+header.Kovan   {
+  border-top: 3px solid @brand-test;
   .NAV_ENS { }
   & + .container .modal-content {
-    border: 0.25rem solid @brand-test;
+    border: 3px solid @brand-test;
   }
 }
-header.Rinkeby,
-header.Rinkeby + .container + .pre-footer + .footer {
-  border-top: 0.25rem solid @brand-test;
+header.Rinkeby {
+  border-top: 3px solid @brand-test;
   .NAV_ENS {}
   & + .container .modal-content {
-    border: 0.25rem solid @brand-test;
+    border: 3px solid @brand-test;
   }
 }
-header.RSK,
-header.RSK + .container + .pre-footer + .footer {
-  border-top: 0.25rem solid @brand-rsk;
+header.RSK {
+  border-top: 3px solid @brand-rsk;
   .NAV_ENS {}
   & + .container .modal-content {
-    border: 0.25rem solid @brand-rsk;
+    border: 3px solid @brand-rsk;
   }
 }
-header.Custom,
-header.Custom + .container + .pre-footer + .footer {
-  border-top: 0.25rem solid @brand-cust;
+header.Custom  {
+  border-top: 3px solid @brand-cust;
   .NAV_ENS { }
   & + .container .modal-content {
-    border: 0.25rem solid @brand-cust;
+    border: 3px solid @brand-cust;
   }
 }
 
-
-
+.container.ETC {
+  .btn.btn-primary {
+    border: none;
+    background-color: @brand-etc;
+  }
+}

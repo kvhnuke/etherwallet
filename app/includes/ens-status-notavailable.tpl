@@ -3,11 +3,11 @@
   <br /><br />
 
   <h1 ng-show="objENS.status==ensModes.notAvailable">
-    <strong>{{objENS.name}}.eth</strong> is not yet available.
+    <strong>{{objENS.name}}{{objENS.tld}}</strong> is not yet available.
   </h1>
 
   <h1 ng-show="objENS.status==ensModes.forbidden">
-    <strong>{{objENS.name}}.eth</strong> not available. (Forbidden)
+    <strong>{{objENS.name}}{{objENS.tld}}</strong> not available. (Forbidden)
   </h1>
 
 </article>

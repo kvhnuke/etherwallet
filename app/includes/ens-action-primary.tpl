@@ -30,7 +30,7 @@
       <label>Name</label>
       <div class="input-group">
         <input class="form-control" type="text" placeholder="myetherwallet" readonly ng-model="objENS.name"/>
-        <div class="input-group-btn"><a class="btn btn-default">.eth</a></div>
+        <div class="input-group-btn"><a class="btn btn-default">{{objENS.tld}}</a></div>
       </div>
       <!-- / Name -->
 
@@ -49,7 +49,7 @@
       <!-- Bid Mask -->
       <div ng-show="objENS.status!=ensModes.reveal">
         <h5>Bid Mask</h5>
-        <p><em><small>This is the amount of ETH you send when placing your bid. It has no bearing on the *actual* amount you bid (above). It is simply to hide your real bid amount. It must be >= to your actual bid. </small></em></p>
+        <p><em><small>This is the amount of {{ajaxReq.type}} you send when placing your bid. It has no bearing on the *actual* amount you bid (above). It is simply to hide your real bid amount. It must be >= to your actual bid. </small></em></p>
         <div class="input-group">
           <input class="form-control" type="number" placeholder="2 {{ajaxReq.type}}" ng-model="objENS.dValue" ng-class="Validator.isPositiveNumber(objENS.dValue) && objENS.dValue >= objENS.bidValue && objENS.dValue < wallet.balance ? 'is-valid' : 'is-invalid'"/>
           <div class="input-group-btn"><a class="btn btn-default">{{ajaxReq.type}}</a></div>
@@ -86,7 +86,7 @@
 
       <!-- After Sent: Reveal -->
       <div class="form-group" ng-show="objENS.txSent && objENS.status==ensModes.reveal">
-        <h4 class="text-warning">Click your TX hash to see if you successfully revealed your {{objENS.bidValue}} bid for {{objENS.name}}.eth.</h4>
+        <h4 class="text-warning">Click your TX hash to see if you successfully revealed your {{objENS.bidValue}} bid for {{objENS.name}}{{objENS.tld}}.</h4>
         <p>Please return on <strong>{{objENS.registrationDate.toString()}}</strong> to finalize the auction and see if you won!</p>
       </div>
       <!-- / After Sent: Reveal -->

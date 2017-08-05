@@ -1,5 +1,4 @@
 'use strict';
-require('./localStoragePolyfill');
 var IS_CX = false;
 if (typeof chrome != 'undefined') IS_CX = chrome.windows === undefined ? false : true;
 var angular                  = require('angular');

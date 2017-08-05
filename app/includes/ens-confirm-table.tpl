@@ -1,7 +1,7 @@
 <table class="table table-striped table-ens-modal">
   <tbody>
     <tr>
-      <td>Name</td><td>{{objENS.name}}.eth</td>
+      <td>Name</td><td>{{objENS.name}}{{objENS.tld}}</td>
     </tr>
     <tr>
       <td>Actual Bid Amount</td><td>{{objENS.bidValue}} {{ajaxReq.type}}</td>

@@ -10,7 +10,7 @@
       </h6>
       <ul ng-show="ensPrep">
         <li> Decide which account you wish to own the name & ensure you have multiple backups of that account.</li>
-        <li> Decide the maximum amount of ETH you are willing to pay for the name (your <u>Bid Amount</u>). Ensure that account has enough to cover your bid + 0.01 ETH for gas.</li>
+        <li> Decide the maximum amount of {{ajaxReq.type}} you are willing to pay for the name (your <u>Bid Amount</u>). Ensure that account has enough to cover your bid + 0.01 {{ajaxReq.type}} for gas.</li>
       </ul>
 
       <h6 ng-click="ensAuct = !ensAuct">
@@ -40,7 +40,7 @@
       </h6>
       <ul ng-show="ensFinalize">
         <li> Once the auction has ended (after 5 days / 120 hours), the winner needs to finalize the auction in order to claim their new name.</li>
-        <li> The winner will be refunded the difference between their bid and the next-highest bid. If you are the only bidder, you will refunded all but 0.01 ETH. </li>
+        <li> The winner will be refunded the difference between their bid and the next-highest bid. If you are the only bidder, you will refunded all but 0.01 {{ajaxReq.type}}. </li>
       </ul>
       <h6 ng-click="ensMore = !ensMore">
         <span ng-show="!ensMore">+</span><span ng-show="ensMore">-</span>
