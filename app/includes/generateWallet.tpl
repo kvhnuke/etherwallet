@@ -16,7 +16,7 @@
              aria-label="{{'GEN_Label_1' |translate}}"/>
         <span tabindex="0" aria-label="make password visible" role="button" class="input-group-addon eye" ng-click="showPass=!showPass"></span>
       </div>
-      <a tabindex="0" role="button" class="btn btn-primary" func="generateSingleWallet" ng-click="genNewWallet()" translate="NAV_GenerateWallet">Generate Wallet</a>
+      <a tabindex="0" ng-class="btn-{{curNode.name}}" role="button" class="btn btn-primary btn-{{globalService.curNode.name}}" func="generateSingleWallet" ng-click="genNewWallet()" translate="NAV_GenerateWallet">Generate Wallet</a>
       <p translate="x_PasswordDesc"> </p>
       <br>
     </section>
