@@ -688,5 +688,11 @@
     "symbol":"XRL",
     "decimal":9,
     "type":"default"
+  },
+  {
+    "address":"0x84119cb33E8F590D75c2D6Ea4e6B0741a7494EDA",
+    "symbol":"WTT",
+    "decimal":0,
+    "type":"default"
   }
 ]
