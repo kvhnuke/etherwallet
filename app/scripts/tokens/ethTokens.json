@@ -775,6 +775,13 @@
   }
   ,
   {
+    "address":"0xc324a2f6b05880503444451B8b27e6f9e63287Cb",
+    "symbol":"XUC",
+    "decimal":18,
+    "type":"default"
+  }  
+  ,
+  {
     "address":"0xE41d2489571d322189246DaFA5ebDe1F4699F498",
     "symbol":"ZRX",
     "decimal":18,
