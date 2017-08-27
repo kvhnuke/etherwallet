@@ -4,6 +4,66 @@ var de = function() {}
 de.code = 'de';
 de.data = {
 
+/* New Generics */
+x_CancelReplaceTx           : 'Transaktion ersetzen oder zurückziehen',
+x_CancelTx                  : 'Transaktion zurückziehen',
+x_PasswordDesc              : 'This password * encrypts * your private key. This does not act as a seed to generate your keys. **You will need this password + your private key to unlock your wallet.**',
+x_ReadMore                  : 'Weiter lesen',
+x_ReplaceTx                 : 'Transaktion ersetzen',
+x_TransHash                 : 'Transaktions Hash',
+x_TXFee                     : 'TX Gebühr',
+x_TxHash                    : 'TX Hash',
+
+/* Check TX Status */
+NAV_CheckTxStatus           : 'Check TX Status',
+NAV_TxStatus                : 'TX Status',
+tx_Details                  : 'Transaktionsdetails',
+tx_Summary                  : 'Während vielen Transaktionen (wie während ICOs) Transaktionen können für Stunden, villeicht sogar Tage ausstehen. Dieses Tool gibt Ihnen die Fähigkeit ihre Transaktion zu finden und zu widerrufen / ersetzen. ** Dies können Sie normalerweise nicht machen. Mann sollte sich darauf nicht verlassen und es funktioniert nur wenn die TX Pools voll sind. [Lesen Sie mehr über das Tool hier](https://myetherwallet.groovehq.com/knowledge_base/topics/how-can-i-check-on-the-status-of-my-transaction-can-i-cancel-override-overwrite-replace-or-do-anything-once-a-transaction-has-been-sent)**',
+tx_notFound                 : 'Transaktion nicht gefunden',
+tx_notFound_1               : 'Die TX kann nicht in dem TX Pool der Node mit der Sie verbunden gefunden werden.',
+tx_notFound_2               : 'Wenn du die Transaktion erst gesendet hast, warte 15 Sekunden und drücke den "Check TX Status" Button erneut. ',
+tx_notFound_3               : 'Sie könnte noch in dem TX Pool einer anderen Node sein und wartet gemined zu werden.',
+tx_notFound_4               : 'Bitte benutzen Sie das DropDown Menü oben-rechts & wählen Sie eine andere Node aus (z.B. `ETH (Etherscan.io)` oder `ETH (Infura.io)` oder `ETH (MyEtherWallet)`) und prüfen es erneut.',
+tx_foundInPending           : 'Wartende Transaktion gefunden',
+tx_foundInPending_1         : 'Ihre Transaktion wurde in dem TX Pool der Node mit der Sie verbunden sind gefunden. ',
+tx_foundInPending_2         : 'Sie steht derzeit aus (wartet gemined zu werden). ',
+tx_foundInPending_3         : 'Es ist möglich Sie zu widerrufen oder diese Transaktion zu ersetzen. Entsperren Sie ihre Wallet darunter.',
+tx_FoundOnChain             : 'Transaktion gefunden',
+tx_FoundOnChain_1           : 'Deine Transaktion wurde gemined und ist nun in der Blockchain.',
+tx_FoundOnChain_2           : '**Wenn Sie ein rotes`( ! )`, ein `BAD INSTRUCTION` oder `OUT OF GAS` Fehlernachricht bekommen**, heißt dass, dass die Transaktion nicht erfolgreich *gesendet* worden ist. Sie können die Transaktion nicht zurücknehmen oder ersetzen. Stattdessen, sende eine neue Transaktion. Wenn du einen "Out of Gas" Fehler bekommst, solltest du das GasLimit verdoppeln dass du eigentlich benutzt hast.',
+tx_FoundOnChain_3           : '**Wenn sie keine Fehlernachrichten bekommen, wurde ihre Transaktion erfolgreich versendet.** Ihre ETH oder Tokens sind dort wohin sie versendet wurden. Wenn Sie die ETH or Tokens nicht im anderen Wallet / Exchange account sehen können, und es schon 24+ Stunden her ist seitdem Sie gesendet haben, bitte [Kontaktieren Sie den Service](https://myetherwallet.groovehq.com/knowledge_base/topics/i-have-a-question-but-its-not-about-myetherwallet-dot-com-what-do-i-do). Senden Sie den *link* zu ihrer Transaktion und frag sie, nett, in deine Situation zu schauen.',
+
+/* Gen Wallet Updates */
+GEN_Help_1                  : 'Nutz deine',
+GEN_Help_2                  : 'um auf deinen Account zuzugreifen.',
+GEN_Help_3                  : 'Ihr Gerät * ist * Ihr Wallet.',
+GEN_Help_4                  : 'Anleitungen & FAQ',
+GEN_Help_5                  : 'Wie erstellt man eine Wallet',
+GEN_Help_6                  : 'Einstieg',
+GEN_Help_7                  : 'Sicher aufbewahren · Mach eine Sicherung · Zeigen Sie es mit keinem · Verlieren Sie es nicht · Es kann nicht wiederbekommen werden Sie es verlieren.',
+GEN_Help_8                  : 'Datei wird nicht heruntergeladen? ',
+GEN_Help_9                  : 'Versuche Google Chrome oder Chromium zu benutzen ',
+GEN_Help_10                 : 'Rechtsklick & Datei speichern als. Dateiname: ',
+GEN_Help_11                 : 'Diese Datei auf deinem Computer **nicht** öffnen ',
+GEN_Help_12                 : 'Nutze es um dein Wallet bei MyEtherWallet (oder Mist, Geth, Parity und andere Wallet Clients.) zu öffnen ',
+GEN_Help_13                 : 'Wie kann ich meine Keystore File sichern? ',
+GEN_Help_14                 : 'Was sind diese verschiedene Formate? ',
+GEN_Help_15                 : 'Präventiere Verlust &amp; Diebstahl deines Geldes.',
+GEN_Help_16                 : 'Was sind diese verschiedene Formate?',
+GEN_Help_17                 : 'Warum sollte Ich?',
+GEN_Help_18                 : 'Um ein zweites Backup zu haben.',
+GEN_Help_19                 : 'Im Fall, dass du dein Passwort vergisst.',
+GEN_Help_20                 : 'Cold Storage',
+GET_ConfButton              : 'I understand. Continue.',
+GEN_Label_5                 : 'Save Your `Private Key`. ',
+GEN_Unlock                  : 'Unlock your wallet to see your address',
+GAS_PRICE_Desc              : 'Gas Price is the amount you pay per unit of gas. `TX fee = gas price * gas limit` & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is `21 GWEI`.',
+GAS_LIMIT_Desc              : 'Gas limit is the amount of gas to send with your TX. `TX fee` = gas price * gas limit & is paid to miners for including your TX in a block. Increasing this number will not get your TX mined faster. Sending ETH = `21000`. Sending Tokens = ~`200000`.',
+NONCE_Desc                  : 'The nonce is the number of transactions sent from a given address. It ensures transactions are sent in order & not more than once.',
+TXFEE_Desc                  : 'Die TX Gebühr wird den Miner(n) bezahlt, für das inkludieren deiner Transaktion in einem Bock. Es wird durch `gas limit` * `gas price` berechnet. [Du kannst GWEI -> ETH hier umwandeln](https://www.myetherwallet.com/helpers.html)',
+
+
+
 /* Navigation*/
 NAV_AddWallet               : 'Wallet hinzufügen ',
 NAV_BulkGenerate            : 'Mehrere Wallets erstellen ',
@@ -11,22 +71,23 @@ NAV_Contact                 : 'Kontakt ',
 NAV_Contracts               : 'Verträge ',
 NAV_DeployContract          : 'Vertrag aufstellen ',
 NAV_ENS                     : 'ENS',
+NAV_GenerateWallet_alt      : 'Neues Wallet ',
 NAV_GenerateWallet          : 'Wallet erstellen ',
 NAV_Help                    : 'Hilfe ',
-NAV_InteractContract        : 'Interact with Contract ',
+NAV_InteractContract        : 'Interagieren mit Vertrag ',
 NAV_Multisig                : 'Multisig ',
 NAV_MyWallets               : 'Meine Wallets ',
 NAV_Offline                 : 'Sende offline ',
 NAV_SendEther               : 'Sende Ether und Tokens ',
 NAV_SendTokens              : 'Sende Tokens ',
 NAV_SignMsg                 : 'Sign Message ',
-NAV_Swap                    : 'Swap ',
+NAV_Swap                    : 'Wechseln ',
 NAV_ViewWallet              : 'Wallet Infos anzeigen ',
 NAV_YourWallets             : 'Deine Wallets ',
 
 /* General */
-x_Access                    : 'Access ',
-x_AddessDesc                : 'Dies ist deine "Kontonummer" oder dein "Öffentlicher Schlüssel". Du benötigst diese Adresse, wenn dir jemand Ether senden möchte. Das Icon ist eine einfache Möglichkeit, die Adresse zu überprüfen ',
+x_Access                    : 'Zugriff ',
+x_AddessDesc                : 'Dies ist deine "Kontonummer" oder dein "Öffentlicher Schlüssel". Du benötigst diese Adresse, wenn dir jemand Ether oder Tokens senden möchte. Das Icon ist eine einfache Möglichkeit, die Adresse zu überprüfen ',
 x_Address                   : 'Deine Adresse ',
 x_Cancel                    : 'Abbrechen ',
 x_CSV                       : 'CSV-Datei (unverschlüsselt) ',
@@ -36,6 +97,7 @@ x_JsonDesc                  : 'Dies ist die unverschlüsselte Version deines pri
 x_Keystore                  : 'Keystore File (UTC / JSON · Empfohlen · Verschlüsselt) ',
 x_Keystore2                 : 'Keystore File (UTC / JSON) ',
 x_KeystoreDesc              : 'Diese Keystore-Datei passt zu dem Format, das von Mist verwendet wird, sodass du diese Datei dort zukünftig einfach importieren kannst. Es ist empfehlenswert, diese Datei herunterzuladen und zu sichern. ',
+x_MetaMask                  : 'Metamask / Mist ',
 x_Mnemonic                  : 'Mnemonic Phrase ',
 x_ParityPhrase              : 'Parity Phrase ',
 x_Password                  : 'Passwort ',
@@ -72,10 +134,12 @@ sidebar_TransHistory        : 'Transaktions-Historie ',
 sidebar_donation            : 'MyEtherWallet ist ein freier, quelloffener Service, der deiner Privatsphäre und Sicherheit gewidmet ist. Je mehr Spenden wir erhalten, desto mehr Zeit können wir investieren, um neue Funktionen zu programmieren, dein Feedback zu verarbeiten und dir zu geben, was du dir wünschst. Wir sind nur zwei Leute, die die Welt ändern möchten. Hilfst du uns dabei? ',
 sidebar_donate              : 'Spenden ',
 sidebar_thanks              : 'Dankeschön!!! ',
+sidebar_DisplayOnTrezor     : 'Display address on TREZOR',
+sidebar_DisplayOnLedger     : 'Display address on Ledger',
 
 /* Decrypt Panel */
-decrypt_Access              : 'Wie möchtst du auf dein wallet zugreifen? ',
-decrypt_Title               : 'Wähle das format deines privaten schlüssels ',
+decrypt_Access              : 'Wie möchtst du auf dein Wallet zugreifen? ',
+decrypt_Title               : 'Wähle das Format deines privaten Schlüssels ',
 decrypt_Select              : 'Wallet auswählen ',
 
 /* Add Wallet */
@@ -88,6 +152,10 @@ ADD_Radio_3                 : 'Kopiere/Tippe deinen privaten Schlüssel ein ',
 ADD_Radio_4                 : 'Kontoadresse zur Beobachtung hinzufügen ',
 ADD_Radio_5                 : 'Füge deinen Mnemonic ein ',
 ADD_Radio_5_Path            : 'Select HD derivation path ',
+ADD_Radio_5_woTrezor        : '(Jaxx, Metamask, Exodus, imToken)',
+ADD_Radio_5_withTrezor      : '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
+ADD_Radio_5_PathAlternative : '(Ledger)',
+ADD_Radio_5_PathTrezor      : '(TREZOR)',
 ADD_Radio_5_PathCustom      : 'Benutzerdefiniert ',
 ADD_Label_2                 : 'Wähle ein Kürzel ',
 ADD_Label_3                 : 'Deine Datei ist verschlüsselt. Bitte gib das Passwort ein ',
@@ -97,6 +165,7 @@ ADD_Label_5                 : 'Kontoadresse eingeben ',
 ADD_Label_6                 : 'Wallet entsperren ',
 ADD_Label_6_short           : 'Entsperren ',
 ADD_Label_7                 : 'Kontoadresse hinzufügen ',
+ADD_Label_8                 : 'Password (optional): ',
 
 /* Generate Wallets */
 GEN_desc                    : 'Wenn du mehrere Wallets auf einmal erstellen möchtest, kannst du dies hier tun ',
@@ -123,7 +192,7 @@ SEND_generate               : 'Erzeuge Transaktion ',
 SEND_raw                    : 'Transaktion (Binärformat) ',
 SEND_signed                 : 'Signierte Transaktion ',
 SEND_trans                  : 'Sende Transaktion ',
-SEND_custom                 : 'Add Custom Token ',
+SEND_custom                 : 'Benutzerdefinierten Token hinzufügen ',
 SENDModal_Title             : 'Achtung! ',
 /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
 SENDModal_Content_1         : 'Du bist dabei, ',
@@ -208,6 +277,8 @@ MYWAL_Content_3             : 'Wenn du dieses Wallet in Zukunft mit MyEtherWalle
 VIEWWALLET_Subtitle         : 'Dies erlaubt dir den Download verschiedener Versionen deines privaten Schlüssel sowie das erneute Drucken deines Papier-Wallets. Es wird empfohlen, dies zu tun um [Deinen Account in Geth/Mist zu importieren.](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). Zum Überprüfen deines Kontostands empfehlen wir, einen Blockchain Explorer wie [etherscan.io](http://etherscan.io/) zu verwenden. ',
 VIEWWALLET_Subtitle_Short   : 'Dies erlaubt dir den Download verschiedener Versionen deines privaten Schlüssel sowie das erneute Drucken deines Papier-Wallets. ',
 VIEWWALLET_SuccessMsg       : 'Erfolgreich! Hier sind die Daten deines Wallets. ',
+VIEWWALLET_ShowPrivKey      : '(show)',
+VIEWWALLET_HidePrivKey      : '(hide)',
 
 /* Chrome Extension */
 CX_error_1                  : 'Du hast keine Wallets gespeichert. Klicke ["Wallet hinzufügen"](/cx-wallet.html#add-wallet) um eines hinzuzufügen! ',
@@ -244,6 +315,7 @@ SWAP_rec_add                : "Deine Empfangsadresse ",
 SWAP_start_CTA              : "Starte Wechsel ",
 SWAP_ref_num                : "Deine Referenznummer ",
 SWAP_time                   : "Zum Senden verbleibende Zeit   ",
+SWAP_elapsed				        : "Time elapsed since sent ",
 SWAP_progress_1             : "Auftrag initialisiert ",
 SWAP_progress_2             : "Warte auf deine ", // Waiting for your BTC...
 SWAP_progress_3             : "Erhalten! ", // ETH Received!
@@ -253,11 +325,11 @@ SWAP_order_CTA              : "Bitte sende ", // Please send 1 ETH...
 SWAP_unlock                 : "Schalte dein Wallet frei um ETH oder Tokens direkt von dieser Seite aus zu senden ",
 
 /* Sign Message */
-MSG_message                 : 'Nachticht ',
+MSG_message                 : 'Nachricht ',
 MSG_date                    : 'Datum ',
 MSG_signature               : 'Signatur ',
 MSG_verify                  : 'Nachricht verifizieren ',
-MSG_info1                   : 'Include the current date so the signature cannot be reused on a different date. ',
+MSG_info1                   : 'Füge das aktuelle Datum ein, sodass die Signatur an einem anderem Datum nicht wiederbenutzt wird ',
 MSG_info2                   : 'Include your nickname and where you use the nickname so someone else cannot use it. ',
 MSG_info3                   : 'Include a specific reason for the message so it cannot be reused for a different purpose. ',
 
@@ -268,40 +340,49 @@ MNEM_more                   : 'Mehrere Adressen ',
 MNEM_prev                   : 'Letzte Adressen ',
 
 /* Hardware wallets */
-x_Ledger                    : 'Ledger Nano S ',
-ADD_Ledger_1                : 'Verbinde deinen Ledger Nano S ',
+x_Ledger                    : 'Ledger Wallet ',
+ADD_Ledger_1                : 'Verbinde deinen Ledger Wallet ',
 ADD_Ledger_2                : 'Öffne das Ethereum Programm (oder ein Vertragsprogramm) ', //Statt Programm -> Applikation?
 ADD_Ledger_3                : 'Gehe sicher, dass Browser Support aktiviert ist. ',
 ADD_Ledger_4                : 'If no Browser Support is found in settings, verify that you have [Firmware >1.2](https://www.ledgerwallet.com/apps/manager) ',
-ADD_Ledger_0a               : 'Re-open MyEtherWallet on a secure (SSL) connection ',
+ADD_Ledger_0a               : 'You must access MyEtherWallet via a secure (SSL / HTTPS) connection to connect. ',
 ADD_Ledger_0b               : 'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/) ',
-ADD_Ledger_scan             : 'Connect to Ledger Nano S ',
+ADD_Ledger_scan             : 'Connect to Ledger Wallet ',
+
+ADD_MetaMask                : 'Connect to MetaMask ',
+
 x_Trezor                    : 'TREZOR ',
+ADD_Trezor_scan             : 'Zu TREZOR Verbinden ',
+ADD_Trezor_select           : 'Dies ist ein TREZOR seed ',
 ADD_Trezor_scan             : 'Connect to TREZOR ',
 ADD_Trezor_select           : 'This is a TREZOR seed ',
+x_DigitalBitbox             : 'Digital Bitbox ',
+ADD_DigitalBitbox_0a        : 'Re-open MyEtherWallet on a secure (SSL) connection ',
+ADD_DigitalBitbox_0b        : 'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/) ',
+ADD_DigitalBitbox_scan      : 'Connect your Digital Bitbox ',
 
 /* Error Messages */
-ERROR_0                     : 'Bitte gültigen Betrag eingeben ',
+ERROR_0                     : 'Bitte gebe einen gültigen Betrag ein ',
 ERROR_1                     : 'Dein Passwort muss mindestens 9 Zeichen lang sein. Bitte wähle ein sicheres Passwort. ',
 ERROR_2                     : 'Oh oh! Wir haben den Typ der Wallet-Datei nicht erkannt. ',
 ERROR_3                     : 'Dies ist keine gültige Wallet-Datei. ',
 ERROR_4                     : 'Diese Einheit existiert nicht, bitte wähle eine dieser Einheiten aus ',
-ERROR_5                     : 'Ungültige Addresse. ',
-ERROR_6                     : 'Ungültiges Passwort. ',
-ERROR_7                     : 'Ungültiger Betrag. ',
-ERROR_8                     : 'Ungültiges Gaslimit. ',
-ERROR_9                     : 'Ungültiger Datenwert. ',
-ERROR_10                    : 'Ungültiger Gasbetrag. ',
-ERROR_11                    : 'Ungültige Nonce. ',
+ERROR_5                     : 'Bitte gebe eine gültige Addresse ein. ',
+ERROR_6                     : 'Bitte gebe eine gültige Passwort ein. ',
+ERROR_7                     : 'Bitte gebe eine gültige Betrag ein. (Must be integer. Try 0-18.) ', // 7
+ERROR_8                     : 'Bitte gebe eine gültige Gasverbrauch ein. (Must be integer. Try 21000-4000000.) ', // 8
+ERROR_9                     : 'Bitte gebe eine gültige Datenwert ein. (Must be hex.) ', // 9
+ERROR_10                    : 'Bitte gebe eine gültige Gasbetrag ein. (Must be integer. Try 20 GWEI / 20000000000 WEI.) ',
+ERROR_11                    : 'Bitte gebe eine gültige Nonce ein. (Must be integer.) ', // 11
 ERROR_12                    : 'Ungültige unterzeichnete Transaktion. ',
 ERROR_13                    : 'Ein Wallet mit diesem Spitznamen existiert bereits. ',
 ERROR_14                    : 'Wallet nicht gefunden. ',
 ERROR_15                    : 'Es sieht nicht so aus als würde ein Proposal mit dieser ID existieren oder es gab einen Fehler beim Lesen des Proposal. ',
 ERROR_16                    : 'Es ist bereits ein Wallet mit dieser Adresse gespeichert. Bitte überprüfe die Seite deines Wallets. ',
-ERROR_17                    : 'Du brauchst **0.01 ETH** in deinem Account um die Gaskosten zu decken. Bitte füge ETH hinzu und versuche es noch einmal. ',
+ERROR_17                    : 'Unzureichendes Guthaben für Gasverbrauch * Gaspreis + Wert. Du brauchst **0.01 ETH** in deinem Account um die Gaskosten zu decken. Bitte füge ETH hinzu und versuche es noch einmal. ',
 ERROR_18                    : 'Diese Transaktion würde dein gesamtes verbleibendes Gas verbrauchen. Das bedeutet, du hast bereits über dieses Proposal abgestimmt oder die Debattierphase ist zu Ende. ',
 ERROR_19                    : 'Ungültiges Symbol ',
-ERROR_20                    : 'Not a valid ERC-20 token ',
+ERROR_20                    : 'Kein gültiger ERC-20 Token ',
 ERROR_21                    : 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative. ',
 ERROR_22                    : 'Bitte gebe einen gültigen Knotennamen ein ',
 ERROR_23                    : 'Bitte gebe eine gültige URL ein. Falls du dich mit HTTPS verbindest, muss auch der Knoten mit HTTPS ausgestattet werden. ',
@@ -312,15 +393,22 @@ ERROR_27                    : 'Mindestbetrag: 0.01. Maximaler Betrag: ',
 ERROR_28                    : '**Du benötigst deine Keystore-Datei & das Passwort** (oder den privaten Schlüssel) um künftig auf dein Wallet zugreifen zu können. Bitte sichere diese Datei daher auf einem externen Medium! Es gibt KEINE Möglichkeit, ein Wallet wiederherzustellen, wenn du diese Datei und das Passwort nicht sicherst. Lies die [Hilfe-Seite](https://www.myetherwallet.com/#help) für weitere Informationen. ',
 ERROR_29                    : 'Bitte gebe einen gültigen Benutzer und Password ein ',
 ERROR_30                    : 'Bitte gebe einen gültigen ENS Namen ein ',
-ERROR_31                    : 'Geheime Phasre ungültig ',
-ERROR_32                    : 'Verbindung zum Knoten nicht möglich. Bitte lade die Seite neu, oder schau auf der Hilfeseite für mehr Tipps zur Problemlösung ', //Evtl. noch kürzen
+ERROR_31                    : 'Bitte gebe einen gültigen Geheime Phasre ein ',
+ERROR_32                    : 'Verbindung zum Knoten nicht möglich. Refresh your page, try a different node (upper right corner), check your firewall settings. If custom node, check your configs.', // 32
+ERROR_33                    : 'The wallet you have unlocked does not match the owner\'s address. ', // 33
+ERROR_34                    : 'The name you are attempting to reveal does not match the name you have entered. ', // 34
+ERROR_35                    : 'Input address is not checksummed. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/not-checksummed-shows-when-i-enter-an-address" target="_blank" rel="noopener"> More info</a>', // 35
+ERROR_36                    : 'Enter valid TX hash', // 36
+ERROR_37                    : 'Enter valid hex string (0-9, a-f)', // 37
+
 SUCCESS_1                   : 'Gültige Addresse ',
 SUCCESS_2                   : 'Wallet erfolgreich entschlüsselt ',
-SUCCESS_3                   : 'TX was broadcast to the blockchain. Click to see your transaction & verify it was mined and does not have any out of gas or contract execution errors.  TX ID:  ', //'Transaktion übermittelt. TX ID ',
+SUCCESS_3                   : 'Deine Transaktion wurde **in das Netzwerk geschickt**. Sie muss noch gemined & validiert werden. (1) Drück auf den Link. Zähle bis 20. Lade die Seite neu. Schau dass dort keine roten ( ! ) Fehler kommen. Wenn keine Transaktionsdetails kommen, warte. Deine Transaktion wartet gemined zu werden. TX ID:   ',
 SUCCESS_4                   : 'Dein Wallet wurde erfolgreich hinzugefügt ',
 SUCCESS_5                   : 'Ausgewählte Datei ',
 SUCCESS_6                   : 'Erfolgreich verbunden ',
-SUCCESS_7                   : 'Nachtichten Signatur verifiziert',
+SUCCESS_7                   : 'Nachrichten Signatur verifiziert',
+
 /* Geth Error Messages */
 GETH_InvalidSender          : 'Invalid sender Ungültiger Sender ',
 GETH_Nonce                  : 'Nonce too low  ',
@@ -359,14 +447,14 @@ TranslatorAddr_3            : '0x1DAd1765381460db9A44846cDfA6f74c65A06B77 ',
 TranslatorName_4            : '[FelixA](https://www.myetherwallet.com/?gaslimit=21000&to=0xb6999051b0Bfad32E192e107181E0ac72bE7EE3D&value=1.0#send-transaction) · ',
 TranslatorAddr_4            : '0xb6999051b0Bfad32E192e107181E0ac72bE7EE3D ',
 /* Translator 4             : Insert Comments Here */
-TranslatorName_5            : 'danielsun174 · ffidan61 ',
+TranslatorName_5            : 'danielsun174 · ffidan61 · [u/Preisschild](https://www.myetherwallet.com/?gaslimit=21000&to=0x700Eb9142a0CC709fce80709cfbF5Ac25438c584&value=0.1#send-transaction) ',
 TranslatorAddr_5            : '',
 /* Translator 5             : Insert Comments Here */
 
 /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
 HELP_Warning                : 'Falls du vor dem **31.12.2015** ein Wallet generiert, oder das Repository heruntergeladen hast, bitte überprüfe deine Wallets &amp; lade eine neue Version des Repositories herunter. Klick für details. ',
 HELP_Desc                   : 'Hast du das Gefühl etwas fehlt? Hast du eine andere Frage? [Schreib uns](mailto:support@myetherwallet.com) und wir werden nicht nur deine Frage beantworten, wir werden auch die Seite updaten, damit diese in der Zukunft noch einfacher zu bedienen sein wird! ',
-HELP_Remind_Title           : 'Ein paar Reminder ',
+HELP_Remind_Title           : 'Ein paar Erinnerungshilfen ',
 HELP_Remind_Desc_1          : '**Ethereum, MyEtherWallet.com & MyEtherWallet CX, sowie einige der verwendeten Javascript Bibliotheken, die wir verwenden, befinden sich noch in Entwicklung.** Zwar haben wir alles umfassend getestet und es wurden erfolgeich tausende Wallets von Menschen aus aller Welt kreiert, jedoch bestimmt immer eine gewisse Gefahr, dass etwas unerwartetes passiert und dein Ether verloren geht. Bitte investiere nicht mehr als du verlieren kannst, und sei immer vorsichtig. Sollte etwas schlimmes passieren, **können wir uns leider nicht verantwortlich für einen Verlust zeichnen**. ',
 HELP_Remind_Desc_2          : 'MyEtherWallet.com & MyEtherWallet CX sind keine "web wallets". Du erstellst keinen Account oder sendest uns Ether den wir halten. Alle Daten bleiben auf deinem Computer, bzw. Browser. Unser Auftrag ist es, dir das Erstellen, Speichern und Zugreifen auf deine Accounts zu vereinfachen, sowie dir eine simple Möglichkeit zur Interaktion mit der Blockchain zu bieten. ',
 HELP_Remind_Desc_3          : 'Falls du deinen privaten Schlüssel und Passwort nicht speicherst, gibt es keine Möglichkeit den Zugriff auf das Konto und die darauf befindlichen Mittel wieder herzustellen. Bitte erstelle Back-ups und speichere deine Zugriffsdaten an verschiedenen Orten &ndash; nicht nur deinem Computer! ',
@@ -385,7 +473,7 @@ HELP_1_Desc_3               : 'Wähle ein starkes Passwort aus. Falls du glaubst
 HELP_1_Desc_4               : 'Klicke auf "Wallet erstellen". ',
 HELP_1_Desc_5               : 'Dein Wallet wurde nun erstellt. ',
 
-HELP_2a_Title               : '2a) Wie speichere ich/erstelle Back-ups meines Wallets? ',
+HELP_2a_Title               : 'Wie speichere ich/erstelle Back-ups meines Wallets? ',
 HELP_2a_Desc_1              : 'Du solltest dein Wallet immer an verschiedenen physischen Orten abspeichern - beispielsweise auf einem USB-Stick und/oder einem Stück Papier. ',
 HELP_2a_Desc_2              : 'Speichere die Adresse. Du kannst sie für dich behalten oder mit anderen teilen. Auf diese Adresse können andere Ether an dich senden. ',
 HELP_2a_Desc_3              : 'Speiche verschiedene Versionen deines privaten Schlüssels. Teile ihn nicht mit jemand anderem. Dein privater Schlüssel ist notwendig, wenn du auf deinen Ether zugreifen willst, um eine Überweisung zu tätigen! Es gibt 3 Arten des privaten Schlüssels ',
@@ -395,7 +483,7 @@ HELP_2a_Desc_6              : 'Bitte denk daran, dass du den Verlust des Schlüs
 
 HELP_2b_Title               : '2b) How do I safely / offline / cold storage with MyEtherWallet? ',
 HELP_2b_Desc_1              : 'Go to [https://github.com/kvhnuke/etherwallet/releases/latest](https://github.com/kvhnuke/etherwallet/releases/latest). ',
-HELP_2b_Desc_2              : 'Click on `dist-vX.X.X.X.zip`. ',
+HELP_2b_Desc_2              : 'Click on `etherwallet-vX.X.X.X.zip`. ',
 HELP_2b_Desc_3              : 'Move zip to an airgapped computer. ',
 HELP_2b_Desc_4              : 'Unzip it and double-click `index.html`. ',
 HELP_2b_Desc_5              : 'Generate a wallet with a strong password. ',
@@ -421,11 +509,11 @@ HELP_4_Desc_4               : 'If the wallet is encrypted, a text box will autom
 HELP_4_Desc_5               : 'Click the "Unlock Wallet" button. ',
 HELP_4_Desc_6               : 'Enter the address you would like to send to in the "To Address:" field. ',
 HELP_4_Desc_7               : 'Enter the amount you would like to send. You can also click the "Send Entire Balance" link if you would like the transfer the entire balance. ',
-HELP_4_Desc_9               : 'Click "Generate Transaction". ',
+HELP_4_Desc_9               : 'Drücke auf "Generate Transaction". ',
 HELP_4_Desc_10              : 'A couple more fields will appear. This is your browser generating the transaction. ',
 HELP_4_Desc_11              : 'Click the blue "Send Transaction" button below that. ',
 HELP_4_Desc_12              : 'A pop-up will appear. Verify that the amount and the address you are sending to are correct. Then click "Yes, I am sure! Make transaction." button. ',
-HELP_4_Desc_13              : 'The transaction will be submitted. The TX ID will display. You can click that TX ID to see it on the blockchain. ',
+HELP_4_Desc_13              : 'The transaction will be submitted. The TX Hash will display. You can click that TX Hash to see it on the blockchain. ',
 
 HELP_4CX_Title              : '4) Wie kann ich Ether über MyEtherWallet CX senden? ',
 HELP_4CX_Desc_1             : 'First, you need to add a wallet. Once you have done that, you have 2 options: the "QuickSend" functionality from the Chrome Extension icon or the "Sende Ether und Tokens" page. ',
@@ -472,7 +560,7 @@ HELP_7_Desc_11              : 'Click "Generate Transaction". ',
 HELP_7_Desc_12              : 'A couple more fields will appear. This is your browser generating the transaction. ',
 HELP_7_Desc_13              : 'Click the blue "Send Transaction" button below that. ',
 HELP_7_Desc_14              : 'A pop-up will appear. Verify that the amount and the address you are sending to are correct. Then click "Yes, I am sure! Make transaction." button. ',
-HELP_7_Desc_15              : 'The transaction will be submitted. The TX ID will display. You can click that TX ID to see it on the blockchain. ',
+HELP_7_Desc_15              : 'The transaction will be submitted. The TX Hash will display. You can click that TX Hash to see it on the blockchain. ',
 
 HELP_8_Title                : '8) What happens if your site goes down? ',
 HELP_8_Desc_1               : 'MyEtherWallet is not a web wallet. You don\'t have a login and nothing ever gets saved to our servers. It is simply an interface that allows you interact with the blockchain. ',
@@ -582,8 +670,8 @@ HELP_Sec_Desc_5             : 'For generating wallets, you can download the [sou
 HELP_Sec_Desc_6             : 'Generate a test wallet and check and see what network activity is happening. The easiest way for you to do this is to right click on the page and click "inspect element". Go to the "Network" tab. Generate a test wallet. You will see there is no network activity. You may see something happening that looks like data:image/gif and data:image/png. Those are the QR codes being generated...on your computer...by your computer. No bytes were transferred. ',
 HELP_Sec_Desc_8             : 'If you do not feel comfortable using this tool, then by all means, do not use it. We created this tool as a helpful way for people to generate wallets and make transactions without needing to dive into command line or run a full node. Again, feel free to reach out if you have concerns and we will respond as quickly as possible. Thanks! ',
 
-HELP_FAQ_Title              : 'More Helpful Answers to Frequent Questions ',
-HELP_Contact_Title          : 'Ways to Get in Touch'
+HELP_FAQ_Title              : 'Mehr hilfreiche Antworten zu oft gefragten Fragen ',
+HELP_Contact_Title          : 'Kontakt zu uns'
 };
 
 module.exports = de;

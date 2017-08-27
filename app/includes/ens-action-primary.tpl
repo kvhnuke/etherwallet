@@ -2,23 +2,15 @@
 
   <article class="row">
 
-    <!-- Sidebar -->
-    <section class="col-sm-4">
-      <wallet-balance-drtv></wallet-balance-drtv>
-    </section>
-    <!-- / Sidebar -->
-
     <!-- Content -->
     <section class="col-sm-8">
-
+      <div class="block">
       <!-- Title -->
-      <div class="form-group">
-        <h2>
-          <span ng-show="objENS.status==ensModes.auction"> Place a Bid</span>
-          <span ng-show="objENS.status==ensModes.open">Start an Auction</span>
-          <span ng-show="objENS.status==ensModes.reveal">Reveal your Bid</span>
-        </h2>
-      </div>
+      <h2>
+        <span ng-show="objENS.status==ensModes.auction"> Place a Bid</span>
+        <span ng-show="objENS.status==ensModes.open">Start an Auction</span>
+        <span ng-show="objENS.status==ensModes.reveal">Reveal your Bid</span>
+      </h2>
       <!-- / Title -->
 
       <!-- Thing they copied -->
@@ -43,7 +35,7 @@
       <!-- / Name -->
 
       <!-- Bid Amount -->
-      <h5>Bid Amount</h5>
+      <h5>Actual Bid Amount</h5>
       <p ng-show="objENS.status!=ensModes.reveal"><em><small>You must remember this to claim your name later.</small></em></p>
       <div class="input-group">
         <!-- validate wallet balance for everything but reveal -->
@@ -54,16 +46,16 @@
       </div>
       <!-- / Bid Amount -->
 
-      <!-- Disguise Bid -->
+      <!-- Bid Mask -->
       <div ng-show="objENS.status!=ensModes.reveal">
-        <h5>"Disguise Bid" Amount</h5>
-        <p><em><small>You can send more actual bid to disguise it. This must be >= the Bid Amount</small></em></p>
+        <h5>Bid Mask</h5>
+        <p><em><small>This is the amount of ETH you send when placing your bid. It has no bearing on the *actual* amount you bid (above). It is simply to hide your real bid amount. It must be >= to your actual bid. </small></em></p>
         <div class="input-group">
           <input class="form-control" type="number" placeholder="2 {{ajaxReq.type}}" ng-model="objENS.dValue" ng-class="Validator.isPositiveNumber(objENS.dValue) && objENS.dValue >= objENS.bidValue && objENS.dValue < wallet.balance ? 'is-valid' : 'is-invalid'"/>
           <div class="input-group-btn"><a class="btn btn-default">{{ajaxReq.type}}</a></div>
         </div>
       </div>
-      <!-- / Disguise Bid  -->
+      <!-- / Bid Mask -->
 
       <!-- Your Secret -->
       <h5>Secret Phrase</h5>
@@ -99,9 +91,16 @@
       </div>
       <!-- / After Sent: Reveal -->
 
-
+    </div>
     </section>
     <!-- / Content -->
+
+    <!-- Sidebar -->
+    <section class="col-sm-4">
+      <wallet-balance-drtv></wallet-balance-drtv>
+    </section>
+    <!-- / Sidebar -->
+
 
   </article>
 
