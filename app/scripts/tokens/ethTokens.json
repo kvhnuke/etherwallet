@@ -564,6 +564,12 @@
     "type":"default"
   },
   {
+    "address":"0x0e0989b1f9b8a38983c2ba8053269ca62ec9b195",
+    "symbol":"POE",
+    "decimal":8,
+    "type":"default"
+  },
+  {
     "address":"0x226bb599a12C826476e3A771454697EA52E9E220",
     "symbol":"PRO",
     "decimal":8,
