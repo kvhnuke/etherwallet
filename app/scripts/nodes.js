@@ -187,7 +187,7 @@ nodes.nodeList = {
         'tokenList': require('./tokens/dbixTokens.json'),
         'abiList': require('./abiDefinitions/dbixAbi.json'),
         'estimateGas': true,
-        'service': 'Arabianchain-1',
+        'service': 'Arabianchain',
         'lib': new nodes.customNode('https://rpc1.arabiancha.in', '')
     }
 };
