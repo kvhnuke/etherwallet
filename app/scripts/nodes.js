@@ -182,7 +182,7 @@ nodes.nodeList = {
         'blockExplorerTX': 'http://dbixscan.io/tx/[[txHash]]',
         'blockExplorerAddr': 'http://dbixscan.io/addr/[[address]]',
         'type': nodes.nodeTypes.DBIX,
-        'eip155': false,
+        'eip155': true,
         'chainId': 5,
         'tokenList': require('./tokens/dbixTokens.json'),
         'abiList': require('./abiDefinitions/dbixAbi.json'),
