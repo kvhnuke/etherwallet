@@ -366,6 +366,12 @@
     "type":"default"
   },
   {
+    "address":"0xe3831c5A982B279A198456D577cfb90424cb6340",
+    "symbol":"IMC",
+    "decimal":6,
+    "type":"default"
+  },
+  {
     "address":"0xED19698C0abdE8635413aE7AD7224DF6ee30bF22",
     "symbol":"IMT",
     "decimal":0,
