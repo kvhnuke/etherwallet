@@ -396,11 +396,23 @@
     "type":"default"
   },
   {
-    "address":"0xc1E6C6C681B286Fb503B36a9dD6c1dbFF85E73CF",
+    "address":"0xfca47962d45adfdfd1ab2d972315db4ce7ccf094",
+    "symbol":"IXT",
+    "decimal":8,
+    "type":"default"
+  },
+  {
+    "address":"0x8727c112C712c4a03371AC87a74dD6aB104Af768",
     "symbol":"JET",
     "decimal":18,
     "type":"default"
   },
+  {
+    "address":"0xc1E6C6C681B286Fb503B36a9dD6c1dbFF85E73CF",
+    "symbol":"JET (old)",
+    "decimal":18,
+    "type":"default"
+  },  
   {
     "address":"0x773450335eD4ec3DB45aF74f34F2c85348645D39",
     "symbol":"JetCoins",
@@ -720,6 +732,12 @@
     "type":"default"
   },
   {
+    "address":"0x8a187d5285d316bcbc9adafc08b51d70a0d8e000",
+    "symbol":"SIFT",
+    "decimal":0,
+    "type":"default"
+  },
+  {
     "address":"0x2bDC0D42996017fCe214b21607a515DA41A9E0C5",
     "symbol":"SKIN",
     "decimal":6,
@@ -925,13 +943,6 @@
   }
   ,
   {
-    "address":"0xE41d2489571d322189246DaFA5ebDe1F4699F498",
-    "symbol":"ZRX",
-    "decimal":18,
-    "type":"default"
-  }
-  ,
-  {
     "address":"0x0F33bb20a282A7649C7B3AFf644F084a9348e933",
     "symbol":"YUPIE",
     "decimal":18,
@@ -939,16 +950,9 @@
   }
   ,
   {
-    "address":"0xfca47962d45adfdfd1ab2d972315db4ce7ccf094",
-    "symbol":"IXT",
-    "decimal":8,
-    "type":"default"
-  }
-  ,
-  {
-    "address":"0x8a187d5285d316bcbc9adafc08b51d70a0d8e000",
-    "symbol":"SIFT",
-    "decimal":0,
+    "address":"0xE41d2489571d322189246DaFA5ebDe1F4699F498",
+    "symbol":"ZRX",
+    "decimal":18,
     "type":"default"
   }
 ]
