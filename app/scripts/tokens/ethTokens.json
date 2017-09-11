@@ -432,6 +432,12 @@
     "type":"default"
   },
   {
+    "address":"0x4Bf215086c05C0384BdF3731bdB2B37799E9bb5B",
+    "symbol":"LTE",
+    "decimal":0,
+    "type":"default"
+  },
+  {
     "address":"0xFB12e3CcA983B9f59D90912Fd17F8D745A8B2953",
     "symbol":"LUCK",
     "decimal":0,
