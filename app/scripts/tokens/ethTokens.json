@@ -408,11 +408,23 @@
     "type":"default"
   },
   {
-    "address":"0xc1E6C6C681B286Fb503B36a9dD6c1dbFF85E73CF",
+    "address":"0xfca47962d45adfdfd1ab2d972315db4ce7ccf094",
+    "symbol":"IXT",
+    "decimal":8,
+    "type":"default"
+  },
+  {
+    "address":"0x8727c112C712c4a03371AC87a74dD6aB104Af768",
     "symbol":"JET",
     "decimal":18,
     "type":"default"
   },
+  {
+    "address":"0xc1E6C6C681B286Fb503B36a9dD6c1dbFF85E73CF",
+    "symbol":"JET (old)",
+    "decimal":18,
+    "type":"default"
+  },  
   {
     "address":"0x773450335eD4ec3DB45aF74f34F2c85348645D39",
     "symbol":"JetCoins",
@@ -672,6 +684,12 @@
     "type":"default"
   },
   {
+    "address":"0x9a642d6b3368ddc662CA244bAdf32cDA716005BC",
+    "symbol":"QTUM",
+    "decimal":18,
+    "type":"default"
+  },
+  {
     "address":"0xE94327D07Fc17907b4DB788E5aDf2ed424adDff6",
     "symbol":"REP",
     "decimal":18,
@@ -734,6 +752,12 @@
   {
     "address":"0xEF2E9966eb61BB494E5375d5Df8d67B7dB8A780D",
     "symbol":"SHIT",
+    "decimal":0,
+    "type":"default"
+  },
+  {
+    "address":"0x8a187d5285d316bcbc9adafc08b51d70a0d8e000",
+    "symbol":"SIFT",
     "decimal":0,
     "type":"default"
   },
@@ -943,13 +967,6 @@
   }
   ,
   {
-    "address":"0xE41d2489571d322189246DaFA5ebDe1F4699F498",
-    "symbol":"ZRX",
-    "decimal":18,
-    "type":"default"
-  }
-  ,
-  {
     "address":"0x0F33bb20a282A7649C7B3AFf644F084a9348e933",
     "symbol":"YUPIE",
     "decimal":18,
@@ -957,16 +974,9 @@
   }
   ,
   {
-    "address":"0xfca47962d45adfdfd1ab2d972315db4ce7ccf094",
-    "symbol":"IXT",
-    "decimal":8,
-    "type":"default"
-  }
-  ,
-  {
-    "address":"0x8a187d5285d316bcbc9adafc08b51d70a0d8e000",
-    "symbol":"SIFT",
-    "decimal":0,
+    "address":"0xE41d2489571d322189246DaFA5ebDe1F4699F498",
+    "symbol":"ZRX",
+    "decimal":18,
     "type":"default"
   }
 ]
