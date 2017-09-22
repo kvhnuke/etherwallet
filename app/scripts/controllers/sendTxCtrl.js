@@ -225,6 +225,12 @@ var sendTxCtrl = function($scope, $sce, walletService) {
                 $scope.rawTx = rawTx.rawTx;
                 $scope.signedTx = rawTx.signedTx;
                 $scope.showRaw = true;
+
+                //buggy when rawTx is used for QR directive
+                var json = JSON.parse($scope.rawTx);
+                json.node = ajaxReq.SERVERURL;
+                json.nodeProvider = ajaxReq.service;
+                $scope.rawQRTx = JSON.stringify(json);
             } else {
                 $scope.showRaw = false;
                 $scope.notifier.danger(rawTx.error);
