@@ -175,7 +175,7 @@ nodes.nodeList = {
         'abiList': require('./abiDefinitions/ubqAbi.json'),
         'estimateGas': true,
         'service': 'ubiqscan.io',
-        'lib': new nodes.customNode('https://rpc1.ubiqscan.io', '')
+        'lib': new nodes.customNode('https://pyrus2.ubiqscan.io', '')
     },
     'dbix': {
         'name': 'DBIX',
