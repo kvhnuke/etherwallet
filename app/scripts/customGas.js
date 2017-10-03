@@ -14,6 +14,12 @@
 module.exports = [
  {
   // Vibehub (VIBEX) ICO Sale
+  to:         '0x5454af9d2ba75a60fa5b0419c251810544cea21d',
+  gasLimit:   200000,
+  data:       '',
+  msg:        'WeBetCrypto ICO Sale. Thank you for your support!'
+},{
+  // Vibehub (VIBEX) ICO Sale
   to:         '0x882448f83d90b2bf477af2ea79327fdea1335d93',
   gasLimit:   200000,
   data:       '',
@@ -41,11 +47,11 @@ module.exports = [
   msg:        'YUPIE (YUPIE) ICO'
 },
 {
-  // Stox Token Sale
-  to:         '0x40349A89114BB34d4E82e5Bf9AE6B2ac3c78b00a',
-  gasLimit:   200000,
+  // Atlant.io ATLANT ICO Sale
+  to:         '0xF46ede17c0bAb20d87Cd079a2632f71433A407b9',
+  gasLimit:   150000,
   data:       '',
-  msg:        'Stox Token Sale'
+  msg:        'ATLANT ICO Sale. Thank you for your support. '
 },
 {
   // DCORP
@@ -62,6 +68,13 @@ module.exports = [
   msg:        'district0x. WEBSITE: contribution.district0x.io STARTS: Tue, 18 Jul 2017 08:00:00 REMEMBER: Use gas price of 50 GWEI (look in header) ENS: district0x.eth'
 },
 {
+  // DataBrokerDAO
+  to:         '0x8aec8f09a840faea966f4b0e29a497d8f5b5a6b4',
+  gasLimit:   200000,
+  data:       '',
+  msg:        'DataBrokerDAO. https://databrokerdao.com'
+},
+{
   // BattleDrome
   to:         '0xeaAf270436a0ed397ED23BBF64DF7b1DCAfF142F',
   gasLimit:   85000,
@@ -70,10 +83,10 @@ module.exports = [
 },
 {
   // OpenANX
-  to:         '0x701C244b988a513c945973dEFA05de933b23Fe1D',
-  gasLimit:   200000,
+  to:         '0xd6Cd31F283d24cfb442cBA1Bcf42290c07C15792',
+  gasLimit:   150000,
   data:       '',
-  msg:        'OpenANX. Starts June 22, 2017.'
+  msg:        'Kyber Network. Starts September 15, 2017.'
 },
 {
   // Adchain
@@ -187,12 +200,82 @@ module.exports = [
   data:       '',
   msg:        'OHNI ICO. Restoration of our communities!'
 },
+ {
+  // Relex
+  to:         '0xb306b47b36705332f48537b02b581ea36d108b79',
+  gasLimit:   200000,
+  data:       '',
+  msg:        'Developing real estate, at the speed of crowd. Relex ICO October 16, 2017'
+},
 {
   // Avalon
   to:         '0xeD247980396B10169BB1d36f6e278eD16700a60f',
   gasLimit:   60000,
   data:       '',
   msg:        'Avalon ICO starts August 25, 2017 - avalon.nu'
+},
+{
+  // Maecenas
+  to:         '0x9B60874D7bc4e4fBDd142e0F5a12002e4F7715a6',
+  gasLimit:   400000,
+  data:       '',
+  msg:        'Maecenas ICO starts September 5, 2017 - www.maecenas.co'
+},
+ {
+  // Easy Homes Token (EHT)
+  to:         '0xf9F0FC7167c311Dd2F1e21E9204F87EBA9012fB2',
+  gasLimit:   200000,
+  data:       '',
+  msg:        'Easy Homes ICO. Thank you!'
+},
+ {
+  // Mitrav (MTR) ICO Sale
+  to:         '0x7FC408011165760eE31bE2BF20dAf450356692Af',
+  gasLimit:   200000,
+  data:       '',
+  msg:        'Mitrav ICO Sale. Thank you for your support!'
+},
+{
+  // BMCHAIN ICO
+  to:         '0x19d7a9ad3b49252fd2ef640d0e43dfd651168499',
+  gasLimit:   100000,
+  data:       '',
+  msg:        'BMChain ICO - Platform of digital reputation - Official site https://bmchain.io'
+},
+{
+  // Kin Token Sale
+  to:         '0x8BfE5EbB128eE82F4BA80f56bb32409CC87bC6fb',
+  gasLimit:   200000,
+  data:       '',
+  msg:        'Kin Token Sale'
+},
+ {
+  // TBOT Token Sale
+  to:         '0xAFe60511341a37488de25Bef351952562E31fCc1',
+  gasLimit:   200000,
+  data:       '',
+  msg:        'Tbot ICO Sale.'
+},
+{
+  // Cobinhood Token Sale
+  to:         '0xb2f7eb1f2c37645be61d73953035360e768d81e6',
+  gasLimit:   200000,
+  data:       '',
+  msg:        'Cobinhood Token Sale'
+},
+{
+  // fake Santiment token last-sale
+  to:         '0xdccea2e783d873acb4ccfb7dead1004d90ad481d',
+  gasLimit:   -1,
+  data:       '',
+  msg:        'This may be a fake santiment address promoted by phishers. Go research first please.'
+},
+{
+  // Zeus exchange token sale
+  to:         '0xe386B139Ed3715Ca4B18Fd52671bDcea1cdFE4b1',
+  gasLimit:   200000,
+  data:       '',
+  msg:        'Zeus Exchange - The First Hybrid Trading Platform for Traditional Stock Investors and Crypto Traders. Official site https://zeus.exchange'
 }
 ]
 
