@@ -355,10 +355,10 @@ fa.data = {
   PARITY_InvalidGasLimit: 'Supplied gas is beyond limit.',
 
 /* Tranlsation Info */
-  translate_version: 'translate_version',
-  Translator_Desc: 'Translator_Desc',
-  TranslatorName_1: 'TranslatorName_1',
-  TranslatorAddr_1: 'TranslatorAddr_1',
+  translate_version: '0.4_Alpha',
+  Translator_Desc: 'Persian Translation done by Coiniran.com team',
+  TranslatorName_1: 'Shayan Es',
+  TranslatorAddr_1: '0xc2285f89B5b228E9a51f2B80dd0712F0ac071C9e',
 /* Translator 1,Insert Comments Here */
   TranslatorName_2: 'TranslatorName_2',
   TranslatorAddr_2: 'TranslatorAddr_2',
