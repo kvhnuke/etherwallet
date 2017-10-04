@@ -51,23 +51,24 @@
 
   <!-- Gas Price -->
   <article class="clearfix">
+    <section class="col-sm-11">
       <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
         <img src="images/icon-help.svg" class="help-icon" />
         <p class="account-help-text" translate="OFFLINE_Step2_Label_3b">This was displayed in Step 1</p>
       </a>
       <label translate="OFFLINE_Step2_Label_3"> Gas Price </label>
-
-        <div class="input-group col-sm-11" style="padding-left: 1rem;padding-right: 1rem;">
-          <input type="text"
-                 class="form-control"
-                 placeholder="50"
-                 ng-model="gasPriceDec"
-                 ng-disabled="checkTxReadOnly"
-                 ng-class="Validator.isPositiveNumber(gasPriceDec) ? 'is-valid' : 'is-invalid'" />
-          <div class="input-group-btn">
-            <button style="min-width: 170px" class="btn btn-default">  GWEI </button>
-          </div>
+      <div class="input-group">
+        <input type="text"
+               class="form-control"
+               placeholder="50"
+               ng-model="gasPriceDec"
+               ng-disabled="checkTxReadOnly"
+               ng-class="Validator.isPositiveNumber(gasPriceDec) ? 'is-valid' : 'is-invalid'" />
+        <div class="input-group-btn">
+          <button style="min-width: 170px" class="btn btn-default">  WEI </button>
         </div>
+      </div>
+    </section>
   </article>
 
 
@@ -110,15 +111,12 @@
   <section class="col-xs-12 clearfix">
     <a class="btn btn-info" ng-click="generateTx()" translate="SEND_generate">Generate Signed Transaction</a>
   </section>
-  <section class="col-sm-5 clearfix">
+  <section class="col-sm-6 clearfix">
     <label translate="SEND_raw"> Raw Transaction </label>
     <textarea class="form-control" placeholder="" readonly="readonly" rows="5" ng-model="rawTx"></textarea>
   </section>
-  <section class="col-sm-5 clearfix">
+  <section class="col-sm-6 clearfix">
     <label translate="SEND_signed"> Signed Transaction </label>
     <textarea class="form-control" placeholder="" readonly="readonly" rows="5" ng-model="signedTx"></textarea>
-  </section>
-  <section class="col-sm-2 cleafix">
-    <div class="qr-code" qr-code="{{signedTx}}" watch-var="signedTx" width="100%"></div>
   </section>
 </article>

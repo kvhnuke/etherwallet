@@ -80,6 +80,30 @@ uiFuncs.signTxLedger = function(app, eTx, rawTx, txData, old, callback) {
     }
     app.signTransaction(txData.path, txToSign.toString('hex'), localCallback);
 }
+uiFuncs.signTxDigitalBitbox = function(eTx, rawTx, txData, callback) {
+    var localCallback = function(result, error) {
+        if (typeof error != "undefined") {
+            error = error.errorCode ? u2f.getErrorByCode(error.errorCode) : error;
+            if (callback !== undefined) callback({
+                isError: true,
+                error: error
+            });
+            return;
+        }
+        uiFuncs.notifier.info("The transaction was signed but not sent. Click the blue 'Send Transaction' button to continue.");
+        rawTx.v = ethFuncs.sanitizeHex(result['v']);
+        rawTx.r = ethFuncs.sanitizeHex(result['r']);
+        rawTx.s = ethFuncs.sanitizeHex(result['s']);
+        var eTx_ = new ethUtil.Tx(rawTx);
+        rawTx.rawTx = JSON.stringify(rawTx);
+        rawTx.signedTx = ethFuncs.sanitizeHex(eTx_.serialize().toString('hex'));
+        rawTx.isError = false;
+        if (callback !== undefined) callback(rawTx);
+    }
+    uiFuncs.notifier.info("Touch the LED for 3 seconds to sign the transaction. Or tap the LED to cancel.");
+    var app = new DigitalBitboxEth(txData.hwTransport, '');
+    app.signTransaction(txData.path, eTx, localCallback);
+}
 uiFuncs.trezorUnlockCallback = function(txData, callback) {
     TrezorConnect.open(function(error) {
         if (error) {
@@ -137,6 +161,17 @@ uiFuncs.generateTx = function(txData, callback) {
                 app.getAppConfiguration(localCallback);
             } else if ((typeof txData.hwType != "undefined") && (txData.hwType == "trezor")) {
                 uiFuncs.signTxTrezor(rawTx, txData, callback);
+            } else if ((typeof txData.hwType != "undefined") && (txData.hwType == "web3")) {
+              // for web3, we dont actually sign it here
+              // instead we put the final params in the "signedTx" field and
+              // wait for the confirmation dialogue / sendTx method
+              var txParams = Object.assign({ from: txData.from }, rawTx)
+              rawTx.rawTx = JSON.stringify(rawTx);
+              rawTx.signedTx = JSON.stringify(txParams);
+              rawTx.isError = false;
+              callback(rawTx)
+            } else if ((typeof txData.hwType != "undefined") && (txData.hwType == "digitalBitbox")) {
+                uiFuncs.signTxDigitalBitbox(eTx, rawTx, txData, callback);
             } else {
                 eTx.sign(new Buffer(txData.privKey, 'hex'));
                 rawTx.rawTx = JSON.stringify(rawTx);
@@ -174,6 +209,21 @@ uiFuncs.generateTx = function(txData, callback) {
     }
 }
 uiFuncs.sendTx = function(signedTx, callback) {
+  // check for web3 late signed tx
+    if (signedTx.slice(0,2) !== '0x') {
+      var txParams = JSON.parse(signedTx)
+      window.web3.eth.sendTransaction(txParams, function(err, txHash){
+        if (err) {
+          return callback({
+            isError: true,
+            error: err.stack,
+          })
+        }
+        callback({ data: txHash })
+      });
+      return
+    }
+
     ajaxReq.sendRawTx(signedTx, function(data) {
         var resp = {};
         if (data.error) {
@@ -219,7 +269,7 @@ uiFuncs.notifier = {
     info: function(msg, duration = 5000) {
         this.addAlert("info", msg, duration);
     },
-    danger: function(msg, duration = 0) {
+    danger: function(msg, duration = 7000) {
         msg = msg.message ? msg.message : msg;
         // Danger messages can be translated based on the type of node
         msg = globalFuncs.getEthNodeMsg(msg);
@@ -229,8 +279,7 @@ uiFuncs.notifier = {
         this.addAlert("success", msg, duration);
     },
     addAlert: function(type, msg, duration) {
-        if (duration == undefined)
-            duration = 5000;
+        if (duration == undefined) duration = 7000;
         // Save all messages by unique id for removal
         var id = Date.now();
         alert = this.buildAlert(id, type, msg);

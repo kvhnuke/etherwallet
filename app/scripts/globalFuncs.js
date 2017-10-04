@@ -9,7 +9,7 @@ globalFuncs.getBlockie = function(address) {
     }).toDataURL();
 };
 globalFuncs.printPaperWallets = function(strJson) {
-    var win = window.open("about:blank", "rel='noopener'", "_blank");
+    var win = window.open("about:blank", "_blank");
     var data = "<html>\r\n\r\n<head>\r\n <link rel=\"stylesheet\" href=\"css\/etherwallet-master.min.css\" \/>\r\n <script type=\"text\/javascript\" src=\"js\/jquery-1.12.3.min.js\"><\/script>\r\n <script type=\"text\/javascript\" src=\"js\/etherwallet-static.min.js\"><\/script>\r\n <script type=\"text\/javascript\">\r\n function getBlockie(address) {\r\n return blockies.create({\r\n seed: address.toLowerCase(),\r\n size: 8,\r\n scale: 16\r\n }).toDataURL();\r\n    }\r\n    function generateWallets() {\r\n var json = JSON.parse($(\"#printwalletjson\").html());\r\n for (var i = 0; i < json.length; i++) {\r\n var walletTemplate = $(\'<div\/>\').append($(\"#print-container\").clone());\r\n new QRCode($(walletTemplate).find(\"#paperwalletaddqr\")[0], {\r\n text: json[i][\'address\'],\r\n colorDark: \"#000000\",\r\n colorLight: \"#ffffff\",\r\n correctLevel: QRCode.CorrectLevel.H\r\n });\r\n new QRCode($(walletTemplate).find(\"#paperwalletprivqr\")[0], {\r\n text: json[i][\'private\'],\r\n colorDark: \"#000000\",\r\n colorLight: \"#ffffff\",\r\n correctLevel: QRCode.CorrectLevel.H\r\n });\r\n $(walletTemplate).find(\"#paperwalletadd\").html(json[i][\'address\']);\r\n $(walletTemplate).find(\"#paperwalletpriv\").html(json[i][\'private\']);\r\n $(walletTemplate).find(\"#identicon\").css(\'background-image\',\'url(\' + getBlockie(json[i][\'address\']) +\')\');\r\n walletTemplate = $(walletTemplate).find(\"#print-container\").show();\r\n $(\"body\").append(walletTemplate);\r\n }\r\n setTimeout(function() {\r\n window.print();\r\n }, 2000);\r\n    }\r\n    <\/script>\r\n<\/head>\r\n\r\n<body><span id=\"printwalletjson\" style=\"display: none;\">{{WALLETJSON}}<\/span>\r\n    <div class=\"print-container\" style=\"display: none; margin-bottom: 50px;\" id=\"print-container\"><img src=\"images\/logo-ethereum-1.png\" class=\"ether-logo-1\" height=\"100%\" width=\"auto\" \/> <div id=\"identicon\" class=\"addressIdenticon med float\"><\/div>\r\n <img src=\"images\/print-sidebar.png\" height=\"100%\" width=\"auto\" class=\"print-title\" \/>\r\n <div class=\"print-qr-code-1\">\r\n <div id=\"paperwalletaddqr\"><\/div>\r\n <p class=\"print-text\" style=\"padding-top: 25px;\">YOUR ADDRESS<\/p>\r\n <\/div>\r\n <div class=\"print-notes\"><img src=\"images\/notes-bg.png\" width=\"90%;\" height=\"auto\" class=\"pull-left\" \/>\r\n <p class=\"print-text\">AMOUNT \/ NOTES<\/p>\r\n <\/div>\r\n <div class=\"print-qr-code-2\">\r\n <div id=\"paperwalletprivqr\"><\/div>\r\n <p class=\"print-text\" style=\"padding-top: 30px;\">YOUR PRIVATE KEY<\/p>\r\n <\/div>\r\n <div class=\"print-address-container\">\r\n <p><strong>Your Address:<\/strong>\r\n <br \/><span id=\"paperwalletadd\"><\/span><\/p>\r\n <p><strong>Your Private Key:<\/strong>\r\n <br \/><span id=\"paperwalletpriv\"><\/span><\/p>\r\n <\/div>\r\n    <\/div>\r\n<\/body>\r\n\r\n<\/html>\r\n";
     data = data.replace("{{WALLETJSON}}", strJson);
     win.document.write(data);
@@ -186,26 +186,159 @@ globalFuncs.isAlphaNumeric = function(value) {
 globalFuncs.getRandomBytes = function(num) {
     return ethUtil.crypto.randomBytes(num);
 };
+
+function getFromLS(key, errorMsg) {
+    var localStorageItemString = globalFuncs.localStorage.getItem(key);
+    if (!localStorageItemString && errorMsg) {
+        throw Error(errorMsg)
+    } else if (!localStorageItemString) {
+        return null
+    }
+    else {
+        return JSON.parse(localStorageItemString)
+    }
+}
+
+globalFuncs.getDefaultTokensAndNetworkType =  function getDefaultTokensAndNetworkType() {
+    var defaultNodes = require('./nodes').nodeList;
+
+    var tokenMappings = {
+        'eth': require('./tokens/ethTokens.json'),
+        'etc': require('./tokens/etcTokens.json'),
+        'rop': require('./tokens/ropstenTokens.json'),
+        'kov': require('./tokens/kovanTokens.json'),
+        'rin': require('./tokens/rinkebyTokens.json')
+    };
+
+    var nodeErrMsg = 'Node does not exist, contact support@myetherwallet.com CODE:localstorageNodeMissing'
+    // localStorage selected node
+    var currentNodeKey = getFromLS("curNode", nodeErrMsg).key;
+    // custom nodes in local storage
+    var customLocalNodes = getFromLS("localNodes") || [];
+
+    var customNodeNetworkType = currentNodeKey.split('_')[1];
+
+    var isCustomNode = !!customLocalNodes.find(function (currentLocalCustomNode) {
+      return currentLocalCustomNode.options === customNodeNetworkType
+    });
+
+    var defaultNode;
+    var firstCustomNodeWithMatchingNetwork;
+    var defaultTokens;
+
+    if (isCustomNode) {
+      // NOTE: Different curNode value structure for default nodes and custom nodes. This will work because we are checking to make sure we are a custom node first.
+
+      firstCustomNodeWithMatchingNetwork = customLocalNodes.find(function (currentLocalCustomNode) {
+        return currentLocalCustomNode.options === customNodeNetworkType
+      });
+
+      // if the reference the custom local node is invalid, throw
+      if (!firstCustomNodeWithMatchingNetwork) {
+        throw Error("Custom Local Node does not exist. Please clear local storage, and re-input your custom node.")
+      }
+    } else {
+      defaultNode = defaultNodes[currentNodeKey];
+      if (!defaultNode) {
+        throw Error("Default Node does not exist. Please clear local storage and try again.")
+      }
+    }
+
+    if (isCustomNode) {
+      // tokenMappings maps localStorage custom node key to corresponding default tokens of network. If we are unable to retrieve the default tokens of the custom network, we return an empty array.
+      defaultTokens = tokenMappings[firstCustomNodeWithMatchingNetwork.options] || []
+    }
+    else {
+      defaultTokens = defaultNode.tokenList
+    }
+
+    return {
+      defaultTokens: defaultTokens,
+      networkType: isCustomNode ? firstCustomNodeWithMatchingNetwork.options : defaultNode.name.toLowerCase(),
+      isCustomNode: isCustomNode
+    }
+};
+
+function isDuplicateTokenAddress(tokenOne, tokenTwo, currentNetwork) {
+  var hasNetwork = tokenTwo.network;
+  if (hasNetwork) {
+    return tokenTwo.network === currentNetwork && tokenTwo.contractAddress === tokenOne.address
+  } else {
+    return tokenTwo.contractAddress === tokenOne.address
+  }
+}
+
+function isDuplicateTokenSymbol(tokenOne, tokenTwo, currentNetwork) {
+  var hasNetwork = tokenTwo.network;
+  if (hasNetwork) {
+    return tokenTwo.network === currentNetwork && tokenTwo.symbol === tokenOne.symbol
+  } else {
+    return tokenTwo.symbol === tokenOne.symbol
+  }
+}
+
+globalFuncs.isDuplicateToken = function(tokenOne, tokenTwo, currentNetwork) {
+  return isDuplicateTokenSymbol(tokenOne, tokenTwo, currentNetwork) || isDuplicateTokenAddress(tokenOne, tokenTwo, currentNetwork);
+}
+
+globalFuncs.doesTokenExistInDefaultTokens = function(token, defaultTokensAndNetworkType) {
+  for (var i = 0; i < defaultTokensAndNetworkType.defaultTokens.length; i++) {
+    var currentDefaultToken = defaultTokensAndNetworkType.defaultTokens[i];
+    var isDuplicateToken = globalFuncs.isDuplicateToken(currentDefaultToken, token, defaultTokensAndNetworkType.networkType);
+    // do not simplify to return isDuplicateToken
+    if (isDuplicateToken) {
+      return true
+    }
+  }
+  return false
+};
+
 globalFuncs.saveTokenToLocal = function(localToken, callback) {
     try {
-        if (!ethFuncs.validateEtherAddress(localToken.contractAdd)) throw globalFuncs.errorMsgs[5];
-        else if (!globalFuncs.isNumeric(localToken.decimals) || parseFloat(localToken.decimals) < 0) throw globalFuncs.errorMsgs[7];
-        else if (!globalFuncs.isAlphaNumeric(localToken.symbol) || localToken.symbol == "") throw globalFuncs.errorMsgs[19];
+        if (!ethFuncs.validateEtherAddress(localToken.contractAdd)) {throw globalFuncs.errorMsgs[5]}
+        else if (!globalFuncs.isNumeric(localToken.decimals) || parseFloat(localToken.decimals) < 0) {throw globalFuncs.errorMsgs[7]}
+        else if (!globalFuncs.isAlphaNumeric(localToken.symbol) || localToken.symbol == "") {throw globalFuncs.errorMsgs[19]}
         var storedTokens = globalFuncs.localStorage.getItem("localTokens", null) != null ? JSON.parse(globalFuncs.localStorage.getItem("localTokens")) : [];
+
+        // catch if TOKEN SYMBOL is already in storedTokens
+        for (var i = 0; i < storedTokens.length; i++){
+            if (storedTokens[i].symbol.toLowerCase().replace(/ /g, '') === localToken.symbol.toLowerCase().replace(/ /g, '')) {
+              throw Error('ERROR: Unable to add a custom token with the same symbol as an existing custom token')
+            }
+        }
+
+        // catch if CONTRACT ADDRESS is already in storedTokens
+        for (var i = 0; i < storedTokens.length; i++){
+            if (storedTokens[i].contractAddress.toLowerCase().replace(/ /g, '') === localToken.contractAdd.toLowerCase().replace(/ /g, '')) {
+              throw Error('ERROR: Unable to add custom token. It has the same address as custom token ' + storedTokens[i].symbol + '.')
+            }
+        }
+
+        var defaultTokensAndNetworkType = globalFuncs.getDefaultTokensAndNetworkType();
+
+        // catch if TOKEN SYMBOL is already in defaultTokens
+        if (globalFuncs.doesTokenExistInDefaultTokens(localToken, defaultTokensAndNetworkType)) {
+          throw Error('ERROR: Unable to add a duplicate custom token.')
+        }
+
         storedTokens.push({
             contractAddress: localToken.contractAdd,
             symbol: localToken.symbol,
             decimal: parseInt(localToken.decimals),
-            type: "custom"
+            type: "custom",
+            network: globalFuncs.getDefaultTokensAndNetworkType().networkType
         });
-        globalFuncs.localStorage.setItem("localTokens", JSON.stringify(storedTokens));
+
+        localStorage.setItem("localTokens", JSON.stringify(storedTokens));
+
         callback({
-            error: false
+          error: false
         });
+
     } catch (e) {
         callback({
-            error: false,
-            msg: e
+            error: true,
+            msg: e.message
         });
     }
 };
@@ -226,15 +359,21 @@ globalFuncs.removeTokenFromLocal = function(symbol, tokenObj) {
             break;
         }
 };
+
+
 globalFuncs.localStorage = {
         isAvailable: function() {
-            return typeof localStorage != "undefined";
+            // return typeof localStorage != "undefined";
+            // return globalFuncs.storageAvailable('localStorage');
+
+            // Polyfilled if not available/accessible
+            return true;
         },
         setItem: function(key, value) {
             if (this.isAvailable()) {
                 localStorage.setItem(key, value);
             } else {
-
+                // console.log("localStorage is available? " + this.isAvailable());
             }
         },
         getItem: function(key, dValue = "") {
@@ -245,6 +384,36 @@ globalFuncs.localStorage = {
             }
         }
     }
+
+
+/* Check for 'localStorage' or 'sessionStorage' */
+/*
+globalFuncs.storageAvailable = function(type) {
+    try {
+        var storage = window[type],
+            x = '__storage_test__';
+        storage.setItem(x, x);
+        storage.removeItem(x);
+        return true;
+    }
+    catch(e) {
+        return e instanceof DOMException && (
+            // everything except Firefox
+            e.code === 22 ||
+            // Firefox
+            e.code === 1014 ||
+            // test name field too, because code might not be present
+            // everything except Firefox
+            e.name === 'QuotaExceededError' ||
+            // Firefox
+            e.name === 'NS_ERROR_DOM_QUOTA_REACHED') &&
+            // acknowledge QuotaExceededError only if there's something already stored
+            storage.length !== 0;
+    }
+
+}
+*/
+
     // globalFuncs.getUrlParameter = function getUrlParameter(url) {
     //   // get query string from url (optional) or window
     //   var queryString = url ? url.split('=')[1] : window.location.search.slice(1);

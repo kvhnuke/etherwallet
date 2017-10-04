@@ -129,7 +129,7 @@
       </div>
     </div>
 
-    <div class="row form-group" ng-show="showRaw">
+    <div class="row form-group" ng-show="rootScopeShowRawTx">
       <div class="col-sm-6">
         <label translate="SEND_raw"> Raw Transaction </label>
         <textarea class="form-control" rows="4" readonly >{{rawTx}}</textarea>
@@ -140,7 +140,7 @@
       </div>
     </div>
 
-    <div class="clearfix form-group" ng-show="showRaw">
+    <div class="clearfix form-group" ng-show="rootScopeShowRawTx">
       <a class="btn btn-primary btn-block col-sm-11" data-toggle="modal" data-target="#sendTransaction" translate="SEND_trans"> Send Transaction </a>
     </div>
   </div>
@@ -156,12 +156,6 @@
   </div>
 
   <wallet-balance-drtv></wallet-balance-drtv>
-
-  <div class="block" ng-show="globalService.currentTab==globalService.tabs.sendTransaction.id">
-    <p translate="sidebar_donation"> MyEtherWallet is a free, open-source service dedicated to your privacy and security. The more donations we receive, the more time we spend creating new features, listening to your feedback, and giving you what you want. We are just two people trying to change the world. Help us?</p>
-    <a class="btn btn-default btn-sm btn-block" ng-click="onDonateClick()" translate="sidebar_donate">DONATE</a>
-    <div class="text-success text-center marg-v-sm" ng-show="tx.donate" translate="sidebar_thanks"> THANK YOU!!! </div>
-  </div>
 
   <div ng-show="checkTxPage" ng-click="checkTxReadOnly=!checkTxReadOnly" class="small text-right text-gray-lighter"><small>Advanced Users Only.</small></div>
 

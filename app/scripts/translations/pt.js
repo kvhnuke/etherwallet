@@ -100,6 +100,7 @@ x_JsonDesc                  : 'Este é o descriptografado, formato JSON da sua c
 x_Keystore                  : 'Arquivo de armazenamento de chaves (UTC / JSON · Recomendado · Criptografado) ',
 x_Keystore2                 : 'Arquivo de armazenamento de chaves (UTC / JSON) ',
 x_KeystoreDesc              : 'Este arquivo de armazenamento de chaves corresponde ao formato usado pela Mist para que você possa facilmente importá-lo no futuro. É recomendado que o arquivo seja transferido e feito seu backup. ',
+x_MetaMask                  : 'Metamask / Mist ',
 x_Mnemonic                  : 'Frase Mnemonic ',
 x_ParityPhrase              : 'Parity Phrase ',
 x_Password                  : 'Senha ',
@@ -136,6 +137,8 @@ sidebar_TransHistory        : 'Histórico de Transações ',
 sidebar_donation            : 'MyEtherWallet é grátis, um serviço de fonte aberta dedicado a sua privacidade e segurança. Quanto mais doações nós recebermos, mais podemos gastar criando novidade, ouvindo seu feedback, e entregando o que você deseja. Somos apenas duas pessoas tentando mudar o mundo. Ajude-nos? ',
 sidebar_donate              : 'De ',
 sidebar_thanks              : 'OBRIGADO!!! ',
+sidebar_DisplayOnTrezor     : 'Display address on TREZOR',
+sidebar_DisplayOnLedger     : 'Display address on Ledger',
 
 /* Decrypt Panel */
 decrypt_Access              : 'Como você gostaria de acessar sua carteira? ',
@@ -152,6 +155,11 @@ ADD_Radio_3                 : 'Cole/Digite sua Chave Privada ',
 ADD_Radio_4                 : 'Adicionar uma conta para ver ',
 ADD_Radio_5                 : 'Cole/Digite sua Mnemonic ',
 ADD_Radio_5_Path            : 'Select HD derivation path ',
+ADD_Radio_5_woTrezor        : '(Jaxx, Metamask, Exodus, imToken)',
+ADD_Radio_5_withTrezor      : '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
+ADD_Radio_5_PathAlternative : '(Ledger)',
+ADD_Radio_5_PathTrezor      : '(TREZOR)',
+ADD_Radio_5_PathCustom      : 'Custom',
 ADD_Label_2                 : 'Crie um Apelido: ',
 ADD_Label_3                 : 'Sua carteira é criptografada. Por favor, insira a senha ',
 ADD_Label_4                 : 'Adicionar uma conta para ver ',
@@ -160,6 +168,7 @@ ADD_Label_5                 : 'Insira o Endereço ',
 ADD_Label_6                 : 'Desbloqueie sua Carteira ',
 ADD_Label_6_short           : 'Desbloqueie ',
 ADD_Label_7                 : 'Adicionar Conta ',
+ADD_Label_8                 : 'Password (optional): ',
 
 /* Generate Wallets */
 GEN_desc                    : 'Se você quer gerar multiplas carteiras. você pode fazer isso aqui ',
@@ -264,6 +273,8 @@ MYWAL_Content_3             : 'Se pretender utilizar esta carteira com o MyEther
 VIEWWALLET_Subtitle         : 'This allows you to download different versions of private keys and re-print your paper wallet. You may want to do this in order to [import your account into Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). If you want to check your balance, we recommend using a blockchain explorer like [etherscan.io](http://etherscan.io/). ',
 VIEWWALLET_Subtitle_Short   : 'This allows you to download different versions of private keys and re-print your paper wallet. ',
 VIEWWALLET_SuccessMsg       : 'Success! Here are your wallet details. ',
+VIEWWALLET_ShowPrivKey      : '(show)',
+VIEWWALLET_HidePrivKey      : '(hide)',
 
 /* Mnemonic */
 MNEM_1                      : 'Por favor, selecione o endereço com o qual você gostaria de interagir. ',
@@ -284,6 +295,11 @@ WARN_Send_Link              : 'Você chegou através de um link que tem o endere
 x_Trezor                    : 'TREZOR ',
 ADD_Trezor_scan             : 'Connect to TREZOR ',
 ADD_Trezor_select           : 'This is a TREZOR seed ',
+x_DigitalBitbox             : 'Digital Bitbox ',
+ADD_DigitalBitbox_0a        : 'Re-abra MyEtherWallet em uma conexão (SSL) segura ',
+ADD_DigitalBitbox_0b        : 'Re-abra MyEtherWallet usando [Chrome](https://www.google.com/chrome/browser/desktop/) ou [Opera](https://www.opera.com/) ',
+ADD_DigitalBitbox_scan      : 'Conectar-se a Digital Bitbox ',
+ADD_MetaMask                : 'Connect to MetaMask ',
 
 /* Node Switcher */
 NODE_Title                  : 'Set Up Your Custom Node',
@@ -320,6 +336,7 @@ SWAP_rec_add                : "Your Receiving Address ",
 SWAP_start_CTA              : "Start Swap ",
 SWAP_ref_num                : "Your reference number ",
 SWAP_time                   : "Time remaining to send ",
+SWAP_elapsed				        : "Time elapsed since sent ",
 SWAP_progress_1             : "Order Initiated ",
 SWAP_progress_2             : "Waiting for your ", // Waiting for your BTC...
 SWAP_progress_3             : "Received! ", // ETH Received!
@@ -378,6 +395,8 @@ ERROR_32                    : 'Could not connect to the node. Refresh your page,
 ERROR_33                    : 'The wallet you have unlocked does not match the owner\'s address. ', // 33
 ERROR_34                    : 'The name you are attempting to reveal does not match the name you have entered. ', // 34
 ERROR_35                    : 'Input address is not checksummed. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/not-checksummed-shows-when-i-enter-an-address" target="_blank" rel="noopener"> More info</a>', // 35
+ERROR_36                    : 'Enter valid TX hash', // 36
+ERROR_37                    : 'Enter valid hex string (0-9, a-f)', // 37
 
 SUCCESS_1                   : 'Valid address ',
 SUCCESS_2                   : 'Wallet successfully decrypted ',
@@ -461,7 +480,7 @@ HELP_2a_Desc_6              : 'Keep in mind, you must prevent loss of the keys a
 
 HELP_2b_Title               : '2b) How do I safely / offline / cold storage with MyEtherWallet? ',
 HELP_2b_Desc_1              : 'Go to [https://github.com/kvhnuke/etherwallet/releases/latest](https://github.com/kvhnuke/etherwallet/releases/latest). ',
-HELP_2b_Desc_2              : 'Click on `dist-vX.X.X.X.zip`. ',
+HELP_2b_Desc_2              : 'Click on `etherwallet-vX.X.X.X.zip`. ',
 HELP_2b_Desc_3              : 'Move zip to an airgapped computer. ',
 HELP_2b_Desc_4              : 'Unzip it and double-click `index.html`. ',
 HELP_2b_Desc_5              : 'Generate a wallet with a strong password. ',

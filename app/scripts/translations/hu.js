@@ -96,6 +96,7 @@ x_JsonDesc                  : 'Ez a titkosítotatlan, JSON formátumú változat
 x_Keystore                  : 'Keystore Fájl (UTC / JSON · Ajánlott · Titkosított) ',
 x_Keystore2                 : 'Keystore Fájl (UTC / JSON) ',
 x_KeystoreDesc              : 'Ez a Keystore fájl ugyanolyan formátumú, amit a Mist használ, tehát könnyedén importálhatod a későbbiekben. Leginkább ezt a fájlt ajánlott letölteni és elmenteni. ',
+x_MetaMask                  : 'Metamask / Mist ',
 x_Mnemonic                  : 'Mnemonikus frázis ',
 x_ParityPhrase              : 'Parity Phrase ',
 x_Password                  : 'Jelszó ',
@@ -133,6 +134,8 @@ sidebar_TransHistory        : 'Tranzakció Történet ',
 sidebar_donation            : 'A MyEtherWallet egy szabad, nyílt forrású szolgáltatás az adatod védelmének és a biztonságodnak szentelve. Minél több adomány érkezik, annál több időt tudunk fordítani új funkciók létrehozására, a visszajelzéseidre és olyan szolgáltatást nyújtani, amilyet szeretnél. Mindössze két ember, akik megpróbálnak változtatni a világon. Segítesz nekünk? ',
 sidebar_donate              : 'Adományozok ',
 sidebar_thanks              : 'KÖSZÖNJÜK!!! ',
+sidebar_DisplayOnTrezor     : 'Display address on TREZOR',
+sidebar_DisplayOnLedger     : 'Display address on Ledger',
 
 /* Decrypt Panel */
 decrypt_Access              : 'Hogyan szeretnéd elérni a tárcádat? ',
@@ -150,6 +153,10 @@ ADD_Radio_3                 : 'Illeszd be vagy írd be a Privát Kulcsodat ',
 ADD_Radio_4                 : 'Tárca hozzáadása megfigyelésre ',
 ADD_Radio_5                 : 'Másold/írd be a mnemonikus frázist ',
 ADD_Radio_5_Path            : 'Select HD derivation path ',
+ADD_Radio_5_woTrezor        : '(Jaxx, Metamask, Exodus, imToken)',
+ADD_Radio_5_withTrezor      : '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
+ADD_Radio_5_PathAlternative : '(Ledger)',
+ADD_Radio_5_PathTrezor      : '(TREZOR)',
 ADD_Radio_5_PathCustom      : 'Custom',
 ADD_Label_2                 : 'Hozz létre egy Nicknevet: ',
 ADD_Label_3                 : 'A Tárcád titkosítva van. Írj be a jelszót ',
@@ -159,6 +166,7 @@ ADD_Label_5                 : 'Add meg a címet ',
 ADD_Label_6                 : 'Tárcád feloldása ',
 ADD_Label_6_short           : 'Feloldás ',
 ADD_Label_7                 : 'Számla Hozzáadása ',
+ADD_Label_8                 : 'Password (optional): ',
 
 /* Generate Wallets */
 GEN_desc                    : 'Ha több tárcát szeretnél egyszerre generálni, azt megteheted itt ',
@@ -263,6 +271,8 @@ MYWAL_Content_3             : 'Ha használni akarod ezt a tárcát a MyEtherWall
 VIEWWALLET_Subtitle         : 'Ez lehetővé teszi számodra, hogy különböző változatú privát kulcsokat tölts le és újranyomtasd a papírtárcádat.  Ezt megteheted úgy, hogy [importálod a számládat a Geth/Mist-be](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). Ha ellenőrizni akarod a számládat, azt ajánljuk, hogy használj blokklánc explorert mint az [etherscan.io](http://etherscan.io/). ',
 VIEWWALLET_Subtitle_Short   : 'Ez lehetővé teszi számodra, hogy különböző változatú privát kulcsokat tölts le és újranyomtasd a papírtárcádat. ',
 VIEWWALLET_SuccessMsg       : 'Sikerült! Itt vannak a tárcád részletei. ',
+VIEWWALLET_ShowPrivKey      : '(show)',
+VIEWWALLET_HidePrivKey      : '(hide)',
 
 /* Mnemonic */
 MNEM_1                      : 'Válaszd ki a címet amelyiket használni szeretnéd. ',
@@ -309,6 +319,7 @@ SWAP_rec_add                : "Your Receiving Address ",
 SWAP_start_CTA              : "Start Swap ",
 SWAP_ref_num                : "Your reference number ",
 SWAP_time                   : "Time remaining to send ",
+SWAP_elapsed				        : "Time elapsed since sent ",
 SWAP_progress_1             : "Order Initiated ",
 SWAP_progress_2             : "Waiting for your ", // Waiting for your BTC...
 SWAP_progress_3             : "Received! ", // ETH Received!
@@ -327,18 +338,23 @@ MSG_info2                   : 'Include your nickname and where you use the nickn
 MSG_info3                   : 'Include a specific reason for the message so it cannot be reused for a different purpose. ',
 
 /* Hardware wallets */
-x_Ledger                    : 'Ledger Nano S ',
-ADD_Ledger_scan             : 'Csatlakozás a Ledger Nano S-hez ',
-ADD_Ledger_1                : 'Csatlakoztasd a Ledger Nano S-et ',
+x_Ledger                    : 'Ledger Wallet ',
+ADD_Ledger_scan             : 'Csatlakozás a Ledger Wallet-hez ',
+ADD_Ledger_1                : 'Csatlakoztasd a Ledger Wallet-et ',
 ADD_Ledger_2                : 'Nyisd meg az Ethereum applikációt (vagy egy kontraktus applikációt) ',
 ADD_Ledger_3                : 'Ellenőrizd, hogy a beállításokban engedélyezve van a Böngésző Támogatás (Browser Support) ',
 ADD_Ledger_4                : 'If no Browser Support is found in settings, verify that you have [Firmware >1.2](https://www.ledgerwallet.com/apps/manager) ',
-ADD_Ledger_0a               : 'Re-open MyEtherWallet on a secure (SSL) connection ',
+ADD_Ledger_0a               : 'You must access MyEtherWallet via a secure (SSL / HTTPS) connection to connect. ',
 ADD_Ledger_0b               : 'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/) ',
 WARN_Send_Link              : 'You arrived via a link that has the address, value, gas, data fields, or transaction type (send mode) filled in for you. You can change any information before sending. Unlock your wallet to get started. ',
 x_Trezor                    : 'TREZOR ',
 ADD_Trezor_scan             : 'Connect to TREZOR ',
 ADD_Trezor_select           : 'This is a TREZOR seed ',
+ADD_MetaMask                : 'Connect to MetaMask ',
+x_DigitalBitbox             : 'Digital Bitbox ',
+ADD_DigitalBitbox_0a        : 'Re-open MyEtherWallet on a secure (SSL) connection ',
+ADD_DigitalBitbox_0b        : 'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/) ',
+ADD_DigitalBitbox_scan      : 'Connect your Digital Bitbox ',
 
 /* Error Messages */
 ERROR_0                     : 'Kérlek írj be érvényes összeget ',
@@ -377,6 +393,8 @@ ERROR_32                    : 'Could not connect to the node. Refresh your page,
 ERROR_33                    : 'The wallet you have unlocked does not match the owner\'s address. ', // 33
 ERROR_34                    : 'The name you are attempting to reveal does not match the name you have entered. ', // 34
 ERROR_35                    : 'Input address is not checksummed. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/not-checksummed-shows-when-i-enter-an-address" target="_blank" rel="noopener"> More info</a>', // 35
+ERROR_36                    : 'Enter valid TX hash', // 36
+ERROR_37                    : 'Enter valid hex string (0-9, a-f)', // 37
 
 SUCCESS_1                   : 'Érvényes cím ',
 SUCCESS_2                   : 'Tárca sikeresen dekódolva ',
@@ -457,7 +475,7 @@ HELP_2a_Desc_6              : 'Figyel arra is, hogy olyankor is legyen másolato
 
 HELP_2b_Title               : '2b) Hogyan tudom biztonságosan/offline/hidegen használni a MyEtherWallet-et? ',
 HELP_2b_Desc_1              : 'Menj a github oldalunkra: [https://github.com/kvhnuke/etherwallet/releases/latest](https://github.com/kvhnuke/etherwallet/releases/latest). ',
-HELP_2b_Desc_2              : 'Kattints a `dist-vX.X.X.X.zip`. ',
+HELP_2b_Desc_2              : 'Kattints a `etherwallet-vX.X.X.X.zip`. ',
 HELP_2b_Desc_3              : 'Másold a letöltött zip fájlt egy airgap-elt számítógépre. ',
 HELP_2b_Desc_4              : 'Csomagold ki, és indítsd el az "index.html" fájlt. ',
 HELP_2b_Desc_5              : 'Generálj egy tárcát egy erős jelszóval. ',

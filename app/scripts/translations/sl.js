@@ -100,6 +100,7 @@ x_JsonDesc                  : 'To je nekriptirana, JSON datoteka vašega osebneg
 x_Keystore                  : 'Datoteka za Shrambo ključa Keystore (UTC / JSON · Priporočeno · Kriptirano) ',
 x_Keystore2                 : 'Datoteka za Shrambo ključa Keystore (UTC / JSON) ',
 x_KeystoreDesc              : 'Ta datoteka za shrambo osebnega ključa Keystore se ujema s formatom datoteke, ki jo uporabljata programa Mist, kar pomeni da ga lahko v prihodnosti enostavno izvozite iz te internetne strani in uvozite v Mist ali Geth. Priporočamo vam da to datoteko prenesete na vaš računalnik in jo shranite na varnem mestu. Za dodatno varnost priporočamo, da datoteko shranite na večih napravah. ',
+x_MetaMask                  : 'Metamask / Mist ',
 x_Mnemonic                  : 'Mnemonic Phrase ',
 x_ParityPhrase              : 'Parity Phrase ',
 x_Password                  : 'Geslo ',
@@ -148,6 +149,7 @@ SWAP_rec_add                : "Your Receiving Address ",
 SWAP_start_CTA              : "Start Swap ",
 SWAP_ref_num                : "Your reference number ",
 SWAP_time                   : "Time remaining to send ",
+SWAP_elapsed				        : "Time elapsed since sent ",
 SWAP_progress_1             : "Order Initiated ",
 SWAP_progress_2             : "Waiting for your ", // Waiting for your BTC...
 SWAP_progress_3             : "Received! ", // ETH Received!
@@ -172,17 +174,24 @@ MNEM_more                   : 'More Addresses ',
 MNEM_prev                   : 'Previous Addresses ',
 
 /* Hardware wallets */
-x_Ledger                    : 'Ledger Nano S ',
-ADD_Ledger_1                : 'Connect your Ledger Nano S ',
+x_Ledger                    : 'Ledger Wallet ',
+ADD_Ledger_1                : 'Connect your Ledger Wallet ',
 ADD_Ledger_2                : 'Open the Ethereum application (or a contract application) ',
 ADD_Ledger_3                : 'Verify that Browser Support is enabled in Settings ',
 ADD_Ledger_4                : 'If no Browser Support is found in settings, verify that you have [Firmware >1.2](https://www.ledgerwallet.com/apps/manager) ',
-ADD_Ledger_0a               : 'Re-open MyEtherWallet on a secure (SSL) connection ',
+ADD_Ledger_0a               : 'You must access MyEtherWallet via a secure (SSL / HTTPS) connection to connect. ',
 ADD_Ledger_0b               : 'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/) ',
-ADD_Ledger_scan             : 'Connect to Ledger Nano S ',
+ADD_Ledger_scan             : 'Connect to Ledger Wallet ',
+  
+ADD_MetaMask                : 'Connect to MetaMask ',
+
 x_Trezor                    : 'TREZOR ',
 ADD_Trezor_scan             : 'Connect to TREZOR ',
 ADD_Trezor_select           : 'This is a TREZOR seed ',
+x_DigitalBitbox             : 'Digital Bitbox ',
+ADD_DigitalBitbox_0a        : 'Re-open MyEtherWallet on a secure (SSL) connection ',
+ADD_DigitalBitbox_0b        : 'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/) ',
+ADD_DigitalBitbox_scan      : 'Connect your Digital Bitbox ',
 
 /* Header */
 MEW_Warning_1               : 'Vedno preverite naslov - URL te strani preden dostopate do svoje denarnice ali ko želite ustvariti novo denarnico. Bodite pazljivi da niste žrtev ribarjenja - phising! ',
@@ -192,6 +201,7 @@ CX_Tagline                  : 'Odprto-kodni JavaScript Ether Denarnica Chrome Do
 
 /* Footer */
 FOOTER_1                    : 'Odprto-kodni, JavaScript, orodje za generiranje Ether Denarnic in pošiljanje transakcij za splošno uporabo. ',
+FOOTER_1b                   : 'Created by ',
 FOOTER_2                    : 'Donacije so zelo dobrodošle: ',
 FOOTER_3                    : 'Generacija Denarnic za splošno uporabo je ustvaril ',
 FOOTER_4                    : 'Disclaimer ',
@@ -206,6 +216,8 @@ sidebar_TransHistory        : 'Zgodovina Transakcij ',
 sidebar_donation            : 'MyEtherWallet je brezplačna, odprto-kodna, platforma, ki skrbi za vaše privatne informacije in vašo varnost. Več donacij ko dobimo, več časa lahko posvetimo ustvarjanju novih funkcij, ter se lahko bolje posvetimo vašim željam, da tko da vam vedno lahko ponudimo karseda najboljši produkt. MyEtherWallet je ekipa dveh ljudi, ki se trudi spremeniti svet. Hvaležni bomo vaše pomoči. ',
 sidebar_donate              : 'Doniraj ',
 sidebar_thanks              : 'Najlepša vam hvala!!! ',
+sidebar_DisplayOnTrezor     : 'Display address on TREZOR',
+sidebar_DisplayOnLedger     : 'Display address on Ledger',
 
 /* Decrypt Panel */
 decrypt_Access              : 'Kako bi želeli dostopati do vaše denarnice? ',
@@ -222,6 +234,10 @@ ADD_Radio_3                 : 'Prilepite/Vprišite Vaš Osebni Kljuš ',
 ADD_Radio_4                 : 'Dodaj Račun, ki ga Želite Opazovati ',
 ADD_Radio_5                 : 'Paste/Type Your Mnemonic ',
 ADD_Radio_5_Path            : 'Select HD derivation path ',
+ADD_Radio_5_woTrezor        : '(Jaxx, Metamask, Exodus, imToken)',
+ADD_Radio_5_withTrezor      : '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
+ADD_Radio_5_PathAlternative : '(Ledger)',
+ADD_Radio_5_PathTrezor      : '(TREZOR)',
 ADD_Radio_5_PathCustom      : 'Custom',
 ADD_Label_2                 : 'Ustvari Vzdevek: ',
 ADD_Label_3                 : 'Vaša denarnica je kriptirana. Prosim unesite geslo ',
@@ -231,6 +247,7 @@ ADD_Label_5                 : 'Vnestie Naslov ',
 ADD_Label_6                 : 'Odklenite vašo Denarnico ',
 ADD_Label_6_short           : 'Odkleni ',
 ADD_Label_7                 : 'Dodaj Račun ',
+ADD_Label_8                 : 'Password (optional): ',
 
 /* Generate Wallets */
 GEN_desc                    : 'Če želite ustvariti več denarnic, lahko to storite tukaj ',
@@ -336,6 +353,8 @@ MYWAL_Content_3             : 'If you want to use this wallet with your MyEtherW
 VIEWWALLET_Subtitle         : 'This allows you to download different versions of private keys and re-print your paper wallet. You may want to do this in order to [import your account into Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). If you want to check your balance, we recommend using a blockchain explorer like [etherscan.io](http://etherscan.io/). ',
 VIEWWALLET_Subtitle_Short   : 'This allows you to download different versions of private keys and re-print your paper wallet. ',
 VIEWWALLET_SuccessMsg       : 'Success! Here are your wallet details. ',
+VIEWWALLET_ShowPrivKey      : '(show)',
+VIEWWALLET_HidePrivKey      : '(hide)',
 
 /* Chrome Extension */
 CX_error_1                  : 'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one! ',
@@ -378,6 +397,8 @@ ERROR_32                    : 'Could not connect to the node. Refresh your page,
 ERROR_33                    : 'The wallet you have unlocked does not match the owner\'s address. ', // 33
 ERROR_34                    : 'The name you are attempting to reveal does not match the name you have entered. ', // 34
 ERROR_35                    : 'Input address is not checksummed. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/not-checksummed-shows-when-i-enter-an-address" target="_blank" rel="noopener"> More info</a>', // 35
+ERROR_36                    : 'Enter valid TX hash', // 36
+ERROR_37                    : 'Enter valid hex string (0-9, a-f)', // 37
 
 SUCCESS_1                   : 'Valid address ',
 SUCCESS_2                   : 'Wallet successfully decrypted ',
@@ -459,7 +480,7 @@ HELP_2a_Desc_6              : 'Keep in mind, you must prevent loss of the keys a
 
 HELP_2b_Title               : '2b) How do I safely / offline / cold storage with MyEtherWallet? ',
 HELP_2b_Desc_1              : 'Go to [https://github.com/kvhnuke/etherwallet/releases/latest](https://github.com/kvhnuke/etherwallet/releases/latest). ',
-HELP_2b_Desc_2              : 'Click on `dist-vX.X.X.X.zip`. ',
+HELP_2b_Desc_2              : 'Click on `etherwallet-vX.X.X.X.zip`. ',
 HELP_2b_Desc_3              : 'Move zip to an airgapped computer. ',
 HELP_2b_Desc_4              : 'Unzip it and double-click `index.html`. ',
 HELP_2b_Desc_5              : 'Generate a wallet with a strong password. ',

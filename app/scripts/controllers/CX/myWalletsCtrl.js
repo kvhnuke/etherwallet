@@ -70,6 +70,9 @@ var myWalletsCtrl = function ($scope, $sce, walletService) {
                 $scope[varWal][id].usd = etherUnits.toFiat($scope[varWal][id].balance, 'ether', $scope.fiatVal.usd);
                 $scope[varWal][id].eur = etherUnits.toFiat($scope[varWal][id].balance, 'ether', $scope.fiatVal.eur);
                 $scope[varWal][id].btc = etherUnits.toFiat($scope[varWal][id].balance, 'ether', $scope.fiatVal.btc);
+
+                $scope[varWal][id].balance = $scope.wallet.setBalance();
+                $scope[varWal][id].balanceR = $scope.wallet.setTokens();
             }
         });
     };

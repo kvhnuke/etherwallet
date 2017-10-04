@@ -1,4 +1,5 @@
 'use strict';
+require('./localStoragePolyfill');
 var IS_CX = false;
 if (typeof chrome != 'undefined') IS_CX = chrome.windows === undefined ? false : true;
 var angular                  = require('angular');
@@ -28,6 +29,8 @@ var browser                  = require('detect-browser');
 window.browser               = browser;
 var Wallet                   = require('./myetherwallet');
 window.Wallet                = Wallet;
+var Web3Wallet               = require('./web3Wallet');
+window.Web3Wallet            = Web3Wallet;
 var Token                    = require('./tokenlib');
 window.Token                 = Token;
 var globalFuncs              = require('./globalFuncs');
@@ -57,10 +60,14 @@ if (IS_CX) {
     var ledger3              = require('./staticJS/ledger3');
     var ledgerEth            = require('./staticJS/ledger-eth');
     var trezorConnect        = require('./staticJS/trezorConnect');
+    var digitalBitboxUsb     = require('./staticJS/digitalBitboxUsb');
+    var digitalBitboxEth     = require('./staticJS/digitalBitboxEth');
     window.u2f               = u2f;
     window.Ledger3           = ledger3;
     window.ledgerEth         = ledgerEth;
     window.TrezorConnect     = trezorConnect.TrezorConnect;
+    window.DigitalBitboxUsb  = digitalBitboxUsb;
+    window.DigitalBitboxEth  = digitalBitboxEth;
 }
 var CustomGasMessages        = require('./customGas.js')
 window.CustomGasMessages     = CustomGasMessages;
@@ -123,14 +130,14 @@ app.controller('bulkGenCtrl', ['$scope', bulkGenCtrl]);
 app.controller('decryptWalletCtrl', ['$scope', '$sce', 'walletService', decryptWalletCtrl]);
 app.controller('viewWalletCtrl', ['$scope', 'walletService', viewWalletCtrl]);
 app.controller('txStatusCtrl', ['$scope', txStatusCtrl]);
-app.controller('sendTxCtrl', ['$scope', '$sce', 'walletService', sendTxCtrl]);
+app.controller('sendTxCtrl', ['$scope', '$sce', 'walletService', '$rootScope', sendTxCtrl]);
 app.controller('swapCtrl', ['$scope', '$sce', 'walletService', swapCtrl]);
 app.controller('signMsgCtrl', ['$scope', '$sce', 'walletService', signMsgCtrl]);
 app.controller('contractsCtrl', ['$scope', '$sce', 'walletService', contractsCtrl]);
 app.controller('ensCtrl', ['$scope', '$sce', 'walletService', ensCtrl]);
 app.controller('footerCtrl', ['$scope', 'globalService', footerCtrl]);
 app.controller('offlineTxCtrl', ['$scope', '$sce', 'walletService', offlineTxCtrl]);
-app.controller('walletBalanceCtrl', ['$scope', '$sce', walletBalanceCtrl]);
+app.controller('walletBalanceCtrl', ['$scope', '$sce', '$rootScope', walletBalanceCtrl]);
 app.controller('helpersCtrl', ['$scope', helpersCtrl]);
 if (IS_CX) {
   app.controller('addWalletCtrl', ['$scope', '$sce', addWalletCtrl]);

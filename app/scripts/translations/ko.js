@@ -97,6 +97,7 @@ x_JsonDesc                  : '이것은 암호화되지 않은 JSON 형식의 �
 x_Keystore                  : 'Keystore 파일 (UTC / JSON · 권장 · 암호화됨) ',
 x_Keystore2                 : 'Keystore 파일 (UTC / JSON) ',
 x_KeystoreDesc              : '이 Keystore / JSON 파일은 Mist에서 사용하는 형식과 일치하므로 나중에 쉽게 가져올 수 있습니다. 다운로드하고 백업하는 것을 권장합니다. ',
+x_MetaMask                  : 'Metamask / Mist ',
 x_Mnemonic                  : 'Mnemonic 문구 ',
 x_ParityPhrase              : 'Parity 문구 ',
 x_Password                  : '비밀번호 ',
@@ -133,6 +134,8 @@ sidebar_TransHistory        : '트랜잭션 내역 ',
 sidebar_donation            : 'MyEtherWallet은 개인정보보호와 보안을 위한 무료 오픈 서비스입니다. 기부를 많이 받을수록 우리는 새로운 기능과 다양한 의견을 반영하여 사용자의 희망 사항을 위한 개발 시간을 늘리는 것이 가능해질 수 있습니다. 우리는 단 두명이 세상을 바꾸려 하고 있습니다. 도와주시겠습니까? ',
 sidebar_donate              : '기부 ',
 sidebar_thanks              : '감사합니다!!! ',
+sidebar_DisplayOnTrezor     : 'Display address on TREZOR',
+sidebar_DisplayOnLedger     : 'Display address on Ledger',
 
 /* Decrypt Panel */
 decrypt_Access              : '지갑 액세스 방법 선택 ',
@@ -146,16 +149,23 @@ MNEM_more                   : '나머지 주소 ',
 MNEM_prev                   : '이전 주소 ',
 
 /* Hardware wallets */
-x_Ledger                    : 'Ledger Nano S ',
-ADD_Ledger_1                : '사용자의 Ledger Nano S를 연결해주세요 ',
+x_Ledger                    : 'Ledger Wallet ',
+ADD_Ledger_1                : '사용자의 Ledger Wallet를 연결해주세요 ',
 ADD_Ledger_2                : '이더리움 어플리케이션을 실행해주세요 (또는 컨트랙트 어플리케이션)  ',
 ADD_Ledger_3                : 'Browser Support가 활성화된 상태인지 확인해주세요 ',
 ADD_Ledger_4                : '설정에서 Browser Support를 확인할 수 없으면, Ledger [Firmware 1.2] (https://www.ledgerwallet.com/apps/manager) 버전이 설치되어 있는지 확인해주세요. ',
 ADD_Ledger_0a               : 'MyEtherWallet을 보안 연결(SSL)로 다시 연결해주세요. ',
 ADD_Ledger_0b               : 'MyEtherWallet을 [Chrome](https://www.google.com/chrome/browser/desktop/) 또는 [Opera](https://www.opera.com/) 브라우저로 다시 열어주세요. ',
-ADD_Ledger_scan             : 'Ledger Nano S 에 연결하기 ',
+ADD_Ledger_scan             : 'Ledger Wallet 에 연결하기 ',
+  
+ADD_MetaMask                : 'Connect to MetaMask ',
+
 x_Trezor                    : 'TREZOR ',
 ADD_Trezor_scan             : 'TREZOR 에 연결하기 ',
+x_DigitalBitbox             : 'Digital Bitbox ',
+ADD_DigitalBitbox_0a        : 'MyEtherWallet을 보안 연결(SSL)로 다시 연결해주세요. ',
+ADD_DigitalBitbox_0b        : 'MyEtherWallet을 [Chrome](https://www.google.com/chrome/browser/desktop/) 또는 [Opera](https://www.opera.com/) 브라우저로 다시 열어주세요. ',
+ADD_DigitalBitbox_scan      : 'Digital Bitbox 에 연결하기 ',
 
 /* Add Wallet */
 ADD_Label_1                 : '어떤 걸 진행하시겠습니까? ',
@@ -167,6 +177,10 @@ ADD_Radio_3                 : '개인 키를 복사해서 입력해주세요. ',
 ADD_Radio_4                 : '모니터링 계좌 추가 ',
 ADD_Radio_5                 : 'Mnemonic 붙여넣기/입력 ',
 ADD_Radio_5_Path            : 'HD derivation 경로 선택 ',
+ADD_Radio_5_woTrezor        : '(Jaxx, Metamask, Exodus, imToken)',
+ADD_Radio_5_withTrezor      : '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
+ADD_Radio_5_PathAlternative : '(Ledger)',
+ADD_Radio_5_PathTrezor      : '(TREZOR)',
 ADD_Radio_5_PathCustom      : '커스텀 ',
 ADD_Label_2                 : '닉네임 만들기 ',
 ADD_Label_3                 : '당신의 지갑은 암호화되었습니다. 비밀번호를 입력해주세요. ',
@@ -367,6 +381,8 @@ ERROR_32                    : '노드에 연결할 수 없습니다. 새로고�
 ERROR_33                    : '입찰자의 주소와 잠금 해제된 지갑이 일치하지 않습니다. ',
 ERROR_34                    : '해당 이름이 문자열의 이름과 일치하지 않습니다. ',
 ERROR_35                    : 'Input address is not checksummed. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/not-checksummed-shows-when-i-enter-an-address" target="_blank" rel="noopener"> More info</a>', // 35
+ERROR_36                    : 'Enter valid TX hash', // 36
+ERROR_37                    : 'Enter valid hex string (0-9, a-f)', // 37
 
 SUCCESS_1                   : '유효한 주소 ',
 SUCCESS_2                   : '지갑이 성공적으로 복호화 되었습니다. ',
@@ -449,7 +465,7 @@ HELP_2a_Desc_6              : '하드 디스크, USB, 종이의 손상을 방지
 
 HELP_2b_Title               : '2b) 어떻게 하면 MyEtherWallet을 이용해 안전하게 오프라인, 콜드 스토리지로 자산을 보관할 수 있나요?  ',
 HELP_2b_Desc_1              : '다음을 참고 해주세요. [https://github.com/kvhnuke/etherwallet/releases/latest](https://github.com/kvhnuke/etherwallet/releases/latest). ',
-HELP_2b_Desc_2              : '"dist-vX.X.X.X.zip" 파일을 클릭합니다. ',
+HELP_2b_Desc_2              : '"etherwallet-vX.X.X.X.zip" 파일을 클릭합니다. ',
 HELP_2b_Desc_3              : 'zip 파일을 인터넷이 연결되지 않은 컴퓨터로 옮깁니다. ',
 HELP_2b_Desc_4              : '압축을 푼 후, ‘index.html’ 을 더블 클릭합니다. ',
 HELP_2b_Desc_5              : '강력한 비밀번호와 함께 지갑을 생성합니다.  ',
