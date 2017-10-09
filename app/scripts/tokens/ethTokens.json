@@ -284,6 +284,11 @@
 "decimal":2,
 "type":"default"
 },{
+"address":"0xced4e93198734ddaff8492d525bd258d49eb388e",
+"symbol":"EDO",
+"decimal":18,
+"type":"default"
+},{
 "address":"0xf9F0FC7167c311Dd2F1e21E9204F87EBA9012fB2",
 "symbol":"EHT",
 "decimal":8,
@@ -374,15 +379,15 @@
 "decimal":3,
 "type":"default"
 },{
-    "address":"0xFeeD1a53bd53FFE453D265FC6E70dD85f8e993b6",
-    "symbol":"H2O",
-    "decimal":18,
-    "type":"default"
+"address":"0xFeeD1a53bd53FFE453D265FC6E70dD85f8e993b6",
+"symbol":"H2O",
+"decimal":18,
+"type":"default"
 },{
-    "address":"0xba2184520A1cC49a6159c57e61E1844E085615B6",
-    "symbol":"HGT",
-    "decimal":8,
-    "type":"default"
+"address":"0xba2184520A1cC49a6159c57e61E1844E085615B6",
+"symbol":"HGT",
+"decimal":8,
+"type":"default"
 },{
 "address":"0x14F37B574242D366558dB61f3335289a5035c506",
 "symbol":"HKG",
@@ -392,6 +397,11 @@
 "address":"0xcbCC0F036ED4788F63FC0fEE32873d6A7487b908",
 "symbol":"HMQ",
 "decimal":8,
+"type":"default"
+},{
+"address":"0x554C20B7c486beeE439277b4540A434566dC4C02",
+"symbol":"HST",
+"decimal":18,
 "type":"default"
 },{
 "address":"0x5a84969bb663fb64F6d015DcF9F622Aedc796750",
@@ -457,6 +467,11 @@
 "address":"0x773450335eD4ec3DB45aF74f34F2c85348645D39",
 "symbol":"JetCoins",
 "decimal":18,
+"type":"default"
+},{
+"address":"0x27695E09149AdC738A978e9A678F99E4c39e9eb9",
+"symbol":"KICK",
+"decimal":8,
 "type":"default"
 },{
 "address":"0x818Fc6C2Ec5986bc6E2CBf00939d90556aB12ce5",
