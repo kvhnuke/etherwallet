@@ -113,7 +113,7 @@
 "symbol":"BCV",
 "decimal":2,
 "type":"default"
-},{ 
+},{
 "address":"0x74C1E4b8caE59269ec1D85D3D4F324396048F4ac",
 "symbol":"BeerCoin 🍺 ",
 "decimal":0,
@@ -549,7 +549,7 @@
 "symbol":"INXT",
 "decimal":8,
 "type":"default"
-},{  
+},{
 "address":"0x0aeF06DcCCC531e581f0440059E6FfCC206039EE",
 "symbol":"ITT",
 "decimal":8,
@@ -888,6 +888,11 @@
 "address":"0x697beac28B09E122C4332D163985e8a73121b97F",
 "symbol":"QRL",
 "decimal":8,
+"type":"default"
+},{
+"address":"0x9b6443b0fB9C241A7fdAC375595cEa13e6B7807A",
+"symbol":"RCC",
+"decimal":18,
 "type":"default"
 },{
 "address":"0xE94327D07Fc17907b4DB788E5aDf2ed424adDff6",
