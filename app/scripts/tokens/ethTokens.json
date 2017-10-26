@@ -324,6 +324,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0xac3211a5025414Af2866FF09c23FC18bc97e79b1",
+"symbol":"DOV",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x3c75226555FC496168d48B88DF83B95F16771F37",
 "symbol":"DROP",
 "decimal":0,
