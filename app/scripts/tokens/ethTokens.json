@@ -1060,6 +1060,11 @@
 "decimal":8,
 "type":"default"
 },{
+"address":"0x0371A82e4A9d0A4312f3ee2Ac9c6958512891372",
+"symbol":"STU",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x006BeA43Baa3f7A6f765F14f10A1a1b08334EF45",
 "symbol":"STX",
 "decimal":18,
