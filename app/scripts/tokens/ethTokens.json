@@ -118,7 +118,7 @@
 "symbol":"BCV",
 "decimal":2,
 "type":"default"
-},{ 
+},{
 "address":"0x74C1E4b8caE59269ec1D85D3D4F324396048F4ac",
 "symbol":"BeerCoin 🍺 ",
 "decimal":0,
@@ -341,6 +341,11 @@
 },{
 "address":"0x0AbdAce70D3790235af448C88547603b945604ea",
 "symbol":"DNT",
+"decimal":18,
+"type":"default"
+},{
+"address":"0xac3211a5025414Af2866FF09c23FC18bc97e79b1",
+"symbol":"DOV",
 "decimal":18,
 "type":"default"
 },{
@@ -579,7 +584,7 @@
 "symbol":"INXT",
 "decimal":8,
 "type":"default"
-},{  
+},{
 "address":"0x0aeF06DcCCC531e581f0440059E6FfCC206039EE",
 "symbol":"ITT",
 "decimal":8,
@@ -920,6 +925,11 @@
 "decimal":8,
 "type":"default"
 },{
+"address":"0x9b6443b0fB9C241A7fdAC375595cEa13e6B7807A",
+"symbol":"RCC",
+"decimal":18,
+"type":"default"
+},{
 "address":"0xE94327D07Fc17907b4DB788E5aDf2ed424adDff6",
 "symbol":"REP",
 "decimal":18,
@@ -1083,6 +1093,11 @@
 "address":"0x46492473755e8dF960F8034877F61732D718CE96",
 "symbol":"STRC",
 "decimal":8,
+"type":"default"
+},{
+"address":"0x0371A82e4A9d0A4312f3ee2Ac9c6958512891372",
+"symbol":"STU",
+"decimal":18,
 "type":"default"
 },{
 "address":"0x006BeA43Baa3f7A6f765F14f10A1a1b08334EF45",
