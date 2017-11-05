@@ -219,9 +219,9 @@
 "decimal":18,
 "type":"default"
 },{
-"address":"0x28577A6d31559bd265Ce3ADB62d0458550F7b8a7",
+"address":"0x66d8d5854e5e3258d5da8d028c4af4304da10b7d",
 "symbol":"CCC",
-"decimal":18,
+"decimal":0,
 "type":"default"
 },{
 "address":"0x5301c5e92e03474a751d015aeed0873a4db01357",
