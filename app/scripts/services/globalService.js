@@ -40,6 +40,7 @@ var globalService = function($http, $httpParamSerializerJQLike) {
     id: 4,
     name: "NAV_Swap",
     url: "swap",
+    badge: true,
     mew: true,
     cx: true
   },
