@@ -219,6 +219,11 @@
 "decimal":6,
 "type":"default"
 },{
+"address":"0xa13910f7c7B429ffA66AAe6fdC35Df48142495AE",
+"symbol":"CASH⇞",
+"decimal":6,
+"type":"default"
+},{
 "address":"0x56ba2Ee7890461f463F7be02aAC3099f6d5811A8",
 "symbol":"CAT",
 "decimal":18,
