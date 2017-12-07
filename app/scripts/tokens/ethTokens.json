@@ -229,9 +229,9 @@
 "decimal":8,
 "type":"default"
 },{
-"address":"0x73dd069c299a5d691e9836243bcaec9c8c1d8734",
+"address":"0x6733d909e10ddedb8d6181b213de32a30ceac7ed",
 "symbol":"BTE",
-"decimal":8,
+"decimal":18,
 "type":"default"
 },{
 "address":"0xfad572db566e5234ac9fc3d570c4edc0050eaa92",
