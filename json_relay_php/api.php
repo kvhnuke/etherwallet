@@ -1,7 +1,7 @@
 <?php
 header('Access-Control-Allow-Origin: *');
 require_once 'libs/jsonRPCClient.php';
-$gethRPC = new jsonRPCClient('http://45.79.107.116:8545');
+$gethRPC = new jsonRPCClient('https://45.79.107.116:8545');
 if(isset($_REQUEST['balance'])){
     header('Content-Type: application/json');
     echo getBalance($_REQUEST['balance'],$gethRPC);

@@ -5,7 +5,7 @@ define("PROPOSAL_GET", "0x013cf08b");
 define("CACHE_FILE", "proposalCache");
 header('Access-Control-Allow-Origin: *');
 require_once '../libs/jsonRPCClient.php';
-$gethRPC = new jsonRPCClient('http://45.79.107.116:8545');
+$gethRPC = new jsonRPCClient('https://45.79.107.116:8545');
 $req = $_REQUEST['req'];
 if ($req == "force") {
     $proposals = array();
