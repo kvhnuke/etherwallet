@@ -13,6 +13,7 @@ nodes.nodeTypes = {
     RSK: "RSK",
     EXP: "EXP",
     UBQ: "UBQ",
+    DBIX: "DBIX",
     Custom: "CUSTOM ETH"
 };
 nodes.ensNodeTypes = [nodes.nodeTypes.ETH, nodes.nodeTypes.Ropsten];
@@ -200,6 +201,21 @@ nodes.nodeList = {
         'estimateGas': true,
         'service': 'ubiqscan.io',
         'lib': new nodes.customNode('https://pyrus2.ubiqscan.io', '')
+
+    },
+    'dbix': {
+        'name': 'DBIX',
+        'blockExplorerTX': 'http://dbixscan.io/tx/[[txHash]]',
+        'blockExplorerAddr': 'http://dbixscan.io/addr/[[address]]',
+        'type': nodes.nodeTypes.DBIX,
+        'eip155': true,
+        'chainId': 5,
+        'tokenList': require('./tokens/dbixTokens.json'),
+        'abiList': require('./abiDefinitions/dbixAbi.json'),
+        'estimateGas': true,
+        'service': 'Arabianchain',
+        'lib': new nodes.customNode('https://rpc1.arabiancha.in', '')
+
     }
 };
 
