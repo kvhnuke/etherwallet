@@ -1683,4 +1683,9 @@
 "symbol":"ZST",
 "decimal":8,
 "type":"default"
+},{
+ "address":"0xabFB11De26e9D9a57d3B7620424992310cC8Ca3A",
+ "symbol":"NGC",
+ "decimal":18,
+ "type":"default"
 }]
