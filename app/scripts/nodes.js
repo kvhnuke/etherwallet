@@ -163,7 +163,7 @@ nodes.nodeList = {
         'lib': new nodes.infuraNode('https://rinkeby.infura.io/mew')
     },
     'rsk': {
-        'name': 'RSK',
+        'name': 'RSK (Not Working)',
         'blockExplorerTX': 'https://explorer.rsk.co/tx/[[txHash]]',
         'blockExplorerAddr': 'https://explorer.rsk.co/addr/[[address]]',
         'type': nodes.nodeTypes.RSK,
