@@ -13,9 +13,11 @@ nodes.nodeTypes = {
     RSK: "RSK",
     EXP: "EXP",
     UBQ: "UBQ",
+    POA: "POA",
     Custom: "CUSTOM ETH"
 };
 nodes.ensNodeTypes = [nodes.nodeTypes.ETH, nodes.nodeTypes.Ropsten];
+nodes.domainsaleNodeTypes = [nodes.nodeTypes.ETH, nodes.nodeTypes.Ropsten];
 nodes.customNodeObj = {
     'name': 'CUS',
     'blockExplorerTX': '',
@@ -125,6 +127,18 @@ nodes.nodeList = {
         'service': 'Etherscan.io',
         'lib': require('./nodeHelpers/etherscanKov')
     },
+    'kov_infura': {
+        'name': 'Kovan',
+        'type': nodes.nodeTypes.Kovan,
+        'blockExplorerTX': 'https://kovan.etherscan.io/tx/[[txHash]]',
+        'blockExplorerAddr': 'https://kovan.etherscan.io/address/[[address]]',
+        'eip155': true,
+        'chainId': 42,
+        'tokenList': require('./tokens/kovanTokens.json'),
+        'abiList': require('./abiDefinitions/kovanAbi.json'),
+        'service': 'infura.io',
+        'lib': new nodes.infuraNode('https://kovan.infura.io/mew')
+    },
     'rin_ethscan': {
         'name': 'Rinkeby',
         'type': nodes.nodeTypes.Rinkeby,
@@ -148,19 +162,6 @@ nodes.nodeList = {
         'abiList': require('./abiDefinitions/rinkebyAbi.json'),
         'service': 'infura.io',
         'lib': new nodes.infuraNode('https://rinkeby.infura.io/mew')
-    },
-    'rsk': {
-        'name': 'RSK',
-        'blockExplorerTX': 'https://explorer.rsk.co/tx/[[txHash]]',
-        'blockExplorerAddr': 'https://explorer.rsk.co/addr/[[address]]',
-        'type': nodes.nodeTypes.RSK,
-        'eip155': true,
-        'chainId': 31,
-        'tokenList': require('./tokens/rskTokens.json'),
-        'abiList': require('./abiDefinitions/rskAbi.json'),
-        'estimateGas': true,
-        'service': 'GK2.sk',
-        'lib': new nodes.customNode('https://rsk-test.gk2.sk/', '')
     },
     'exp': {
         'name': 'EXP',
@@ -187,6 +188,20 @@ nodes.nodeList = {
         'estimateGas': true,
         'service': 'ubiqscan.io',
         'lib': new nodes.customNode('https://pyrus2.ubiqscan.io', '')
+    },
+    'poa': {
+        'name': 'POA',
+        'blockExplorerTX': 'https://core-explorer.poa.network/tx/[[txHash]]',
+        'blockExplorerAddr': 'https://core-explorer.poa.network/account/[[address]]',
+        'type': nodes.nodeTypes.POA,
+        'eip155': true,
+        'chainId': 99,
+        'tokenList': require('./tokens/poaTokens.json'),
+        'abiList': require('./abiDefinitions/poaAbi.json'),
+        'estimateGas': true,
+        'service': 'core.poa.network',
+        'lib': new nodes.customNode('https://core.poa.network', ''),
+        'customGasPrice' : 1
     }
 };
 

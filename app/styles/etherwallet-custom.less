@@ -57,6 +57,7 @@ textarea {
   }
 }
 
+
 // address icenticons
 .address-identicon-container {
   padding: 0;
@@ -320,6 +321,8 @@ input[type="password"]+.eye {
 .token-balances {
   margin-bottom: 15px;
   font-size: 14px;
+  max-height: 60vh;
+  overflow: scroll;
 }
 
 h2 a.isActive {
@@ -427,6 +430,28 @@ label small {
   }
 }
 
+.dropdown-gas {
+  padding-bottom: 1rem;
+  @media screen and (max-width: 900px) {
+    padding-bottom: 2rem;
+  }
+}
+
+.dropdown-gas__msg {
+  font-size: 12px;
+  font-weight:300;
+  left: -100%;
+  margin: 0;
+  position: absolute;
+  right: -100%;
+  white-space:normal;
+  @media screen and (max-width: 900px) {
+    left: -25%;
+    right: 0;
+  }
+
+}
+
 .view-wallet-content {
   h5 {
     margin-bottom: @space-xs;
@@ -512,20 +537,14 @@ label small {
   li:nth-child(7),
   li:nth-child(8),
   li:nth-child(9),
-  li:nth-child(10) {
-    border-left: 2px solid @brand-test;
-  }
+  li:nth-child(10),
   li:nth-child(11) {
-    border-left: 2px solid @brand-rsk;
+    border-left: 2px solid @brand-test;
   }
   li:nth-child(12) {
     border-left: 2px solid @brand-exp;
   }
-  li:nth-child(13),
-  li:nth-child(14) {
-    border-left: 2px solid @brand-music;
-  }
-  li:nth-child(15) {
+  li:nth-child(13) {
     border-left: 2px solid @brand-ubq;
   }
   li:last-child {
@@ -533,11 +552,11 @@ label small {
   }
   li:nth-child(4),
   li:nth-child(5),
-  li:nth-child(10),
   li:nth-child(11),
   li:nth-child(12),
   li:nth-child(13),
-  li:nth-child(14) {
+  li:nth-child(14),
+  li:nth-child(15) {
     border-bottom: 1px solid @gray-lighter;
   }
 }
@@ -607,3 +626,5 @@ header.UBQ {
   & + .container .modal-content          { border: 0.25rem solid @brand-ubq;      }
   & + .container .alert-info             { background-color:@brand-ubq;           }
 }
+
+
