@@ -1124,6 +1124,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0xec18f898b4076a3e18f1089d33376cc380bde61d",
+"symbol":"PETRO",
+"decimal":18,
+"type":"default"
+},{
 "address":"0xE64509F0bf07ce2d29A7eF19A8A9bc065477C1B4",
 "symbol":"PIPL",
 "decimal":8,
