@@ -1244,6 +1244,11 @@
 "decimal":8,
 "type":"default"
 },{
+ "address":"0xEf6B4cE8C9Bc83744fbcdE2657b32eC18790458A",
+"symbol":"PUC",
+"decimal":0,
+"type":"default"
+},{
 "address":"0x671AbBe5CE652491985342e85428EB1b07bC6c64",
 "symbol":"QAU",
 "decimal":8,
