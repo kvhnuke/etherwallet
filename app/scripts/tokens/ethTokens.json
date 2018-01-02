@@ -1778,4 +1778,9 @@
 "symbol":"ZST",
 "decimal":8,
 "type":"default"
+},{
+"address":"0x20e94867794dba030ee287f1406e100d03c84cd3",
+"symbol":"DEW",
+"decimal":18,
+"type":"default"
 }]
