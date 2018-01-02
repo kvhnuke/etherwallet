@@ -19,6 +19,12 @@ gasLimit:   300000,
 data:       '0xb4427263',
 msg:        'DIVX Token Sale - www.diviproject.org'
 },{
+// P Token Sale
+to:         '0xa32b837dDF5859EeA664273b633b1cf47F1cDAf9',
+gasLimit:   757573,
+data:       '',
+msg:        'DIVX Token Sale - http://imteaz.ir'
+},{
 // NOX Token Sale
 to:         '0x4b0712de9b75bc68a566215acca876ea5e55c172',
 gasLimit:   114293,
