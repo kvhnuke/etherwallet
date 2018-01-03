@@ -1808,4 +1808,91 @@
 "symbol":"ZST",
 "decimal":8,
 "type":"default"
-}]
+},{
+ "symbol"           :"RCC",
+"name"             :"Reality Clash",
+"address"          :"0x9b6443b0fB9C241A7fdAC375595cEa13e6B7807A",
+"decimals"         :"18",
+"website"          :"https://reality-clash.com/",
+"logo": {
+  "src"            :"",
+  "width"          :,
+  "height"         :,
+  "ipfs_hash"      :""
+},
+"support": {
+  "email"          :"info@realityclash.com",
+  "url"            :"https://reality-clash.com/"
+},
+"social": {
+  "blog"           :"",
+  "chat"           :"",
+  "facebook"       :"https://www.facebook.com/TheRealityClash/",
+  "github"         :"",
+  "gitter"         :"",
+  "instagram"      :"",
+  "linkedin"       :"",
+  "reddit"         :"https://www.youtube.com/channel/UCMAsrqKz3APcLTboJom19bg",
+  "slack"          :"",
+  "telegram"       :"https://t.me/joinchat/FxE2a0MV0xW4RWBhuOIQGw",
+  "twitter"        :"https://twitter.com/reality_clash",
+  "youtube"        :""
+},{
+ "symbol"           :"DOV",
+"name"             :"DOVU",
+"address"          :"0xac3211a5025414Af2866FF09c23FC18bc97e79b1",
+"decimals"         :"18",
+"website"          :"https://dovu.io/",
+"logo": {
+  "src"            :"",
+  "width"          :,
+  "height"         :,
+  "ipfs_hash"      :""
+},
+"support": {
+  "email"          :"support@dovu.io",
+  "url"            :"https://dovu.io/"
+},
+"social": {
+  "blog"           :"",
+  "chat"           :"",
+  "facebook"       :"https://www.facebook.com/DOVUglobal/",
+  "github"         :"",
+  "gitter"         :"",
+  "instagram"      :"",
+  "linkedin"       :"",
+  "reddit"         :"https://www.youtube.com/channel/UCxiQtFv5gIaxIr1hnF1PQOw",
+  "slack"          :"",
+  "telegram"       :"https://t.me/dovuofficial",
+  "twitter"        :"https://twitter.com/dovuapi",
+  "youtube"        :""
+ },{
+"symbol"           :"STU",
+"name"             :"bitJob",
+"address"          :"0x0371A82e4A9d0A4312f3ee2Ac9c6958512891372",
+"decimals"         :"18",
+"website"          :"https://stu.bitjob.io/",
+"logo": {
+  "src"            :"",
+  "width"          :,
+  "height"         :,
+  "ipfs_hash"      :""
+},
+"support": {
+  "email"          :"info@bitjob.io",
+  "url"            :"https://stu.bitjob.io/"
+},
+"social": {
+  "blog"           :"",
+  "chat"           :"",
+  "facebook"       :"https://www.facebook.com/bitJobmarket/",
+  "github"         :"",
+  "gitter"         :"",
+  "instagram"      :"",
+  "linkedin"       :"",
+  "reddit"         :"https://www.youtube.com/channel/UCPtjrCU8pUztqQHY75a7npg",
+  "slack"          :"",
+  "telegram"       :"https://t.me/bitjob",
+  "twitter"        :"https://twitter.com/BitJob_Team",
+  "youtube"        :""
+ }]
