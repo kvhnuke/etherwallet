@@ -864,6 +864,12 @@
         "type": "default"
     },
     {
+        "address": "0x106b419718298f91ca576728a670597fb2e0ee4e",
+        "symbol": "GXE",
+        "decimal": 10,
+        "type": "default"
+    },
+    {
         "address": "0x22F0AF8D78851b72EE799e05F54A77001586B18A",
         "symbol": "GXVC",
         "decimal": 10,
