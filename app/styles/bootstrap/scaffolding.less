@@ -1,0 +1,73 @@
+* { box-sizing: border-box; }
+*:before, *:after { box-sizing: border-box; }
+
+
+html {
+  font-size: @font-size-pixels;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  @media screen and (min-width: @screen-xl) { font-size: @font-size-pixels-xl; }
+  @media screen and (max-width: @grid-float-breakpoint-max) { font-size: @font-size-pixels-sm; }
+  height: 100%;
+}
+
+body {
+  font-family: @font-family-base;
+  font-size: @font-size-base;
+  line-height: @line-height-base;
+  color: @text-color;
+  background-color: @body-bg;
+  height: 100%;
+}
+
+input,
+button,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+figure {
+  margin: 0;
+}
+
+img {
+  vertical-align: middle;
+}
+
+.img-responsive {
+  .img-responsive();
+}
+
+.img-thumbnail {
+  padding: @thumbnail-padding;
+  line-height: @line-height-base;
+  background-color: @thumbnail-bg;
+  border: 1px solid @thumbnail-border;
+  .transition(all .2s ease-in-out);
+  .img-responsive(inline-block);
+}
+
+hr {
+  margin-top:    @space;
+  margin-bottom: @space;
+  border: 0;
+  border-top: 1px solid @hr-border;
+}
+
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+[role="button"] {
+  cursor: pointer;
+}

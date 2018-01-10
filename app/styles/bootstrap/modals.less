@@ -1,0 +1,133 @@
+.modal-open {
+  overflow: hidden;
+}
+
+.modal {
+  display: none;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: @zindex-modal;
+  -webkit-overflow-scrolling: touch;
+  outline: 0;
+}
+
+.modal.fade .modal-dialog {
+  .translate(0, -25%);
+  .transition-transform(~"0.3s ease-out");
+}
+
+.modal.in .modal-dialog {
+  .translate(0, 0)
+}
+
+.modal-open .modal {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.modal-dialog {
+  position: relative;
+  width: auto;
+  margin: 10px;
+}
+
+.modal-content {
+  position: relative;
+  background-color: @modal-content-bg;
+  border-radius: @border-radius;
+  box-shadow: 1px 1px 60px rgba(0, 0, 0, 0.32);
+  background-clip: padding-box;
+  outline: 0;
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: @zindex-modal-background;
+  background-color: @modal-backdrop-bg;
+}
+
+.modal-backdrop.fade {
+  .opacity(0);
+}
+
+.modal-backdrop.in {
+  .opacity(@modal-backdrop-opacity);
+}
+
+.modal-header {
+  padding: @modal-inner-padding/2 @modal-inner-padding;
+}
+
+.modal-header .close {
+  margin-top: -2px;
+}
+
+.modal-title {
+  margin: 0 0 @space;
+  line-height: @modal-title-line-height;
+}
+
+.modal-body {
+  position: relative;
+  padding: @modal-inner-padding/2;
+  font-size: @font-size-bump-more;
+  .table > tbody > tr > td {
+    vertical-align: middle;
+  }
+  .addressIdenticon {
+    margin: auto;
+  }
+}
+
+.modal-footer {
+  padding: @space 1.5rem;
+  text-align: right;
+  border-top: 1px solid @modal-footer-border-color;
+  &:extend(.clearfix all);
+  .btn {
+    margin-top: 0;
+  }
+  .btn + .btn {
+    margin-left: @space-sm;
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+}
+
+#sendTransaction .modal-footer {
+  text-align: center;
+}
+
+.modal-scrollbar-measure {
+  position: absolute;
+  top: -9999px;
+  width: 50px;
+  height: 50px;
+  overflow: scroll;
+}
+
+@media (min-width: @screen-sm-min) {
+  .modal-dialog {
+    width: 800px;
+    margin: 30px auto;
+  }
+  .modal-sm {
+    width: @modal-sm;
+  }
+}
+
+@media (min-width: @screen-md-min) {
+  .modal-lg {
+    width: @modal-lg;
+  }
+}
+
+
