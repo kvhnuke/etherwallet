@@ -21,6 +21,11 @@ const source       = require('vinyl-source-stream');
 const uglify       = require('gulp-uglify');
 const zip          = require('gulp-zip');
 const html2js      = require('html2js-browserify');
+const merge        = require('merge-stream');
+const path         = require('path');
+const CryptoJS     = require('crypto-js');
+const through2     = require('through2');
+const Vinyl        = require('vinyl');
 
 const app          = './app/';
 const dist         = './dist/';
@@ -251,75 +256,83 @@ gulp.task('getVersion', function() {
         //.pipe( notify ( onSuccess('Version Number ' + versionNum ) ))
 });
 
+let etherWalletHash_md = 'Releases.md';
+function calculateSha256File(versionNum) {
+    return through2.obj((file, enc, cb) => {
+        let base = path.join(file.path, '..');
 
-// zips dist folder
-gulp.task('zip', ['getVersion'], function() {
-    gulp.src(dist + '**/**/*')
-        .pipe(plumber({ errorHandler: onError }))
-        .pipe(rename(function (path) {
-          path.dirname = './etherwallet-' + versionNum + '/' + path.dirname;
-        }))
-        .pipe(zip('./etherwallet-' + versionNum + '.zip'))
-        .pipe(gulp.dest('./releases/'))
-        .pipe(notify(onSuccess('Zip Dist ' + versionNum)));
-    return gulp.src(dist_CX + '**/**/*')
-        .pipe(plumber({ errorHandler: onError }))
-        .pipe(zip('./chrome-extension-' + versionNum + '.zip'))
-        .pipe(gulp.dest('./releases/'))
-        .pipe(notify(onSuccess('Zip CX ' + versionNum)))
-});
-
-
-function archive() {
-  let outputZip = fs.createWriteStream(__dirname + '/example.zip');
-  let archiveZip = archiver('zip', {
-      gzip: true,
-  });
-  outputZip.on('close', function() {
-    console.log(archiveZip.pointer() + ' total bytes');
-    console.log('archiver has been finalized and the output file descriptor has closed.');
-  });
-  archiveZip.on('error', function(err) {
-    throw err;
-  });
-  archiveZip.pipe(outputZip);
-  archiveZip.directory(dist, 'test2');
-  archiveZip.finalize();
-
-
-  let outputTar = fs.createWriteStream(__dirname + '/example.tgz');
-  let archiveTar = archiver('tar', {
-      gzip: true,
-  });
-  outputTar.on('close', function() {
-    return gulp.src(archiveTar).pipe(onSuccess('Archive Complete: Tar, /dist' ));
-  });
-  archiveTar.on('error', function(err) {
-    throw err;
-  });
-  archiveTar.pipe(outputTar);
-  archiveTar.directory(dist, 'test2');
-  archiveTar.finalize();
-
+        cb(null, new Vinyl({
+			path: etherWalletHash_md,
+			contents: new Buffer('etherwallet-' + versionNum + '.zip sha256: ' + CryptoJS.SHA256(CryptoJS.lib.WordArray.create(file.contents)).toString(CryptoJS.enc.Hex))
+		}));
+    });
 }
 
-
-gulp.task('travisZip', ['getVersion'], function() {
-    gulp.src(dist + '**/**/*')
+function getZipTask(outputDirectory) {
+    let etherwalletTask = gulp.src(dist + '**/**/*')
         .pipe(plumber({ errorHandler: onError }))
         .pipe(rename(function (path) {
           path.dirname = './etherwallet-' + versionNum + '/' + path.dirname;
         }))
         .pipe(zip('./etherwallet-' + versionNum + '.zip'))
-        .pipe(gulp.dest('./deploy/'))
-        .pipe(notify(onSuccess('Zip Dist ' + versionNum)));
-    return gulp.src(dist_CX + '**/**/*')
+        .pipe(gulp.dest(outputDirectory));
+    let etherwalletNotifyTask = etherwalletTask.pipe(notify(onSuccess('Zip Dist ' + versionNum)));
+
+    let cxTask = gulp.src(dist_CX + '**/**/*')
         .pipe(plumber({ errorHandler: onError }))
         .pipe(zip('./chrome-extension-' + versionNum + '.zip'))
-        .pipe(gulp.dest('./deploy/'))
-        .pipe(notify(onSuccess('Zip CX ' + versionNum)))
+        .pipe(gulp.dest(outputDirectory));
+    let cxNotifyTask = cxTask.pipe(notify(onSuccess('Zip CX ' + versionNum)));
+
+    let releaseFileTask = etherwalletTask
+        .pipe(calculateSha256File(versionNum))
+        .pipe(gulp.dest(outputDirectory))
+        .pipe(notify(onSuccess('Sha256 file created')));
+
+    return merge(etherwalletNotifyTask, cxNotifyTask, releaseFileTask);
+}
+
+// zips dist folder to releases
+gulp.task('zip', ['getVersion'], function() {
+    return getZipTask('./releases/');
 });
 
+// travis zips for deployment
+gulp.task('travisZip', ['getVersion'], function() {
+    return getZipTask('./deploy/');
+});
+
+function archive() {
+    let outputZip = fs.createWriteStream(__dirname + '/example.zip');
+    let archiveZip = archiver('zip', {
+        gzip: true,
+    });
+    outputZip.on('close', function() {
+      console.log(archiveZip.pointer() + ' total bytes');
+      console.log('archiver has been finalized and the output file descriptor has closed.');
+    });
+    archiveZip.on('error', function(err) {
+      throw err;
+    });
+    archiveZip.pipe(outputZip);
+    archiveZip.directory(dist, 'test2');
+    archiveZip.finalize();
+
+
+    let outputTar = fs.createWriteStream(__dirname + '/example.tgz');
+    let archiveTar = archiver('tar', {
+        gzip: true,
+    });
+    outputTar.on('close', function() {
+      return gulp.src(archiveTar).pipe(onSuccess('Archive Complete: Tar, /dist' ));
+    });
+    archiveTar.on('error', function(err) {
+      throw err;
+    });
+    archiveTar.pipe(outputTar);
+    archiveTar.directory(dist, 'test2');
+    archiveTar.finalize();
+}
 
 // add all
 gulp.task('add', function() {
