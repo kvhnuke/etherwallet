@@ -1699,6 +1699,11 @@
 "decimal":8,
 "type":"default"
 },{
+"address":"0x85e076361cc813a908ff672f9bad1541474402b2",
+"symbol":"TEL",
+"decimal":2,
+"type":"default"
+},{
 "address":"0xa7f976C360ebBeD4465c2855684D1AAE5271eFa9",
 "symbol":"TFL",
 "decimal":8,
