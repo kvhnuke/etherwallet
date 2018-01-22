@@ -1368,6 +1368,11 @@
 "symbol":"PBL",
 "decimal":18,
 "type":"default"
+ },{
+"address":"0xa32b837dDF5859EeA664273b633b1cf47F1cDAf9",
+"symbol":"P",
+"decimal":2,
+"type":"default"
 },{
 "address":"0x53148Bb4551707edF51a1e8d7A93698d18931225",
 "symbol":"PCL",
