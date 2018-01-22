@@ -804,6 +804,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0xf67451dc8421f0e0afeb52faa8101034ed081ed9",
+"symbol":"GAM",
+"decimal":8,
+"type":"default"
+},{
 "address":"0x4F4f0Db4de903B88f2B1a2847971E231D54F8fd3",
 "symbol":"GEE",
 "decimal":8,
