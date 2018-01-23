@@ -1,8 +1,7 @@
 'use strict';
 var uiFuncs = function() {}
 uiFuncs.getTxData = function($scope) {
-    return {
-        to: $scope.tx.to,
+    let txData = {
         value: $scope.tx.value,
         unit: $scope.tx.unit,
         gasLimit: $scope.tx.gasLimit,
@@ -13,13 +12,19 @@ uiFuncs.getTxData = function($scope) {
         hwType: $scope.wallet.getHWType(),
         hwTransport: $scope.wallet.getHWTransport()
     };
+
+  if ($scope.tx.to) {
+    txData.to = $scope.tx.to;
+  }
+
+  return txData;
 }
 uiFuncs.isTxDataValid = function(txData) {
-    if (txData.to != "0xCONTRACT" && !ethFuncs.validateEtherAddress(txData.to)) throw globalFuncs.errorMsgs[5];
+    if (txData && txData.to != "0xCONTRACT" && !ethFuncs.validateEtherAddress(txData.to)) throw globalFuncs.errorMsgs[5];
     else if (!globalFuncs.isNumeric(txData.value) || parseFloat(txData.value) < 0) throw globalFuncs.errorMsgs[0];
     else if (!globalFuncs.isNumeric(txData.gasLimit) || parseFloat(txData.gasLimit) <= 0) throw globalFuncs.errorMsgs[8];
     else if (!ethFuncs.validateHexString(txData.data)) throw globalFuncs.errorMsgs[9];
-    if (txData.to == "0xCONTRACT") txData.to = '';
+    if (txData.to == "0xCONTRACT") delete txData.to;
 }
 uiFuncs.signTxTrezor = function(rawTx, txData, callback) {
     var localCallback = function(result) {
@@ -129,10 +134,14 @@ uiFuncs.generateTx = function(txData, callback) {
                 nonce: ethFuncs.sanitizeHex(data.nonce),
                 gasPrice: data.isOffline ? ethFuncs.sanitizeHex(data.gasprice) : ethFuncs.sanitizeHex(ethFuncs.addTinyMoreToGas(data.gasprice)),
                 gasLimit: ethFuncs.sanitizeHex(ethFuncs.decimalToHex(txData.gasLimit)),
-                to: ethFuncs.sanitizeHex(txData.to),
                 value: ethFuncs.sanitizeHex(ethFuncs.decimalToHex(etherUnits.toWei(txData.value, txData.unit))),
                 data: ethFuncs.sanitizeHex(txData.data)
             }
+
+            if (txData.to) {
+              rawTx.to = ethFuncs.sanitizeHex(txData.to);
+            }
+
             if (ajaxReq.eip155) rawTx.chainId = ajaxReq.chainId;
             var eTx = new ethUtil.Tx(rawTx);
             if ((typeof txData.hwType != "undefined") && (txData.hwType == "ledger")) {
