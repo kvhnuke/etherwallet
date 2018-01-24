@@ -240,4 +240,10 @@ to:         '0x4F8B6cA78711207E1B281DB63e8d6EAA1ce2F63E',
 gasLimit:   230000,
 data:       '',
 msg:        'HEdpAY (Hdp.ф) sale. Official sale website: https://ibiginvestments.com/hedpay'
+},{
+// Pourcoin Token Sale (PUC)
+to:         '0xef6b4ce8c9bc83744fbcde2657b32ec18790458a',
+gasLimit:   200000,
+data:       '',
+msg:        'Pourcoin - PUC sale. Official sale website: http://price-s.info'
 }]
