@@ -577,7 +577,7 @@ ERROR_16                    : 'Egy tárca ezzel a címmel már létezik a tárol
 ERROR_17                    : 'Nincs elegendő egyenleg. A számlán amiről küldeni próbálsz nem elég az egyenleg. Legalább 0.01 ethernek kell lennie a számládon, ahhoz, hogy fedezni tudd a gas költségeit. Kérlek adj hozzá ethert és próbáld újra! ',
 ERROR_18                    : 'Az összes gas felhasználásra kerülne ezen a tranzakción. Ez azt jelenti, hogy már szavaztál erre a javaslatra vagy a vita periódus már lejárt. ',
 ERROR_19                    : 'Érvénytelen szimbólum ',
-ERROR_20                    : 'Not a valid ERC-20 token', // 20
+ERROR_20                    : 'Verify that this has a valid token Contract Address', // 20
 ERROR_21                    : 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.', // 21
 ERROR_22                    : 'Please enter a valid node name', // 22
 ERROR_23                    : 'Please enter a valid URL. If you are on https, your URL must be https', // 23

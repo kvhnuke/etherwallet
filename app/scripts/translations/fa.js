@@ -510,7 +510,7 @@ ERROR_16                        :  '(error_17) برای پوشش هزینه سو
 ERROR_17                        :  '(error_18) Insufficient balance. Your gas limit * gas price + amount to send exceeds your current balance. Send more ETH to your account or use the "Send Entire Balance" button. If you believe this is in error, try pressing generate again. Required (d+) and got: (d+). [Learn More.](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)', // 17
 ERROR_18                        :  '(error_19) کاراکتر غیرمعتبر است All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.', // 18
 ERROR_19                        :  '(error_20) این توکن نامعتبر است Please enter a valid symbol', // 19
-ERROR_20                        :  '(error_21) Not a valid ERC-20 token', // 20
+ERROR_20                        :  '(error_21) Verify that this has a valid token Contract Address', // 20
 ERROR_21                        :  '(error_22) لطفا یک نام نود (گره) معتبر وارد کنید Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.', // 21
 ERROR_22                        :  '(error_23) لطفا url صحیح وارد کنید. در صورتی که از https استفاده می کنید url شما باید https باشد Please enter a valid node name', // 22
 ERROR_23                        :  '(error_24) لطفا یک پورت معتبر وارد کنید Please enter a valid URL. If you are on https, your URL must be https', // 23

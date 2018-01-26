@@ -584,7 +584,7 @@ ERROR_16                    : 'Кошелёк с таким адресом уж�
 ERROR_17                    : 'Недостаточно средств. На счёте, с которого вы пытаетесь отправить транзакцию, не хватает средств. Вам необходимо иметь не менее 0.01 эфира (ether) на Вашем счету, чтобы покрыть расходы на газ. Пожалуйста, пложите немного эфира (ether) на счёт и попробуйте снова. ',
 ERROR_18                    : 'Транзакция могла бы истратить весь газ. Это значит, что Вы уже голосовали по данному предложению, или период обсуждения данного предложения закончился. ',
 ERROR_19                    : 'Неправильный символ ',
-ERROR_20                    : 'Not a valid ERC-20 token', // 20
+ERROR_20                    : 'Verify that this has a valid token Contract Address', // 20
 ERROR_21                    : 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.', // 21
 ERROR_22                    : 'Please enter a valid node name', // 22
 ERROR_23                    : 'Please enter a valid URL. If you are on https, your URL must be https', // 23

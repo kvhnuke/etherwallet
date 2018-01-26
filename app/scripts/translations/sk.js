@@ -581,7 +581,7 @@ ERROR_16                    : 'A wallet with this address already exists in stor
 ERROR_17                    : 'Account you are sending from does not have enough funds. If sending tokens, you must have 0.01 ETH in your account to cover the cost of gas. ', // 17
 ERROR_18                    : 'All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.', // 18
 ERROR_19                    : 'Please enter a valid symbol', // 19
-ERROR_20                    : 'Not a valid ERC-20 token', // 20
+ERROR_20                    : 'Verify that this has a valid token Contract Address', // 20
 ERROR_21                    : 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.', // 21
 ERROR_22                    : 'Please enter a valid node name', // 22
 ERROR_23                    : 'Please enter a valid URL. If you are on https, your URL must be https', // 23

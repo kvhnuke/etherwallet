@@ -583,7 +583,7 @@ ERROR_16                    : '这个地址钱包已经存在于存储中。请�
 ERROR_17                    : '你的账户需要至少0.01以太币，已支付gas费用。请添加一些以太币，再次尝试。 ',
 ERROR_18                    : '所有的gas将用于这笔交易。 这意味着你已经对这个提议进行投票或者辩论期已经结束。 ',
 ERROR_19                    : '无效符号 ',
-ERROR_20                    : 'Not a valid ERC-20 token', // 20
+ERROR_20                    : 'Verify that this has a valid token Contract Address', // 20
 ERROR_21                    : 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.', // 21
 ERROR_22                    : 'Please enter a valid node name', // 22
 ERROR_23                    : 'Please enter a valid URL. If you are on https, your URL must be https', // 23
