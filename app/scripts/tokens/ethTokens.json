@@ -609,8 +609,13 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x4672bad527107471cb5067a887f4656d585a8a31",
+"symbol":"DROP (dropil)",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x3c75226555FC496168d48B88DF83B95F16771F37",
-"symbol":"DROP",
+"symbol":"DROP (droplex)",
 "decimal":0,
 "type":"default"
 },{
