@@ -39,6 +39,11 @@
 "decimal":4,
 "type":"default"
 },{
+"address":"0x8eB24319393716668D768dCEC29356ae9CfFe285",
+"symbol":"AGI",
+"decimal":8,
+"type":"default"
+},{
 "address":"0x27dce1ec4d3f72c3e457cc50354f1f975ddef488",
 "symbol":"AIR",
 "decimal":8,
