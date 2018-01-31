@@ -1104,6 +1104,11 @@
 "decimal":8,
 "type":"default"
 },{
+"address":"0xEB9951021698B42e4399f9cBb6267Aa35F82D59D",
+"symbol":"LIF",
+"decimal":18,
+"type":"default"
+},{
 "address":"0xff18dbc487b4c2e3222d115952babfda8ba52f5f",
 "symbol":"LIFE",
 "decimal":18,
