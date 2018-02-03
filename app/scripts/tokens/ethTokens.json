@@ -1574,6 +1574,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x408e41876cCCDC0F92210600ef50372656052a38",
+"symbol":"REN",
+"decimal":18,
+"type":"default"
+},{
 "address":"0xE94327D07Fc17907b4DB788E5aDf2ed424adDff6",
 "symbol":"REP",
 "decimal":18,
