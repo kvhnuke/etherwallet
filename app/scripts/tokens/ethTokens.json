@@ -39,6 +39,11 @@
 "decimal":4,
 "type":"default"
 },{
+"address":"0x5ca9a71b1d01849c0a95490cc00559717fcf0d1d",
+"symbol":"AE",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x27dce1ec4d3f72c3e457cc50354f1f975ddef488",
 "symbol":"AIR",
 "decimal":8,
