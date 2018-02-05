@@ -2079,6 +2079,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0xb7cB1C96dB6B22b0D3d9536E0108d062BD488F74",
+"symbol":"WTC",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x910Dfc18D6EA3D6a7124A6F8B5458F281060fa4c",
 "symbol":"X8X",
 "decimal":18,
