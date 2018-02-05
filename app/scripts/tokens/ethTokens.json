@@ -179,6 +179,11 @@
 "decimal":18,
 "type":"default"
 },{
+"address":"0x4D8fc1453a0F359e99c9675954e656D80d996FbF",
+"symbol":"BEE",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x74C1E4b8caE59269ec1D85D3D4F324396048F4ac",
 "symbol":"BeerCoin",
 "decimal":0,
@@ -1806,6 +1811,11 @@
 },{
 "address":"0x629aEe55ed49581C33ab27f9403F7992A289ffd5",
 "symbol":"STC",
+"decimal":18,
+"type":"default"
+},{
+"address":"0xaE73B38d1c9A8b274127ec30160a4927C4d71824",
+"symbol":"STK",
 "decimal":18,
 "type":"default"
 },{
