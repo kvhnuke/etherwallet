@@ -1039,6 +1039,11 @@
 "decimal":0,
 "type":"default"
 },{
+"address":"0x5136c98a80811c3f46bdda8b5c4555cfd9f812f0",
+"symbol":"IDH",
+"decimal":6,
+"type":"default"
+},{
 "address":"0x7654915a1b82d6d2d0afc37c52af556ea8983c7e",
 "symbol":"IFT",
 "decimal":18,
