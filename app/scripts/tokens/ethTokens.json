@@ -2421,5 +2421,10 @@
 "symbol": "DCA",
 "decimal": 18,
 "type": "default"
+  },{
+"address": "0xa1148AEAE913F2EBbE012cE7Bca602fe75e735f8",
+"symbol": "SPARTA",
+"decimal": 4,
+"type": "default"
 }
 ]
