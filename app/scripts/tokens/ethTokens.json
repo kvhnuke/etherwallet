@@ -529,6 +529,11 @@
 "decimal":8,
 "type":"default"
 },{
+"address":"0x2134057c0b461f898d375cead652acae62b59541",
+"symbol":"CXC",
+"decimal":18,
+"type":"default"
+},{
 "address":"0xb6EE9668771a79be7967ee29a63D4184F8097143",
 "symbol":"CXO",
 "decimal":18,
@@ -1356,6 +1361,11 @@
 },{
 "address":"0xa823e6722006afe99e91c30ff5295052fe6b8e32",
 "symbol":"NEU",
+"decimal":18,
+"type":"default"
+},{
+"address":"0x72dd4b6bd852a3aa172be4d6c5a6dbec588cf131",
+"symbol":"NGC",
 "decimal":18,
 "type":"default"
 },{
