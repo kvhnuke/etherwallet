@@ -1294,6 +1294,11 @@
 "decimal":0,
 "type":"default"
 },{
+"address":"0x21f0F0fD3141Ee9E11B3d7f13a1028CD515f459c",
+"symbol":"MRP",
+"decimal":18,
+"type":"default"
+},{
 "address":"0xAB6CF87a50F17d7F5E1FEaf81B6fE9FfBe8EBF84",
 "symbol":"MRV",
 "decimal":18,
