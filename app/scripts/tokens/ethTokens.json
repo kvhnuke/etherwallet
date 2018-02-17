@@ -258,6 +258,11 @@
 "symbol":"BNT",
 "decimal":18,
 "type":"default"
+ },{
+"address":"0xa1148AEAE913F2EBbE012cE7Bca602fe75e735f8",
+"symbol":"BTK",
+"decimal":18,
+"type":"default"
 },{
 "address":"0xd2d6158683aee4cc838067727209a0aaf4359de3",
 "symbol":"BNTY",
