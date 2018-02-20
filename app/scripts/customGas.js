@@ -266,3 +266,9 @@ gasLimit:   150000,
 data:       '',
 msg:        'DoBetAcceptBet (DCA) Token Sale. Official sale website: https://dobetacceptbet.com'
 }]
+// DoBETAcceptBET Token Sale
+to:         '0x386Faa4703a34a7Fdb19Bec2e14Fd427C9638416',
+gasLimit:   150000,
+data:       '',
+msg:        'DoBETAcceptBET (DCA) Token Sale. Official sale website: www.dobetacceptbet.com'
+},{
