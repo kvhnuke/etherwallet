@@ -93,7 +93,7 @@
   </div>
 }
 
-<section class="bg-gradient header-branding">
+<section id="header-branding" class="bg-gradient header-branding">
   <section class="container">
     @@if (site === 'mew' ) {
       <a class="brand" href="/" aria-label="Go to homepage">

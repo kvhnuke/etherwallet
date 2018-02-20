@@ -67,6 +67,11 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
 
     var networkHasChanged = false;
     $scope.changeNode = function(key) {
+        if (key.startsWith("etc")) {
+            var headerBranding = angular.element(document.querySelector("#header-branding"));
+            headerBranding.removeClass("bg-gradient");
+            headerBranding.addClass("bg-gradient-green");
+        }
         var newNode = makeNewNode(key);
         if (!$scope.curNode) {
           networkHasChanged = false;
