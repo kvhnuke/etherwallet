@@ -1482,6 +1482,12 @@
     "type": "default"
   },
   {
+    "address": "0x5102791ca02fc3595398400bfe0e33d7b6c82267",
+    "symbol": "LDC",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0xd6e354F07319e2474491D8c7c712137bEe6862a2",
     "symbol": "LEMO",
     "decimal": 0,
