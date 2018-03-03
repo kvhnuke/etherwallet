@@ -395,6 +395,12 @@
     "decimal": 18,
     "type": "default"
   },
+    {
+    "address": "0xdb8646f5b487b5dd979fac618350e85018f557d4",
+    "symbol": "BTK",
+    "decimal": 18,
+    "type": "default"
+  },
   {
     "address": "0x2accaB9cb7a48c3E82286F0b2f8798D201F4eC3f",
     "symbol": "BTL (Battle)",
