@@ -7,6 +7,12 @@
 // http://www.tokensalecalendar.com/
 
 module.exports = [{
+// Duty of Care (VDOC) Token sale
+to:         '0xe8DB4ceA1f7ad7Ba22F3DbbAb55A336545701d96',
+gasLimit:   200000,
+data:       '',
+msg:        ' Duty of Care VDOC token sale - https://dutyof.care/token-launch/'
+},{
 // Accord (ARD) Token sale
 to:         '0x75aa7b0d02532f3833b66c7f0ad35376d373ddf8',
 gasLimit:   300000,
