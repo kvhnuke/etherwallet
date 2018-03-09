@@ -258,6 +258,12 @@
     "type": "default"
   },
   {
+    "address": "0x1014613e2b3cbc4d575054d4982e580d9b99d7b1",
+    "symbol": "BCV",
+    "decimal": 8,
+    "type": "default"
+  },
+  {
     "address": "0x1c4481750daa5Ff521A2a7490d9981eD46465Dbd",
     "symbol": "BCPT",
     "decimal": 18,
