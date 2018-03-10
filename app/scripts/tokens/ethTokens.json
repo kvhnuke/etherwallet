@@ -1698,6 +1698,12 @@
     "type": "default"
   },
   {
+    "address": "0x5b09a0371c1da44a8e24d36bf5deb1141a84d875",
+    "symbol": "MAD",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0x0F5D2fB29fb7d3CFeE444a200298f468908cC942",
     "symbol": "MANA",
     "decimal": 18,
