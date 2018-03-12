@@ -363,6 +363,32 @@ globalFuncs.removeTokenFromLocal = function(symbol, tokenObj) {
         }
 };
 
+globalFuncs.VES_getExtId = function(str) {
+    var crypto = window.crypto || window.msCrypto;
+    var buf = new Uint8Array(str.length);
+    for (var i = 0; i < str.length; i++) buf[i] = str.charCodeAt(i);
+    return crypto.subtle.digest({name: "SHA-256"}, buf).then(function(h) {
+	var hash = new Uint8Array(h);
+	var rs = "";
+	var hexChars = "0123456789abcdef";
+	for (i = 0; i < hash.byteLength; i++) rs += hexChars[hash[i] >> 4] + hexChars[hash[i] & 0x0f];
+	return rs;
+    });
+};
+
+globalFuncs.VES_exist = function(extIds,idx) {
+    return Promise.resolve(extIds).then(function(extIds) {
+        var myVES = libVES.instance();
+        return myVES.getFileItem({domain:myVES.domain,externalId:extIds[idx]}).then(function(vaultItem) {
+            return vaultItem.getId().then(function(id) {
+                return true;
+            }).catch(function(e) {
+                if (e.code == 'NotFound') return false;
+                else throw e;
+            });
+        });
+    });
+};
 
 globalFuncs.localStorage = {
         isAvailable: function() {

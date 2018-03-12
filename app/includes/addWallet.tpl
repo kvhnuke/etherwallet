@@ -85,6 +85,18 @@
                   ng-click="showPass=!showPass">
             </span>
           </div>
+        <div class="ves_retrieve_box">
+         <div class="ves_retrieve_info" ng-show="ves_exists==false">
+          <div class="ves_divider"><hr></div>
+          <label><input type="checkbox" checked ng-model="ves_backup_chkbx" /> <a href="https://www.vesvault.com" target="_blank" class="ves_icon_prp" title="VESvault"></a> <span translate="x_VES_retrieve3a">Back up the wallet password with VES</span></label>
+          <div class="ves_retrieve_msg">
+           <span class="ves_loading_msg" ng-show="ves_status=='starting'" translate="x_VES_starting">Connecting to VES...</span>
+           <span class="ves_loading_msg" ng-show="ves_status=='loading'" translate="x_VES_backup_loading">Backing up your wallet password with VES...</span>
+           <span class="ves_success_msg" ng-show="ves_status=='ok'" translate="x_VES_backup_ok">Your wallet password has been successfully backed up with VES.</span>
+           <span class="ves_warn_msg" ng-show="ves_status=='error'" ng-bind="ves_error_msg"></span>
+          </div>
+         </div>
+        </div>
         </div>
 
       </section>
@@ -115,12 +127,46 @@
           <p translate="ADD_Label_3">
             Your file is encrypted. Please enter the password:
           </p>
-          <input class="form-control"
-                 type="password"
-                 placeholder="{{'x_Password' | translate }}"
-                 ng-model="filePassword"
-                 ng-change="onFilePassChange()" />
+          <div class="input-group"><input class="ves_retrieve_file form-control"
+               ng-change="onFilePassChange()"
+               ng-model="filePassword"
+               placeholder="{{ 'x_Password' | translate }}"
+               type="{{vespswdVisible ? 'text' : 'password'}}" />
+            <span tabindex="0" aria-label="make password visible" role="button" class="input-group-addon eye" ng-click="ves_showHidePswd()"></span>
+          </div>
+        <div class="ves_retrieve_box">
+         <div ng-show="ves_exists">
+          <div class="ves_divider ves_divider_second"><hr><span translate="x_VES_or">OR</span></div>
+          <div class="ves_retrieve_btn"><a tabindex="0" role="button"
+           class="btn"
+           ng-click="ves_retrieve()">
+           <span translate="x_VES_retrieve1">
+             Retrieve your wallet password with VES
+           </span>
+           <span class="ves_icon"></span></a>
+          </div>
+          <div class="ves_retrieve_msg">
+           <span class="ves_loading_msg" ng-show="ves_status=='starting'" translate="x_VES_starting">Connecting to VES...</span>
+           <span class="ves_loading_msg" ng-show="ves_status=='loading'" translate="x_VES_retrieve_loading">Retrieving your wallet password with VES...</span>
+           <span class="ves_success_msg" ng-show="ves_status=='ok'" translate="x_VES_retrieve_ok">Your wallet password was successfully retrieved with VES.</span>
+           <span class="ves_warn_msg" ng-show="ves_status=='error_retrieve'" translate="x_VES_retrieve_error">Your wallet password could not be retrieved with VES.</span>
+           <span class="ves_warn_msg" ng-show="ves_status=='error'" ng-bind="ves_error_msg"></span>
+          </div>
+         </div>
+         <div class="ves_retrieve_info" ng-show="ves_exists==false">
+          <div class="ves_divider"><hr></div>
+          <span translate="x_VES_retrieve2">The password for this wallet is not yet backed up with VES.</span><br/>
+         </div>
+         <div class="ves_retrieve_info" ng-show="ves_exists==null">
+          <div class="ves_divider"><hr></div>
+          <span translate="x_VES_retrieve4">VES backup</span>
+          <div class="ves_retrieve_msg">
+           <span class="ves_loading_msg" ng-show="ves_status=='loading'" translate="x_VES_retrieve5">Checking if your wallet password is backed up with VES...</span>
+           <span class="ves_warn_msg" ng-show="ves_status=='error'" ng-bind="ves_error_msg"></span>
+          </div>
+         </div>
         </div>
+       </div>
 
       </section>
 
@@ -397,14 +443,31 @@
                  ng-class="isStrongPass(addAccount.password) ? 'valid' : 'invalid'"
                  ng-change="newWalletChange('','showBtnAddWallet')"
                  ng-keyup="$event.keyCode == 13 && importWalletToStorage()" />
-
           <span class="input-group-addon eye" ng-click="showPass=!showPass"></span>
-
         </div>
-
       </div>
 
       <div class="form-group" ng-show="showBtnAddWallet">
+        <div class="ves_retrieve_box">
+         <div class="ves_retrieve_info" ng-show="ves_exists==false">
+          <div class="ves_divider"><hr></div>
+          <label><input type="checkbox" checked ng-model="ves_backup_chkbx" /> <a href="https://www.vesvault.com" target="_blank" class="ves_icon_prp" title="VESvault"></a> <span translate="x_VES_retrieve3a">Back up the wallet password with VES</span></label>
+          <div class="ves_retrieve_msg">
+           <span class="ves_loading_msg" ng-show="ves_status=='starting'" translate="x_VES_starting">Connecting to VES...</span>
+           <span class="ves_loading_msg" ng-show="ves_status=='loading'" translate="x_VES_backup_loading">Backing up your wallet password with VES...</span>
+           <span class="ves_success_msg" ng-show="ves_status=='ok'" translate="x_VES_backup_ok">Your wallet password has been successfully backed up with VES.</span>
+           <span class="ves_warn_msg" ng-show="ves_status=='error'" ng-bind="ves_error_msg"></span>
+          </div>
+         </div>
+         <div class="ves_retrieve_info" ng-show="ves_exists==null">
+          <div class="ves_divider"><hr></div>
+          <span translate="x_VES_retrieve4">VES backup</span>
+          <div class="ves_retrieve_msg">
+           <span class="ves_loading_msg" ng-show="ves_status=='loading'" translate="x_VES_retrieve5">Checking if your wallet password is backed up with VES...</span>
+           <span class="ves_warn_msg" ng-show="ves_status=='error'" ng-bind="ves_error_msg"></span>
+          </div>
+         </div>
+        </div>
         <a class="btn btn-info btn-block"
            ng-click="importWalletToStorage()"
            translate="NAV_AddWallet">
@@ -416,7 +479,6 @@
     </div>
 
   </article>
-
 
   <!-- MODAL -->
   <article class="modal fade"

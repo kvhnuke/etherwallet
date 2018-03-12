@@ -69,6 +69,7 @@ Check gh-pages files against live website at https://www.myetherwallet.com
 - Generate, sign & send transactions offline, ensuring your private keys never touch an internet-connected device.
 - Securely access your ETH & Tokens on your [Digital Bitbox, Ledger or TREZOR Hardware Wallet](https://myetherwallet.groovehq.com/knowledge_base/topics/hardware-wallet-recommends) via the MyEtherWallet interface (Chrome & Opera natively, Firefox w/ [add-on](https://addons.mozilla.org/en-US/firefox/addon/u2f-support-add-on/))
 - Now in 18 languages thanks 100% to the amazing Ethereum community.
+- Back up and retrieve your wallet password with [VESvault](https://www.vesvault.com) end-to-end encryption. If you ever lose your passphrase, your viral network of friends will be able to securely assist you.
 - Supports URI Strings on Send Transaction Page.
     - to=[address]
     - value=[number]

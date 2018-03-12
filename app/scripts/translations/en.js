@@ -799,6 +799,27 @@ HELP_SecCX_Desc_6               :  'If we were to encrypt these items, you would
 HELP_SecCX_Title                :  'Security - MyEtherWallet CX',
 HELP_Warning                    :  'If you created a wallet -or- downloaded the repo before **Dec. 31st, 2015**, please check your wallets &amp; download a new version of the repo. Click for details.',
 
+x_VES_Generate1                 :  'Choose a strong, hard to guess password for your new wallet.<br/>You can back up your password with',
+x_VES_Generate2                 :  'after this step.',
+x_VES_Label2                    :  'Backup your wallet password with VES',
+x_VES_Keystore2                 :  'Backup your wallet password with VES',
+x_VES_Keystore3                 :  'Proceed without VES',
+x_VES_Keystore4                 :  '(you\'ll be able to back up the password with VES the next time you unlock your wallet)',
+x_VES_starting                  :  'Connecting to VES...',
+x_VES_backup_ok                 :  'Your wallet password has been successfully backed up with VES.',
+x_VES_backup_loading            :  'Backing up your wallet password with VES...',
+x_VES_retrieve_loading          :  'Retrieving your wallet password with VES...',
+x_VES_retrieve_ok               :  'Your wallet password was successfully retrieved with VES.',
+x_VES_retrieve_error            :  'Your wallet password could not be retrieved with VES.',
+x_VES_link_vesvault             :  'Visit VESvault to learn more',
+x_VES_link_download             :  'VES integration overview',
+x_VES_retrieve1                 :  'Retrieve your wallet password with VES',
+x_VES_retrieve2                 :  'The password for this wallet is not yet backed up with VES.',
+x_VES_retrieve3                 :  'Back it up when unlocking the wallet',
+x_VES_retrieve3a                :  'Back up the wallet password with VES',
+x_VES_retrieve4                 :  'VES backup',
+x_VES_retrieve5                 :  'Checking if your wallet password is backed up with VES...',
+x_VES_or                        :  'OR'
 };
 
 module.exports = en;

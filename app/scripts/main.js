@@ -54,6 +54,8 @@ var ens                      = require('./ens');
 window.ens                   = ens;
 var domainsale               = require('./domainsale');
 window.domainsale            = domainsale;
+var libVES                   = require('./libVES_instance');
+window.libVES                = libVES;
 var translate                = require('./translations/translate.js');
 if (IS_CX) {
   var cxFuncs                = require('./cxFuncs');

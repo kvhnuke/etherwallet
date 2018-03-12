@@ -134,11 +134,39 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
         $scope.onHDDPathChange();
     }
     $scope.showContent = function($fileContent) {
+        $scope.ves_exists = null;
         $scope.notifier.info(globalFuncs.successMsgs[4] + document.getElementById('fselector').files[0].name);
         try {
             $scope.requireFPass = Wallet.walletRequirePass($fileContent);
             $scope.showFDecrypt = !$scope.requireFPass;
             $scope.fileContent = $fileContent;
+            try {
+                globalFuncs.VES_getExtId(JSON.stringify(JSON.parse($fileContent))).then(function(extId) {
+                    $scope.ves_extId = extId;
+                    var myVES = libVES.instance();
+                    $scope.ves_status = 'loading';
+                    $scope.$apply();
+                    myVES.getFileItem({domain:myVES.domain,externalId:extId}).then(function(vaultItem) {
+                        return vaultItem.getId().then(function(id) {
+                            $scope.ves_exists = true;
+                            $scope.ves_status = null;
+                            $scope.$apply();
+                        }).catch(function(e) {
+                            if (e.code == 'NotFound') {
+                                $scope.ves_exists = false;
+                                $scope.ves_status = null;
+                                $scope.$apply();
+                            } else throw e;
+                        });
+                    }).catch(function(e) {
+                        $scope.ves_status = 'error';
+                        $scope.ves_error_msg = e.message;
+                        $scope.$apply();
+                    });
+                });
+            } catch(e) {
+                $scope.ves_error_msg = e;
+            }
         } catch (e) {
             $scope.notifier.danger(e);
         }
@@ -216,6 +244,10 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
         $scope.wallet.type = "default";
     }
     $scope.decryptWallet = function() {
+        switch ($scope.ves_status) {
+            case 'starting': case 'loading': if ($scope.ves_exists != null) return; break;
+            case 'ok': if ($scope.ves_wallet) return $scope.ves_backupDone();
+        }
         $scope.wallet = null;
         try {
             if ($scope.showPDecrypt && $scope.requirePPass) {
@@ -229,8 +261,32 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
                 $scope.wallet = new Wallet(fixPkey($scope.manualprivkey));
                 walletService.password = '';
             } else if ($scope.showFDecrypt) {
-                $scope.wallet = Wallet.getWalletFromPrivKeyFile($scope.fileContent, $scope.filePassword);
+                $scope.ves_wallet = Wallet.getWalletFromPrivKeyFile($scope.fileContent, $scope.filePassword);
                 walletService.password = $scope.filePassword;
+                $scope.notifier.info(globalFuncs.successMsgs[1]);
+                try{
+                    if ($scope.ves_exists || !document.getElementsByClassName('ves_backup_chkbx')[0].checked) throw null;
+                    $scope.ves_status = 'starting';
+                    return libVES.instance().delegate().then(function(myVES) {
+                        $scope.ves_status = 'loading';
+                        $scope.$apply();
+                        return myVES.putValue({"domain":myVES.domain,"externalId":$scope.ves_extId},$scope.filePassword).then(function(vi) {
+                            $scope.ves_status = 'ok';
+                            $scope.$apply();
+                            window.setTimeout(function() {
+                                $scope.ves_backupDone();
+                                $scope.$apply();
+                            },2000);
+                        });
+                    }).catch(function(error) {
+                        $scope.ves = false;
+                        $scope.ves_error_msg = error.message;
+                        $scope.ves_status = 'error';
+                        $scope.$apply();
+                    });
+                } catch(e) {
+                    $scope.wallet = $scope.ves_wallet;
+                }
             } else if ($scope.showMDecrypt) {
                 $scope.mnemonicModel = new Modal(document.getElementById('mnemonicModel'));
                 $scope.mnemonicModel.open();
@@ -244,6 +300,11 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
         }
         if ($scope.wallet != null) $scope.notifier.info(globalFuncs.successMsgs[1]);
         $scope.wallet.type = "default";
+    };
+    $scope.ves_backupDone = function() {
+        $scope.wallet = $scope.ves_wallet;
+        $scope.wallet.type = "default";
+        walletService.wallet = $scope.wallet;
     };
     $scope.decryptAddressOnly = function() {
         if ($scope.Validator.isValidAddress($scope.addressOnly)) {
@@ -341,7 +402,33 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
           $scope.wallet.type = "default";
         });
     };
-
+    $scope.ves_showHidePswd = function () {
+        $scope.vespswdVisible = !$scope.vespswdVisible;
+    };
+    $scope.ves_showHideWarningMsg = function () {
+        $scope.mewwrnVisible = !$scope.mewwrnpswdVisible;
+    };
+    $scope.ves_retrieve = function () {
+        $scope.ves_status = 'starting';
+        libVES.instance().delegate().then(function(myVES) {
+            $scope.ves_status = 'loading';
+            $scope.$apply();
+            myVES.getValue({"domain":myVES.domain,"externalId":$scope.ves_extId}).then(function(value) {
+                $scope.ves_status = 'ok';
+                var fld = document.getElementsByClassName('ves_retrieve')[0];
+                fld.value = value;
+                angular.element(fld).triggerHandler('input');
+                $scope.$apply();
+            }).catch(function(error) {
+                $scope.ves_status = 'error_retrieve';
+                $scope.$apply();
+            })
+        }).catch(function(error) {
+            $scope.ves_status = 'error';
+            $scope.ves_error_msg = error.message;
+            $scope.$apply();
+        })
+    };
     // helper function that removes 0x prefix from strings
     function fixPkey(key) {
         if (key.indexOf('0x') === 0) {
