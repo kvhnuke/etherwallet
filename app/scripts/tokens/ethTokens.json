@@ -1611,6 +1611,12 @@
     "type": "default"
   },
   {
+    "address": "0x123ab195dd38b1b40510d467a6a359b201af056f",
+    "symbol": "LGO",
+    "decimal": 8,
+    "type": "default"
+  },
+  {
     "address": "0x2eb86e8fc520e0f6bb5d9af08f924fe70558ab89",
     "symbol": "LGR",
     "decimal": 8,
