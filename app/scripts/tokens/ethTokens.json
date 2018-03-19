@@ -1656,6 +1656,12 @@
     "type": "default"
   },
   {
+    "address": "0x0947b0e6D821378805c9598291385CE7c791A6B2",
+    "symbol": "LND",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0x5e3346444010135322268a4630d2ed5f8d09446c",
     "symbol": "LOC",
     "decimal": 18,
