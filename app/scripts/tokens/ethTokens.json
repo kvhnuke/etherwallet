@@ -1650,6 +1650,12 @@
     "type": "default"
   },
   {
+    "address": "0x0947b0e6d821378805c9598291385ce7c791a6b2",
+    "symbol": "LND",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0x6beb418fc6e1958204ac8baddcf109b8e9694966",
     "symbol": "LNC-Linker Coin",
     "decimal": 18,
