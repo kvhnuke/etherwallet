@@ -122,7 +122,7 @@ data:       '',
 msg:        'Horizon State Token Sale. Thank you for your support. '
 },{
 // DataBrokerDAO
-to:         '0x8aec8f09a840faea966f4b0e29a497d8f5b5a6b4',
+to:         '0x439b54caf661c21e6b231d972d7eaa98f199590f',
 gasLimit:   200000,
 data:       '',
 msg:        'DataBrokerDAO. https://databrokerdao.com'
@@ -248,11 +248,11 @@ gasLimit:   200000,
 data:       '',
 msg:        'Bitlle Token. Official website https://bitlle.com'
 },{
-// EDU Token Sale (LiveEdu.tv)
+// LEDU Token Sale (LiveEdu.tv)
 to:         '0x2097175d0abb8258f2468E3487F8db776E29D076',
 gasLimit:   200000,
 data:       '',
-msg:        'LiveEdu EDU token sale. Official website: https://tokensale.liveedu.tv/'
+msg:        'LiveEdu LEDU token sale. Official website: https://tokensale.liveedu.tv/'
 },{
 // HEdpAY (Hdp.ф) Sale (hedpay.com)
 to:         '0x4F8B6cA78711207E1B281DB63e8d6EAA1ce2F63E',
