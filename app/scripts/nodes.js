@@ -6,7 +6,6 @@ nodes.metamaskNode = require('./nodeHelpers/metamask');
 nodes.nodeTypes = {
     ETH: "ETH",
     ETC: "ETC",
-    MUS: "MUSIC",
     Ropsten: "ROPSTEN ETH",
     Kovan: "KOVAN ETH",
     Rinkeby: "RINKEBY ETH",
@@ -17,6 +16,10 @@ nodes.nodeTypes = {
     TOMO: "TOMO",
     ELLA: "ELLA",
     ETSC: "ETSC",
+    EAST: "EAST",
+    MUSIC: "MUSIC",
+    PIRL: "PIRL",
+    ESN: "ESN",
     Custom: "CUSTOM ETH"
 };
 nodes.ensNodeTypes = [nodes.nodeTypes.ETH, nodes.nodeTypes.Ropsten];
@@ -256,6 +259,58 @@ nodes.nodeList = {
         'estimateGas': true,
         'service': 'gazua.tv',
         'lib': new nodes.customNode('https://node.ethereumsocial.kr', '')
+    },
+    'east': {
+        'name': 'EAST',
+        'blockExplorerTX': 'https://explorer.easthub.io/tx/[[txHash]]',
+        'blockExplorerAddr': 'https://explorer.easthub.io/addr/[[address]]',
+        'type': nodes.nodeTypes.EAST,
+        'eip155': true,
+        'chainId': 7,
+        'tokenList': require('./tokens/eastTokens.json'),
+        'abiList': require('./abiDefinitions/eastAbi.json'),
+        'estimateGas': true,
+        'service': 'easthub.io',
+        'lib': new nodes.customNode('https://node.easthub.io', '')
+    },
+    'music': {
+        'name': 'MUSIC',
+        'blockExplorerTX': 'https://explorer.musicoin.org/tx/[[txHash]]',
+        'blockExplorerAddr': 'https://explorer.musicoin.org/account/[[address]]',
+        'type': nodes.nodeTypes.MUSIC,
+        'eip155': true,
+        'chainId': 7762959,
+        'tokenList': require('./tokens/musicTokens.json'),
+        'abiList': require('./abiDefinitions/musicAbi.json'),
+        'estimateGas': true,
+        'service': 'Domino Pool',
+        'lib': new nodes.customNode('https://api.dominopool.com/music', '')
+    },
+    'pirl': {
+        'name': 'PIRL',
+        'blockExplorerTX': 'https://poseidon.pirl.io/explorer/transaction/[[txHash]]',
+        'blockExplorerAddr': 'https://poseidon.pirl.io/explorer/address/[[address]]',
+        'type': nodes.nodeTypes.PIRL,
+        'eip155': true,
+        'chainId': 3125659152,
+        'tokenList': require('./tokens/pirlTokens.json'),
+        'abiList': require('./abiDefinitions/pirlAbi.json'),
+        'estimateGas': true,
+        'service': 'Domino Pool',
+        'lib': new nodes.customNode('https://api.dominopool.com/pirl', '')
+    },
+    'esn': {
+        'name': 'ESN',
+        'blockExplorerTX': 'https://ethersocial.net/tx/[[txHash]]',
+        'blockExplorerAddr': 'https://ethersocial.net/addr/[[address]]',
+        'type': nodes.nodeTypes.ESN,
+        'eip155': false,
+        'chainId': 1,
+        'tokenList': require('./tokens/esnTokens.json'),
+        'abiList': require('./abiDefinitions/esnAbi.json'),
+        'estimateGas': true,
+        'service': 'Domino Pool',
+        'lib': new nodes.customNode('https://api.dominopool.com/esn', '')
     }
 };
 
