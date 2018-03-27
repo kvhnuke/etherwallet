@@ -329,6 +329,11 @@
 "decimal":12,
 "type":"default"
 },{
+"address":"0x6927C69fb4daf2043fbB1Cb7b86c5661416bea29",
+"symbol":"ETR",
+"decimal":18,
+"type":"default"
+},{
 "address":"0x190e569bE071F40c704e15825F285481CB74B6cC",
 "symbol":"FAM",
 "decimal":12,
