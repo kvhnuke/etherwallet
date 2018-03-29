@@ -6,7 +6,7 @@ nodes.metamaskNode = require('./nodeHelpers/metamask');
 nodes.nodeTypes = {
     ETH: "ETH",
     ETC: "ETC",
-    MUS: "MUSIC",
+    MUSIC: "MUSIC",
     Ropsten: "ROPSTEN ETH",
     Kovan: "KOVAN ETH",
     Rinkeby: "RINKEBY ETH",
@@ -256,7 +256,20 @@ nodes.nodeList = {
         'estimateGas': true,
         'service': 'gazua.tv',
         'lib': new nodes.customNode('https://node.ethereumsocial.kr', '')
-    }
+    },
+    'music_twmc': {
+        'name': 'MUSIC',
+        'blockExplorerTX': 'https://explorer.musicoin.tw/tx/[[txHash]]',
+        'blockExplorerAddr': 'https://explorer.musicoin.tw/account/[[address]]',
+        'type': nodes.nodeTypes.MUSIC,
+        'eip155': true,
+        'chainId': 7762959,
+        'tokenList': require('./tokens/musicTokens.json'),
+        'abiList': require('./abiDefinitions/musicAbi.json'),
+        'estimateGas': true,
+        'service': 'pool.musicoin.tw',
+        'lib': new nodes.customNode('https://mewapi.musicoin.tw', '')
+    },
 };
 
 
