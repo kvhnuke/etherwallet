@@ -28,6 +28,7 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
         hwEllaismPath:     "m/44'/163'/0'/0",      // first address: m/44'/163'/0'/0/0
         singularDTVPath:   "m/0'/0'/0'",           // first address: m/0'/0'/0'/0
         hwRskPath:         "m/44'/137'/0'/0",      // first address : m/44'/137'/0'/0/0
+        hwMusicoinPath:    "m/44'/184'/0'/0",      // first address: m/44'/163'/0'/0/0
     };
     $scope.HDWallet.dPath = $scope.HDWallet.defaultDPath;
     $scope.mnemonicModel = new Modal(document.getElementById('mnemonicModel'));
@@ -52,6 +53,9 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
                     break;
                 case nodes.nodeTypes.UBQ:
                     $scope.HDWallet.dPath = $scope.HDWallet.hwUbqPath;
+                    break;
+                case nodes.nodeTypes.MUSIC:
+                    $scope.HDWallet.dPath = $scope.HDWallet.hwMusicoinPath;
                     break;
                 default:
                     $scope.HDWallet.dPath = $scope.HDWallet.ledgerPath;
@@ -85,6 +89,9 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
                 case nodes.nodeTypes.ELLA:
                     $scope.HDWallet.dPath = $scope.HDWallet.hwEllaismPath;
                     break;
+                case nodes.nodeTypes.MUSIC:
+                    $scope.HDWallet.dPath = $scope.HDWallet.hwMusicoinPath;
+                    break;
                 default:
                     $scope.HDWallet.dPath = $scope.HDWallet.trezorPath;
             }
@@ -110,6 +117,9 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
                     break;
                 case nodes.nodeTypes.UBQ:
                     $scope.HDWallet.dPath = $scope.HDWallet.hwUbqPath;
+                    break;
+                case nodes.nodeTypes.MUSIC:
+                    $scope.HDWallet.dPath = $scope.HDWallet.hwMusicoinPath;
                     break;
                 default:
                   $scope.HDWallet.dPath = $scope.HDWallet.defaultDPath;
