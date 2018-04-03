@@ -27,7 +27,7 @@ var addWalletCtrl = function($scope, $sce) {
         trezorTestnetPath: "m/44'/1'/0'/0", // first address: m/44'/1'/0'/0/0
         trezorClassicPath: "m/44'/61'/0'/0", // first address: m/44'/61'/0'/0/0
         trezorPath: "m/44'/60'/0'/0", // first address: m/44'/60'/0'/0/0
-        hwMusicoinPath:    "m/44'/184'/0'/0", // first address: m/44'/163'/0'/0/0
+        hwMusicoinPath:    "m/44'/184'/0'/0", // first address: m/44'/184'/0'/0/0
     };
     $scope.HDWallet.dPath = $scope.HDWallet.defaultDPath;
     $scope.mnemonicModel = new Modal(document.getElementById('mnemonicModel'));
