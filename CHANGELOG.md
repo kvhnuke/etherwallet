@@ -1,10 +1,48 @@
-### Release v3.21.07
+### Release v3.21.09
+### New
+- Remove an address from darklist, Add FTT, LGO, LUC, OPEN, QASH, WCN, MART, and SS tokens [#1803](https://github.com/kvhnuke/etherwallet/pull/1803)
+- Add FANX and DTH tokens [Commit](https://github.com/kvhnuke/etherwallet/commit/718455e74790e7b36ef9bc7df710c3e2b07454cd)
+- Add Dether token [#1800](https://github.com/kvhnuke/etherwallet/pull/1800)
+- Add MVP and SGT tokens [#1797](https://github.com/kvhnuke/etherwallet/pull/1797)
+- Add manual gas limit for MVP token [#1794](https://github.com/kvhnuke/etherwallet/pull/1794)
+- Add ENG, GTO, CTG tokens [#1790](https://github.com/kvhnuke/etherwallet/pull/1790)
+- Add Nebula AI token contract [#1789](https://github.com/kvhnuke/etherwallet/pull/1789)
+
+### Release v3.21.08
+#### New
+- Add kyber integration [#1757](https://github.com/kvhnuke/etherwallet/pull/1757) [#1788](https://github.com/kvhnuke/etherwallet/pull/1788)
+- Add BRD token [#1787](https://github.com/kvhnuke/etherwallet/pull/1787)
+- Adds FLR and ABYSS tokens [#1786](https://github.com/kvhnuke/etherwallet/pull/1786)
+- Add new Peculium ABI [#1784](https://github.com/kvhnuke/etherwallet/pull/1784)
+- Add SyncFab ABI [#1783](https://github.com/kvhnuke/etherwallet/pull/1783)
+- Add MFG token [#1782](https://github.com/kvhnuke/etherwallet/pull/1782)
+- Add GIF Gas [#1781](https://github.com/kvhnuke/etherwallet/pull/1781)
+- Add GIF token [#1780](https://github.com/kvhnuke/etherwallet/pull/1780)
+- Add SSH token [#1779](https://github.com/kvhnuke/etherwallet/pull/1779)
+- Add eosDAC, HAV and eUSD tokens [#1778](https://github.com/kvhnuke/etherwallet/pull/1778)
+- Add VLD token [#1777](https://github.com/kvhnuke/etherwallet/pull/1777)
+- Add BOB token [#1776](https://github.com/kvhnuke/etherwallet/pull/1776)
+- Add NAC, MUX, SMT (Social Media Market) tokens [#1775](https://github.com/kvhnuke/etherwallet/pull/1775)
+- Add VIEW token [#1774](https://github.com/kvhnuke/etherwallet/pull/1774)
+- Add DTT and MIT [#1773](https://github.com/kvhnuke/etherwallet/pull/1773)
+- Add THUG token [#1771](https://github.com/kvhnuke/etherwallet/pull/1771)
+- Add MAN token [#1769](https://github.com/kvhnuke/etherwallet/pull/1769)
+- Add DTx token [#1765](https://github.com/kvhnuke/etherwallet/pull/1765)
 
 #### Fixes
+- Update old peculium token [#1784](https://github.com/kvhnuke/etherwallet/pull/1784)
+- Catch typos [#1772](https://github.com/kvhnuke/etherwallet/pull/1772)
+
+### Release v3.21.07
+#### New
+- Add COIL token to defaults [#1764](https://github.com/kvhnuke/etherwallet/pull/1764)
+- Add "x" to on boarding modal for more explicit closing [#1768](https://github.com/kvhnuke/etherwallet/pull/1768)
+
+#### Fixes
+- Fix regex checking on save local token [#1767](https://github.com/kvhnuke/etherwallet/pull/1767)
 - Fix contest page mobile issue [Commit](https://github.com/kvhnuke/etherwallet/commit/c5bf76718770939972419e134315cef1ea2c8ae5)
 
 ### Release v3.21.06
-
 #### New
 - Add AX1, HOT (HoloToken), and LOCUS token [Commit](https://github.com/kvhnuke/etherwallet/commit/e5ec38c71d94fcc3fd438719acf37ee9fdb2c439)
 - Add AX1 gas limit [https://github.com/kvhnuke/etherwallet/pull/1758]
