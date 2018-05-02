@@ -271,7 +271,7 @@ nodes.nodeList = {
         'estimateGas': true,
         'service': 'egem.io',
         'lib': new nodes.customNode('https://jsonrpc.egem.io/custom', '')
-    }
+    },
     'ethf': {
         'name': 'ETHF',
         'blockExplorerTX': 'https://explorer.etherfact.org/tx/[[txHash]]',
