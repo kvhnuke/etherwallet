@@ -278,7 +278,7 @@ nodes.nodeList = {
         'blockExplorerAddr': 'https://explorer.etherfact.org/addr/[[address]]',
         'type': nodes.nodeTypes.ETHF,
         'eip155': true,
-        'chainId': '',
+        'chainId': '1',
         'tokenList': [],
         'abiList': [],
         'estimateGas': true,
