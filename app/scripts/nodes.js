@@ -18,6 +18,7 @@ nodes.nodeTypes = {
     ELLA: "ELLA",
     ETSC: "ETSC",
     EGEM: "EGEM",
+    ETHF: "ETHF",
     Custom: "CUSTOM ETH"
 };
 nodes.ensNodeTypes = [nodes.nodeTypes.ETH, nodes.nodeTypes.Ropsten];
@@ -275,7 +276,7 @@ nodes.nodeList = {
         'name': 'ETHF',
         'blockExplorerTX': 'https://explorer.etherfact.org/tx/[[txHash]]',
         'blockExplorerAddr': 'https://explorer.etherfact.org/addr/[[address]]',
-        'type': nodes.nodeTypes.EGEM,
+        'type': nodes.nodeTypes.ETHF,
         'eip155': true,
         'chainId': '',
         'tokenList': [],
