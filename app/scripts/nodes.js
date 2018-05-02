@@ -18,6 +18,7 @@ nodes.nodeTypes = {
     ELLA: "ELLA",
     ETSC: "ETSC",
     EGEM: "EGEM",
+    ETHF: "ETHF",
     Custom: "CUSTOM ETH"
 };
 nodes.ensNodeTypes = [nodes.nodeTypes.ETH, nodes.nodeTypes.Ropsten];
@@ -270,6 +271,19 @@ nodes.nodeList = {
         'estimateGas': true,
         'service': 'egem.io',
         'lib': new nodes.customNode('https://jsonrpc.egem.io/custom', '')
+    },
+    'ethf': {
+        'name': 'ETHF',
+        'blockExplorerTX': 'https://explorer.etherfact.org/tx/[[txHash]]',
+        'blockExplorerAddr': 'https://explorer.etherfact.org/addr/[[address]]',
+        'type': nodes.nodeTypes.ETHF,
+        'eip155': true,
+        'chainId': '1',
+        'tokenList': [],
+        'abiList': [],
+        'estimateGas': true,
+        'service': 'etherfact.org',
+        'lib': new nodes.customNode('https://rpc.etherfact.org', '4444')
     }
 };
 
