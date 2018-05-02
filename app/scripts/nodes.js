@@ -271,6 +271,19 @@ nodes.nodeList = {
         'service': 'egem.io',
         'lib': new nodes.customNode('https://jsonrpc.egem.io/custom', '')
     }
+    'ethf': {
+        'name': 'ETHF',
+        'blockExplorerTX': 'https://explorer.etherfact.org/tx/[[txHash]]',
+        'blockExplorerAddr': 'https://explorer.etherfact.org/addr/[[address]]',
+        'type': nodes.nodeTypes.EGEM,
+        'eip155': true,
+        'chainId': '',
+        'tokenList': [],
+        'abiList': [],
+        'estimateGas': true,
+        'service': 'etherfact.org',
+        'lib': new nodes.customNode('https://rpc.etherfact.org', '4444')
+    }
 };
 
 
