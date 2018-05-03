@@ -162,6 +162,21 @@
       "maxTotalImbalance": "1925452883",
       "internal use": false
     },
+    "DAI": {
+      "name" : "DAI",
+      "decimals": 18,
+      "address": "0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359",
+      "minimalRecordResolution": "1000000000000000",
+      "maxPerBlockImbalance": "2711997842670896021504",
+      "maxTotalImbalance": "3833713935933528080384",
+      "internal use": false
+    },
+    "MOT": {
+      "name": "Olympus Labs",
+      "decimals": 18,
+      "address": "0x263c618480dbe35c300d8d5ecda19bbb986acaed",
+      "internal use": false
+    },
     "ZIL": {
       "name": "Zilliqa",
       "decimals": 12,
@@ -180,6 +195,20 @@
       "maxTotalImbalance": "1925452883",
       "internal use": true
     },
+
+    "IOST": {
+      "name": "IOStoken",
+      "decimals": 18,
+      "address": "0xfa1a856cfa3409cfa145fa4e20eb270df3eb21ab",
+      "internal use": false
+    },
+    "STORM": {
+      "name": "Storm",
+      "decimals": 18,
+      "address": "0xd0a4b8946cb52f0661273bfbc6fd0e0c75fc6433",
+      "internal use": false
+    },
+
     "ETH": {
       "name": "Ethereum",
       "decimals": 18,
