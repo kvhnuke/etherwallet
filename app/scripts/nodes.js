@@ -21,6 +21,7 @@ nodes.nodeTypes = {
     CLO: "CLO",
     CLOT: "Testnet CLO",
     EAST: "EAST",
+    WAN: "WANCHAIN",
     Custom: "CUSTOM ETH"
 };
 nodes.ensNodeTypes = [nodes.nodeTypes.ETH, nodes.nodeTypes.Ropsten];
@@ -310,6 +311,19 @@ nodes.nodeList = {
         'estimateGas': true,
         'service': 'easthub.io',
         'lib': new nodes.customNode('https://node.easthub.io', '')
+    },
+    'wanchain': {
+        'name': 'WANCHAIN',
+        'blockExplorerTX': 'https://explorer.wanchain.org/block/trans/[[txHash]]',
+        'blockExplorerAddr': 'https://explorer.wanchain.org/block/trans/[[address]]',
+        'type': nodes.nodeTypes.WAN,
+        'eip155': true,
+        'chainId': 5718350,
+        'tokenList': require('./tokens/wanTokens.json'),
+        'abiList': require('./abiDefinitions/wanAbi.json'),
+        'estimateGas': true,
+        'service': 'wanchain.org',
+        'lib': new nodes.customNode('', '')
     }
 };
 

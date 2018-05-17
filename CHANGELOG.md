@@ -18,6 +18,8 @@
 - Update Kyber integration [#1839](https://github.com/kvhnuke/etherwallet/pull/1839)
 
 ### New
+=======
+- Add WANCHAIN node [#1835](https://github.com/kvhnuke/etherwallet/pull/1835)
 - Add KRL, QBX, and GROW tokens [#1834](https://github.com/kvhnuke/etherwallet/pull/1834)
 - Add JOY, MRL, 2DC and GET token [#1832](https://github.com/kvhnuke/etherwallet/pull/1832)
 - Add Kyber support email [#1829](https://github.com/kvhnuke/etherwallet/pull/1829)
