@@ -203,7 +203,9 @@
     <table class="account-info">
       <tr ng-class="token.type!=='default' ? 'custom-token' : ''"
           ng-repeat="token in wallet.tokenObjs track by $index"
-          ng-hide="(token.balance==0 || token.balance=='Click to Load') && showAllTokens==false">
+          ng-hide="(token.balance==0 || token.balance=='Click to Load') && showAllTokens==false"
+          ng-if="wallet.tokenObjs.length > 0"
+          >
         <td class="mono wrap point">
           <img src="images/icon-remove.svg"
                class="token-remove"
@@ -217,6 +219,11 @@
         <td>
           {{ token.getSymbol() }}
         </td>
+      </tr>
+      <tr>
+        <div class="spinner-container" ng-show="wallet.tokenObjs.length === 0">
+          <img class="spinner" src="images/icon-spinner-black.svg" title="spinner"/>
+        </div>
       </tr>
     </table>
 

@@ -1,11 +1,12 @@
 'use strict';
-var Token = function(contractAddress, userAddress, symbol, decimal, type) {
+var Token = function(contractAddress, userAddress, symbol, decimal, type, balance) {
     this.contractAddress = contractAddress;
     this.userAddress = userAddress;
     this.symbol = symbol;
     this.decimal = decimal;
     this.type = type;
-    this.balance = "Click to Load";
+    this.balance = balance ? (balance > 0? new BigNumber(balance).div(new BigNumber(10).pow(this.decimal)).toString() : "Click to Load") : "Click to Load";
+    this.balanceBN = new BigNumber(balance).toString();
 };
 Token.balanceHex = "0x70a08231";
 Token.transferHex = "0xa9059cbb";
@@ -33,20 +34,22 @@ Token.prototype.getBalanceBN = function() {
 };
 
 Token.prototype.setBalance = function(callback) {
-    var balanceCall = ethFuncs.getDataObj(this.contractAddress, Token.balanceHex, [ethFuncs.getNakedAddress(this.userAddress)]);
-    var parentObj = this;
-    ajaxReq.getEthCall(balanceCall, function(data) {
+    if(this.balance !== 0 || this.balance === 'Click to Load') {
+      var balanceCall = ethFuncs.getDataObj(this.contractAddress, Token.balanceHex, [ethFuncs.getNakedAddress(this.userAddress)]);
+      var parentObj = this;
+      ajaxReq.getEthCall(balanceCall, function(data) {
         try {
-            if (!data.error) {
-                parentObj.balance = new BigNumber(data.data).div(new BigNumber(10).pow(parentObj.getDecimal())).toString();
-                parentObj.balanceBN = new BigNumber(data.data).toString();
-                if(callback) callback();
-            }
+          if (!data.error) {
+            parentObj.balance = new BigNumber(data.data).div(new BigNumber(10).pow(parentObj.getDecimal())).toString();
+            parentObj.balanceBN = new BigNumber(data.data).toString();
+            if(callback) callback();
+          }
         } catch (e) {
-            parentObj.balance = globalFuncs.errorMsgs[20];
-            parentObj.balanceBN = '0';
+          parentObj.balance = globalFuncs.errorMsgs[20];
+          parentObj.balanceBN = '0';
         }
-    });
+      });
+    }
 };
 
 Token.getTokenByAddress = function(toAdd) {

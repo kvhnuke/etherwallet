@@ -264,7 +264,8 @@ globalFuncs.getDefaultTokensAndNetworkType =  function getDefaultTokensAndNetwor
     return {
       defaultTokens: defaultTokens,
       networkType: isCustomNode ? firstCustomNodeWithMatchingNetwork.options : defaultNode.name.toLowerCase(),
-      isCustomNode: isCustomNode
+      isCustomNode: isCustomNode,
+      tokenContract: defaultNode.tokenSmartContract
     }
 };
 
