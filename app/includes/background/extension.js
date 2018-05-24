@@ -43,16 +43,16 @@ function querycB(tabs) {
 
 	const allDomains = ealBlacklisted.domains.concat(iosiroBlacklisted.domains);
 	let urlRedirect;
-	let foundWhitelist = whitelisted.domains.find(dom => {
-		return dom === extractRootDomain(tabs[0].url);
+	let foundWhitelist = whitelisted.domains.filter(dom => {
+		return dom.indexOf(extractRootDomain(tabs[0].url).replace(/([.]\w+)$/, '')) > -1
 	});
 
-	let foundBlacklist = allDomains.find(dom => {
-		return dom === extractRootDomain(tabs[0].url);
+	let foundBlacklist = allDomains.filter(dom => {
+		return dom.indexOf(extractRootDomain(tabs[0].url).replace(/([.]\w+)$/, '')) > -1
 	});
 
-	if(foundWhitelist === undefined) {
-		if (foundBlacklist !== undefined || checkUrlSimilarity(tabs[0].url, SEARCH_STRING)) {
+	if(foundWhitelist.length === 0) {
+		if (foundBlacklist.length > 0 || checkUrlSimilarity(extractRootDomain(tabs[0].url), SEARCH_STRING)) {
 			urlRedirect = encodeURI(
 				`https://www.myetherwallet.com/phishing.html?phishing-address=${
 					tabs[0].url
@@ -174,8 +174,7 @@ async function getDomainsFromSource(objBlacklist) {
 
 function checkUrlSimilarity(url, arr) {
 	let newUrl = transformHomoglyphs(parseUrl(url));
-	if(isSimilar(newUrl, url, arr, 0.8) && !isNewBlacklist(url, arr)) return true;
-	return false;
+	return isSimilar(newUrl, url, arr, 0.8) && !isNewBlacklist(url, arr)
 }
 
 function isNewBlacklist(url, arr) {
@@ -194,8 +193,6 @@ function isSimilar(newUrl, comparedToUrl, arr, percent) {
 			return true;
 		}
 	}
-
-	return false;
 }
 
 function parseUrl(url) {
