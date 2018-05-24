@@ -1,5 +1,6 @@
 ### Release v3.21.12
 ### Fixes
+- Update url matching [#1866](https://github.com/kvhnuke/etherwallet/pull/1866)
 - Ensure to address is empty when setting final kyber swap values [#1858](https://github.com/kvhnuke/etherwallet/pull/1858)
 ### New
 - Add CFTY token to defaults [#1865](https://github.com/kvhnuke/etherwallet/pull/1865)
