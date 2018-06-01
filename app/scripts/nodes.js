@@ -319,7 +319,7 @@ nodes.nodeList = {
         'blockExplorerAddr': 'https://myetherwallet.com/?[[address]]#view-wallet-info',
         'type': nodes.nodeTypes.X888,
         'eip155': true,
-        'chainId': 888,
+        'chainId': 0,
         'tokenList': require('./tokens/x888Tokens.json'),
         'abiList': require('./abiDefinitions/x888Abi.json'),
         'estimateGas': true,
