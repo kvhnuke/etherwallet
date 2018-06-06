@@ -8,6 +8,8 @@
 - Fix network tab css [#1870](https://github.com/kvhnuke/etherwallet/pull/1870)
 
 ### New
+- Add NANJCOIN abi [#1890](https://github.com/kvhnuke/etherwallet/pull/1890)
+- Ensure kyber tx gas price is 50 gwei or less. [#1869](https://github.com/kvhnuke/etherwallet/pull/1869)
 - Update darklist, Update JBX token, and add MKT token. [#1889](https://github.com/kvhnuke/etherwallet/pull/1889)
 - Add ATMI token [#1888](https://github.com/kvhnuke/etherwallet/pull/1888)
 - Add CARD token [#1884](https://github.com/kvhnuke/etherwallet/pull/1884)
