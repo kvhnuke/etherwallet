@@ -190,7 +190,11 @@ uiFuncs.generateTx = function(txData, callback) {
                     }
                     uiFuncs.signTxLedger(app, eTx, rawTx, txData, !EIP155Supported, callback);
                 }
-                app.getAppConfiguration(localCallback);
+                if (ajaxReq.eip155) {
+                    app.getAppConfiguration(localCallback);
+                } else {
+                    uiFuncs.signTxLedger(app, eTx, rawTx, txData, true, callback);
+                }
             } else if ((typeof txData.hwType != "undefined") && (txData.hwType == "trezor")) {
                 uiFuncs.signTxTrezor(rawTx, txData, callback);
             } else if ((typeof txData.hwType != "undefined") && (txData.hwType == "web3")) {
