@@ -190,7 +190,8 @@ uiFuncs.generateTx = function(txData, callback) {
                     }
                     uiFuncs.signTxLedger(app, eTx, rawTx, txData, !EIP155Supported, callback);
                 }
-                if (ajaxReq.eip155) {
+                // workaround FIXME https://github.com/LedgerHQ/ledgerjs/issues/168
+                if (ajaxReq.eip155 && rawTx.chainId < 256) {
                     app.getAppConfiguration(localCallback);
                 } else {
                     uiFuncs.signTxLedger(app, eTx, rawTx, txData, true, callback);
