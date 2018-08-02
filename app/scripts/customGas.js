@@ -7,11 +7,11 @@
 // http://www.tokensalecalendar.com/
 
 module.exports = [{
-// Depository Network (DEPO) Token sale
-to:         '0x4ee74a5f841c0aab0090ae21d4f9d8fca2aeea26',
-gasLimit:   300000,
-data:       '0xabacadae',
-msg:        'Depository Network (DEPO) Token sale - Sign Up at https://depository.network and buy your tokens.'
+// MTC Mesh Network (MTC) Token sale
+to:         '0xdfdc0d82d96f8fd40ca0cfb4a288955becec2088',
+gasLimit:   60000,
+data:       '',
+msg:        'MTC Mesh Network (MTC) Token sale - Sign Up at https://www.mtc.io/ and buy your tokens.'
 },{
 // CryptFillCoin (CFC) Token sale
 to:         '0xC510840609575a10e893aF8b87A903865dF6677c',
