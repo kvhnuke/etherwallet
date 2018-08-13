@@ -132,25 +132,41 @@
           <p class="title">Tokens</p>
           <p class="total-of">Total of {{ tokens.length }}</p>
         </div>
-
+        <div>
+          <input placeholder="Search token" class="form-control search-token" ng-model="searchToken"/>
+        </div>
         <div class="col-title">
           <p>Name</p>
           <p>Edit</p>
         </div>
 
         <div class="content" id="sideBarTokens">
-          <div ng-repeat="token in tokensShown | orderBy: 'symbol'">
-            <p>{{ token.symbol }}</p>
-            <div class="add-button" ng-show="!!checkIfExists(localTokens) && !checkIfAdded(token)" ng-click="addTokenToLocal(token)">
-              <p>Add</p>
+          <div ng-show="searchToken === ''">
+            <div ng-repeat="token in tokensShown | orderBy: 'symbol'" class="actual-tokens">
+              <p>{{ token.symbol }}</p>
+              <div class="add-button" ng-show="!!checkIfExists(localTokens) && !checkIfAdded(token)" ng-click="addTokenToLocal(token)">
+                <p>Add</p>
+              </div>
+              <div class="remove-button" ng-show="!!checkIfExists(localTokens) && checkIfAdded(token)" ng-click="removeTokenLocal(token)">
+                <p>Remove</p>
+              </div>
             </div>
-            <div class="remove-button" ng-show="!!checkIfExists(localTokens) && checkIfAdded(token)" ng-click="removeTokenLocal(token)">
-              <p>Remove</p>
+            <div class="spinner-container" ng-show="loadingTokens">
+              <img class="spinner" src="images/icon-spinner-white.svg" title="spinner"/>
             </div>
           </div>
-          <div class="spinner-container" ng-show="loadingTokens">
-            <img class="spinner" src="images/icon-spinner-white.svg" title="spinner"/>
+          <div ng-show="searchToken !== ''">
+            <div ng-repeat="token in tokens | orderBy: 'symbol'| filter:{symbol:searchToken} | limitTo: 5" class="actual-tokens">
+              <p>{{ token.symbol }}</p>
+              <div class="add-button" ng-show="!!checkIfExists(localTokens) && !checkIfAdded(token)" ng-click="addTokenToLocal(token)">
+                <p>Add</p>
+              </div>
+              <div class="remove-button" ng-show="!!checkIfExists(localTokens) && checkIfAdded(token)" ng-click="removeTokenLocal(token)">
+                <p>Remove</p>
+              </div>
+            </div>
           </div>
+
         </div>
       </div>
     </div>
