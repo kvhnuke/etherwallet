@@ -235,7 +235,33 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
     };
     $scope.onMnemonicChange = function() {
         $scope.showAOnly = false;
-        $scope.showMDecrypt = hd.bip39.validateMnemonic($scope.manualmnemonic);
+        var lang = hd.bip39.wordlists.english;
+        switch(globalFuncs.curMnemonicLang){
+            case 'zhcn':
+                lang = hd.bip39.wordlists.chinese_simplified;
+                break
+            case 'zhtw':
+                lang = hd.bip39.wordlists.chinese_traditional;
+                break
+            case 'ja':
+                lang = hd.bip39.wordlists.japanese;
+                break
+            case 'ko':
+                lang = hd.bip39.wordlists.korean;
+                break
+            case 'es':
+                lang = hd.bip39.wordlists.spanish;
+                break
+            case 'it':
+                lang = hd.bip39.wordlists.italian;
+                break
+            case 'fr':
+                lang = hd.bip39.wordlists.french;
+                break
+            default:
+                break
+        }
+        $scope.showMDecrypt = hd.bip39.validateMnemonic($scope.manualmnemonic, lang);
     };
     $scope.onParityPhraseChange = function() {
         if ($scope.parityPhrase) $scope.showParityDecrypt = true;

@@ -604,6 +604,23 @@
       </div>
       <br />
       <div class="form-group">
+          <span class="dropdown dropdown-lang" ng-cloak ng-controller='tabsCtrl'>
+              <span>Select your mnemonic phrase language:</span>
+              <br />
+              <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curMnemonicLang}}" class="dropdown-toggle  btn btn-white" ng-click="dropdownMnemonic = !dropdownMnemonic;onMnemonicChange()">{{curMnemonicLang}}<i class="caret"></i></a>
+              <ul class="dropdown-menu" ng-show="dropdownMnemonic">
+                  <li><a ng-class="{true:'active'}[curMnemonicLang=='English']" ng-click="changeMnemonic('en','English')"> English </a></li>
+                  <li><a ng-class="{true:'active'}[curMnemonicLang=='简体中文']" ng-click="changeMnemonic('zhcn','简体中文')"> 简体中文 </a></li>
+                  <li><a ng-class="{true:'active'}[curMnemonicLang=='繁體中文']" ng-click="changeMnemonic('zhtw','繁體中文')"> 繁體中文 </a></li>
+                  <li><a ng-class="{true:'active'}[curMnemonicLang=='日本語']" ng-click="changeMnemonic('ja','日本語')"> 日本語 </a></li>
+                  <li><a ng-class="{true:'active'}[curMnemonicLang=='한국어']" ng-click="changeMnemonic('ko','한국어')"> 한국어 </a></li>
+                  <li><a ng-class="{true:'active'}[curMnemonicLang=='Español']" ng-click="changeMnemonic('es','Español')"> Español </a></li>
+                  <li><a ng-class="{true:'active'}[curMnemonicLang=='Italiano']" ng-click="changeMnemonic('it','Italiano')"> Italiano </a></li>
+                  <li><a ng-class="{true:'active'}[curMnemonicLang=='Français']" ng-click="changeMnemonic('fr','Français')"> Français </a></li>
+              </ul>
+          </span>
+      </div>
+      <div class="form-group">
         <textarea id="aria4"
                   class="form-control"
                   ng-change="onMnemonicChange()"

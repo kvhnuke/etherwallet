@@ -3,6 +3,7 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
     $scope.gService = globalService;
     $scope.tabNames = $scope.gService.tabs;
     $scope.curLang = 'English';
+    $scope.curMnemonicLang = 'English';
     $scope.customNodeModal = document.getElementById('customNodeModal') ? new Modal(document.getElementById('customNodeModal')) : null;
     $scope.Validator = Validator;
     $scope.nodeList = nodes.nodeList;
@@ -255,6 +256,13 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
                 $scope.setLanguageVal(key, 'parityErrorMsgs', key);
             }
         }
+    }
+
+    $scope.changeMnemonic = function(key,value) {
+        $scope.curMnemonicLang = value;
+        $scope.dropdownMnemonic = false;
+        globalFuncs.curMnemonicLang = key;
+        $scope.onMnemonicChange();
     }
 
     $scope.changeLanguage = function(key, value) {
