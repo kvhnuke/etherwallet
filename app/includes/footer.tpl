@@ -15,7 +15,7 @@
 
     <section class="footer--left">
 
-      <a href="/"><img src="images/poweredby-myetherwallet.svg" height="45px" width="auto" alt="Ether Wallet" class="footer--logo"/></a>
+      <a href="https://www.myetherwallet.com"><img src="images/poweredby-myetherwallet.svg" height="45px" width="auto" alt="MyEtherWallet" class="footer--logo"/></a>
 
       <p>
         <span translate="FOOTER_1">
