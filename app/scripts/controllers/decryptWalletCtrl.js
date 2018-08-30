@@ -87,6 +87,9 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
                 case nodes.nodeTypes.MUSIC:
                     $scope.HDWallet.dPath = $scope.HDWallet.hwMusicoinPath;
                     break;
+                case nodes.nodeTypes.GO:
+                    $scope.HDWallet.dPath = $scope.HDWallet.goPath;
+                    break;
                 default:
                     $scope.HDWallet.dPath = $scope.HDWallet.ledgerPath;
             }
