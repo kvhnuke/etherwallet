@@ -1,5 +1,6 @@
 const fs = require("fs");
 
+const _ = require('lodash');
 const autoprefixer = require("gulp-autoprefixer");
 const archiver = require("archiver");
 const bump = require("gulp-bump");
@@ -25,6 +26,21 @@ const html2js = require("html2js-browserify");
 const app = "./app/";
 const dist = "./dist/";
 const dist_CX = "./chrome-extension/";
+
+// default Settings
+const Settings = require('./config.default.json');
+
+// load custom settings
+try {
+  let local = require('./config.json');
+  _.extend(Settings, local);
+} catch (e) {
+  if (e.code == 'MODULE_NOT_FOUND') {
+    console.log('No config file found. Using default configuration...');
+  }
+}
+
+let configs = Settings[Settings.selected];
 
 // Error / Success Handling
 let onError = function(err) {
@@ -56,7 +72,7 @@ gulp.task("html", function(done) {
   return gulp
     .src(htmlFiles)
     .pipe(plumber({ errorHandler: onError }))
-    .pipe(fileinclude({ prefix: "@@", basepath: "@file" }))
+    .pipe(fileinclude({ prefix: '@@', basepath: '@file', context: configs }))
     .pipe(gulp.dest(dist))
     .pipe(gulp.dest(dist_CX))
     .pipe(notify(onSuccess("HTML")));
