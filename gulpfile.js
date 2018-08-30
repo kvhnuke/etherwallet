@@ -33,7 +33,7 @@ const Settings = require('./config.default.json');
 // load custom settings
 try {
   let local = require('./config.json');
-  _.extend(Settings, local);
+  _.merge(Settings, local);
 } catch (e) {
   if (e.code == 'MODULE_NOT_FOUND') {
     console.log('No config file found. Using default configuration...');
@@ -86,6 +86,14 @@ let less_destFolder_CX = dist_CX + "css";
 let less_destFile = "etherwallet-master.css";
 let less_destFileMin = "etherwallet-master.min.css";
 
+// custom less file
+if (configs['customLess']) {
+  let localLess = [];
+  localLess.push(less_srcFile);
+  localLess.push(app + 'styles/' + configs['customLess']);
+  less_srcFile = localLess;
+}
+
 gulp.task("styles", function() {
   return (
     gulp
@@ -98,7 +106,7 @@ gulp.task("styles", function() {
           remove: false
         })
       )
-      .pipe(rename(less_destFile))
+      .pipe(concat(less_destFile)) // concat less files
       //.pipe( gulp.dest   (  less_destFolder                                         )) // unminified css
       //.pipe( gulp.dest   (  less_destFolder_CX                                      )) // unminified css
       .pipe(cssnano({ autoprefixer: false, safe: true }))
