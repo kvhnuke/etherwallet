@@ -30,6 +30,13 @@ const dist_CX = "./chrome-extension/";
 // default Settings
 const Settings = require('./config.default.json');
 
+// get selected nodeList to override the nodes.nodeList
+let selectedNetworks, i = process.argv.indexOf("--networks");
+if (i > -1 && process.argv[i + 1]) {
+    selectedNetworks = process.argv[i + 1].split(",");
+    console.log("Selected networks =", selectedNetworks);
+}
+
 // load custom settings
 try {
   let local = require('./config.json');
@@ -123,11 +130,21 @@ let js_srcFile = app + "scripts/main.js";
 let js_destFolder = dist + "js/";
 let js_destFolder_CX = dist_CX + "js/";
 let js_destFile = "etherwallet-master.js";
-let browseOpts = { debug: true }; // generates inline source maps - only in js-debug
+let js_opts = {}; // browserify opts
 let babelOpts = {
   presets: ["env"],
   compact: false
 };
+
+// have selected nodes ?
+if (selectedNetworks) {
+  // setup browserify opts
+  js_opts.insertGlobalVars = {
+    selectedNetworks: function() {
+      return JSON.stringify(selectedNetworks);
+    }
+  };
+}
 
 function bundle_js(bundler) {
   return bundler
@@ -154,21 +171,22 @@ function bundle_js_debug(bundler) {
 }
 
 gulp.task("js", function() {
-  let bundler = browserify(js_srcFile)
+  let bundler = browserify(js_srcFilei, js_opts)
     .transform(babelify)
     .transform(html2js);
   bundle_js(bundler);
 });
 
 gulp.task("js-production", function() {
-  let bundler = browserify(js_srcFile)
+  let bundler = browserify(js_srcFile, js_opts)
     .transform(babelify, babelOpts)
     .transform(html2js);
   bundle_js(bundler);
 });
 
 gulp.task("js-debug", function() {
-  let bundler = browserify(js_srcFile, browseOpts)
+  js_opts.debug = true; // generates inline source maps - only in js-debug
+  let bundler = browserify(js_srcFile, js_opts)
     .transform(babelify, babelOpts)
     .transform(html2js);
   bundle_js_debug(bundler);
