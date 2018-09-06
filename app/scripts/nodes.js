@@ -25,6 +25,7 @@ nodes.nodeTypes = {
 	PIRL: "PIRL",
 	ETHO: "ETHO",
 	ATH: "ATH",
+	RSK: "SBTC",
 	Custom: "CUSTOM ETH"
 };
 nodes.ensNodeTypes = [nodes.nodeTypes.ETH, nodes.nodeTypes.Ropsten];
@@ -442,6 +443,19 @@ nodes.nodeList = {
 		estimateGas: true,
 		service: "wallet.atheios.com",
 		lib: new nodes.customNode("https://wallet.atheios.com", "8797")
+	},
+	rsk: {
+		name: "RSK",
+		blockExplorerTX: "https://explorer.rsk.co/tx/[[txHash]]",
+		blockExplorerAddr: "https://explorer.rsk.co/address/[[address]]",
+		type: nodes.nodeTypes.RSK,
+		eip155: true,
+		chainId: 30,
+		tokenList: [],
+		abiList: [],
+		estimateGas: true,
+		service: "rsk.co",
+		lib: new nodes.customNode("https://mycrypto.rsk.co", "")
 	}
 };
 

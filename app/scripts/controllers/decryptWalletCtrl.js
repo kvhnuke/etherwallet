@@ -38,6 +38,7 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
         hwESNetworkPath:   "m/44'/31102'/0'/0",    // first address: m/44'/31102'/0'/0/0
         hwEther1Path:      "m/44'/1313114'/0'/0",  // first address: m/44'/1313114'/0'/0/0
         hwAtheiosPath:     "m/44'/1620'/0'/0",     // first address: m/44'/1620'/0'/0/0
+        hwRSKPath:         "m/44'/137'/0'/0",      // first address: m/44'/137'/0'/0/0
     };
     $scope.HDWallet.dPath = $scope.HDWallet.defaultDPath;
     $scope.mnemonicModel = new Modal(document.getElementById('mnemonicModel'));
@@ -86,6 +87,9 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
                     break;
                 case nodes.nodeTypes.MUSIC:
                     $scope.HDWallet.dPath = $scope.HDWallet.hwMusicoinPath;
+                    break;
+                case nodes.nodeTypes.RSK:
+                    $scope.HDWallet.dPath = $scope.HDWallet.hwRSKPath;
                     break;
                 default:
                     $scope.HDWallet.dPath = $scope.HDWallet.ledgerPath;
@@ -149,6 +153,9 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
                 case nodes.nodeTypes.ATH:
                     $scope.HDWallet.dPath = $scope.HDWallet.hwAtheiosPath;
                     break;
+                case nodes.nodeTypes.RSK:
+                    $scope.HDWallet.dPath = $scope.HDWallet.hwRSKPath;
+                    break;
                 default:
                     $scope.HDWallet.dPath = $scope.HDWallet.trezorPath;
             }
@@ -204,6 +211,9 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
                     break;
                 case nodes.nodeTypes.ATH:
                     $scope.HDWallet.dPath = $scope.HDWallet.hwAtheiosPath;
+                    break;
+                case nodes.nodeTypes.RSK:
+                    $scope.HDWallet.dPath = $scope.HDWallet.hwRSKPath;
                     break;
                 default:
                   $scope.HDWallet.dPath = $scope.HDWallet.defaultDPath;
@@ -454,7 +464,7 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
         if (window.web3 === undefined) {
             window.addEventListener('message', ({data}) => {
               if (data && data.type && data.type === 'ETHEREUM_PROVIDER_SUCCESS') {
-                window.web3 = new Web3(ethereum); 
+                window.web3 = new Web3(ethereum);
               }
             });
             window.postMessage({ type: 'ETHEREUM_PROVIDER_REQUEST', web3: true }, '*');
