@@ -49,13 +49,6 @@ function onSuccess(msg) {
     }
 }
 
-function notifyFunc(msg) {
-    return gulp.src('.', { read: false })
-        .pipe(notify(onSuccess(msg)))
-}
-
-
-
 // HTML / TPL Pages
 let htmlFiles = app + 'layouts/*.html';
 let tplFiles = app + 'includes/*.tpl';
