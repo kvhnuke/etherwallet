@@ -3,5 +3,5 @@
     "version": "3.21.21",
     "description": "An NPM dist of MyEtherWallet. For easier downloading & updating via CLI.",
     "author": "MyEtherWallet",
-    "license": "ISC"
+    "license": "MIT"
 }
