@@ -4,7 +4,7 @@
   "description": "",
   "main": "gulpfile.js",
   "author": "MyEtherWallet",
-  "license": "ISC",
+  "license": "MIT",
   "scripts": {
     "dev": "gulp",
     "dist": "gulp prep",

@@ -165,6 +165,7 @@ let cxBackgroundFile = app + 'includes/background/*.*';
 let jsonFile = app + '*.json';
 let jQueryFile = app + 'scripts/staticJS/jquery-1.12.3.min.js';
 let bin = app + '/bin/*';
+let xml = app + '*.xml';
 let staticJSSrcFile = js_destFolderStatic + js_destFileStatic;
 let readMe = './README.md';
 
@@ -189,6 +190,9 @@ gulp.task('copy', ['staticJS'], function() {
     gulp.src(jsonFile)
         .pipe(gulp.dest(dist))
         .pipe(gulp.dest(dist_CX));
+
+    gulp.src(xml)
+        .pipe(gulp.dest(dist));
 
     gulp.src(readMe)
         .pipe(gulp.dest(dist));
