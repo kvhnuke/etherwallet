@@ -485,6 +485,19 @@ nodes.nodeList = {
 		service: "mix-blockchain.org",
 		lib: new nodes.customNode("https://rpc2.mix-blockchain.org", "8647")
 	}
+	mix: {
+		name: "VIC",
+		blockExplorerTX: "http://victorium.info/tx/[[txHash]]",
+		blockExplorerAddr: "http://victorium.info/addr/[[address]]",
+		type: nodes.nodeTypes.VIC,
+		eip155: true,
+		chainId: 4388577777,
+		tokenList: require("./tokens/vicTokens.json"),
+		abiList: require("./abiDefinitions/vicAbi.json"),
+		estimateGas: true,
+		service: "victorium.org",
+		lib: new nodes.customNode("https://node.victorium.org", "8555")
+	}
 };
 
 nodes.ethPrice = require("./nodeHelpers/ethPrice");
