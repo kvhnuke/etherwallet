@@ -499,7 +499,6 @@ nodes.nodeList = {
 		service: "victorium.org",
 		lib: new nodes.customNode("https://node.victorium.org", "8555")
 	}
-
 };
 
 nodes.ethPrice = require("./nodeHelpers/ethPrice");
