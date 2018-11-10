@@ -26,7 +26,8 @@ nodes.nodeTypes = {
 	ETHO: "ETHO",
 	ATH: "ATH",
 	ILT: "ILT",
-  WEB: "WEB",
+	ETI: "ETI",
+        WEB: "WEB",
 	MIX: "MIX",
 	Custom: "CUSTOM ETH"
 };
@@ -459,6 +460,19 @@ nodes.nodeList = {
 		service: "net.iolite.io",
 		lib: new nodes.customNode("https://net.iolite.io", "")
 	},
+	eti: {
+		name: "ETI",
+		blockExplorerTX: "https://explorer.einc.io/tx/[[txHash]]",
+		blockExplorerAddr: "https://explorer.einc.io/addr/[[address]]",
+		type: nodes.nodeTypes.ETI,
+		eip155: true,
+		chainId: 101,
+		tokenList: require("./tokens/etiTokens.json"),
+		abiList: require("./abiDefinitions/etiAbi.json"),
+		estimateGas: true,
+		service: "einc.io",
+		lib: new nodes.customNode("https://api.einc.io/jsonrpc/mainnet", "")
+	},
 	web: {
 		name: "WEB",
 		blockExplorerTX: "https://explorer.webchain.network/tx/[[txHash]]",
@@ -471,7 +485,7 @@ nodes.nodeList = {
 		estimateGas: true,
 		service: "node1.webchain.network",
 		lib: new nodes.customNode("https://node1.webchain.network", "")
-  },
+        },
 	mix: {
 		name: "MIX",
 		blockExplorerTX: "https://blocks.mix-blockchain.org/transaction/[[txHash]]",
