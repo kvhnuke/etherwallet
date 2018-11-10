@@ -610,6 +610,7 @@ label small {
 @brand-etho: #d63068;
 @brand-ath: #0099ff;
 @brand-ilt: #4568bb;
+@brand-eti: #3560bf;
 @brand-web: #0092ee;
 @brand-cust: #b50085;
 
@@ -691,6 +692,9 @@ label small {
   }
   li:nth-child(32) {
     border-left: 2px solid @brand-ath;
+  }
+  li:nth-child(33) {
+    border-left: 2px solid @brand-eti;
   }
   li:nth-child(33) {
     border-left: 2px solid @brand-ilt;
@@ -963,6 +967,17 @@ header.ILT {
   .dropdown-gas:before {
     width: 35px;
     background-image: url("../images/coins/ilt.svg");
+  }
+}
+
+header.ETI {
+  .header-branding                       { border-bottom: 0.25rem solid @brand-eti;  }
+  & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-eti;     }
+  & + .container .modal-content          { border: 0.25rem solid @brand-eti;         }
+  & + .container .alert-info             { background-color:@brand-eti;              }
+  .dropdown-gas:before {
+    width: 35px;
+    background-image: url("../images/coins/etherinc.svg");
   }
 }
 
