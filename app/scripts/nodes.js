@@ -26,9 +26,9 @@ nodes.nodeTypes = {
 	ETHO: "ETHO",
 	ATH: "ATH",
 	ILT: "ILT",
-	ETI: "ETI",
         WEB: "WEB",
 	MIX: "MIX",
+	ETI: "ETI",
 	Custom: "CUSTOM ETH"
 };
 nodes.ensNodeTypes = [nodes.nodeTypes.ETH, nodes.nodeTypes.Ropsten];
@@ -460,19 +460,6 @@ nodes.nodeList = {
 		service: "net.iolite.io",
 		lib: new nodes.customNode("https://net.iolite.io", "")
 	},
-	eti: {
-		name: "ETI",
-		blockExplorerTX: "https://explorer.einc.io/tx/[[txHash]]",
-		blockExplorerAddr: "https://explorer.einc.io/addr/[[address]]",
-		type: nodes.nodeTypes.ETI,
-		eip155: true,
-		chainId: 101,
-		tokenList: require("./tokens/etiTokens.json"),
-		abiList: require("./abiDefinitions/etiAbi.json"),
-		estimateGas: true,
-		service: "einc.io",
-		lib: new nodes.customNode("https://api.einc.io/jsonrpc/mainnet", "")
-	},
 	web: {
 		name: "WEB",
 		blockExplorerTX: "https://explorer.webchain.network/tx/[[txHash]]",
@@ -498,6 +485,19 @@ nodes.nodeList = {
 		estimateGas: true,
 		service: "mix-blockchain.org",
 		lib: new nodes.customNode("https://rpc2.mix-blockchain.org", "8647")
+	},
+	eti: {
+		name: "ETI",
+		blockExplorerTX: "https://explorer.einc.io/tx/[[txHash]]",
+		blockExplorerAddr: "https://explorer.einc.io/addr/[[address]]",
+		type: nodes.nodeTypes.ETI,
+		eip155: true,
+		chainId: 101,
+		tokenList: require("./tokens/etiTokens.json"),
+		abiList: require("./abiDefinitions/etiAbi.json"),
+		estimateGas: true,
+		service: "einc.io",
+		lib: new nodes.customNode("https://api.einc.io/jsonrpc/mainnet", "")
 	}
 };
 
