@@ -697,10 +697,10 @@ label small {
     border-left: 2px solid @brand-ilt;
   }
   li:nth-child(34) {
-    border-left: 2px solid @brand-eti;
+    border-left: 2px solid @brand-web;
   }
   li:nth-child(35) {
-    border-left: 2px solid @brand-web;
+    border-left: 2px solid @brand-eti;
   }
   li:last-child {
     border-left: 2px solid @gray-light;
@@ -970,17 +970,6 @@ header.ILT {
   }
 }
 
-header.ETI {
-  .header-branding                       { border-bottom: 0.25rem solid @brand-eti;  }
-  & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-eti;     }
-  & + .container .modal-content          { border: 0.25rem solid @brand-eti;         }
-  & + .container .alert-info             { background-color:@brand-eti;              }
-  .dropdown-gas:before {
-    width: 35px;
-    background-image: url("../images/coins/etherinc.svg");
-  }
-}
-
 header.WEB {
   .header-branding                       { border-bottom: 0.25rem solid @brand-web; }
   & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-web;    }
@@ -989,6 +978,17 @@ header.WEB {
   .dropdown-gas:before {
     width: 36px;
     background-image: url("../images/coins/webchain.svg");
+  }
+}
+
+header.ETI {
+  .header-branding                       { border-bottom: 0.25rem solid @brand-eti;  }
+  & + .container + .pre-footer + .footer { border-top: 0.25rem solid @brand-eti;     }
+  & + .container .modal-content          { border: 0.25rem solid @brand-eti;         }
+  & + .container .alert-info             { background-color:@brand-eti;              }
+  .dropdown-gas:before {
+    width: 35px;
+    background-image: url("../images/coins/etherinc.svg");
   }
 }
 
