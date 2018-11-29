@@ -1,3 +1,5 @@
+### Release v3.27.0
+
 ### New
 
 - Add PIT, SKE tokens, add HUM contract [#2165](https://github.com/kvhnuke/etherwallet/pull/2165)
