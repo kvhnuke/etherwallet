@@ -1,3 +1,5 @@
+### Release v3.29.0
+
 ### New
 - Added PhishFort Protect #2189 [#2189](https://github.com/kvhnuke/etherwallet/pull/2189)
 - misc fixes [#2187](https://github.com/kvhnuke/etherwallet/pull/2187)
