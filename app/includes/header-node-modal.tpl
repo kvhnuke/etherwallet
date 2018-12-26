@@ -48,11 +48,11 @@
           </div>
 
           <div class="clearfix col-xs-12 radio">
-            <label><input name="options" type="radio" ng-model="customNode.options" value="eth"> ETH </label>
-            <label><input name="options" type="radio" ng-model="customNode.options" value="etc"> ETC </label>
-            <label><input name="options" type="radio" ng-model="customNode.options" value="rop"> Ropsten </label>
-            <label><input name="options" type="radio" ng-model="customNode.options" value="kov"> Kovan </label>
-            <label><input name="options" type="radio" ng-model="customNode.options" value="rin"> Rinkeby </label>
+            <label><input name="options" type="radio" ng-disabled="!nodeList.eth_ethscan" ng-model="customNode.options" value="eth"> ETH </label>
+            <label><input name="options" type="radio" ng-disabled="!nodeList.etc_epool" ng-model="customNode.options" value="etc"> ETC </label>
+            <label><input name="options" type="radio" ng-disabled="!nodeList.rop_mew" ng-model="customNode.options" value="rop"> Ropsten </label>
+            <label><input name="options" type="radio" ng-disabled="!nodeList.kov_ethscan" ng-model="customNode.options" value="kov"> Kovan </label>
+            <label><input name="options" type="radio" ng-disabled="!nodeList.rin_ethscan" ng-model="customNode.options" value="rin"> Rinkeby </label>
             <label><input name="options" type="radio" ng-model="customNode.options" value="cus"> Custom </label>
             <label ng-show="customNode.options == 'cus'"><input type="checkbox" ng-model="customNode.eip155" value="true"> Supports EIP-155 </label>
           </div>

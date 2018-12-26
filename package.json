@@ -63,6 +63,7 @@
     "idna-uts46": "^1.0.1",
     "install": "^0.10.1",
     "levenshtein": "^1.0.5",
+    "lodash": "^4.17.4",
     "marked": "^0.3.6",
     "punycode": "^2.1.0",
     "scryptsy": "^2.0.0",

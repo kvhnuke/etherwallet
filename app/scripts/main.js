@@ -131,6 +131,22 @@ if (IS_CX) {
   var mainPopCtrl = require("./controllers/CX/mainPopCtrl");
   var quickSendCtrl = require("./controllers/CX/quickSendCtrl");
 }
+
+// prepare some variables
+var nodeList = {};
+if (typeof selectedNetworks !== 'undefined') {
+  var found = 0;
+  selectedNetworks.forEach(function(n) {
+    if (nodes.nodeList[n]) {
+      nodeList[n] = nodes.nodeList[n];
+      found++;
+    }
+  });
+  if (found > 0) {
+    nodes.nodeList = nodeList;
+  }
+}
+
 var app = angular.module("mewApp", [
   "pascalprecht.translate",
   "ngSanitize",
