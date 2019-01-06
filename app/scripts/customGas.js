@@ -106,11 +106,11 @@ gasLimit:   200000,
 data:       '',
 msg:        'Assistive Reality ARXT token sale - https://aronline.io'
 },{
-// STC Token Sale
-to:         '0x8d040556214125F3fE7d8B22cF17c364603A6035',
+// DST Token Sale
+to:         '0xe55ff8AB3326752C93d695a60b50609e324e1cb0',
 gasLimit:   400000,
 data:       '',
-msg:        'STC Token Sale - https://dimensions.network'
+msg:        'DST Token Sale - https://dimensions.network'
 },{
 // MNT Token Sale
 to:         '0xA9877b1e05D035899131DBd1e403825166D09f92',
