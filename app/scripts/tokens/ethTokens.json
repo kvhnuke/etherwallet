@@ -6862,5 +6862,11 @@
     "symbol": "ZXC",
     "decimal": 18,
     "type": "default"
+  },
+  {
+    "address": "0x8207c1FfC5B6804F6024322CcF34F29c3541Ae26",
+    "symbol": "OGN",
+    "decimal": 18,
+    "type": "default"
   }
 ]
