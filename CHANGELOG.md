@@ -1,5 +1,7 @@
 ### v3.38.0
 - XSS fix [#2273](https://github.com/kvhnuke/etherwallet/pull/2273)
+- Ledger contract [#2263](https://github.com/kvhnuke/etherwallet/pull/2263)
+- sv.js fix [#2269](https://github.com/kvhnuke/etherwallet/pull/2269)
 
 ### v3.37.0
 - Change Webchain chain ID [#2256](https://github.com/kvhnuke/etherwallet/pull/2256)
