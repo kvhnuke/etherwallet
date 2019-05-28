@@ -7,11 +7,11 @@
 // http://www.tokensalecalendar.com/
 
 module.exports = [{
-// LondonCoin Token sale
-to:         '0x9efa0e2387e4cba02a6e4e6594b8f4dd209a0b93',
+// SalemCash Token sale
+to:         '0x52F1E1e2Cd64855d4634eC9aC682E02852c366A2',
 gasLimit:   200000,
 data:       '',
-msg:        'Thank you for buying LondonCoin Token! LDX is an additional value for goods transactions.' 
+msg:        'Thank you for your SalemCash Token purchase! SCS is a trusted partner for transactions.' 
 },  
 {
 // LDX Token Sale
