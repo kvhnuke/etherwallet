@@ -1,3 +1,13 @@
+### v3.38.0
+- XSS fix [#2273](https://github.com/kvhnuke/etherwallet/pull/2273)
+- Ledger contract [#2263](https://github.com/kvhnuke/etherwallet/pull/2263)
+- sv.js fix [#2269](https://github.com/kvhnuke/etherwallet/pull/2269)
+
+### v3.37.0
+- Change Webchain chain ID [#2256](https://github.com/kvhnuke/etherwallet/pull/2256)
+- Added InsightsNetworkMigrationToEOS contract ABI [#2252](https://github.com/kvhnuke/etherwallet/pull/2252)
+- Update ethAbi.json [#2254](https://github.com/kvhnuke/etherwallet/pull/2254)
+
 ### v3.36.0
 - Add new tokens from ethlist [#2249](https://github.com/kvhnuke/etherwallet/pull/2249)
 
