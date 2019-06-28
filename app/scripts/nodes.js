@@ -30,6 +30,7 @@ nodes.nodeTypes = {
 	MIX: "MIX",
 	REOSC: "REOSC",
 	THUNDERCORE: "TT",
+	SAGE: "SAGE",
 	Custom: "CUSTOM ETH"
 };
 nodes.ensNodeTypes = [nodes.nodeTypes.ETH, nodes.nodeTypes.Ropsten];
@@ -476,6 +477,19 @@ nodes.nodeList = {
 		estimateGas: true,
 		service: "thundercore.com",
 		lib: new nodes.customNode("https://mainnet-rpc.thundercore.com", "443")
+	},
+	sage: {
+		name: "SAGE",
+		blockExplorerTX: "https://explorer.sagecity.io/tx/[[txHash]]",
+		blockExplorerAddr: "https://explorer.sagecity.io/addr/[[address]]",
+		type: nodes.nodeTypes.SAGE,
+		eip155: false,
+		chainId: 3856,
+		tokenList: require("./tokens/sagecityTokens.json"),
+		abiList: require("./abiDefinitions/sagecityAbi.json"),
+		estimateGas: true,
+		service: "sagecity.io",
+		lib: new nodes.customNode("https://mew.sagecity.io", "443")
 	}
 };
 
