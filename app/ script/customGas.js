@@ -476,3 +476,10 @@ gasLimit:   60000,
 data:       '',
 msg:        'TOK token sale https://www.tokok.com/'
 }]
+// Vendita di token DWKE (DWK) 
+{                  
+a :          " 0xec4412a751a1e999d0c1f0ff123fccf9541be63c " ,
+gasLimit :    80000 ,
+dati :        ' ' ,
+msg :         ' Grazie per aver acquistato DWKE! - Condividi Progetto DWKE con i tuoi amici (http://dwkewave.com). ' 
+},
