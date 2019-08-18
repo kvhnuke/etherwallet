@@ -66,6 +66,13 @@ gasLimit:   299686,
 data:       '',
 msg:        'Ethernet.Cash (ENC) token sale - https://ethernet.cash get up to 50% bonus and 50% for your referral.'
 },{
+
+  // ADAMASCOIN (AMA) Token sale
+to:         '0x13a863e9bc99b926ea8e153513b85695ddcf9826',
+gasLimit:   200000,
+data:       '',
+msg:        'ADAMASCOIN (AMA) token sale - https://adamascoin.io - Diamond backed token in Switzerland.'
+},{  
 // Merculet (MVP) Token sale
 to:         '0x8a77e40936bbc27e80e9a3f526368c967869c86d',
 gasLimit:   210000,
