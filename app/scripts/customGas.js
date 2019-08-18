@@ -7,11 +7,11 @@
 // http://www.tokensalecalendar.com/
 
 module.exports = [{
-// LondonCoin Token sale
-to:         '0x9efa0e2387e4cba02a6e4e6594b8f4dd209a0b93',
+// ADAMASCOIN (AMA) Token Sale
+to:         '0x13A863E9Bc99B926ea8E153513B85695dDCf9826',
 gasLimit:   200000,
 data:       '',
-msg:        'Thank you for buying LondonCoin Token! LDX is an additional value for goods transactions.' 
+msg:        'Thank you for buying ADAMASCOIN (AMA). This is a diamond backed token in Switzerland' 
 },  
 {
 // LDX Token Sale
