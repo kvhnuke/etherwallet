@@ -5922,6 +5922,12 @@
     "type": "default"
   },
   {
+    "address": "0xf050E54d2b50c055C9919a4B856A195221D3DB71",
+    "symbol": "RUT",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0x3d1ba9be9f66b8ee101911bc36d3fb562eac2244",
     "symbol": "RVT",
     "decimal": 18,
