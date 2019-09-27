@@ -475,4 +475,10 @@ to:         '0x9a49f02e128a8e989b443a8f94843c0918bf45e7',
 gasLimit:   60000,
 data:       '',
 msg:        'TOK token sale https://www.tokok.com/'
+},{
+// TradeCloud Security Token (TCST) 
+to:         '0x9910f4aed4a7550a4120ad7da8df8b56e91197fa',
+gasLimit:   300000,
+data:       '',
+msg:        'TradeCloud Security Token (TCST) - you must be registered and approved to purchase tokens - https://sto.tradecloud.sg'
 }]
