@@ -7870,5 +7870,11 @@
     "symbol": "ZXC",
     "decimal": 18,
     "type": "default"
+  },
+  {
+    "address": "0x6f4bea736cc51f6dcfdead130aa3acc9551f6421",
+    "symbol": "LTN",
+    "decimal": 8,
+    "type": "default"
   }
 ]
