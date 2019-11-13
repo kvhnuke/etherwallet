@@ -7870,5 +7870,11 @@
     "symbol": "ZXC",
     "decimal": 18,
     "type": "default"
+  },
+  {
+    "address": "0x6be66252c14915e2a4f7e9621bc17365c4f35244",
+    "symbol": "ZLC",
+    "decimal": 18,
+    "type": "default"
   }
 ]
