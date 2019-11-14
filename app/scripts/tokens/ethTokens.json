@@ -4278,6 +4278,12 @@
     "type": "default"
   },
   {
+    "address": "0x7d1afa7b718fb893db30a3abc0cfc608aacfebb0",
+    "symbol": "MATIC",
+    "decimal": 18,
+    "type": "default"
+  },
+  {
     "address": "0xb63ffe88c2903080ccf9ab14efa56a11e3e01273",
     "symbol": "MBC",
     "decimal": 18,
